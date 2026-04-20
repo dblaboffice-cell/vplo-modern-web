@@ -16,6 +16,7 @@ import {
   Users,
   X,
 } from 'lucide-react';
+import DlaczegoDoNas from './pages/rekrutacja/DlaczegoDoNas';
 
 const school = {
   name: 'V Prywatne Liceum Ogólnokształcące w Krakowie',
@@ -174,7 +175,7 @@ const pageContent = {
   },
   '/o-nas/przeslanie-dyrektora': {
     title: 'Przesłanie Dyrektora',
-    lead: 'Strona otwierająca sekcję “O nas” z miejscem na oficjalny list i zdjęcie dyrekcji.',
+    lead: 'Strona otwierająca sekcję "O nas" z miejscem na oficjalny list i zdjęcie dyrekcji.',
     body: [
       'W nowej wersji warto podkreślić charakter szkoły, atmosferę oraz indywidualne podejście do ucznia. Tekst można przedstawić w bardziej eleganckim układzie z wyróżnionymi cytatami.',
       'Obecna architektura aplikacji pozwala później wymienić ten tekst na pełną treść bez zmiany układu strony.',
@@ -252,15 +253,6 @@ const pageContent = {
       'W wersji produkcyjnej warto dodać datę aktualizacji oraz osobę odpowiedzialną za publikację.',
     ],
     highlights: ['Widoczność ważnych dokumentów', 'Data aktualizacji', 'Pobieranie plików'],
-  },
-  '/rekrutacja/dlaczego-do-nas': {
-    title: 'Dlaczego do nas?',
-    lead: 'Najważniejsza sprzedażowa podstrona rekrutacyjna.',
-    body: [
-      'Sekcja została przygotowana tak, aby jasno komunikować atuty szkoły: kameralne klasy, indywidualne podejście, bogatą ofertę dydaktyczną i dobrą lokalizację.',
-      'Można tu dodać liczby, opinie uczniów, wyróżnienia oraz przyciski CTA prowadzące do formularza zgłoszeniowego.',
-    ],
-    highlights: ['Argumenty za wyborem szkoły', 'Call to action', 'Opinie uczniów'],
   },
   '/rekrutacja/wymagane-dokumenty': {
     title: 'Wymagane dokumenty',
@@ -462,6 +454,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/rekrutacja/dlaczego-do-nas" element={<DlaczegoDoNas />} />
           {Object.keys(pageContent).map((path) => (
             <Route key={path} path={path} element={<StandardPage page={pageContent[path]} />} />
           ))}
@@ -485,8 +478,15 @@ function Header({ mobileOpen, setMobileOpen }) {
           </div>
         </Link>
         <div className="header-actions">
-          <a href={`mailto:${school.email}`} className="ghost-btn">Napisz do nas</a>
-          <button className="menu-btn" onClick={() => setMobileOpen((v) => !v)}>
+          <a href={`mailto:${school.email}`} className="ghost-btn">
+            Napisz do nas
+          </a>
+          <button
+            type="button"
+            className="menu-btn"
+            onClick={() => setMobileOpen((value) => !value)}
+            aria-label={mobileOpen ? 'Zamknij menu' : 'Otwórz menu'}
+          >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
@@ -511,6 +511,7 @@ function Header({ mobileOpen, setMobileOpen }) {
 
 function DesktopNavItem({ item }) {
   const Icon = item.icon;
+
   return (
     <div className="nav-item-group">
       <NavLink to={item.path} className="nav-link">
@@ -548,7 +549,12 @@ function MobileNavItem({ item, onNavigate }) {
           <span>{item.label}</span>
         </NavLink>
         {item.children.length > 0 && (
-          <button className="mobile-toggle" onClick={() => setOpen((v) => !v)}>
+          <button
+            type="button"
+            className="mobile-toggle"
+            onClick={() => setOpen((value) => !value)}
+            aria-label={open ? 'Zwiń podmenu' : 'Rozwiń podmenu'}
+          >
             <ChevronDown size={16} className={open ? 'rotated' : ''} />
           </button>
         )}
@@ -581,8 +587,12 @@ function HomePage() {
             <h1>{school.name}</h1>
             <p className="hero-text">{school.intro}</p>
             <div className="hero-actions">
-              <Link to="/rekrutacja/dlaczego-do-nas" className="primary-btn">Zobacz rekrutację</Link>
-              <Link to="/kontakt" className="secondary-btn">Przejdź do kontaktu</Link>
+              <Link to="/rekrutacja/dlaczego-do-nas" className="primary-btn">
+                Zobacz rekrutację
+              </Link>
+              <Link to="/kontakt" className="secondary-btn">
+                Przejdź do kontaktu
+              </Link>
             </div>
             <div className="hero-contact-grid">
               <InfoBadge icon={<MapPin size={16} />} text={school.address} />
@@ -611,9 +621,12 @@ function HomePage() {
           {menu.map((item) => {
             const Icon = item.icon;
             const count = item.children.reduce((acc, group) => acc + group.items.length, 0);
+
             return (
               <Link to={item.path} key={item.label} className="feature-card">
-                <div className="feature-icon"><Icon size={18} /></div>
+                <div className="feature-icon">
+                  <Icon size={18} />
+                </div>
                 <h3>{item.label}</h3>
                 <p>{count > 0 ? `${count} podstron w sekcji` : 'Strona główna sekcji lub landing page'}</p>
               </Link>
@@ -696,8 +709,8 @@ function StandardPage({ page }) {
 
       <div className="page-layout">
         <article className="page-main-card">
-          {page.body.map((paragraph, idx) => (
-            <p key={idx}>{paragraph}</p>
+          {page.body.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
           ))}
 
           {page.title === 'Lekcje i przerwy' && (
@@ -792,7 +805,9 @@ function Footer() {
           <div className="footer-title">Nawigacja</div>
           <div className="footer-links">
             {menu.slice(0, 5).map((item) => (
-              <Link key={item.label} to={item.path}>{item.label}</Link>
+              <Link key={item.label} to={item.path}>
+                {item.label}
+              </Link>
             ))}
           </div>
         </div>
