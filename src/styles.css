@@ -621,6 +621,94 @@ th {
   font-size: clamp(2rem, 3.5vw, 3.6rem);
 }
 
+.article-header-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 28px;
+}
+
+.article-page .page-header {
+  max-width: none;
+  margin-bottom: 0;
+}
+
+.article-page .page-header p {
+  color: var(--accent-strong);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.45rem, 2.5vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.article-highlights {
+  padding: 20px 22px;
+  border-top: 4px solid var(--accent-strong);
+  border-radius: 0 0 var(--radius) var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.article-highlights h2 {
+  margin: 0 0 12px;
+  color: var(--accent-strong);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.article-highlights ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.article-highlights li + li {
+  margin-top: 8px;
+}
+
+.article-layout {
+  display: block;
+}
+
+.article-page .page-main-card {
+  padding: clamp(26px, 5vw, 56px);
+}
+
+.article-section-title {
+  margin: 0 0 28px;
+  color: var(--accent-strong);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+  line-height: 1.2;
+}
+
+.article-text {
+  color: var(--text) !important;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.article-text + .article-text {
+  margin-top: 1.25rem;
+}
+
+.article-author {
+  margin: 44px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--accent-strong) !important;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.08rem;
+  font-style: italic;
+  font-weight: 700;
+  text-align: right;
+}
+
 .page-main-card p + p {
   margin-top: 18px;
 }
@@ -674,6 +762,11 @@ th {
   .page-layout,
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .article-header-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .hero-building-card {
