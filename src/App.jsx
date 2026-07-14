@@ -19,15 +19,20 @@ import {
 import DlaczegoDoNas from './pages/rekrutacja/DlaczegoDoNas';
 
 const school = {
-  name: 'V Prywatne Liceum Ogólnokształcące w Krakowie',
+  name: 'V Prywatne Liceum Ogólnokształcące w Krakowie im. Królowej Jadwigi',
   short: 'VP-LO Kraków',
   address: 'ul. Smoleńsk 14, 31-112 Kraków',
   phone: '+48 12 422 92 02',
   extraPhone: '+48 881 009 790',
   email: 'dyrektor@vp-lo.krakow.pl',
-  intro:
-    'Nowoczesna wersja serwisu szkoły z czytelną nawigacją, responsywnym układem i zachowaniem dotychczasowych zakładek.',
+  founded: 'Rok założenia 1992',
 };
+
+const logoSrc = `${import.meta.env.BASE_URL}logo-vplo.png`;
+const jadwigaPortraitSrc = `${import.meta.env.BASE_URL}jadwiga-bacciarelli.jpg`;
+const buildingSrc = `${import.meta.env.BASE_URL}siedziba-vplo.jpg`;
+const schoolMapUrl =
+  'https://www.google.com/maps/place/V+Prywatne+Liceum+Og%C3%B3lnokszta%C5%82c%C4%85ce/@50.0581904,19.9277046,19.5z/data=!3m1!5s0x47165b0ca90960b1:0x15df860a31a312a3!4m15!1m8!3m7!1s0x47165b0ca9600f99:0x975b3ee8029bc41f!2sSmole%C5%84sk+14,+31-112+Krak%C3%B3w!3b1!8m2!3d50.0583935!4d19.9279931!16s%2Fg%2F11c2fqzxsz!3m5!1s0x47165b0ca9c919b5:0xee22a70dcc45f4fc!8m2!3d50.0583811!4d19.9281055!16s%2Fg%2F1ts1lctz?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D';
 
 const featuredNews = [
   {
@@ -471,10 +476,13 @@ function Header({ mobileOpen, setMobileOpen }) {
     <header className="site-header">
       <div className="container topbar">
         <Link to="/" className="brand">
-          <div className="brand-badge">V</div>
-          <div>
+          <div className="brand-badge brand-badge-logo">
+            <img src={logoSrc} alt="Logo VP-LO Kraków" className="brand-logo" />
+          </div>
+          <div className="brand-copy">
             <div className="brand-title">{school.short}</div>
-            <div className="brand-subtitle">Nowoczesna wersja serwisu szkoły</div>
+            <div className="brand-subtitle">{school.name}</div>
+            <div className="brand-meta">{school.founded}</div>
           </div>
         </Link>
         <div className="header-actions">
@@ -583,9 +591,11 @@ function HomePage() {
       <section className="hero">
         <div className="container hero-grid">
           <div>
-            <span className="pill">Kraków · edukacja · nowoczesny redesign</span>
-            <h1>{school.name}</h1>
-            <p className="hero-text">{school.intro}</p>
+            <span className="pill">Kraków · edukacja · nowoczesność</span>
+            <div className="hero-title-copy">
+              <h1>{school.name}</h1>
+              <p className="hero-title-note">Szkoła z tradycją, kameralną atmosferą i nowoczesnym podejściem do edukacji.</p>
+            </div>
             <div className="hero-actions">
               <Link to="/rekrutacja/dlaczego-do-nas" className="primary-btn">
                 Zobacz rekrutację
@@ -594,14 +604,44 @@ function HomePage() {
                 Przejdź do kontaktu
               </Link>
             </div>
+            <figure className="hero-building-card hero-building-card-inline">
+              <img
+                src={buildingSrc}
+                alt="Siedziba V Prywatnego Liceum Ogólnokształcącego w Krakowie"
+                className="hero-building-image"
+              />
+              <figcaption>Siedziba szkoły</figcaption>
+            </figure>
             <div className="hero-contact-grid">
-              <InfoBadge icon={<MapPin size={16} />} text={school.address} />
+              <a
+                href={schoolMapUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="info-badge info-badge-link"
+              >
+                <MapPin size={16} />
+                <span>{school.address}</span>
+              </a>
               <InfoBadge icon={<Phone size={16} />} text={school.phone} />
               <InfoBadge icon={<Mail size={16} />} text={school.email} />
             </div>
           </div>
           <div className="hero-card">
-            <div className="hero-card-top">Zachowane sekcje serwisu</div>
+            <div className="hero-portrait-wrap">
+              <div className="hero-portrait-frame">
+                <img
+                  src={jadwigaPortraitSrc}
+                  alt="Królowa Jadwiga"
+                  className="hero-portrait"
+                />
+              </div>
+              <div className="hero-portrait-copy">
+                <span className="eyebrow">Patronka szkoły</span>
+                <h3>Królowa Jadwiga</h3>
+                <p>Symbol mądrości, odpowiedzialności i edukacji opartej na wartościach.</p>
+              </div>
+            </div>
+            <div className="hero-card-top">Sekcje serwisu</div>
             <ul className="hero-list">
               {menu.map((item) => (
                 <li key={item.label}>{item.label}</li>
