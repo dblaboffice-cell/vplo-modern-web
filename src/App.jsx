@@ -31,6 +31,7 @@ const school = {
 const logoSrc = `${import.meta.env.BASE_URL}logo-vplo.png`;
 const jadwigaPortraitSrc = `${import.meta.env.BASE_URL}jadwiga-bacciarelli.jpg`;
 const jadwigaPaintingSrc = `${import.meta.env.BASE_URL}krolowa-jadwiga-bacciarelli.png`;
+const jadwigaTimelineSrc = `${import.meta.env.BASE_URL}os-czasu-jadwiga.png`;
 const buildingSrc = `${import.meta.env.BASE_URL}siedziba-vplo.jpg`;
 const schoolMapUrl =
   'https://www.google.com/maps/place/V+Prywatne+Liceum+Og%C3%B3lnokszta%C5%82c%C4%85ce/@50.0581904,19.9277046,19.5z/data=!3m1!5s0x47165b0ca90960b1:0x15df860a31a312a3!4m15!1m8!3m7!1s0x47165b0ca9600f99:0x975b3ee8029bc41f!2sSmole%C5%84sk+14,+31-112+Krak%C3%B3w!3b1!8m2!3d50.0583935!4d19.9279931!16s%2Fg%2F11c2fqzxsz!3m5!1s0x47165b0ca9c919b5:0xee22a70dcc45f4fc!8m2!3d50.0583811!4d19.9281055!16s%2Fg%2F1ts1lctz?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D';
@@ -270,6 +271,7 @@ const pageContent = {
     firstBlockHeading: true,
     showHighlights: true,
     author: 'Opracowanie: dr Kamil Świderski',
+    timelineImage: true,
   },
   '/o-nas/edukacja/dlaczego-krolowa-jadwiga': {
     title: 'Dlaczego Królowa Jadwiga?',
@@ -885,7 +887,7 @@ function StandardPage({ page }) {
         )}
       </div>
 
-      <div className={articlePage ? 'article-layout' : 'page-layout'}>
+      <div className={`${articlePage ? 'article-layout' : 'page-layout'}${page.timelineImage ? ' article-layout-with-timeline' : ''}`}>
         <article className="page-main-card">
           {articleBlocks.map((paragraph, index) => (
             articlePage && paragraph.startsWith('Sancta Jadwiga') ? (
@@ -938,6 +940,12 @@ function StandardPage({ page }) {
             </div>
           )}
         </article>
+
+        {page.timelineImage && (
+          <aside className="article-timeline">
+            <img src={jadwigaTimelineSrc} alt="Oś czasu kultu i pamięci o królowej Jadwidze" />
+          </aside>
+        )}
 
         {!articlePage && <aside className="page-sidebar">
           <div className="sidebar-card">

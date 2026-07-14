@@ -682,6 +682,29 @@ th {
   display: block;
 }
 
+.article-layout-with-timeline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 400px);
+  gap: 28px;
+  align-items: start;
+}
+
+.article-timeline {
+  position: sticky;
+  top: 126px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: var(--shadow);
+}
+
+.article-timeline img {
+  display: block;
+  width: 100%;
+  border-radius: 11px;
+}
+
 .article-page .page-main-card {
   padding: clamp(26px, 5vw, 56px);
 }
@@ -819,6 +842,16 @@ th {
   .article-header-grid {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+
+  .article-layout-with-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .article-timeline {
+    position: static;
+    width: min(100%, 440px);
+    margin: 0 auto;
   }
 
   .hero-building-card {
