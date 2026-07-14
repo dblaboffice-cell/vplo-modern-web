@@ -697,6 +697,48 @@ th {
   margin-top: 1.25rem;
 }
 
+.article-figure {
+  width: min(100%, 420px);
+  margin: 38px auto;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: var(--shadow);
+}
+
+.article-figure img {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.article-figure figcaption {
+  padding: 12px 8px 4px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.article-quote {
+  margin: 42px auto 30px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 24px 28px;
+  border: 1px solid rgba(151, 112, 25, 0.5);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(81, 108, 157, 0.1), rgba(212, 167, 51, 0.15));
+  color: var(--accent-strong);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  white-space: nowrap;
+}
+
 .article-author {
   margin: 44px 0 0;
   padding-top: 18px;
@@ -814,6 +856,10 @@ th {
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .article-quote {
+    white-space: normal;
   }
 
   .hero-portrait-frame {
