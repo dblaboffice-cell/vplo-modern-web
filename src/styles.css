@@ -172,6 +172,16 @@ button {
   position: relative;
 }
 
+/* Wypełnia przestrzeń między zakładką a rozwijanym menu, aby menu nie znikało podczas przejazdu kursorem. */
+.nav-item-group::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+
 .nav-link {
   display: flex;
   align-items: center;
