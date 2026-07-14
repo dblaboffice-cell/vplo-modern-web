@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import {
   BookOpen,
@@ -33,6 +33,13 @@ const jadwigaPortraitSrc = `${import.meta.env.BASE_URL}jadwiga-bacciarelli.jpg`;
 const jadwigaPaintingSrc = `${import.meta.env.BASE_URL}krolowa-jadwiga-bacciarelli.png`;
 const jadwigaTimelineSrc = `${import.meta.env.BASE_URL}os-czasu-jadwiga.png`;
 const buildingSrc = `${import.meta.env.BASE_URL}siedziba-vplo.jpg`;
+const headerBannerSlides = [
+  { src: `${import.meta.env.BASE_URL}smolensk-siedziba.png`, alt: 'Siedziba V Prywatnego Liceum Ogólnokształcącego w Krakowie' },
+  { src: `${import.meta.env.BASE_URL}krakow-rynek.jpeg`, alt: 'Rynek Główny w Krakowie' },
+  { src: `${import.meta.env.BASE_URL}krakow-rynek-noc.jpeg`, alt: 'Rynek Główny w Krakowie nocą' },
+  { src: `${import.meta.env.BASE_URL}krakow-wawel.jpeg`, alt: 'Wawel nad Wisłą' },
+  { src: `${import.meta.env.BASE_URL}krakow-wisla.jpeg`, alt: 'Panorama Wawelu i Wisły' },
+];
 const schoolMapUrl =
   'https://www.google.com/maps/place/V+Prywatne+Liceum+Og%C3%B3lnokszta%C5%82c%C4%85ce/@50.0581904,19.9277046,19.5z/data=!3m1!5s0x47165b0ca90960b1:0x15df860a31a312a3!4m15!1m8!3m7!1s0x47165b0ca9600f99:0x975b3ee8029bc41f!2sSmole%C5%84sk+14,+31-112+Krak%C3%B3w!3b1!8m2!3d50.0583935!4d19.9279931!16s%2Fg%2F11c2fqzxsz!3m5!1s0x47165b0ca9c919b5:0xee22a70dcc45f4fc!8m2!3d50.0583811!4d19.9281055!16s%2Fg%2F1ts1lctz?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D';
 
@@ -575,7 +582,7 @@ function App() {
 
   return (
     <div className="app-shell">
-      <Header mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
+      <Header mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} showBanner={location.pathname === '/'} />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -591,7 +598,7 @@ function App() {
   );
 }
 
-function Header({ mobileOpen, setMobileOpen }) {
+function Header({ mobileOpen, setMobileOpen, showBanner }) {
   return (
     <header className="site-header">
       <div className="container topbar">
@@ -605,6 +612,7 @@ function Header({ mobileOpen, setMobileOpen }) {
             <div className="brand-meta">{school.founded}</div>
           </div>
         </Link>
+        {showBanner && <HeaderBanner />}
         <div className="header-actions">
           <a href={`mailto:${school.email}`} className="ghost-btn">
             Napisz do nas
@@ -634,6 +642,27 @@ function Header({ mobileOpen, setMobileOpen }) {
         </nav>
       )}
     </header>
+  );
+}
+
+function HeaderBanner() {
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setSlideIndex((index) => (index + 1) % headerBannerSlides.length);
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const slide = headerBannerSlides[slideIndex];
+
+  return (
+    <figure className="header-banner">
+      <img key={slide.src} src={slide.src} alt={slide.alt} />
+      <figcaption>{slideIndex === 0 ? 'Smoleńsk 14' : 'Kraków'}</figcaption>
+    </figure>
   );
 }
 
