@@ -614,9 +614,6 @@ function Header({ mobileOpen, setMobileOpen, showBanner }) {
         </Link>
         {showBanner && <HeaderBanner />}
         <div className="header-actions">
-          <a href={`mailto:${school.email}`} className="ghost-btn">
-            Napisz do nas
-          </a>
           <button
             type="button"
             className="menu-btn"

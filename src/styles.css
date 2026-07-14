@@ -126,10 +126,10 @@ button {
 
 .header-banner {
   position: relative;
-  flex: 1 1 320px;
-  max-width: 390px;
-  min-width: 220px;
-  height: 88px;
+  flex: 1 1 500px;
+  max-width: 620px;
+  min-width: 300px;
+  height: 100px;
   margin: 0;
   overflow: hidden;
   border: 1px solid rgba(151, 112, 25, 0.32);
