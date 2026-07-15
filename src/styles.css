@@ -931,8 +931,69 @@ th {
   opacity: 0.85;
   transform: translateY(-1px);
 }
+.contact-page-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.4fr);
+  gap: 28px;
+  align-items: start;
+  margin-top: 28px;
+}
+
+.contact-details {
+  display: grid;
+  gap: 12px;
+}
+
+.contact-map-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(20, 35, 70, 0.12);
+}
+
+.contact-map-frame {
+  display: block;
+  width: 100%;
+  min-height: 420px;
+  border: 0;
+}
+
+.route-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  padding: 15px 20px;
+  background: #243b70;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+}
+
+.route-button:hover {
+  background: #1b2f5d;
+  color: #ffffff;
+}
+
+.route-button:active {
+  transform: translateY(1px);
+}
 
 @media (max-width: 1040px) {
+  .contact-page-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-map-frame {
+    min-height: 340px;
+  }
   .cards-grid,
   .news-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

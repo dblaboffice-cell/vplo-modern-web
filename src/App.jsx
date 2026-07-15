@@ -44,6 +44,11 @@ const headerBannerSlides = [
 ];
 const schoolMapUrl =
   'https://www.google.com/maps/place/V+Prywatne+Liceum+Og%C3%B3lnokszta%C5%82c%C4%85ce/@50.0581904,19.9277046,19.5z/data=!3m1!5s0x47165b0ca90960b1:0x15df860a31a312a3!4m15!1m8!3m7!1s0x47165b0ca9600f99:0x975b3ee8029bc41f!2sSmole%C5%84sk+14,+31-112+Krak%C3%B3w!3b1!8m2!3d50.0583935!4d19.9279931!16s%2Fg%2F11c2fqzxsz!3m5!1s0x47165b0ca9c919b5:0xee22a70dcc45f4fc!8m2!3d50.0583811!4d19.9281055!16s%2Fg%2F1ts1lctz?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D';
+const schoolMapEmbedUrl =
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d523.1570763456707!2d19.92786264417709!3d50.058397789315215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165b0ca9c919b5%3A0xee22a70dcc45f4fc!2sV%20Prywatne%20Liceum%20Og%C3%B3lnokszta%C5%82c%C4%85ce!5e0!3m2!1spl!2spl!4v1784125094341!5m2!1spl!2spl';
+
+const schoolDirectionsUrl =
+    'https://www.google.com/maps/dir/?api=1&destination=Smole%C5%84sk+14%2C+31-112+Krak%C3%B3w';
 
 const featuredNews = [
   {
@@ -548,7 +553,7 @@ const pageContent = {
     title: 'Lekcje i przerwy',
     lead: 'Czytelna tabela godzin lekcyjnych i długości przerw.',
     body: [
-      'W tej wersji prezentacja planu dnia jest uproszczona i maksymalnie czytelna na urządzeniach mobilnych.',
+      'Czas nauki i regeneracji',
       'Można dodać wersję do druku albo szybki zapis do PDF.',
     ],
     highlights: ['Tabela godzin', 'Wersja mobilna', 'Opcja wydruku'],
@@ -575,23 +580,28 @@ const pageContent = {
     title: 'Kontakt',
     lead: 'Przejrzysta sekcja kontaktowa z adresem, telefonami, e-mailem i mapą.',
     body: [
-      'W nowej wersji warto zastosować dwie kolumny: dane po lewej, mapa i formularz po prawej.',
-      'Na urządzeniach mobilnych układ przechodzi w jedną kolumnę, pozostając czytelny i wygodny.',
+      'Sekretariat\n' +
+      'V Prywatnego Liceum Ogólnokształcącego w Krakowie im. Królowej Jadwigi\n' +
+      'przyjmuje interesantów\n' +
+      'od poniedziałku do piątku w godzinach od 9.00 do 14.00\n' +
+      '\n\n' +
+      'UWAGA: W wyjątkowych okolicznościach, godzina przyjęcia może być ustalona w trybie indywidualnym po wcześniejszym kontakcie telefonicznym.',
+        'V Prywatne Liceum Ogólnokształcące działa w wyjątkowym pałacyku w stylu art déco — prestiżowej, kameralnej przestrzeni zaledwie cztery minuty spaceru od serca krakowskiej akademickiej tradycji: Collegium Novum Uniwersytetu Jagiellońskiego oraz Zamku Królewskiego na Wawelu. To lokalizacja, która łączy elegancję, historię i inspirujące otoczenie sprzyjające nauce.',
     ],
     highlights: ['Mapa', 'Formularz kontaktowy', 'Dane szkoły'],
   },
 };
 
 const lessons = [
-  ['0', '7:30 - 8:15', '5 min'],
-  ['1', '8:20 - 9:05', '10 min'],
-  ['2', '9:15 - 10:00', '10 min'],
-  ['3', '10:10 - 10:55', '10 min'],
-  ['4', '11:05 - 11:50', '20 min'],
-  ['5', '12:10 - 12:55', '10 min'],
-  ['6', '13:05 - 13:50', '10 min'],
-  ['7', '14:00 - 14:45', '10 min'],
-  ['8', '14:55 - 15:40', '10 min'],
+  ['1', '8:00 - 8:45', '5 min'],
+  ['2', '8:50 - 9:35', '10 min'],
+  ['3', '9:45 - 10:30', '10 min'],
+  ['4', '10:40 - 11:25', '10 min'],
+  ['5', '11:35 - 12:20', '25 min'],
+  ['6', '12:45 - 13:30', '10 min'],
+  ['7', '13:40 - 14:25', '10 min'],
+  ['8', '14:35 - 15:20', '5 min'],
+  ['9', '15:25 - 16:10',      '   -' ],
 ];
 
 function App() {
@@ -996,13 +1006,52 @@ function StandardPage({ page }) {
           )}
 
           {page.title === 'Kontakt' && (
-            <div className="contact-grid">
-              <InfoBadge icon={<MapPin size={16} />} text={school.address} />
-              <InfoBadge icon={<Phone size={16} />} text={school.phone} />
-              <InfoBadge icon={<Phone size={16} />} text={school.extraPhone} />
-              <InfoBadge icon={<Mail size={16} />} text={school.email} />
-            </div>
+              <div className="contact-page-layout">
+                <div className="contact-details">
+                  <InfoBadge
+                      icon={<MapPin size={18} />}
+                      text={school.address}
+                  />
+
+                  <InfoBadge
+                      icon={<Phone size={18} />}
+                      text={school.phone}
+                  />
+
+                  <InfoBadge
+                      icon={<Phone size={18} />}
+                      text={school.extraPhone}
+                  />
+
+                  <InfoBadge
+                      icon={<Mail size={18} />}
+                      text={school.email}
+                  />
+                </div>
+
+                <div className="contact-map-card">
+                  <iframe
+                      className="contact-map-frame"
+                      src={schoolMapEmbedUrl}
+                      title="Mapa lokalizacji V Prywatnego Liceum Ogólnokształcącego"
+                      loading="lazy"
+                      allowFullScreen
+                      referrerPolicy="no-referrer-when-downgrade"
+                  />
+
+                  <a
+                      className="route-button"
+                      href={schoolDirectionsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                  >
+                    <MapPin size={19} aria-hidden="true" />
+                    <span>Wyznacz trasę do szkoły</span>
+                  </a>
+                </div>
+              </div>
           )}
+
         </article>
 
         {page.timelineImage && (
