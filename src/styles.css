@@ -876,6 +876,31 @@ th {
   gap: 8px;
 }
 
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.footer-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  text-decoration: none;
+}
+
+.footer-contact-item svg {
+  flex-shrink: 0;
+  color: #f6d36f;
+}
+
+.footer-contact-item:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
 @media (max-width: 1040px) {
   .cards-grid,
   .news-grid {

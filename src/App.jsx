@@ -20,7 +20,7 @@ import DlaczegoDoNas from './pages/rekrutacja/DlaczegoDoNas';
 
 const school = {
   name: 'V Prywatne Liceum Ogólnokształcące w Krakowie im. Królowej Jadwigi',
-  short: 'VP-LO Kraków',
+  short: 'Liceum',
   address: 'ul. Smoleńsk 14, 31-112 Kraków',
   phone: '+48 12 422 92 02',
   extraPhone: '+48 881 009 790',
@@ -753,7 +753,7 @@ function HomePage() {
             </div>
             <div className="hero-actions">
               <Link to="/rekrutacja/dlaczego-do-nas" className="primary-btn">
-                Zobacz rekrutację
+                Rekrutacja
               </Link>
               <Link to="/kontakt" className="secondary-btn">
                 Przejdź do kontaktu
@@ -1027,8 +1027,24 @@ function Footer() {
         </div>
         <div>
           <div className="footer-title">Kontakt</div>
-          <a href={`tel:${school.phone.replace(/\s+/g, '')}`}>{school.phone}</a>
-          <a href={`mailto:${school.email}`}>{school.email}</a>
+
+          <div className="footer-contact">
+            <a
+                className="footer-contact-item"
+                href={`tel:${school.phone.replace(/\s+/g, '')}`}
+            >
+              <Phone size={18} aria-hidden="true" />
+              <span>{school.phone}</span>
+            </a>
+
+            <a
+                className="footer-contact-item"
+                href={`mailto:${school.email}`}
+            >
+              <Mail size={18} aria-hidden="true" />
+              <span>{school.email}</span>
+            </a>
+          </div>
         </div>
         <div>
           <div className="footer-title">Nawigacja</div>
