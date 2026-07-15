@@ -909,7 +909,7 @@ th {
   gap: 3px;
   padding: 5px 8px;
   color: inherit;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1;
   text-align: center;
@@ -922,8 +922,8 @@ th {
 
 .vulcan-nav-logo {
   display: block;
-  width: 70px;
-  height: 24px;
+  width: 90px;
+  height: 32px;
   object-fit: contain;
 }
 
