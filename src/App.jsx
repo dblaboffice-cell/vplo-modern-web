@@ -29,6 +29,7 @@ const school = {
 };
 
 const logoSrc = `${import.meta.env.BASE_URL}logo-vplo.png`;
+const vulcanLogoSrc = `${import.meta.env.BASE_URL}vulcan-logo.jpg`;
 const jadwigaPortraitSrc = `${import.meta.env.BASE_URL}jadwiga-bacciarelli.jpg`;
 const jadwigaPaintingSrc = `${import.meta.env.BASE_URL}krolowa-jadwiga-bacciarelli.png`;
 const jadwigaTimelineSrc = `${import.meta.env.BASE_URL}os-czasu-jadwiga.png`;
@@ -69,7 +70,7 @@ const menu = [
     children: [],
   },
   {
-    label: 'O nas',
+    label: 'Szkoła',
     path: '/o-nas/przeslanie-dyrektora',
     icon: School,
     children: [
@@ -105,24 +106,40 @@ const menu = [
     ],
   },
   {
-    label: 'Rekrutacja',
-    path: '/rekrutacja/dlaczego-do-nas',
-    icon: Users,
+    label: 'Uczeń',
+    path: '/info/lekcje-i-przerwy',
+    icon: GraduationCap,
     children: [
       {
-        group: 'Dla kandydatów',
+        group: 'Informacje wewnętrzne',
         items: [
-          { label: 'Dlaczego do nas?', path: '/rekrutacja/dlaczego-do-nas' },
-          { label: 'Wymagane dokumenty', path: '/rekrutacja/wymagane-dokumenty' },
-          { label: 'Kandydaci sportowcy', path: '/rekrutacja/kandydaci-sportowcy' },
-          { label: 'Absolwenci i uczniowie o nas', path: '/rekrutacja/absolwenci-i-uczniowie-o-nas' },
-          { label: 'Zgłoszenie online', path: '/rekrutacja/zgloszenie-online' },
+          {
+            label: 'Lekcje i przerwy',
+            path: '/info/lekcje-i-przerwy',
+          },
+          {
+            label: 'Podręczniki',
+            path: '/info/podreczniki',
+          },
+          {
+            label: 'Rok szkolny 2025-2026',
+            path: '/info/rok-szkolny-2025-2026',
+          },
+        ],
+      },
+      {
+        group: 'Egzaminy',
+        items: [
+          {
+            label: 'Matura',
+            path: '/matura',
+          },
         ],
       },
     ],
   },
   {
-    label: 'Dydaktyka',
+    label: 'Edukacja',
     path: '/dydaktyka/edukacja-kulturalna',
     icon: BookOpen,
     children: [
@@ -142,32 +159,27 @@ const menu = [
     ],
   },
   {
-    label: 'Matura',
-    path: '/matura',
-    icon: GraduationCap,
-    children: [],
+    label: 'Rekrutacja',
+    path: '/rekrutacja/dlaczego-do-nas',
+    icon: Users,
+    children: [
+      {
+        group: 'Dla kandydatów',
+        items: [
+          { label: 'Dlaczego do nas?', path: '/rekrutacja/dlaczego-do-nas' },
+          { label: 'Wymagane dokumenty', path: '/rekrutacja/wymagane-dokumenty' },
+          { label: 'Kandydaci sportowcy', path: '/rekrutacja/kandydaci-sportowcy' },
+          { label: 'Absolwenci i uczniowie o nas', path: '/rekrutacja/absolwenci-i-uczniowie-o-nas' },
+          { label: 'Zgłoszenie online', path: '/rekrutacja/zgloszenie-online' },
+        ],
+      },
+    ],
   },
   {
     label: 'Galeria',
     path: '/galeria',
     icon: ImageIcon,
     children: [],
-  },
-  {
-    label: 'Info',
-    path: '/info/lekcje-i-przerwy',
-    icon: FileText,
-    children: [
-      {
-        group: 'Informacje wewnętrzne',
-        items: [
-          { label: 'Lekcje i przerwy', path: '/info/lekcje-i-przerwy' },
-          { label: 'Podręczniki', path: '/info/podreczniki' },
-          { label: 'Rok szkolny 2025-2026', path: '/info/rok-szkolny-2025-2026' },
-          { label: 'Projekcje filmowe', path: '/info/projekcje-filmowe' },
-        ],
-      },
-    ],
   },
   {
     label: 'Kontakt',
@@ -548,15 +560,6 @@ const pageContent = {
     ],
     highlights: ['Kalendarz roku', 'Ważne terminy', 'Przyjazna forma'],
   },
-  '/info/projekcje-filmowe': {
-    title: 'Projekcje filmowe',
-    lead: 'Sekcja informacyjna dla szkolnych pokazów filmowych.',
-    body: [
-      'Podstrona nadaje się do pokazania harmonogramu projekcji, tytułów filmów i krótkich komentarzy dydaktycznych.',
-      'Można ją połączyć z działem Akademii Filmowej albo zostawić jako odrębny dział informacyjny.',
-    ],
-    highlights: ['Harmonogram pokazów', 'Opis filmów', 'Połączenie z dydaktyką'],
-  },
   '/kontakt': {
     title: 'Kontakt',
     lead: 'Przejrzysta sekcja kontaktowa z adresem, telefonami, e-mailem i mapą.',
@@ -637,6 +640,21 @@ function Header({ mobileOpen, setMobileOpen, showBanner }) {
         {menu.map((item) => (
           <DesktopNavItem key={item.label} item={item} />
         ))}
+        <a
+            className="vulcan-nav-link"
+            href="https://uonetplus.vulcan.net.pl/krakow/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Zaloguj się do Dziennika VULCAN"
+        >
+          <img
+              src={vulcanLogoSrc}
+              alt="Dziennik VULCAN"
+              className="vulcan-nav-logo"
+          />
+
+          <span>Zaloguj się</span>
+        </a>
       </nav>
       {mobileOpen && (
         <nav className="mobile-panel">
