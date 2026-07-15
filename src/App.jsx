@@ -30,6 +30,10 @@ const school = {
 
 const logoSrc = `${import.meta.env.BASE_URL}logo-vplo.png`;
 const vulcanLogoSrc = `${import.meta.env.BASE_URL}vulcan-logo.jpg`;
+const instagramQrSrc =`${import.meta.env.BASE_URL}qr-instagram-vplo.png`;
+const tiktokQrSrc =`${import.meta.env.BASE_URL}qr-tiktok-vplo.png`;
+const instagramUrl = 'https://www.instagram.com/vplo.krk/';
+const tiktokUrl ='https://www.tiktok.com/@vplo.krakow';
 const jadwigaPortraitSrc = `${import.meta.env.BASE_URL}jadwiga-bacciarelli.jpg`;
 const jadwigaPaintingSrc = `${import.meta.env.BASE_URL}krolowa-jadwiga-bacciarelli.png`;
 const jadwigaTimelineSrc = `${import.meta.env.BASE_URL}os-czasu-jadwiga.png`;
@@ -562,7 +566,50 @@ const pageContent = {
     title: 'Podręczniki',
     lead: 'Sekcja z listą podręczników według klas i przedmiotów.',
     body: [
-      'Dobrym kierunkiem jest przygotowanie filtrowania według klasy, przedmiotu i roku szkolnego.',
+      'Klasa 1.\n\n',
+      '\n' +
+      'język polski\n\n',
+      '\n' +
+      'Dąbrowska D., Kapela-Bagińska B., Prylińska E., 2019. Sztuka wyrazu 1.1, 1.2, Podręcznik dla liceum i technikum. Zakresy podstawowy i rozszerzony. Gdańsk: Gdańskie Wydawnictwo Oświatowe.\n' +
+      '\n',
+      'matematyka\n',
+      '\n' +
+      'Kurczab E., Kurczab M., Świda E., 2019. Podręcznik dla liceów i techników. Klasa 1. Zakres podstawowy. Warszawa: Oficyna Edukacyjna Krzysztof Pazdro.\n' +
+      '\n\n',
+      'oraz\n',
+      '\n' +
+      'Zbior zadań dla kl 1 wyżej wymienionego wydawnictwa.\n',
+      '\n' +
+      'chemia kl.1/2\n',
+      '\n' +
+      'zakres podstawowy:\n',
+      '\n',
+      'Hassa R., Mrzigod A., Mrzigod J., 2019. To jest chemia 1. Chemia ogólna i nieorganiczna, Zakres podstawowy. Warszawa: Nowa Era.\n' +
+      '\n',
+      'zakres rozszerzony:\n',
+      '\n' +
+      'Litwin M, Styka-Wlazło Sz., Szymońska J., 2019. To jest chemia 1. Chemia ogólna i nieorganiczna, Zakres rozszerzony. Warszawa: Nowa Era.\n',
+      '\n\n' +
+      'Kaznowski K., Pazdro K., 2019. Chemia część 1. Podręcznik do liceów i techników, zakres rozszerzony. Warszawa: Oficyna Edukacyjna Krzysztof Pazdro.\n' +
+      '\n',
+      'biologia\n',
+      '\n' +
+      'zakres podstawowy:\n',
+      '\n' +
+      'Helmin A., Holaczek J., 2019. Biologia na czasie 1. Zakres podstawowy. Warszawa: Nowa Era.\n' +
+      '\n',
+      'zakres rozszerzony:\n',
+      '\n' +
+      'Guzik M., Kozik R., Matuszewska R., 2019. Biologia na czasie 1. Zakres rozszerzony. Warszawa: Nowa Era.\n' +
+      '\n',
+      'język niemiecki\n',
+      '\n' +
+      '(podręcznik i zeszyt ćwiczeń)\n',
+      '\n' +
+      'Kryczyńska-Pham A., 2022. Effekt neu 1. Warszawa: WSiP.\n' +
+      '\n\n',
+
+      'Podręczniki do języków obcych i pozostałych przedmiotów zostaną podane na pierwszych zajęciach we wrześniu.Dobrym kierunkiem jest przygotowanie filtrowania według klasy, przedmiotu i roku szkolnego.',
       'W projekcie przewidziano układ, który można łatwo zasilić danymi z pliku JSON lub arkusza.',
     ],
     highlights: ['Filtrowanie', 'Podział na klasy', 'Łatwa aktualizacja'],
@@ -578,17 +625,25 @@ const pageContent = {
   },
   '/kontakt': {
     title: 'Kontakt',
-    lead: 'Przejrzysta sekcja kontaktowa z adresem, telefonami, e-mailem i mapą.',
-    body: [
-      'Sekretariat\n' +
-      'V Prywatnego Liceum Ogólnokształcącego w Krakowie im. Królowej Jadwigi\n' +
-      'przyjmuje interesantów\n' +
-      'od poniedziałku do piątku w godzinach od 9.00 do 14.00\n' +
-      '\n\n' +
-      'UWAGA: W wyjątkowych okolicznościach, godzina przyjęcia może być ustalona w trybie indywidualnym po wcześniejszym kontakcie telefonicznym.',
+    lead: 'Lokalizacja, godziny pracy sekretariatu, mapa',
+    body: [],
+
+    secretariatHours:
+        'Sekretariat V Prywatnego Liceum Ogólnokształcącego w Krakowie im. Królowej Jadwigi przyjmuje interesantów od poniedziałku do piątku w godzinach od 9.00 do 14.00.',
+
+    secretariatNotice:
+        'W szczególnych przypadkach termin przyjęcia może zostać ustalony indywidualnie po wcześniejszym kontakcie telefonicznym.',
+
+    locationDescription:
         'V Prywatne Liceum Ogólnokształcące działa w wyjątkowym pałacyku w stylu art déco — prestiżowej, kameralnej przestrzeni zaledwie cztery minuty spaceru od serca krakowskiej akademickiej tradycji: Collegium Novum Uniwersytetu Jagiellońskiego oraz Zamku Królewskiego na Wawelu. To lokalizacja, która łączy elegancję, historię i inspirujące otoczenie sprzyjające nauce.',
+
+    highlights: [
+      'Dane kontaktowe',
+      'Mapa i dojazd',
+      'Instagram i Tik Tok',
     ],
-    highlights: ['Mapa', 'Formularz kontaktowy', 'Dane szkoły'],
+    layout: 'article',
+    showHighlights: true,
   },
 };
 
@@ -1007,6 +1062,18 @@ function StandardPage({ page }) {
 
           {page.title === 'Kontakt' && (
               <div className="contact-page-layout">
+                <section className="contact-office-section">
+                  <div className="contact-hours-card">
+                    <span className="contact-card-label">Sekretariat</span>
+                    <h2>Godziny przyjęć</h2>
+                    <p>{page.secretariatHours}</p>
+                  </div>
+
+                  <div className="contact-notice-card">
+                    <strong>Ważna informacja</strong>
+                    <p>{page.secretariatNotice}</p>
+                  </div>
+                </section>
                 <div className="contact-details">
                   <InfoBadge
                       icon={<MapPin size={18} />}
@@ -1029,6 +1096,53 @@ function StandardPage({ page }) {
                   />
                 </div>
 
+                <section className="social-qr-section">
+                  <h2>Znajdź nas w mediach społecznościowych</h2>
+
+                  <div className="social-qr-grid">
+                    <a
+                        className="social-qr-card"
+                        href={instagramUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Otwórz profil szkoły na Instagramie"
+                    >
+                      <img
+                          src={instagramQrSrc}
+                          alt="Kod QR do Instagrama szkoły"
+                      />
+
+                      <div className="social-qr-copy">
+                        <strong>Instagram</strong>
+                        <span>Zeskanuj kod lub kliknij, aby otworzyć profil szkoły.</span>
+                      </div>
+                    </a>
+
+                    <a
+                        className="social-qr-card"
+                        href={tiktokUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Otwórz profil szkoły na TikToku"
+                    >
+                      <img
+                          src={tiktokQrSrc}
+                          alt="Kod QR do TikToka szkoły"
+                      />
+
+                      <div className="social-qr-copy">
+                        <strong>TikTk</strong>
+                        <span>Zeskanuj kod lub kliknij, aby otworzyć profil szkoły.</span>
+                      </div>
+                    </a>
+                  </div>
+                </section>
+
+                {page.locationDescription && (
+                    <div className="contact-location-description">
+                      <p>{page.locationDescription}</p>
+                    </div>
+                )}
                 <div className="contact-map-card">
                   <iframe
                       className="contact-map-frame"

@@ -933,17 +933,92 @@ th {
 }
 .contact-page-layout {
   display: grid;
-  grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.4fr);
+  grid-template-columns: 1fr;
   gap: 28px;
-  align-items: start;
+  width: 100%;
   margin-top: 28px;
 }
 
 .contact-details {
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
 }
 
+.contact-details .info-badge {
+  width: 100%;
+  min-width: 0;
+  min-height: 68px;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+
+.social-qr-section {
+  width: 100%;
+}
+
+.social-qr-section h2 {
+  margin: 0 0 16px;
+  color: var(--accent-strong);
+  font-size: 1.35rem;
+}
+
+.social-qr-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.social-qr-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #ffffff;
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(20, 35, 70, 0.08);
+  transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+}
+
+.social-qr-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(151, 112, 25, 0.55);
+  box-shadow: 0 14px 30px rgba(20, 35, 70, 0.13);
+}
+
+.social-qr-card img {
+  display: block;
+  width: 132px;
+  height: 132px;
+  flex-shrink: 0;
+  object-fit: contain;
+  padding: 7px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.social-qr-copy {
+  display: grid;
+  gap: 7px;
+}
+
+.social-qr-copy strong {
+  color: var(--accent-strong);
+  font-size: 1.2rem;
+}
+
+.social-qr-copy span {
+  color: var(--muted);
+  line-height: 1.5;
+}
 .contact-map-card {
   overflow: hidden;
   border: 1px solid var(--line);
@@ -984,6 +1059,74 @@ th {
 
 .route-button:active {
   transform: translateY(1px);
+}
+
+.contact-office-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  gap: 18px;
+  width: 100%;
+}
+
+.contact-hours-card,
+.contact-notice-card {
+  padding: 24px 26px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-sizing: border-box;
+}
+
+.contact-hours-card {
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(20, 35, 70, 0.08);
+}
+
+.contact-card-label {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #a87916;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-hours-card h2 {
+  margin: 0 0 12px;
+  color: #243b70;
+  font-size: 1.45rem;
+}
+
+.contact-hours-card p,
+.contact-notice-card p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.contact-notice-card {
+  border-left: 5px solid #d4a733;
+  background: #fffaf0;
+}
+
+.contact-notice-card strong {
+  display: block;
+  margin-bottom: 10px;
+  color: #243b70;
+  font-size: 1.08rem;
+}
+
+.contact-location-description {
+  padding: 22px 26px;
+  border-left: 5px solid #d4a733;
+  border-radius: 12px;
+  background: #f7f9fd;
+  color: #243b70;
+}
+
+.contact-location-description p {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.75;
 }
 
 @media (max-width: 1040px) {
@@ -1046,6 +1189,31 @@ th {
 }
 
 @media (max-width: 640px) {
+  .contact-office-section {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-hours-card,
+  .contact-notice-card,
+  .contact-location-description {
+    padding: 20px;
+  }
+
+  .contact-details,
+  .social-qr-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .social-qr-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-qr-card img {
+    width: 150px;
+    height: 150px;
+  }
+
   .cards-grid,
   .news-grid {
     grid-template-columns: 1fr;
