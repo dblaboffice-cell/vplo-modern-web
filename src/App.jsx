@@ -629,8 +629,9 @@ const pageContent = {
     body: [],
 
     secretariatHours:
-        'Sekretariat V Prywatnego Liceum Ogólnokształcącego w Krakowie im. Królowej Jadwigi przyjmuje interesantów od poniedziałku do piątku w godzinach od 9.00 do 14.00.',
-
+'Sekretariat V Prywatnego Liceum Ogólnokształcącego w\u00A0Krakowie \n im.\u00A0Królowej Jadwigi przyjmuje interesantów\n' +
+'od poniedziałku do piątku\n' +
+'w godzinach od 9.00 do 14.00.',
     secretariatNotice:
         'W szczególnych przypadkach termin przyjęcia może zostać ustalony indywidualnie po wcześniejszym kontakcie telefonicznym.',
 
@@ -695,9 +696,22 @@ function Header({ mobileOpen, setMobileOpen, showBanner }) {
             <img src={logoSrc} alt="Logo VP-LO Kraków" className="brand-logo" />
           </div>
           <div className="brand-copy">
-            <div className="brand-title">{school.short}</div>
-            <div className="brand-subtitle">{school.name}</div>
-            <div className="brand-meta">{school.founded}</div>
+            <div className="brand-title">
+  <span className="brand-title-school">
+    V Prywatne Liceum Ogólnokształcące w&nbsp;Krakowie
+  </span>{' '}
+              <span className="brand-title-patron">
+    im.&nbsp;Królowej Jadwigi
+  </span>
+            </div>
+
+            <div className="brand-subtitle">
+              Szkoła z tradycją, kameralną atmosferą i nowoczesnym podejściem do edukacji
+            </div>
+
+            <div className="brand-meta">
+              {school.founded}
+            </div>
           </div>
         </Link>
         {showBanner && <HeaderBanner />}
@@ -728,8 +742,6 @@ function Header({ mobileOpen, setMobileOpen, showBanner }) {
               alt="Dziennik VULCAN"
               className="vulcan-nav-logo"
           />
-
-          <span>Zaloguj się</span>
         </a>
       </nav>
       {mobileOpen && (
