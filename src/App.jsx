@@ -991,13 +991,6 @@ function StandardPage({ page }) {
               ))}
             </ul>
           </div>
-          <div className="sidebar-card">
-            <h3>Szybki kontakt</h3>
-            <p>{school.name}</p>
-            <p>{school.address}</p>
-            <a href={`tel:${school.phone.replace(/\s+/g, '')}`}>{school.phone}</a>
-            <a href={`mailto:${school.email}`}>{school.email}</a>
-          </div>
         </aside>}
       </div>
     </section>
