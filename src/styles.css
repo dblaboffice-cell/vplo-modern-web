@@ -77,8 +77,8 @@ button {
 }
 
 .brand-badge {
-  width: 120px;
-  height: 120px;
+  width: 88px;
+  height: 88px;
   display: grid;
   place-items: center;
   flex-shrink: 0;
@@ -1203,6 +1203,12 @@ th {
 }
 
 @media (max-width: 640px) {
+  .brand-badge {
+    width: 64px;
+    height: 64px;
+    flex: 0 0 64px;
+  }
+
   .contact-office-section {
     grid-template-columns: 1fr;
   }
