@@ -40,11 +40,11 @@ const jadwigaTimelineSrc = `${import.meta.env.BASE_URL}os-czasu-jadwiga.png`;
 const buildingTimelineSrc =`${import.meta.env.BASE_URL}os-czasu-siedziba.png`;
 const buildingSrc = `${import.meta.env.BASE_URL}siedziba-vplo.jpg`;
 const headerBannerSlides = [
-  { src: `${import.meta.env.BASE_URL}smolensk-siedziba.png`, alt: 'Siedziba V Prywatnego Liceum Ogólnokształcącego w Krakowie' },
-  { src: `${import.meta.env.BASE_URL}krakow-rynek.jpeg`, alt: 'Rynek Główny w Krakowie' },
-  { src: `${import.meta.env.BASE_URL}krakow-rynek-noc.jpeg`, alt: 'Rynek Główny w Krakowie nocą' },
-  { src: `${import.meta.env.BASE_URL}krakow-wawel.jpeg`, alt: 'Wawel nad Wisłą' },
-  { src: `${import.meta.env.BASE_URL}krakow-wisla.jpeg`, alt: 'Panorama Wawelu i Wisły' },
+  { src: `${import.meta.env.BASE_URL}smolensk-siedziba.png`, alt: 'Siedziba V Prywatnego Liceum Ogólnokształcącego w Krakowie', position: 'center 40%'},
+  { src: `${import.meta.env.BASE_URL}krakow-rynek.jpeg`, alt: 'Rynek Główny w Krakowie', position: 'center 55%' },
+  { src: `${import.meta.env.BASE_URL}krakow-rynek-noc.jpeg`, alt: 'Rynek Główny w Krakowie nocą', position: 'center 45%' },
+  { src: `${import.meta.env.BASE_URL}krakow-wawel.jpeg`, alt: 'Wawel nad Wisłą', position: 'center 30%' },
+  { src: `${import.meta.env.BASE_URL}krakow-wisla.jpeg`, alt: 'Panorama Wawelu i Wisły', position: 'center 30%' },
 ];
 const schoolMapUrl =
   'https://www.google.com/maps/place/V+Prywatne+Liceum+Og%C3%B3lnokszta%C5%82c%C4%85ce/@50.0581904,19.9277046,19.5z/data=!3m1!5s0x47165b0ca90960b1:0x15df860a31a312a3!4m15!1m8!3m7!1s0x47165b0ca9600f99:0x975b3ee8029bc41f!2sSmole%C5%84sk+14,+31-112+Krak%C3%B3w!3b1!8m2!3d50.0583935!4d19.9279931!16s%2Fg%2F11c2fqzxsz!3m5!1s0x47165b0ca9c919b5:0xee22a70dcc45f4fc!8m2!3d50.0583811!4d19.9281055!16s%2Fg%2F1ts1lctz?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D';
@@ -431,8 +431,15 @@ const pageContent = {
     title: 'Wymagane dokumenty',
     lead: 'Przejrzysta lista formalności potrzebnych kandydatom.',
     body: [
-      'Ta podstrona jest gotowa do prezentacji listy dokumentów, terminów i procedury krok po kroku.',
-      'Dzięki prostemu układowi kandydat łatwo znajdzie wszystkie wymagane informacje również na smartfonie.',
+      'Kandydaci ubiegający się o przyjęcie do klasy pierwszej w V Prywatnym Liceum Ogólnokształcącym dostarczają:',
+      'podanie do Dyrektora liceum,\n',
+      'w oryginale świadectwo ukończenia klasy VII szkoły podstawowej\n',
+      'wyciąg z ocen semestru zimowego klasy VIII szkoły podstawowej,\n',
+      'dwa zdjęcia w formacie legitymacyjnym. ',
+      'a dodatkowo w czerwcu:\n',
+      'świadectwo ukończenia szkoły podstawowej\n',
+      'Przedstawiciel szkoły, po wcześniejszym ustaleniu terminu spotkania (osobiście lub telefonicznie), zaprasza kandydatów na rozmowę kwalifikacyjną. Rekrutacja prowadzona jest do momentu wyczerpania limitu miejsc, a każdy etap naboru odzwierciedla indywidualne podejście naszej szkoły do przyszłych uczniów.',
+
     ],
     highlights: ['Lista dokumentów', 'Kroki rekrutacji', 'Przyjazny układ mobilny'],
   },
@@ -440,6 +447,15 @@ const pageContent = {
     title: 'Kandydaci sportowcy',
     lead: 'Dedykowana sekcja dla uczniów łączących naukę z rozwojem sportowym.',
     body: [
+      'Doświadczenia naszego liceum upoważniają do stwierdzenia, że naukę na najwyższym poziomie potrafimy łączyć z wyczynowym uprawianiem sportu przez uczniów, którzy czynnie uczestniczą w profesjonalnych zajęciach treningowych i zawodach, i to w każdej z dyscyplin sportowych.\n' +
+      '\n',
+      'Nasi uczniowie, a także absolwenci, odnosili bądź nadal odnoszą sukcesy w każdej skali: lokalnej, ogólnopolskiej, międzynarodowej, m. in. w: Formule 1, WRC (Robert Kubica), sportach motorowych,  wyścigach samochodowych i gokartowych, rajdach samochodowych, tenisie, snowboardzie, pływaniu, piłce nożnej.',
+      'Praktycznie, żadna z dyscyplin sportowych nie stoi w sprzeczności z naszą koncepcją kształcenia.  O sukces końcowy dbamy w rzetelnym porozumieniu z uczniami, czynnymi sportowcami.\n' +
+      '\n',
+      'Program nauczania licealnego jest realizowany w korelacji z harmonogramem zajęć sportowych – wyjazdów, zgrupowań, treningów, udziału w zawodach. Funkcję koordynatora pełni wychowawca klasy pozostający w stałym kontakcie telefonicznym, mailowym z uczniem – sportowcem.  W płaszczyźnie tego kontaktu wykorzystywane są wszystkie formy dydaktyczne distance learning, które w przyjaznej, indywidualnej formie wypełniają czas wolny od zajęć sportowych na wyjazdach, poza szkołą.\n' +
+      '\n',
+      'W konkluzji – uczniowie czynnie uprawiający sport mogą liczyć na nasze wsparcie w osiąganiu sukcesu sportowego bez zarzucania dbałości o własny rozwój edukacyjny. Wiemy jak te dwa cele osiągnąć, stąd tutaj nasze oddzielne zaproszenie.\n' +
+      '\n',
       'Projekt przewiduje miejsce na opis elastycznej organizacji nauki, współpracy z trenerami oraz zasad indywidualizacji procesu edukacyjnego.',
       'To jedna z ważniejszych zakładek wizerunkowych dla szkoły i warto ją mocno wyróżnić.',
     ],
@@ -449,6 +465,18 @@ const pageContent = {
     title: 'Absolwenci i uczniowie o nas',
     lead: 'Nowoczesna sekcja testimoniali z opiniami i krótkimi historiami.',
     body: [
+      'Aleksandra Gubernat, mgr, absolwentka Liceum w 2003 roku, a następnie Wydziału Prawa Uniwersytetu Jagiellońskiego. Szkołę wspominam bardzo pozytywnie, to świetnie liceum dla osób, które chcą się uczyć i są zainteresowane startowaniem na najlepsze kierunki studiów oraz dla tych, którzy chcą brać udział w olimpiadach.',
+      'W szkole trzeba się sporo uczyć, ale jest to liceum, które naprawdę odkryje w Tobie talent do nauki. Jeśli nie chcesz go odkrywać, to ono i tak to zrobi za Ciebie. To szkoła dla ludzi z pasją i wyobraźnią, która wciąż się rozwija, a ludzie mają coraz to lepsze pomysły. Kształcenie w liceum ukierunkowane jest na indywidulane uzdolnienia i osobowość uczniów.',
+      'Wykwalifikowane kadra pedagogiczna jest tam po to żeby wyjaśniać, uczyć, pomagać, rozwijać indywidulane pasje oraz zachęcać do przedmiotu dzięki czemu nauka jest przyjazna, a materiał w przystępny sposób przyswajany. Klasówki były jak najbardziej oczekiwane bo dzięki nim wiadomo co i w jakim zakresie jest przyswojone, a co należy jeszcze dopracować.',
+      'Dodatkowym atutem szkoły jest ogromny nacisk położony na naukę języków obcych. Pamiętam, że miałam 6 godzin tygodniowo języka angielskiego, 2 godziny tygodniowo języka niemieckiego oraz koło języka włoskiego w wymiarze 1 godziny tygodniowo oraz duży nacisk na wychowanie fizyczne, sport i rekreację, co w praktyce oznaczało naukę tańca towarzyskiego i tenisa.',
+      'Jeśli chcecie szkoły, którą będziecie wspominać z sentymentem przez całe życie, to tylko V Prywatne Liceum Ogólnokształcące przy ulicy Smoleńsk w Krakowie.',
+      'Anna Dobrowolska, inż. arch., absolwentka liceum w roku 2009, aktualnie studentka 2. stopnia studiów (magisterskich) na wydziale Architektury PK. Większość z nas z przerażeniem wspomina swój pierwszy dzień w nowej szkole .... w przeciwieństwie do mnie. W VP-LO już od pierwszego dnia wyczuwalna jest miła i rodzinna atmosfera, jaką tworzy wykwalifikowana i sympatyczna kadra nauczycielska. Bardzo pozytywnie wspominam te trzy lata wspólnej nauki, które doprowadziły mnie do zdania matury z wynikami gwarantującymi indeks na studiach dziennych Politechniki Krakowskiej na wydziale Architektury. ',
+      'Ala Moskal, absolwentka liceum w 2013 roku, aktualnie studentka AWF w Krakowie. Nieliczne klasy sprawiały, że lekcje przeprowadzane były sprawnie i produktywnie. Indywidualne podejście nauczycieli do każdego ucznia umożliwiło mi trenowanie snowboardu zawodniczo bez robienia zaległości. Przyjazna atmosfera w szkole jak i bezstresowe nauczanie sprawiły, że mój trzyletni pobyt w V prywatnym LO wspominam bardzo miło.',
+      'Wojciech Paniak, klasa III, rok szkolny 2013/2014. VP-LO mogę polecić każdemu. Cenię sobie tę szkolę przede wszystkim za atmosferę, która jest rodzinna i każdy kto uczęszcza do tej szkoły czuje się wyjątkowo, co zawdzięczamy świetnej kadrze profesorskiej! Jedynym minusem jest to, że czas mija tak szybko, za chwilę będę absolwentem, a wydaje mi się, że wczoraj tu przyszedłem pierwszy raz.',
+      'Angelika Taboła, maturzystka w roku szkolnym 2013/2014. ….warto uczęszczać do tej szkoły ponieważ jest tu wspaniałe grono pedagogiczne, które zawsze pomoże, wytłumaczy i porozmawia z uczniami na każdy temat. Uczniowie uczestniczą w różnych konkursach, wyjściach do teatru, na wystawy, do muzeów. …z tych wyjść wyniosłam bardzo dużo, nauczyłam się ogromnego szacunku do patriotyzmu szczególnie po wizycie w Muzeum Powstania Warszawskiego…..',
+      'Pani Dyrektor jest osobą wspaniałą, zawsze opiekuje się pierwszą klasą i pomaga uczniom odnaleźć się w szkole oraz poświęca każdemu uczniowi dużo czasu. Organizuje zajęcia dodatkowe dla słabszych uczniów, aby mieli szansę podciągnąć swoje wyniki w nauce, a dla wybitnie uzdolnionych organizuje tzw. fakultety, które obejmują ponadprogramowy zakres nauki. Zajęcia dodatkowe to również warsztaty filmowe organizowane przez Panią polonistkę, która staranie dobiera najwybitniejsze dzieła filmowe, a uczniowie bardzo chętnie na te zajęcia uczęszczają.',
+      'Dwa razy w semestrze odbywają się sesje naukowe pomocne w przygotowaniach do matury ustnej. Uczniowie po wystąpieniu w sesji stają się pewnymi siebie, co jest szczególnie ważne przed przystąpieniem do  egzaminu maturalnego....',
+      'Zajęcia wychowania fizycznego są wyjątkowe: gramy w tenisa, jeździmy na łyżwach oraz dziewczęta uczestnicą w dodatkowych zajęciach z gimnastyki. Dzięki tej szkole stałam się pewną siebie, potrafię lepiej przyswajać wiedzę i co najważniejsze nie obawiam się egzaminów maturalnych.',
       'Zamiast ściany tekstu proponowany układ kart pomaga wyeksponować wypowiedzi absolwentów i uczniów w bardziej atrakcyjnej formie.',
       'Można dodać zdjęcia, rok ukończenia szkoły lub kierunek studiów.',
     ],
@@ -467,17 +495,33 @@ const pageContent = {
     title: 'Edukacja kulturalna',
     lead: 'Podstrona podkreślająca humanistyczny i interdyscyplinarny wymiar nauczania.',
     body: [
-      'Sekcja została pomyślana jako opowieść o kulturze, sztuce i rozwijaniu wrażliwości uczniów, z miejscem na przykłady wydarzeń i inicjatyw.',
-      'Dobrze współgra z nowoczesnym layoutem, zdjęciami i dodatkowymi blokami tematycznymi.',
-    ],
+      'Edukacja kulturalna jest pojęciem niezwykle często mylnie rozumianym bądź określanym, a przecież stanowi istotę kształcenia licealnego.',
+      'Wyjaśnijmy, edukacja ta prowadzona jest w trzech, wzajemnie uzupełniających się obszarach.',
+      'Pierwszy, podstawowy obszar związany jest z ubogacaniem wiedzy, poprzez zajęcia dydaktyczne (lekcje) z treści objętych programem kształcenia licealnego. Edukacja kulturalna jest tutaj realizowana w różnych dyscyplinach nauki, inaczej w przedmiotach wskazanych w planach lekcji. W niektórych z przedmiotów obok przekazywanych treści programowych podejmowane są z uczniami rozważania ukierunkowane na różne systemy wartości.',
+       'Zwracamy tutaj uwagę na konieczność zachowania wyjątkowej rzetelności i systematyczności w przyswajaniu wiedzy, ponieważ luki i zaniedbania w zwielokrotnionej formie dadzą o sobie znać w czasie późniejszym.\n',
+       'Uświadamiamy naszych uczniów, że edukacja kulturalna w tym obszarze odbywa się w sposób ciągły, również w okresie poza szkolnym, bez udziału nauczycieli. Tradycyjnie edukację tę określa się wówczas mianem kształcenia ustawicznego. ',
+      'Drugi z obszarów kształcenia ukierunkowany jest na umiejętności, w tym interpretacji, rozumienia, refleksji, przeżywania nabytej wiedzy; krótko - zastosowań.',
+      'Umiejętności kształtowane na poziomie licealnym rzutują na przyszłe losy absolwentów. W najbliższej perspektywie czasu, dobrze posadowione w wiedzy, umiejętności odegrają istotną rolę w wyborze kierunku studiów bądź dziedziny dalszej aktywności, w tym profesjonalnej. Nabyte i rozwijane umiejętności - zawsze oparte na rzetelnej wiedzy - otwierają bowiem szerszy ogląd świata, nieodpartą potrzebę poznawczą, głębsze rozumienie otaczającej nas rzeczywistości, wielopłaszczyznowe postrzeganie zjawisk, które pozornie nie pozostają w związku.',
+      'Nie wolno jednak zapominać, że kształcenie licealne jest ogólnokształcącym i tylko niektóre dziedziny wiedzy będą rozwijane w toku studiów bądź podjętej aktywności. Stąd niezmiernie ważne jest kształtowanie umiejętności we wszystkich dyscyplinach objętych planem licealnym, tak by absolwenci mogli czerpać z nich wiedzę praktyczną bądź świadomie podejmować decyzje potrzeby jej uzupełnień.',
+      'Trzeci z obszarów koncentruje się na rozwijaniu wrażliwości i zainteresowań. Temu celowi służy wywiązanie kontaktu uczniów ze sztukami pięknymi: malarstwem, rzeźbą, filmem, teatrem, muzyką, literaturą.',
+      'Trzeba zauważyć, że dwa pierwsze obszary edukacji kulturalnej mieszczą się w podstawowym kanonie standardów licealnych. A osiągany w nich stan wiedzy i umiejętności uczniów - absolwentów, w dużej mierze zależy od poziomu szkoły. W naszym przypadku obydwa obszary kształcenia kulturalnego stanowią priorytet nauczania.',
+      'Trzeci obszar kształcenia kulturalnego (wrażliwość i zainteresowania) jest naszym programem autorskim, którego oryginalność wyprowadzamy z naszych zainteresowań i przekonania, że jesteśmy powołani do  kreowania przyszłej inteligencji polskiej, szczególnie tu, w królewskim mieście Krakowie z jego historią, tradycją i zabytkową tkanką architektoniczną.',
+      'Uczniowie:',
+      'regularnie uczestniczą we wszystkich znaczących wydarzeniach kulturalnych Krakowa. Naturalną sekwencję lekcji historii, czy też literatury polskiej stanowi udział w prezentacjach filmowych, przedstawieniach teatralnych, wystawach i ekspozycjach muzealnych; \n',
+      'pod kierunkiem profesorów liceum, czasem przy współudziale wyspecjalizowanych przewodników zapoznają się z dorobkiem kulturowym Krakowa i poznają miejsca kultu narodowego. W okresie licealnym stają się pełnoprawnymi znawcami dorobku kulturowego naszego, królewskiego miasta; \n',
+      'biorą udział w wernisażach i wystawach, szczególnie w Pałacu Sztuki, Dworku Matejki, Willi Estreichera.',
+      'Instytucjonalnie nasze Liceum współpracuje z Towarzystwem Przyjaciół Sztuk Pięknych (TPSP) z siedzibą w Pałacu Sztuki. Uczniowie łącznie z zespołem profesorskim liceum są beneficjentami bezpłatnych wstępów na wszystkie wydarzenia kulturalne organizowane w Pałacu Sztuki.',
+      'Liceum z TPSP było organizatorem małopolskiego konkursu: Wkład kultury polskiej do kultury jednoczącej się Europy, którego finał z wystawą pokonkursową przy współudziale znakomitych reprezentantów nauki w jury konkursowym pod patronatem Rektorów Akademii Sztuk Pięknych i Politechniki Krakowskiej odbył się w Pałacu Sztuki.',
+      ],
     highlights: ['Humanistyka', 'Interdyscyplinarność', 'Wydarzenia kulturalne'],
   },
   '/dydaktyka/grupy-klasowe': {
     title: 'Grupy klasowe',
     lead: 'Sekcja o kameralnych klasach i organizacji pracy w mniejszych zespołach.',
     body: [
-      'W nowym układzie można zaakcentować zalety mniejszych grup: większy kontakt z nauczycielem, lepszą atmosferę i skuteczniejszą pracę.',
-      'Podstrona może także zawierać infografiki lub liczby wspierające przekaz.',
+      'Liczebność klas w naszym liceum jest statutowo ograniczona do 24 uczniów, jednak w praktyce zespoły klasowe mają obecnie charakter kameralny i liczą zaledwie kilkanaście osób. W przypadku lektoratów z języka angielskiego, niemieckiego i hiszpańskiego oraz zajęć warsztatowych grupy są jeszcze mniejsze — często kilkuosobowe — tworzące warunki zbliżone do pracy indywidualnej.\n',
+      '\n' +
+      'Tak zorganizowane środowisko nauki sprzyja bliskiemu kontaktowi ucznia z profesorem, tworząc przestrzeń do bezpośredniego dialogu, aktywnego udziału w zajęciach oraz szybszego przyswajania treści programowych. Kameralne grupy i indywidualne podejście stanowią jeden z kluczowych wyróżników naszej szkoły, realnie wpływając na jakość i efektywność kształcenia.',
     ],
     highlights: ['Kameralne klasy', 'Infografiki', 'Mocny argument rekrutacyjny'],
   },
@@ -772,8 +816,15 @@ function HeaderBanner() {
 
   return (
     <figure className="header-banner">
-      <img key={slide.src} src={slide.src} alt={slide.alt} />
-      <figcaption>{slideIndex === 0 ? 'Smoleńsk 14' : 'Kraków'}</figcaption>
+      <img
+          key={slide.src}
+          src={slide.src}
+          alt={slide.alt}
+          style={{
+            objectPosition: slide.position || 'center',
+            objectFit: slide.fit || 'cover'
+          }}
+      />
     </figure>
   );
 }
@@ -852,19 +903,23 @@ function HomePage() {
       <section className="hero">
         <div className="container hero-grid">
           <div>
-            <span className="pill">Misja szkoły</span>
-            <div className="hero-title-copy">
-              <h1>{school.name}</h1>
-              <p className="hero-title-note">Szkoła z tradycją, kameralną atmosferą i nowoczesnym podejściem do edukacji.</p>
+            <div className="hero-mission-vision">
+              <div className="hero-statement-card">
+                <h2>Misja szkoły</h2>
+                <p>
+                  Wykorzystując kompetencje edukacyjne i organizacyjne pomagamy naszym uczniom przygotować się do wyzwań współczesnego świata przez wsparcie ich rozwoju osobistego
+                </p>
+              </div>
+
+              <div className="hero-statement-card">
+                <h2>Wizja szkoły</h2>
+                <p>
+                  V Prywatne Liceum Ogólnokształcące im. Królowej Jadwigi wysokiej klasy szkoła ogólnokształcąca położona w Krakowie - mieście królów polski
+                </p>
+              </div>
+
             </div>
-            <div className="hero-actions">
-              <Link to="/rekrutacja/dlaczego-do-nas" className="primary-btn">
-                Rekrutacja
-              </Link>
-              <Link to="/kontakt" className="secondary-btn">
-                Kontakt
-              </Link>
-            </div>
+
             <figure className="hero-building-card hero-building-card-inline">
               <img
                 src={buildingSrc}
@@ -887,7 +942,12 @@ function HomePage() {
               <InfoBadge icon={<Mail size={16} />} text={school.email} />
             </div>
           </div>
-          <div className="hero-card">
+          <div className="hero-card hero-card-patron">
+            <h2 className="hero-school-name">
+              V Prywatne Liceum Ogólnokształcące
+              <span>w Krakowie im. Królowej Jadwigi</span>
+            </h2>
+
             <div className="hero-portrait-wrap">
               <div className="hero-portrait-frame">
                 <img
