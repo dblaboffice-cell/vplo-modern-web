@@ -903,6 +903,46 @@ function HomePage() {
       <section className="hero">
         <div className="container hero-grid">
           <div>
+            <section className="school-values-section">
+              <p className="school-values-intro">
+                Wysokie cele, ludzkie podejście, nauczyciele z pasją.
+              </p>
+
+              <div className="school-values-grid">
+                <div className="school-value-card">
+                  <h3>Indywidualne podejście</h3>
+
+                  <p>
+                    Dla nas nie jesteś numerem w dzienniku. Znamy Twoje mocne strony
+                    i wiemy, z czym mierzysz się na co dzień. Dzięki małym grupom
+                    i wsparciu tutorów dopasowujemy tempo oraz styl nauki do Twoich
+                    osobistych potrzeb i celów.
+                  </p>
+                </div>
+
+                <div className="school-value-card">
+                  <h3>Wysoka jakość nauczania</h3>
+
+                  <p>
+                    Wyniki matur powyżej średniej i sukcesy w olimpiadach to nasza
+                    codzienność, ale nie jedyny cel. Uczymy krytycznego myślenia,
+                    logicznego wyciągania wniosków i praktycznego wykorzystania wiedzy,
+                    która otwiera drzwi na najlepsze uczelnie.
+                  </p>
+                </div>
+
+                <div className="school-value-card">
+                  <h3>Kadra z pasją</h3>
+
+                  <p>
+                    Nasi nauczyciele to mentorzy, którzy zarażają miłością do swoich
+                    przedmiotów. To eksperci, którzy nie tylko świetnie tłumaczą trudne
+                    zagadnienia, ale też wspierają Cię po lekcjach, prowadzą koła naukowe
+                    i zawsze mają czas na rozmowę.
+                  </p>
+                </div>
+              </div>
+            </section>
             <div className="hero-mission-vision">
               <div className="hero-statement-card">
                 <h2>Misja szkoły</h2>
