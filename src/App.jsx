@@ -592,10 +592,9 @@ const pageContent = {
     title: 'Galeria',
     lead: 'Nowoczesny widok galerii z kategoriami, siatką zdjęć i filtrowaniem.',
     body: [
-      'Obecna architektura może zostać rozwinięta o lightbox, albumy rocznikowe i kategorie wydarzeń.',
-      'Zachowano też przestrzeń na takie wydarzenia jak studniówka, uroczystości szkolne i wyjścia edukacyjne.',
+      'Obecna architektura może zostać rozwinięta o lightbox',
     ],
-    highlights: ['Kategorie albumów', 'Lekki grid', 'Możliwość rozbudowy o lightbox'],
+    highlights: ['Lekki grid', 'Możliwość rozbudowy o lightbox'],
   },
   '/info/lekcje-i-przerwy': {
     title: 'Lekcje i przerwy',
