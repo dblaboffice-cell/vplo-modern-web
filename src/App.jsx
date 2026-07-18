@@ -590,11 +590,25 @@ const pageContent = {
   },
   '/galeria': {
     title: 'Galeria',
-    lead: 'Nowoczesny widok galerii z kategoriami, siatką zdjęć i filtrowaniem.',
-    body: [
-      'Obecna architektura może zostać rozwinięta o lightbox',
+    lead: 'Życie liceum utrwalone na zdjęciach',
+    body: [ ],
+    highlights: [],
+    showHighlights: false,
+
+    galleryCategories: [
+      {
+        title: 'Życie szkoły',
+        text: 'Uroczystości, wydarzenia, wycieczki i codzienność naszej społeczności szkolnej.'
+      },
+      {
+        title: 'Projekty edukacyjne',
+        text: 'Warsztaty, konkursy, zajęcia projektowe oraz inicjatywy rozwijające zainteresowania uczniów.'
+      },
+      {
+        title: 'Roczniki',
+        text: 'Zdjęcia klasowe oraz wspomnienia uczniów z kolejnych lat szkolnych.'
+      }
     ],
-    highlights: ['Lekki grid', 'Możliwość rozbudowy o lightbox'],
   },
   '/info/lekcje-i-przerwy': {
     title: 'Lekcje i przerwy',
@@ -610,48 +624,6 @@ const pageContent = {
     title: 'Podręczniki',
     lead: 'Informacje dotyczące podręczników obowiązujących w bieżącym roku szkolnym.',
     body: [
-      'Klasa 1.\n\n',
-      '\n' +
-      'język polski\n\n',
-      '\n' +
-      'Dąbrowska D., Kapela-Bagińska B., Prylińska E., 2019. Sztuka wyrazu 1.1, 1.2, Podręcznik dla liceum i technikum. Zakresy podstawowy i rozszerzony. Gdańsk: Gdańskie Wydawnictwo Oświatowe.\n' +
-      '\n',
-      'matematyka\n',
-      '\n' +
-      'Kurczab E., Kurczab M., Świda E., 2019. Podręcznik dla liceów i techników. Klasa 1. Zakres podstawowy. Warszawa: Oficyna Edukacyjna Krzysztof Pazdro.\n' +
-      '\n\n',
-      'oraz\n',
-      '\n' +
-      'Zbior zadań dla kl 1 wyżej wymienionego wydawnictwa.\n',
-      '\n' +
-      'chemia kl.1/2\n',
-      '\n' +
-      'zakres podstawowy:\n',
-      '\n',
-      'Hassa R., Mrzigod A., Mrzigod J., 2019. To jest chemia 1. Chemia ogólna i nieorganiczna, Zakres podstawowy. Warszawa: Nowa Era.\n' +
-      '\n',
-      'zakres rozszerzony:\n',
-      '\n' +
-      'Litwin M, Styka-Wlazło Sz., Szymońska J., 2019. To jest chemia 1. Chemia ogólna i nieorganiczna, Zakres rozszerzony. Warszawa: Nowa Era.\n',
-      '\n\n' +
-      'Kaznowski K., Pazdro K., 2019. Chemia część 1. Podręcznik do liceów i techników, zakres rozszerzony. Warszawa: Oficyna Edukacyjna Krzysztof Pazdro.\n' +
-      '\n',
-      'biologia\n',
-      '\n' +
-      'zakres podstawowy:\n',
-      '\n' +
-      'Helmin A., Holaczek J., 2019. Biologia na czasie 1. Zakres podstawowy. Warszawa: Nowa Era.\n' +
-      '\n',
-      'zakres rozszerzony:\n',
-      '\n' +
-      'Guzik M., Kozik R., Matuszewska R., 2019. Biologia na czasie 1. Zakres rozszerzony. Warszawa: Nowa Era.\n' +
-      '\n',
-      'język niemiecki\n',
-      '\n' +
-      '(podręcznik i zeszyt ćwiczeń)\n',
-      '\n' +
-      'Kryczyńska-Pham A., 2022. Effekt neu 1. Warszawa: WSiP.\n' +
-      '\n\n',
 
       'Podręczniki do języków obcych i pozostałych przedmiotów zostaną podane na pierwszych zajęciach we wrześniu.Dobrym kierunkiem jest przygotowanie filtrowania według klasy, przedmiotu i roku szkolnego.',
       'W projekcie przewidziano układ, który można łatwo zasilić danymi z pliku JSON lub arkusza.',
@@ -1165,13 +1137,42 @@ function StandardPage({ page }) {
       <div
           className={`${articlePage ? 'article-layout' : 'page-layout'} ${
               page.textbookCards ? 'textbooks-page-layout' : ''
+          } ${
+              page.galleryCategories ? 'gallery-page-layout' : ''
           }`}
       >
+
         <article
             className={`page-main-card ${
                 page.textbookCards ? 'textbooks-main-card' : ''
+            } ${
+                page.galleryCategories ? 'gallery-main-card' : ''
             }`}
         >
+
+          {page.galleryCategories && (
+              <section className="gallery-categories">
+                <div className="gallery-categories-heading">
+                  <span>Albumy szkolne</span>
+                </div>
+
+                <div className="gallery-categories-grid">
+                  {page.galleryCategories.map((category) => (
+                      <div className="gallery-category-card" key={category.title}>
+                        <div className="gallery-category-decoration" />
+
+                        <h3>{category.title}</h3>
+                        <p>{category.text}</p>
+
+                        <span className="gallery-category-action">
+            Albumy
+          </span>
+                      </div>
+                  ))}
+                </div>
+              </section>
+          )}
+
           {page.textbookCards ? (
               <div className="textbooks-layout">
                 <div className="textbooks-intro">
