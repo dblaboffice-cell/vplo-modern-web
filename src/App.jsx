@@ -604,11 +604,12 @@ const pageContent = {
       'Czas nauki i regeneracji',
       'Można dodać wersję do druku albo szybki zapis do PDF.',
     ],
-    highlights: ['Tabela godzin', 'Wersja mobilna', 'Opcja wydruku'],
+    highlights: [],
+    showHighlights: false,
   },
   '/info/podreczniki': {
     title: 'Podręczniki',
-    lead: 'Sekcja z listą podręczników według klas i przedmiotów.',
+    lead: 'Informacje dotyczące podręczników obowiązujących w bieżącym roku szkolnym.',
     body: [
       'Klasa 1.\n\n',
       '\n' +
@@ -656,7 +657,83 @@ const pageContent = {
       'Podręczniki do języków obcych i pozostałych przedmiotów zostaną podane na pierwszych zajęciach we wrześniu.Dobrym kierunkiem jest przygotowanie filtrowania według klasy, przedmiotu i roku szkolnego.',
       'W projekcie przewidziano układ, który można łatwo zasilić danymi z pliku JSON lub arkusza.',
     ],
-    highlights: ['Filtrowanie', 'Podział na klasy', 'Łatwa aktualizacja'],
+    highlights: [],
+    showHighlights: false,
+
+    textbookCards: [
+      {
+        title: 'Wykaz podręczników',
+        subtitle: 'Klasa 1',
+        subjects: [
+          {
+            name: 'Język polski',
+            books: [
+              'Dąbrowska D., Kapela-Bagińska B., Prylińska E., 2019. Sztuka wyrazu 1.1, 1.2. Podręcznik dla liceum i technikum. Zakresy podstawowy i rozszerzony. Gdańsk: Gdańskie Wydawnictwo Oświatowe.'
+            ]
+          },
+          {
+            name: 'Matematyka',
+            books: [
+              'Kurczab E., Kurczab M., Świda E., 2019. Podręcznik dla liceów i techników. Klasa 1. Zakres podstawowy. Warszawa: Oficyna Edukacyjna Krzysztof Pazdro.',
+              'Zbiór zadań dla klasy 1 wyżej wymienionego wydawnictwa.'
+            ]
+          },
+          {
+            name: 'Chemia — klasa 1/2',
+            levels: [
+              {
+                name: 'Zakres podstawowy',
+                books: [
+                  'Hassa R., Mrzigod A., Mrzigod J., 2019. To jest chemia 1. Chemia ogólna i nieorganiczna. Zakres podstawowy. Warszawa: Nowa Era.'
+                ]
+              },
+              {
+                name: 'Zakres rozszerzony',
+                books: [
+                  'Litwin M., Styka-Wlazło Sz., Szymońska J., 2019. To jest chemia 1. Chemia ogólna i nieorganiczna. Zakres rozszerzony. Warszawa: Nowa Era.',
+                  'Kaznowski K., Pazdro K., 2019. Chemia, część 1. Podręcznik do liceów i techników, zakres rozszerzony. Warszawa: Oficyna Edukacyjna Krzysztof Pazdro.'
+                ]
+              }
+            ]
+          },
+          {
+            name: 'Biologia',
+            levels: [
+              {
+                name: 'Zakres podstawowy',
+                books: [
+                  'Helmin A., Holaczek J., 2019. Biologia na czasie 1. Zakres podstawowy. Warszawa: Nowa Era.'
+                ]
+              },
+              {
+                name: 'Zakres rozszerzony',
+                books: [
+                  'Guzik M., Kozik R., Matuszewska R., 2019. Biologia na czasie 1. Zakres rozszerzony. Warszawa: Nowa Era.'
+                ]
+              }
+            ]
+          },
+          {
+            name: 'Język niemiecki',
+            note: 'Podręcznik i zeszyt ćwiczeń',
+            books: [
+              'Kryczyńska-Pham A., 2022. Effekt neu 1. Warszawa: WSiP.'
+            ]
+          }
+        ]
+      },
+      {
+        title: 'Języki obce',
+        text: 'Podręczniki do języków obcych zostaną wskazane przez nauczycieli po ustaleniu poziomu zaawansowania uczniów.'
+      },
+      {
+        title: 'Pozostałe przedmioty',
+        text: 'Informacje dotyczące podręczników do pozostałych przedmiotów będą aktualizowane zgodnie z zaleceniami nauczycieli.'
+      }
+    ],
+
+    textbookNote:
+        'Przed zakupem podręczników prosimy o sprawdzenie aktualnego wykazu opublikowanego przez szkołę.',
   },
   '/info/rok-szkolny-2025-2026': {
     title: 'Rok szkolny 2025-2026',
@@ -665,7 +742,8 @@ const pageContent = {
       'Nowy układ może prezentować informacje w postaci osi czasu lub czytelnych bloków miesięcznych.',
       'To jedna z najczęściej odwiedzanych stron informacyjnych, dlatego powinna być bardzo przejrzysta.',
     ],
-    highlights: ['Kalendarz roku', 'Ważne terminy', 'Przyjazna forma'],
+    highlights: [],
+    showHighlights: false,
   },
   '/kontakt': {
     title: 'Kontakt',
@@ -1015,7 +1093,7 @@ function HomePage() {
       <section className="section container">
         <SectionHeading
           eyebrow="Najważniejsze działy"
-          title="Nowa strona zachowuje układ zakładek, ale porządkuje całą nawigację"
+          title="Zakładki"
           text="Każda sekcja ma gotowy układ, zachowane adresy i miejsce na dalsze rozwinięcie treści."
         />
         <div className="cards-grid">
@@ -1052,49 +1130,6 @@ function HomePage() {
           ))}
         </div>
       </section>
-
-      <section className="section container split-section">
-        <div className="panel">
-          <SectionHeading
-            eyebrow="Informacje praktyczne"
-            title="Przykład czytelnej prezentacji godzin lekcyjnych"
-            text="To gotowy moduł do sekcji Info."
-          />
-          <div className="table-card">
-            <table>
-              <thead>
-                <tr>
-                  <th>Lekcja</th>
-                  <th>Godziny</th>
-                  <th>Przerwa</th>
-                </tr>
-              </thead>
-              <tbody>
-                {lessons.slice(0, 5).map((lesson) => (
-                  <tr key={lesson[0]}>
-                    <td>{lesson[0]}</td>
-                    <td>{lesson[1]}</td>
-                    <td>{lesson[2]}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div className="panel accent-panel">
-          <SectionHeading
-            eyebrow="Dla IntelliJ"
-            title="Projekt gotowy do otwarcia jako standardowa aplikacja React/Vite"
-            text="Kod jest prosty do rozwijania, a ścieżki zakładek można bezpiecznie rozbudowywać o prawdziwe treści, zdjęcia i dokumenty."
-          />
-          <ul className="check-list">
-            <li>Responsywny układ</li>
-            <li>Nawigacja desktop + mobile</li>
-            <li>Łatwe dodawanie nowych podstron</li>
-            <li>Możliwość wdrożenia na hostingu statycznym</li>
-          </ul>
-        </div>
-      </section>
     </>
   );
 }
@@ -1128,8 +1163,87 @@ function StandardPage({ page }) {
         )}
       </div>
 
-      <div className={`${articlePage ? 'article-layout' : 'page-layout'}${page.timelineImage ? ' article-layout-with-timeline' : ''}`}>
-        <article className="page-main-card">
+      <div
+          className={`${articlePage ? 'article-layout' : 'page-layout'} ${
+              page.textbookCards ? 'textbooks-page-layout' : ''
+          }`}
+      >
+        <article
+            className={`page-main-card ${
+                page.textbookCards ? 'textbooks-main-card' : ''
+            }`}
+        >
+          {page.textbookCards ? (
+              <div className="textbooks-layout">
+                <div className="textbooks-intro">
+                  <span>Informacje dla uczniów</span>
+                  <h2>Podręczniki na rok szkolny</h2>
+
+                  {page.lead && <p>{page.lead}</p>}
+                </div>
+
+                <div className="textbooks-grid">
+                  {page.textbookCards.map((card) => (
+                      <div className="textbook-card" key={card.title}>
+                        <h3>{card.title}</h3>
+
+                        {card.subtitle && (
+                            <div className="textbook-class-label">
+                              {card.subtitle}
+                            </div>
+                        )}
+
+                        {card.subjects ? (
+                            <div className="textbook-subjects">
+                              {card.subjects.map((subject) => (
+                                  <section className="textbook-subject" key={subject.name}>
+                                    <h4>{subject.name}</h4>
+
+                                    {subject.note && (
+                                        <p className="textbook-subject-note">
+                                          {subject.note}
+                                        </p>
+                                    )}
+
+                                    {subject.books && (
+                                        <ul>
+                                          {subject.books.map((book) => (
+                                              <li key={book}>{book}</li>
+                                          ))}
+                                        </ul>
+                                    )}
+
+                                    {subject.levels?.map((level) => (
+                                        <div className="textbook-level" key={level.name}>
+                                          <h5>{level.name}</h5>
+
+                                          <ul>
+                                            {level.books.map((book) => (
+                                                <li key={book}>{book}</li>
+                                            ))}
+                                          </ul>
+                                        </div>
+                                    ))}
+                                  </section>
+                              ))}
+                            </div>
+                        ) : (
+                            <p>{card.text}</p>
+                        )}
+                      </div>
+                  ))}
+                </div>
+
+                {page.textbookNote && (
+                    <div className="textbooks-note">
+                      <strong>Ważna informacja</strong>
+                      <p>{page.textbookNote}</p>
+                    </div>
+                )}
+              </div>
+          ) : (
+              <>
+
           {articleBlocks.map((paragraph, index) => (
             articlePage && paragraph.startsWith('Sancta Jadwiga') ? (
               <blockquote className="article-quote" key={index}>{paragraph}</blockquote>
@@ -1277,7 +1391,8 @@ function StandardPage({ page }) {
                 </div>
               </div>
           )}
-
+          </>
+              )}
         </article>
 
         {page.timelineImage && (
@@ -1289,7 +1404,8 @@ function StandardPage({ page }) {
           </aside>
         )}
 
-        {!articlePage && <aside className="page-sidebar">
+        {!articlePage && page.showHighlights && (
+            <aside className="page-sidebar">
           <div className="sidebar-card">
             <h3>Najważniejsze elementy</h3>
             <ul>
@@ -1298,7 +1414,8 @@ function StandardPage({ page }) {
               ))}
             </ul>
           </div>
-        </aside>}
+            </aside>
+         )}
       </div>
     </section>
   );

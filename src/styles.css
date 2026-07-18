@@ -1286,6 +1286,21 @@ th {
   line-height: 1.75;
 }
 
+.textbooks-page-layout {
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+}
+
+.textbooks-main-card {
+  width: 100%;
+  max-width: none;
+  grid-column: 1 / -1;
+}
+
+.textbooks-layout {
+  width: 100%;
+}
+
 @media (max-width: 1040px) {
   .contact-page-layout {
     grid-template-columns: 1fr;
@@ -1327,6 +1342,211 @@ th {
   }
 }
 
+.textbooks-main-card {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.textbooks-layout {
+  display: grid;
+  gap: 28px;
+}
+
+.textbooks-intro {
+  padding: 34px 36px;
+
+  background:
+          linear-gradient(
+                  145deg,
+                  rgba(231, 236, 246, 0.98),
+                  rgba(249, 247, 239, 0.97)
+          );
+
+  border: 1px solid rgba(177, 194, 221, 0.75);
+  border-radius: 28px;
+
+  box-shadow:
+          0 16px 36px rgba(39, 60, 101, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.textbooks-intro span {
+  display: block;
+  margin-bottom: 14px;
+
+  color: #a87500;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.textbooks-intro h2 {
+  margin: 0 0 14px;
+
+  color: #172f5d;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.15;
+}
+
+.textbooks-intro p {
+  max-width: 760px;
+  margin: 0;
+
+  color: #536585;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.textbooks-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  width: 100%;
+}
+
+.textbook-card {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  min-height: auto;
+  padding: 32px 34px;
+  box-sizing: border-box;
+
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(205, 166, 76, 0.5);
+  border-radius: 24px;
+
+  box-shadow:
+          0 14px 32px rgba(39, 60, 101, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+
+.textbook-card h3 {
+  margin: 0 0 16px;
+
+  color: #172f5d;
+  font-size: 23px;
+  line-height: 1.25;
+}
+
+.textbook-card p {
+  margin: 0;
+
+  color: #536585;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.textbooks-note {
+  padding: 24px 28px;
+
+  background: rgba(253, 247, 230, 0.95);
+  border-left: 5px solid #c9982d;
+  border-radius: 6px 20px 20px 6px;
+
+  box-shadow: 0 12px 28px rgba(39, 60, 101, 0.08);
+}
+
+.textbooks-note strong {
+  display: block;
+  margin-bottom: 8px;
+
+  color: #172f5d;
+  font-size: 18px;
+}
+
+.textbooks-note p {
+  margin: 0;
+
+  color: #536585;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.textbook-class-label {
+  width: fit-content;
+  margin: -6px 0 26px;
+  padding: 8px 18px;
+
+  background: rgba(205, 166, 76, 0.12);
+  border: 1px solid rgba(205, 166, 76, 0.5);
+  border-radius: 999px;
+
+  color: #966900;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.textbook-subjects {
+  display: grid;
+  gap: 20px;
+}
+
+.textbook-subject {
+  padding: 24px 26px;
+
+  background: rgba(246, 248, 252, 0.88);
+  border: 1px solid rgba(177, 194, 221, 0.55);
+  border-radius: 20px;
+}
+
+.textbook-subject h4 {
+  margin: 0 0 16px;
+
+  color: #172f5d;
+  font-size: 21px;
+  line-height: 1.25;
+}
+
+.textbook-subject-note {
+  margin: -7px 0 16px;
+
+  color: #9a6b18;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.textbook-subject ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.textbook-subject li {
+  margin-bottom: 12px;
+
+  color: #4d5f7e;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.textbook-subject li:last-child {
+  margin-bottom: 0;
+}
+
+.textbook-level {
+  margin-top: 20px;
+  padding-top: 18px;
+
+  border-top: 1px solid rgba(177, 194, 221, 0.55);
+}
+
+.textbook-level h5 {
+  width: fit-content;
+  margin: 0 0 14px;
+  padding: 6px 14px;
+
+  background: rgba(205, 166, 76, 0.12);
+  border-radius: 999px;
+
+  color: #8f6507;
+  font-size: 14px;
+  font-weight: 700;
+}
+
 @media (max-width: 860px) {
   .desktop-nav,
   .ghost-btn,
@@ -1342,6 +1562,53 @@ th {
 
   .hero {
     padding-top: 40px;
+  }
+
+  .brand-title-school,
+  .brand-title-patron {
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+\
+  .topbar {
+    gap: 8px;
+  }
+
+  .brand {
+    flex: 1;
+    min-width: 0;
+    max-width: calc(100% - 55px);
+  }
+
+  .brand-copy {
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .brand-title {
+    width: 100%;
+    max-width: 100%;
+    line-height: 1.15;
+  }
+
+  .brand-title-school,
+  .brand-title-patron {
+    display: block;
+    max-width: 100%;
+
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .brand-title-school {
+    font-size: clamp(13px, 3.7vw, 17px);
+  }
+
+  .brand-title-patron {
+    margin-top: 3px;
+    font-size: clamp(12px, 3.4vw, 16px);
   }
 
   .school-values-intro {
@@ -1366,6 +1633,41 @@ th {
   .school-values-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .textbooks-intro {
+    padding: 26px 22px;
+  }
+
+  .textbooks-intro h2 {
+    font-size: 30px;
+  }
+
+  .textbooks-intro p {
+    font-size: 15px;
+  }
+
+  .textbooks-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .textbook-card {
+    min-height: auto;
+    padding: 26px 22px;
+  }
+
+  .textbook-card h3 {
+    font-size: 22px;
+  }
+
+  .textbook-card p,
+  .textbooks-note p {
+    font-size: 15px;
+  }
+
+  .textbooks-note {
+    padding: 22px;
   }
 }
 
