@@ -1320,7 +1320,7 @@ function HomeUpdatesStrip() {
                 {latestNews.date} · {latestNews.place}
               </p>
 
-              <strong>Przejdź do aktualności →</strong>
+              <strong>Aktualności →</strong>
             </div>
           </Link>
 
@@ -1331,9 +1331,6 @@ function HomeUpdatesStrip() {
               className="home-update-card home-social-card home-instagram-card"
               aria-label="Otwórz profil liceum na Instagramie"
           >
-            <div className="home-social-symbol">
-              IG
-            </div>
 
             <div className="home-social-content">
             <span className="home-update-label">
@@ -1346,7 +1343,7 @@ function HomeUpdatesStrip() {
                 Zdjęcia, wydarzenia i codzienność naszej szkoły.
               </p>
 
-              <strong>Zobacz najnowsze posty →</strong>
+              <strong>Najnowsze posty →</strong>
             </div>
           </a>
 
@@ -1357,9 +1354,6 @@ function HomeUpdatesStrip() {
               className="home-update-card home-social-card home-tiktok-card"
               aria-label="Otwórz profil liceum na TikToku"
           >
-            <div className="home-social-symbol">
-              TT
-            </div>
 
             <div className="home-social-content">
             <span className="home-update-label">
@@ -1372,7 +1366,7 @@ function HomeUpdatesStrip() {
                 Krótkie filmy i najnowsze wiadomości z życia liceum.
               </p>
 
-              <strong>Otwórz TikToka →</strong>
+              <strong>TikTok →</strong>
             </div>
           </a>
         </div>
