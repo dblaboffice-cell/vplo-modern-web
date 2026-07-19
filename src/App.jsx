@@ -722,7 +722,6 @@ const pageContent = {
     body: [],
 
     secretariatHours:
-'Sekretariat V Prywatnego Liceum Ogólnokształcącego w\u00A0Krakowie \n im.\u00A0Królowej Jadwigi przyjmuje interesantów\n' +
 'od poniedziałku do piątku\n' +
 'w godzinach od 9.00 do 14.00.',
     secretariatNotice:
@@ -768,11 +767,42 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/rekrutacja/dlaczego-do-nas" element={<DlaczegoDoNas />} />
-          {Object.keys(pageContent).map((path) => (
-            <Route key={path} path={path} element={<StandardPage page={pageContent[path]} />} />
-          ))}
-          <Route path="*" element={<StandardPage page={currentPage} />} />
+
+          <Route
+              path="/rekrutacja/dlaczego-do-nas"
+              element={<DlaczegoDoNas />}
+          />
+
+          <Route path="/aktualnosci" element={<NewsPage />} />
+
+          <Route
+              path="/aktualnosci/zakonczenie-roku-2025-2026"
+              element={<EndOfSchoolYearArticle />}
+          />
+
+          <Route path="/galeria" element={<GalleryPage />} />
+
+          <Route
+              path="/galeria/zakonczenie-roku-szkolnego-2025-2026"
+              element={<GalleryPage initialAlbumOpen />}
+          />
+
+          {Object.keys(pageContent)
+              .filter(
+                  (path) => !['/aktualnosci', '/galeria'].includes(path)
+              )
+              .map((path) => (
+                  <Route
+                      key={path}
+                      path={path}
+                      element={<StandardPage page={pageContent[path]} />}
+                  />
+              ))}
+
+          <Route
+              path="*"
+              element={<StandardPage page={currentPage} />}
+          />
         </Routes>
       </main>
       <Footer />
@@ -1105,6 +1135,275 @@ function HomePage() {
   );
 }
 
+const galleryCategories = [
+  {
+    title: 'Życie szkoły',
+    text: 'Uroczystości, wydarzenia, wycieczki i codzienność naszej społeczności szkolnej.',
+  },
+  {
+    title: 'Projekty edukacyjne',
+    text: 'Warsztaty, konkursy, zajęcia projektowe oraz inicjatywy rozwijające zainteresowania uczniów.',
+  },
+  {
+    title: 'Roczniki',
+    text: 'Zdjęcia klasowe oraz wspomnienia uczniów z kolejnych lat szkolnych.',
+  },
+];
+
+const endOfSchoolYearPhotos = Array.from({ length: 13 }, (_, index) => {
+  const number = String(index + 1).padStart(2, '0');
+
+  return {
+    src: `${import.meta.env.BASE_URL}galeria/zakonczenie-roku-szkolnego-2025-2026/${number}.webp`,
+    alt: `Zakończenie roku szkolnego 2025/2026 – zdjęcie ${index + 1}`,
+  };
+});
+
+function GalleryPage({ initialAlbumOpen = false }) {
+  const [activeCategory, setActiveCategory] = useState('Życie szkoły');
+  const [albumOpen, setAlbumOpen] = useState(initialAlbumOpen);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+
+  return (
+      <section className="gallery-page">
+        <div className="container">
+          <header className="gallery-page-header">
+            <span>Galeria</span>
+            <h1>Życie liceum utrwalone na zdjęciach</h1>
+          </header>
+
+          {!albumOpen ? (
+              <>
+                <div className="gallery-category-grid">
+                  {galleryCategories.map((category) => (
+                      <button
+                          key={category.title}
+                          type="button"
+                          className={`gallery-category-card ${
+                              activeCategory === category.title ? 'active' : ''
+                          }`}
+                          onClick={() => setActiveCategory(category.title)}
+                      >
+                        <h2>{category.title}</h2>
+                        <p>{category.text}</p>
+                      </button>
+                  ))}
+                </div>
+
+                {activeCategory === 'Życie szkoły' ? (
+                    <div className="gallery-albums-section">
+                      <h2>Albumy</h2>
+
+                      <button
+                          type="button"
+                          className="school-album-card"
+                          onClick={() => setAlbumOpen(true)}
+                      >
+                        <img
+                            src={endOfSchoolYearPhotos[0].src}
+                            alt="Okładka albumu Zakończenie roku szkolnego 2025/2026"
+                        />
+
+                        <div className="school-album-copy">
+                          <span>Życie szkoły</span>
+                          <h3>Zakończenie roku szkolnego 2025/2026</h3>
+                          <p>13 zdjęć</p>
+                        </div>
+                      </button>
+                    </div>
+                ) : (
+                    <div className="gallery-empty">
+                      Pierwsze albumy w tej części galerii pojawią się wkrótce.
+                    </div>
+                )}
+              </>
+          ) : (
+              <div className="school-album-view">
+                <button
+                    type="button"
+                    className="album-back-button"
+                    onClick={() => setAlbumOpen(false)}
+                >
+                  ← Powrót do albumów
+                </button>
+
+                <div className="school-album-heading">
+                  <span>Życie szkoły</span>
+                  <h2>Zakończenie roku szkolnego 2025/2026</h2>
+                  <p>13 zdjęć</p>
+                </div>
+
+                <div className="school-photo-grid">
+                  {endOfSchoolYearPhotos.map((photo) => (
+                      <button
+                          key={photo.src}
+                          type="button"
+                          className="school-photo-button"
+                          onClick={() => setSelectedPhoto(photo)}
+                      >
+                        <img src={photo.src} alt={photo.alt} loading="lazy" />
+                      </button>
+                  ))}
+                </div>
+              </div>
+          )}
+
+          {selectedPhoto && (
+              <div
+                  className="gallery-lightbox"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label="Powiększone zdjęcie"
+                  onClick={() => setSelectedPhoto(null)}
+              >
+                <button
+                    type="button"
+                    className="gallery-lightbox-close"
+                    onClick={() => setSelectedPhoto(null)}
+                    aria-label="Zamknij zdjęcie"
+                >
+                  <X size={28} />
+                </button>
+
+                <img
+                    src={selectedPhoto.src}
+                    alt={selectedPhoto.alt}
+                    onClick={(event) => event.stopPropagation()}
+                />
+              </div>
+          )}
+        </div>
+      </section>
+  );
+}
+
+const newsItems = [
+  {
+    slug: 'zakonczenie-roku-2025-2026',
+    title: 'Zakończenie roku 2025/2026',
+    date: '26 czerwca 2026',
+    place: 'Kraków',
+    excerpt:
+        '26 czerwca odbyło się uroczyste zakończenie roku szkolnego.',
+    image: `${import.meta.env.BASE_URL}galeria/zakonczenie-roku-szkolnego-2025-2026/01.webp`,
+  },
+];
+
+function NewsPage() {
+  return (
+      <section className="news-page">
+        <div className="container">
+          <header className="news-page-header">
+            <span>Aktualności</span>
+            <h1>Najnowsze wydarzenia z życia szkoły</h1>
+          </header>
+
+          <div className="news-list">
+            {newsItems.map((news) => (
+                <article className="news-card" key={news.slug}>
+                  <Link
+                      to={`/aktualnosci/${news.slug}`}
+                      className="news-card-image-link"
+                      aria-label={`Czytaj artykuł: ${news.title}`}
+                  >
+                    <img src={news.image} alt={news.title} />
+                  </Link>
+
+                  <div className="news-card-copy">
+                    <div className="news-meta">
+                  <span>
+                    <CalendarDays size={17} />
+                    <time dateTime="2026-06-26">{news.date}</time>
+                  </span>
+
+                      <span>
+                    <MapPin size={17} />
+                        {news.place}
+                  </span>
+                    </div>
+
+                    <h2>
+                      <Link to={`/aktualnosci/${news.slug}`}>
+                        {news.title}
+                      </Link>
+                    </h2>
+
+                    <p>{news.excerpt}</p>
+
+                    <Link
+                        to={`/aktualnosci/${news.slug}`}
+                        className="news-read-more"
+                    >
+                      Czytaj więcej
+                    </Link>
+                  </div>
+                </article>
+            ))}
+          </div>
+        </div>
+      </section>
+  );
+}
+
+function EndOfSchoolYearArticle() {
+  const articleImage =
+      `${import.meta.env.BASE_URL}galeria/zakonczenie-roku-szkolnego-2025-2026/01.webp`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">
+            ← Powrót do aktualności
+          </Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Zakończenie roku 2025/2026</h1>
+
+            <div className="news-meta news-article-meta">
+            <span>
+              <CalendarDays size={18} />
+              <time dateTime="2026-06-26">26 czerwca 2026</time>
+            </span>
+
+              <span>
+              <MapPin size={18} />
+              Kraków
+            </span>
+            </div>
+          </header>
+
+          <img
+              className="news-article-cover"
+              src={articleImage}
+              alt="Zakończenie roku szkolnego 2025/2026"
+          />
+
+          <div className="news-article-body">
+            <p>
+              26 czerwca odbyło się uroczyste zakończenie roku szkolnego.
+              Podczas wydarzenia uczniowie przypomnieli o najważniejszych
+              wartościach, którymi warto kierować się w życiu na co dzień.
+              Część artystyczną uświetniły recytacje wybranych wierszy oraz
+              piosenka polsko-hiszpańska, natomiast prof. Kamil Kulpiński
+              wygłosił wykład poświęcony bezpieczeństwu podczas wakacji.
+              Wszystkim uczniom, rodzicom i nauczycielom życzymy udanego,
+              bezpiecznego wypoczynku oraz wielu niezapomnianych wakacyjnych
+              chwil.
+            </p>
+
+            <Link
+                to="/galeria/zakonczenie-roku-szkolnego-2025-2026"
+                className="news-gallery-link"
+            >
+              Galeria zdjęć
+            </Link>
+          </div>
+        </div>
+      </article>
+  );
+}
+
 function StandardPage({ page }) {
   const articlePage = page.layout === 'article';
   const articleBlocks = articlePage
@@ -1340,7 +1639,7 @@ function StandardPage({ page }) {
 
                       <div className="social-qr-copy">
                         <strong>Instagram</strong>
-                        <span>Zeskanuj kod lub kliknij, aby otworzyć profil szkoły.</span>
+                        <span>Profil szkoły</span>
                       </div>
                     </a>
 
@@ -1357,8 +1656,8 @@ function StandardPage({ page }) {
                       />
 
                       <div className="social-qr-copy">
-                        <strong>TikTk</strong>
-                        <span>Zeskanuj kod lub kliknij, aby otworzyć profil szkoły.</span>
+                        <strong>TikTok</strong>
+                        <span>Profil szkoły</span>
                       </div>
                     </a>
                   </div>
@@ -1386,7 +1685,7 @@ function StandardPage({ page }) {
                       rel="noopener noreferrer"
                   >
                     <MapPin size={19} aria-hidden="true" />
-                    <span>Wyznacz trasę do szkoły</span>
+                    <span>Trasa do szkoły</span>
                   </a>
                 </div>
               </div>
