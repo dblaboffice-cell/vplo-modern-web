@@ -983,44 +983,72 @@ function HomePage() {
       <section className="hero">
         <div className="container hero-grid">
           <div>
-            <section className="school-values-section">
+            <section className="school-values-section school-values-building">
               <p className="school-values-intro">
                 Wysokie cele, ludzkie podejście, nauczyciele z pasją.
               </p>
 
               <div className="school-values-grid">
-                <div className="school-value-card">
+                <div className="school-value-card value-left">
                   <h3>Indywidualne podejście</h3>
 
                   <p>
-                    Dla nas nie jesteś numerem w dzienniku. Znamy Twoje mocne strony
-                    i wiemy, z czym mierzysz się na co dzień. Dzięki małym grupom
-                    i wsparciu tutorów dopasowujemy tempo oraz styl nauki do Twoich
-                    osobistych potrzeb i celów.
+                    Znamy mocne strony naszych uczniów
+                    i wiemy, z czym mierzą się na co dzień. Dzięki małym grupom
+                    i wsparciu tutorów dopasowujemy tempo oraz styl nauki do
+                    osobistych potrzeb i celów każdego ucznia.
                   </p>
                 </div>
 
-                <div className="school-value-card">
+                <div className="school-value-card value-top">
                   <h3>Wysoka jakość nauczania</h3>
 
                   <p>
-                    Wyniki matur powyżej średniej i sukcesy w olimpiadach to nasza
+                    Wyniki matur powyżej średniej to nasza
                     codzienność, ale nie jedyny cel. Uczymy krytycznego myślenia,
                     logicznego wyciągania wniosków i praktycznego wykorzystania wiedzy,
                     która otwiera drzwi na najlepsze uczelnie.
                   </p>
                 </div>
 
-                <div className="school-value-card">
+                <figure className="school-building-photo">
+                  <img
+                      src={`${import.meta.env.BASE_URL}siedziba-vplo.jpg`}
+                      alt="Siedziba V Prywatnego Liceum Ogólnokształcącego w Krakowie"
+                  />
+
+                  <figcaption>Siedziba liceum</figcaption>
+                </figure>
+
+                <div className="school-value-card value-right">
                   <h3>Kadra z pasją</h3>
 
                   <p>
                     Nasi nauczyciele to mentorzy, którzy zarażają miłością do swoich
                     przedmiotów. To eksperci, którzy nie tylko świetnie tłumaczą trudne
-                    zagadnienia, ale też wspierają Cię po lekcjach, prowadzą koła naukowe
+                    zagadnienia, ale też wspierają uczniów po lekcjach, prowadzą koła naukowe
                     i zawsze mają czas na rozmowę.
                   </p>
                 </div>
+              </div>
+              <div className="hero-contact-grid">
+                <a
+                    href={schoolMapUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="info-badge info-badge-link"
+                >
+                  <MapPin size={16} />
+                  <span>{school.address}</span>
+                </a>
+                <a
+                    href={`tel:${school.phone.replace(/\s/g, '')}`}
+                    className="info-badge info-badge-link"
+                >
+                  <Phone size={16} />
+                  <span>{school.phone}</span>
+                </a>
+                <InfoBadge icon={<Mail size={16} />} text={school.email} />
               </div>
             </section>
             <div className="hero-mission-vision">
@@ -1038,28 +1066,6 @@ function HomePage() {
                 </p>
               </div>
 
-            </div>
-
-            <figure className="hero-building-card hero-building-card-inline">
-              <img
-                src={buildingSrc}
-                alt="Siedziba V Prywatnego Liceum Ogólnokształcącego w Krakowie"
-                className="hero-building-image"
-              />
-              <figcaption>Siedziba szkoły</figcaption>
-            </figure>
-            <div className="hero-contact-grid">
-              <a
-                href={schoolMapUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="info-badge info-badge-link"
-              >
-                <MapPin size={16} />
-                <span>{school.address}</span>
-              </a>
-              <InfoBadge icon={<Phone size={16} />} text={school.phone} />
-              <InfoBadge icon={<Mail size={16} />} text={school.email} />
             </div>
           </div>
           <div className="hero-card hero-card-patron">
