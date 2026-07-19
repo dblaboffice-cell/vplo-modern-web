@@ -764,6 +764,7 @@ function App() {
   return (
     <div className="app-shell">
       <Header mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} showBanner={location.pathname === '/'} />
+      {location.pathname === '/' && <HomeUpdatesStrip />}
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -1288,6 +1289,96 @@ const newsItems = [
     image: `${import.meta.env.BASE_URL}galeria/zakonczenie-roku-szkolnego-2025-2026/01.webp`,
   },
 ];
+
+function HomeUpdatesStrip() {
+  const latestNews = newsItems[0];
+
+  return (
+      <section
+          className="home-updates-strip"
+          aria-label="Aktualności i media społecznościowe"
+      >
+        <div className="container home-updates-grid">
+          <Link
+              to="/aktualnosci"
+              className="home-update-card home-update-card-news"
+          >
+            <img
+                src={latestNews.image}
+                alt=""
+                className="home-update-news-image"
+            />
+
+            <div className="home-update-news-overlay">
+            <span className="home-update-label">
+              Aktualności
+            </span>
+
+              <h2>{latestNews.title}</h2>
+
+              <p>
+                {latestNews.date} · {latestNews.place}
+              </p>
+
+              <strong>Przejdź do aktualności →</strong>
+            </div>
+          </Link>
+
+          <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="home-update-card home-social-card home-instagram-card"
+              aria-label="Otwórz profil liceum na Instagramie"
+          >
+            <div className="home-social-symbol">
+              IG
+            </div>
+
+            <div className="home-social-content">
+            <span className="home-update-label">
+              Instagram
+            </span>
+
+              <h2>@vplo.krk</h2>
+
+              <p>
+                Zdjęcia, wydarzenia i codzienność naszej szkoły.
+              </p>
+
+              <strong>Zobacz najnowsze posty →</strong>
+            </div>
+          </a>
+
+          <a
+              href={tiktokUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="home-update-card home-social-card home-tiktok-card"
+              aria-label="Otwórz profil liceum na TikToku"
+          >
+            <div className="home-social-symbol">
+              TT
+            </div>
+
+            <div className="home-social-content">
+            <span className="home-update-label">
+              TikTok
+            </span>
+
+              <h2>@vplo.krakow</h2>
+
+              <p>
+                Krótkie filmy i najnowsze wiadomości z życia liceum.
+              </p>
+
+              <strong>Otwórz TikToka →</strong>
+            </div>
+          </a>
+        </div>
+      </section>
+  );
+}
 
 function NewsPage() {
   return (
