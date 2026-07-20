@@ -1593,6 +1593,7 @@ function EndOfSchoolYearArticle() {
 
 function StandardPage({ page }) {
   const articlePage = page.layout === 'article';
+  const [timelineOpen, setTimelineOpen] = useState(false);
   const articleBlocks = articlePage
     ? page.body
         .flatMap((paragraph) => paragraph.split(/\n{2,}/))
@@ -1952,14 +1953,52 @@ function StandardPage({ page }) {
         </article>
 
         {page.timelineImage && (
-          <aside className="article-timeline">
-            <img
-                src={page.timelineImage}
-                alt={page.timelineAlt || 'Oś czasu'}
-            />
-          </aside>
-        )}
+            <aside className="article-timeline">
+              <button
+                  type="button"
+                  className="timeline-zoom-button"
+                  onClick={() => setTimelineOpen(true)}
+                  aria-label="Powiększ oś czasu"
+              >
+                <img
+                    src={page.timelineImage}
+                    alt={page.timelineAlt || 'Oś czasu'}
+                />
 
+                <span className="timeline-zoom-hint">
+        Kliknij, aby powiększyć
+      </span>
+              </button>
+            </aside>
+        )}
+        {timelineOpen && page.timelineImage && (
+            <div
+                className="timeline-lightbox"
+                role="dialog"
+                aria-modal="true"
+                aria-label={page.timelineAlt || 'Powiększona oś czasu'}
+                onClick={() => setTimelineOpen(false)}
+            >
+              <button
+                  type="button"
+                  className="timeline-lightbox-close"
+                  onClick={() => setTimelineOpen(false)}
+                  aria-label="Zamknij powiększenie"
+              >
+                <X size={28} aria-hidden="true" />
+              </button>
+
+              <div
+                  className="timeline-lightbox-content"
+                  onClick={(event) => event.stopPropagation()}
+              >
+                <img
+                    src={page.timelineImage}
+                    alt={page.timelineAlt || 'Oś czasu'}
+                />
+              </div>
+            </div>
+        )}
         {!articlePage && page.showHighlights && (
             <aside className="page-sidebar">
           <div className="sidebar-card">
