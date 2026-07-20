@@ -150,24 +150,54 @@ const menu = [
   },
   {
     label: 'Edukacja',
-    path: '/dydaktyka/edukacja-kulturalna',
+    path: '/edukacja/edukacja-kulturalna',
     icon: BookOpen,
     children: [
       {
         group: 'Nauka i rozwój',
         items: [
-          { label: 'Edukacja kulturalna', path: '/dydaktyka/edukacja-kulturalna' },
-          { label: 'Grupy klasowe', path: '/dydaktyka/grupy-klasowe' },
-          { label: 'Sesje naukowe', path: '/dydaktyka/sesje-naukowe' },
-          { label: 'Szkolna Akademia Filmowa', path: '/dydaktyka/akademia-filmowa' },
-          { label: 'Zajęcia warsztatowe', path: '/dydaktyka/zajecia-warsztatowe' },
-          { label: 'Zajęcia sportowe - WF', path: '/dydaktyka/zajecia-sportowe-wf' },
-          { label: 'Język hiszpański', path: '/dydaktyka/jezyk-hiszpanski' },
-          { label: 'Kreatywny uczeń', path: '/dydaktyka/kreatywny-uczen' },
+          {
+            label: 'Edukacja kulturalna',
+            path: '/edukacja/edukacja-kulturalna',
+          },
+          {
+            label: 'Grupy klasowe',
+            path: '/edukacja/grupy-klasowe',
+          },
+          {
+            label: 'Zajęcia warsztatowe',
+            path: '/edukacja/zajecia-warsztatowe',
+          },
+          {
+            label: 'Zajęcia sportowe – WF',
+            path: '/edukacja/zajecia-sportowe-wf',
+          },
+          {
+            label: 'Język hiszpański',
+            path: '/edukacja/jezyk-hiszpanski',
+          },
+          {
+            label: 'Kreatywny uczeń',
+            path: '/edukacja/kreatywny-uczen',
+          },
+        ],
+      },
+      {
+        group: 'Projekty edukacyjne',
+        items: [
+          {
+            label: 'Sesje Naukowe',
+            path: '/edukacja/sesje-naukowe',
+          },
+          {
+            label: 'Szkolna Akademia Filmowa',
+            path: '/edukacja/akademia-filmowa',
+          },
         ],
       },
     ],
   },
+
   {
     label: 'Rekrutacja',
     path: '/rekrutacja/dlaczego-do-nas',
@@ -462,8 +492,8 @@ const pageContent = {
     highlights: ['Elastyczność', 'Wsparcie dla sportowców', 'Czytelna komunikacja'],
   },
   '/rekrutacja/absolwenci-i-uczniowie-o-nas': {
-    title: 'Absolwenci i uczniowie o nas',
-    lead: 'Nowoczesna sekcja testimoniali z opiniami i krótkimi historiami.',
+    title: 'Refleksje absolwentów',
+    lead: 'W relacjach uczniów i absolwentów liceum przedstawiane jest jako instytucja, która w znaczący sposób wpływa na ich rozwój intelektualny i społeczny.',
     body: [
       'Aleksandra Gubernat, mgr, absolwentka Liceum w 2003 roku, a następnie Wydziału Prawa Uniwersytetu Jagiellońskiego. Szkołę wspominam bardzo pozytywnie, to świetnie liceum dla osób, które chcą się uczyć i są zainteresowane startowaniem na najlepsze kierunki studiów oraz dla tych, którzy chcą brać udział w olimpiadach.',
       'W szkole trzeba się sporo uczyć, ale jest to liceum, które naprawdę odkryje w Tobie talent do nauki. Jeśli nie chcesz go odkrywać, to ono i tak to zrobi za Ciebie. To szkoła dla ludzi z pasją i wyobraźnią, która wciąż się rozwija, a ludzie mają coraz to lepsze pomysły. Kształcenie w liceum ukierunkowane jest na indywidulane uzdolnienia i osobowość uczniów.',
@@ -491,31 +521,65 @@ const pageContent = {
     ],
     highlights: ['Formularz online', 'Szybki kontakt', 'Możliwość integracji'],
   },
-  '/dydaktyka/edukacja-kulturalna': {
+  '/edukacja/edukacja-kulturalna': {
     title: 'Edukacja kulturalna',
-    lead: 'Podstrona podkreślająca humanistyczny i interdyscyplinarny wymiar nauczania.',
+    lead: 'Humanistyczny i interdyscyplinarny wymiar nauczania.',
     body: [
       'Edukacja kulturalna jest pojęciem niezwykle często mylnie rozumianym bądź określanym, a przecież stanowi istotę kształcenia licealnego.',
       'Wyjaśnijmy, edukacja ta prowadzona jest w trzech, wzajemnie uzupełniających się obszarach.',
-      'Pierwszy, podstawowy obszar związany jest z ubogacaniem wiedzy, poprzez zajęcia dydaktyczne (lekcje) z treści objętych programem kształcenia licealnego. Edukacja kulturalna jest tutaj realizowana w różnych dyscyplinach nauki, inaczej w przedmiotach wskazanych w planach lekcji. W niektórych z przedmiotów obok przekazywanych treści programowych podejmowane są z uczniami rozważania ukierunkowane na różne systemy wartości.',
-       'Zwracamy tutaj uwagę na konieczność zachowania wyjątkowej rzetelności i systematyczności w przyswajaniu wiedzy, ponieważ luki i zaniedbania w zwielokrotnionej formie dadzą o sobie znać w czasie późniejszym.\n',
-       'Uświadamiamy naszych uczniów, że edukacja kulturalna w tym obszarze odbywa się w sposób ciągły, również w okresie poza szkolnym, bez udziału nauczycieli. Tradycyjnie edukację tę określa się wówczas mianem kształcenia ustawicznego. ',
-      'Drugi z obszarów kształcenia ukierunkowany jest na umiejętności, w tym interpretacji, rozumienia, refleksji, przeżywania nabytej wiedzy; krótko - zastosowań.',
-      'Umiejętności kształtowane na poziomie licealnym rzutują na przyszłe losy absolwentów. W najbliższej perspektywie czasu, dobrze posadowione w wiedzy, umiejętności odegrają istotną rolę w wyborze kierunku studiów bądź dziedziny dalszej aktywności, w tym profesjonalnej. Nabyte i rozwijane umiejętności - zawsze oparte na rzetelnej wiedzy - otwierają bowiem szerszy ogląd świata, nieodpartą potrzebę poznawczą, głębsze rozumienie otaczającej nas rzeczywistości, wielopłaszczyznowe postrzeganie zjawisk, które pozornie nie pozostają w związku.',
-      'Nie wolno jednak zapominać, że kształcenie licealne jest ogólnokształcącym i tylko niektóre dziedziny wiedzy będą rozwijane w toku studiów bądź podjętej aktywności. Stąd niezmiernie ważne jest kształtowanie umiejętności we wszystkich dyscyplinach objętych planem licealnym, tak by absolwenci mogli czerpać z nich wiedzę praktyczną bądź świadomie podejmować decyzje potrzeby jej uzupełnień.',
-      'Trzeci z obszarów koncentruje się na rozwijaniu wrażliwości i zainteresowań. Temu celowi służy wywiązanie kontaktu uczniów ze sztukami pięknymi: malarstwem, rzeźbą, filmem, teatrem, muzyką, literaturą.',
-      'Trzeba zauważyć, że dwa pierwsze obszary edukacji kulturalnej mieszczą się w podstawowym kanonie standardów licealnych. A osiągany w nich stan wiedzy i umiejętności uczniów - absolwentów, w dużej mierze zależy od poziomu szkoły. W naszym przypadku obydwa obszary kształcenia kulturalnego stanowią priorytet nauczania.',
-      'Trzeci obszar kształcenia kulturalnego (wrażliwość i zainteresowania) jest naszym programem autorskim, którego oryginalność wyprowadzamy z naszych zainteresowań i przekonania, że jesteśmy powołani do  kreowania przyszłej inteligencji polskiej, szczególnie tu, w królewskim mieście Krakowie z jego historią, tradycją i zabytkową tkanką architektoniczną.',
-      'Uczniowie:',
-      'regularnie uczestniczą we wszystkich znaczących wydarzeniach kulturalnych Krakowa. Naturalną sekwencję lekcji historii, czy też literatury polskiej stanowi udział w prezentacjach filmowych, przedstawieniach teatralnych, wystawach i ekspozycjach muzealnych; \n',
-      'pod kierunkiem profesorów liceum, czasem przy współudziale wyspecjalizowanych przewodników zapoznają się z dorobkiem kulturowym Krakowa i poznają miejsca kultu narodowego. W okresie licealnym stają się pełnoprawnymi znawcami dorobku kulturowego naszego, królewskiego miasta; \n',
+    ],
+    educationSections: [
+      {
+        title: 'Wiedza',
+        paragraphs: [
+          'Pierwszy, podstawowy obszar związany jest z ubogacaniem wiedzy, poprzez zajęcia dydaktyczne (lekcje) z treści objętych programem kształcenia licealnego. Edukacja kulturalna jest tutaj realizowana w różnych dyscyplinach nauki, inaczej w przedmiotach wskazanych w planach lekcji. W niektórych z przedmiotów obok przekazywanych treści programowych podejmowane są z uczniami rozważania ukierunkowane na różne systemy wartości.',
+
+          'Zwracamy tutaj uwagę na konieczność zachowania wyjątkowej rzetelności i systematyczności w przyswajaniu wiedzy, ponieważ luki i zaniedbania w zwielokrotnionej formie dadzą o sobie znać w czasie późniejszym.',
+
+          'Uświadamiamy naszych uczniów, że edukacja kulturalna w tym obszarze odbywa się w sposób ciągły, również w okresie poza szkolnym, bez udziału nauczycieli. Tradycyjnie edukację tę określa się wówczas mianem kształcenia ustawicznego.',
+        ],
+      },
+
+      {
+        title: 'Umiejętności',
+        paragraphs: [
+          'Drugi z obszarów kształcenia ukierunkowany jest na umiejętności, w tym interpretacji, rozumienia, refleksji, przeżywania nabytej wiedzy; krótko - zastosowań.',
+
+          'Umiejętności kształtowane na poziomie licealnym rzutują na przyszłe losy absolwentów. W najbliższej perspektywie czasu, dobrze posadowione w wiedzy, umiejętności odegrają istotną rolę w wyborze kierunku studiów bądź dziedziny dalszej aktywności, w tym profesjonalnej. Nabyte i rozwijane umiejętności - zawsze oparte na rzetelnej wiedzy - otwierają bowiem szerszy ogląd świata, nieodpartą potrzebę poznawczą, głębsze rozumienie otaczającej nas rzeczywistości, wielopłaszczyznowe postrzeganie zjawisk, które pozornie nie pozostają w związku.',
+
+          'Nie wolno jednak zapominać, że kształcenie licealne jest ogólnokształcącym i tylko niektóre dziedziny wiedzy będą rozwijane w toku studiów bądź podjętej aktywności. Stąd niezmiernie ważne jest kształtowanie umiejętności we wszystkich dyscyplinach objętych planem licealnym, tak by absolwenci mogli czerpać z nich wiedzę praktyczną bądź świadomie podejmować decyzje potrzeby jej uzupełnień.',
+        ],
+      },
+
+      {
+        title: 'Wrażliwość i zainteresowania',
+        paragraphs: [
+          'Trzeci z obszarów koncentruje się na rozwijaniu wrażliwości i zainteresowań. Temu celowi służy wywiązanie kontaktu uczniów ze sztukami pięknymi: malarstwem, rzeźbą, filmem, teatrem, muzyką, literaturą.',
+
+          'Trzeba zauważyć, że dwa pierwsze obszary edukacji kulturalnej mieszczą się w podstawowym kanonie standardów licealnych. A osiągany w nich stan wiedzy i umiejętności uczniów - absolwentów, w dużej mierze zależy od poziomu szkoły. W naszym przypadku obydwa obszary kształcenia kulturalnego stanowią priorytet nauczania.',
+
+          'Trzeci obszar kształcenia kulturalnego (wrażliwość i zainteresowania) jest naszym programem autorskim, którego oryginalność wyprowadzamy z naszych zainteresowań i przekonania, że jesteśmy powołani do kreowania przyszłej inteligencji polskiej, szczególnie tu, w królewskim mieście Krakowie z jego historią, tradycją i zabytkową tkanką architektoniczną.',
+        ],
+      },
+    ],
+    variant: 'cultural-education',
+
+    listTitle: 'Uczniowie:',
+
+    listItems: [
+      'regularnie uczestniczą we wszystkich znaczących wydarzeniach kulturalnych Krakowa. Naturalną sekwencję lekcji historii, czy też literatury polskiej stanowi udział w prezentacjach filmowych, przedstawieniach teatralnych, wystawach i ekspozycjach muzealnych;',
+      'pod kierunkiem profesorów liceum, czasem przy współudziale wyspecjalizowanych przewodników zapoznają się z dorobkiem kulturowym Krakowa i poznają miejsca kultu narodowego. W okresie licealnym stają się pełnoprawnymi znawcami dorobku kulturowego naszego, królewskiego miasta;',
       'biorą udział w wernisażach i wystawach, szczególnie w Pałacu Sztuki, Dworku Matejki, Willi Estreichera.',
+    ],
+
+    afterList: [
       'Instytucjonalnie nasze Liceum współpracuje z Towarzystwem Przyjaciół Sztuk Pięknych (TPSP) z siedzibą w Pałacu Sztuki. Uczniowie łącznie z zespołem profesorskim liceum są beneficjentami bezpłatnych wstępów na wszystkie wydarzenia kulturalne organizowane w Pałacu Sztuki.',
       'Liceum z TPSP było organizatorem małopolskiego konkursu: Wkład kultury polskiej do kultury jednoczącej się Europy, którego finał z wystawą pokonkursową przy współudziale znakomitych reprezentantów nauki w jury konkursowym pod patronatem Rektorów Akademii Sztuk Pięknych i Politechniki Krakowskiej odbył się w Pałacu Sztuki.',
-      ],
+    ],
+
     highlights: ['Humanistyka', 'Interdyscyplinarność', 'Wydarzenia kulturalne'],
   },
-  '/dydaktyka/grupy-klasowe': {
+  '/edukacja/grupy-klasowe': {
     title: 'Grupy klasowe',
     lead: 'Sekcja o kameralnych klasach i organizacji pracy w mniejszych zespołach.',
     body: [
@@ -525,7 +589,7 @@ const pageContent = {
     ],
     highlights: ['Kameralne klasy', 'Infografiki', 'Mocny argument rekrutacyjny'],
   },
-  '/dydaktyka/sesje-naukowe': {
+  '/edukacja/sesje-naukowe': {
     title: 'Sesje naukowe',
     lead: 'Miejsce na prezentację tradycji szkolnych konferencji i aktywności akademickiej uczniów.',
     body: [
@@ -534,7 +598,7 @@ const pageContent = {
     ],
     highlights: ['Archiwum wydarzeń', 'Prestiż', 'Rozwój naukowy'],
   },
-  '/dydaktyka/akademia-filmowa': {
+  '/edukacja/akademia-filmowa': {
     title: 'Szkolna Akademia Filmowa',
     lead: 'Sekcja poświęcona analizie filmu i edukacji audiowizualnej.',
     body: [
@@ -543,7 +607,7 @@ const pageContent = {
     ],
     highlights: ['Edukacja filmowa', 'Program zajęć', 'Lista projekcji'],
   },
-  '/dydaktyka/zajecia-warsztatowe': {
+  '/edukacja/zajecia-warsztatowe': {
     title: 'Zajęcia warsztatowe',
     lead: 'Podstrona o praktycznej pracy z uczniem i rozwijaniu kompetencji miękkich.',
     body: [
@@ -552,7 +616,7 @@ const pageContent = {
     ],
     highlights: ['Kompetencje miękkie', 'Forma warsztatowa', 'Czytelne moduły'],
   },
-  '/dydaktyka/zajecia-sportowe-wf': {
+  '/edukacja/zajecia-sportowe-wf': {
     title: 'Zajęcia sportowe - WF',
     lead: 'Sekcja opisująca aktywność fizyczną i sposób organizacji zajęć sportowych.',
     body: [
@@ -561,7 +625,7 @@ const pageContent = {
     ],
     highlights: ['Sport i zdrowie', 'Zdjęcia aktywności', 'Elastyczny układ treści'],
   },
-  '/dydaktyka/jezyk-hiszpanski': {
+  '/edukacja/jezyk-hiszpanski': {
     title: 'Język hiszpański',
     lead: 'Prezentacja oferty językowej i nowoczesnych metod nauczania.',
     body: [
@@ -570,7 +634,7 @@ const pageContent = {
     ],
     highlights: ['Oferta językowa', 'Nowoczesne metody', 'Treści kulturowe'],
   },
-  '/dydaktyka/kreatywny-uczen': {
+  '/edukacja/kreatywny-uczen': {
     title: 'Kreatywny uczeń',
     lead: 'Sekcja dla programu lub inicjatywy wspierającej uczniów o ponadprzeciętnym potencjale.',
     body: [
@@ -984,9 +1048,9 @@ function HomePage() {
         <div className="container hero-grid">
           <div>
             <section className="school-values-section school-values-building">
-              <p className="school-values-intro">
-                Wysokie cele, ludzkie podejście, nauczyciele z pasją.
-              </p>
+              <span className="eyebrow school-values-eyebrow">
+              Wysokie cele, ludzkie podejście, nauczyciele z pasją.
+              </span>
 
               <div className="school-values-grid">
                 <div className="school-value-card value-left">
@@ -1503,12 +1567,29 @@ function StandardPage({ page }) {
         .map((paragraph) => paragraph.trim())
         .filter((paragraph) => paragraph && !paragraph.includes('Opracowanie') && !paragraph.includes('Podstrona została przygotowana'))
     : page.body;
+  const culturalEducationPage =
+      page.title === 'Edukacja kulturalna';
 
+  const studentsIndex = culturalEducationPage
+      ? articleBlocks.findIndex(
+          (paragraph) => paragraph.trim() === 'Uczniowie:'
+      )
+      : -1;
+
+  const studentList =
+      studentsIndex >= 0
+          ? articleBlocks.slice(studentsIndex + 1, studentsIndex + 4)
+          : [];
   return (
-    <section className={`page-wrap container${articlePage ? ' article-page' : ''}`}>
+      <section
+          className={`page-wrap container${articlePage ? ' article-page' : ''}${
+              page.title === 'Edukacja kulturalna'
+                  ? ' cultural-education-page'
+                  : ''
+          }`}
+      >
       <div className={articlePage ? 'article-header-grid' : ''}>
         <div className="page-header">
-          <span className="pill soft">Zakładka</span>
           <h1>{page.title}</h1>
           {page.lead && <p>{page.lead}</p>}
         </div>
@@ -1533,11 +1614,16 @@ function StandardPage({ page }) {
       >
 
         <article
-            className={`page-main-card ${
-                page.textbookCards ? 'textbooks-main-card' : ''
-            } ${
-                page.galleryCategories ? 'gallery-main-card' : ''
-            }`}
+            className={[
+              'page-main-card',
+              page.textbookCards ? 'textbooks-main-card' : '',
+              page.galleryCategories ? 'gallery-main-card' : '',
+              page.variant === 'cultural-education'
+                  ? 'cultural-education-content'
+                  : '',
+            ]
+                .filter(Boolean)
+                .join(' ')}
         >
 
           {page.galleryCategories && (
@@ -1650,6 +1736,51 @@ function StandardPage({ page }) {
               <p className={articlePage ? 'article-text' : ''} key={index}>{paragraph}</p>
             )
           ))}
+
+                {page.educationSections?.map((section, sectionIndex) => (
+                    <section
+                        className="cultural-section"
+                        key={`cultural-section-${sectionIndex}`}
+                    >
+                      <h2 className="cultural-section-title">
+                        {section.title}
+                      </h2>
+
+                      {section.paragraphs.map((paragraph, paragraphIndex) => (
+                          <p
+                              className="cultural-section-text"
+                              key={`cultural-section-${sectionIndex}-${paragraphIndex}`}
+                          >
+                            {paragraph}
+                          </p>
+                      ))}
+                    </section>
+                ))}
+
+                {page.listTitle && (
+                    <p className="cultural-list-title">
+                      {page.listTitle}
+                    </p>
+                )}
+
+                {page.listItems?.length > 0 && (
+                    <ul className="cultural-list">
+                      {page.listItems.map((item, index) => (
+                          <li key={`cultural-item-${index}`}>
+                            {item}
+                          </li>
+                      ))}
+                    </ul>
+                )}
+
+                {page.afterList?.map((paragraph, index) => (
+                    <p
+                        className="cultural-after-list"
+                        key={`cultural-after-list-${index}`}
+                    >
+                      {paragraph}
+                    </p>
+                ))}
 
           {articlePage && page.author && <p className="article-author">{page.author}</p>}
 

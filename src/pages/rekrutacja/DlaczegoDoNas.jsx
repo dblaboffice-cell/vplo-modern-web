@@ -12,7 +12,6 @@ export default function DlaczegoDoNas() {
   return (
     <section className="page-wrap container">
       <div className="page-header">
-        <span className="pill soft">Rekrutacja</span>
         <h1>Dlaczego do nas?</h1>
         <p>
           Bo doskonale wiemy, jaka ma być współczesna szkoła i jakiej szkoły oczekują uczniowie,

@@ -381,7 +381,7 @@ button {
 
 .hero h1,
 .page-header h1 {
-  margin: 10px 0 14px;
+  margin-top: 0;
   font-size: clamp(2.1rem, 3.3vw, 3.9rem);
   line-height: 1.02;
 }
@@ -2550,6 +2550,11 @@ th {
   .home-social-card {
     padding: 23px;
   }
+
+  .school-values-section > .school-values-eyebrow {
+    margin-bottom: 24px;
+    text-align: center;
+  }
 }
 
 .home-updates-strip {
@@ -2695,7 +2700,26 @@ th {
 .school-values-building .school-values-intro {
   position: relative;
   z-index: 2;
-  margin-bottom: 24px;
+  width: 100%;
+  margin: 0 0 36px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.school-values-building .school-values-eyebrow {
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-align: center;
 }
 
 .school-values-building .school-values-grid {
@@ -2885,4 +2909,148 @@ th {
   text-align-last: left;
   hyphens: auto;
   line-height: 1.6;
+}
+
+/* Edukacja kulturalna – pełna szerokość treści
+   bez zmiany położenia całej strony */
+
+.cultural-education-page .article-layout {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.cultural-education-page .page-main-card {
+  width: 100%;
+  box-sizing: border-box;
+}
+.cultural-education-page .page-main-card {
+  grid-column: 1 / -1;
+}
+
+
+/* EDUKACJA KULTURALNA */
+
+.cultural-education-content p {
+  line-height: 1.8;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.cultural-list-title {
+  display: inline-block;
+  margin: 30px 0 18px;
+  padding: 9px 18px;
+  border-left: 4px solid #c59a3d;
+  border-radius: 0 8px 8px 0;
+  background: rgba(197, 154, 61, 0.09);
+  color: #082a55;
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.cultural-list {
+  margin: 0 0 26px;
+  padding-left: 28px;
+  list-style-type: disc;
+}
+
+.cultural-list li {
+  margin-bottom: 14px;
+  padding-left: 6px;
+  font-family: inherit;
+  line-height: 1.8;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.cultural-list li::marker {
+  font-size: 1.15em;
+  font-weight: 700;
+}
+
+.cultural-after-list {
+  margin: 0 0 20px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  color: inherit;
+  line-height: 1.8;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+/* OBSZARY EDUKACJI KULTURALNEJ */
+
+.cultural-section {
+  margin-top: 34px;
+}
+
+.cultural-section-title {
+  margin: 0 0 18px;
+  padding: 12px 18px;
+  border-left: 4px solid #c59a3d;
+  background: rgba(197, 154, 61, 0.08);
+  color: #082a55;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cultural-section-text {
+  margin: 0 0 20px;
+  line-height: 1.8;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+@media (max-width: 700px) {
+  .cultural-section {
+    margin-top: 28px;
+  }
+
+  .cultural-section-title {
+    padding: 10px 14px;
+    font-size: 1.2rem;
+  }
+
+  .cultural-section-text {
+    text-align: left;
+  }
+}
+
+/* EDUKACJA KULTURALNA — UJEDNOLICENIE TYPOGRAFII */
+
+.cultural-education-content {
+  color: var(--text, #0b2a55);
+}
+
+.cultural-education-content > p,
+.cultural-education-content .cultural-section-text,
+.cultural-education-content .cultural-list li,
+.cultural-education-content .cultural-after-list {
+  color: var(--text, #0b2a55);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.8;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.school-values-section > .school-values-eyebrow {
+  display: block;
+  width: 100%;
+  margin: 0 0 36px;
+  padding: 0;
+  justify-self: stretch;
+  text-align: center;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
