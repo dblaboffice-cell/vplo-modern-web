@@ -2712,17 +2712,20 @@ th {
 }
 
 .school-values-building .value-top {
-  grid-area: top-card;
+  /*noinspection CssInvalidPropertyValue*/
+  grid-area: top;
   width: min(100%, 760px);
   justify-self: center;
 }
 
 .school-values-building .value-left {
-  grid-area: left-card;
+  /*noinspection CssInvalidPropertyValue*/
+  grid-area: left;
 }
 
 .school-values-building .value-right {
-  grid-area: right-card;
+  /*noinspection CssInvalidPropertyValue*/
+  grid-area: right;
 }
 
 .school-values-building .school-value-card {
