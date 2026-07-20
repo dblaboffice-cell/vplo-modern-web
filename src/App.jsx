@@ -591,11 +591,8 @@ const pageContent = {
   },
   '/edukacja/sesje-naukowe': {
     title: 'Sesje naukowe',
-    lead: 'Miejsce na prezentację tradycji szkolnych konferencji i aktywności akademickiej uczniów.',
-    body: [
-      'Sekcja może zawierać archiwum sesji, zdjęcia, tematy wystąpień i krótkie opisy projektów uczniów.',
-      'To dobry element odróżniający szkołę od standardowych liceów.',
-    ],
+    lead: 'Szkolna tradycja i aktywność akademicka uczniów.',
+    body: [],
     highlights: ['Archiwum wydarzeń', 'Prestiż', 'Rozwój naukowy'],
   },
   '/edukacja/akademia-filmowa': {
@@ -1602,6 +1599,8 @@ function StandardPage({ page }) {
     : page.body;
   const culturalEducationPage =
       page.title === 'Edukacja kulturalna';
+  const scientificSessionsPage =
+      page.title === 'Sesje naukowe';
 
   const studentsIndex = culturalEducationPage
       ? articleBlocks.findIndex(
@@ -1657,6 +1656,7 @@ function StandardPage({ page }) {
               page.variant === 'cultural-education'
                   ? 'cultural-education-content'
                   : '',
+              scientificSessionsPage ? 'scientific-sessions-page' : '',
             ]
                 .filter(Boolean)
                 .join(' ')}
@@ -1756,22 +1756,132 @@ function StandardPage({ page }) {
           ) : (
               <>
 
-          {articleBlocks.map((paragraph, index) => (
-            articlePage && paragraph.startsWith('Sancta Jadwiga') ? (
-              <blockquote className="article-quote" key={index}>{paragraph}</blockquote>
-            ) : articlePage && paragraph.includes('prof. dr hab. inż. Jerzy Białkiewicz') ? (
-              <p className="article-author" key={index}>{paragraph}</p>
-            ) : articlePage && page.imageCaption && paragraph.startsWith(page.imageCaption) ? (
-              <figure className="article-figure" key={index}>
-                <img src={jadwigaPaintingSrc} alt="Królowa Jadwiga według Marcella Bacciarellego" />
-                <figcaption>{paragraph}</figcaption>
-              </figure>
-            ) : articlePage && page.firstBlockHeading && index === 0 ? (
-              <h2 className="article-section-title" key={index}>{paragraph}</h2>
-            ) : (
-              <p className={articlePage ? 'article-text' : ''} key={index}>{paragraph}</p>
-            )
-          ))}
+                {scientificSessionsPage ? (
+                    <div className="scientific-sessions-content">
+
+                      <p className="scientific-sessions-lead">
+                        Wizytówkę naszego liceum stanowią <strong>Sesje Naukowe Uczniów</strong>,
+                        które regularnie odbywają się przed zamknięciem każdego z semestrów.
+                        W trybie konferencyjnym uczniowie prezentują w czasie Sesji prace wykonane
+                        pod kierunkiem wybranych przez siebie profesorów.
+                      </p>
+
+                      <p>
+                        Tematy prac są formułowane przez profesorów przy współudziale uczniów pod
+                        kątem zainteresowań i uzdolnień uczniów. Jedynym, niepodważalnym kryterium
+                        tematyki jest poszerzanie, wykraczanie poza treści programowe objęte
+                        obowiązkowym programem licealnym.
+                      </p>
+
+                      <p>
+                        Uczeń może zdecydować o wyborze języka referatu poza językiem polskim
+                        z puli języków obcych prowadzonych w naszym liceum. W przypadku wyboru
+                        języka obcego opiekun przedmiotowy jest uzupełniany przez nauczyciela
+                        języka obcego, który sprawuje nadzór nad poprawnością językową wystąpienia
+                        ucznia.
+                      </p>
+
+                      <div className="scientific-sessions-highlight">
+                        <p>
+                          Tradycja Sesji Naukowej sięga <strong>1992 roku</strong> i ma obecnie
+                          imponujący dorobek. Oprócz wypełniania misji szkoły w edukacji kulturalnej
+                          uczniów przywiązujemy poprzez Sesje Naukowe szczególną wagę do:
+                        </p>
+
+                        <ul className="scientific-sessions-list">
+                          <li>
+                            mobilizowania uczniów do rozwijania własnych zainteresowań, uzdolnień,
+                            kreowania i podążania indywidualnymi ścieżkami rozwoju,
+                          </li>
+
+                          <li>
+                            nabywania umiejętności do publicznych wystąpień,
+                          </li>
+
+                          <li>
+                            posługiwania się środkami multimedialnymi,
+                          </li>
+
+                          <li>
+                            zastosowania modelowej sekwencji referatu opracowanego zgodnie
+                            z przyjętymi standardami w prestiżowych środowiskach naukowych
+                            prezentacji - dostępnego na stronie internetowej liceum,
+                          </li>
+
+                          <li>
+                            umocnienia poczucia własnej wartości z wiodącymi jej atrybutami -
+                            <strong> potrafię</strong> (opracować własny temat, dokonać analiz,
+                            współpracować w opracowaniu z profesorem, opiekunem) oraz
+                            <strong> zasługuję</strong> (na podzielenie się własnymi osiągnięciami
+                            na forum szkolnym z udziałem zaproszonych gości, na dobrą ocenę
+                            wystąpienia, uznanie).
+                          </li>
+                        </ul>
+                      </div>
+
+                      <p>
+                        Sesje Naukowe chronologicznie znacznie wyprzedziły obowiązującą obecnie
+                        formę maturalnego egzaminu ustnego z języka polskiego - jak gdyby
+                        ustawodawca podążał za wskazaniami naszej koncepcji kształcenia, niestety
+                        w bardzo okrojonej formie.
+                      </p>
+
+                      <p>
+                        Uczniowie nasi, w przypadku takich zainteresowań, mogą do wystąpienia
+                        sesyjnego wybrać temat z języka polskiego już po pierwszym semestrze nauki
+                        w liceum, natomiast obligatoryjnie w pierwszym semestrze klasy maturalnej.
+                        Wszyscy są znakomicie przygotowani do prezentacji podejmowanego tematu po
+                        wypełnieniu jedynie merytorycznie poprawną treścią kanonu uniwersalnego,
+                        bez braków i niedomówień.
+                      </p>
+
+                      <p>
+                        Stąd, pierwsze praktyczne zastosowanie umiejętności kształconych w czasie
+                        Sesji Naukowych skutkuje znakomitymi wynikami ustnych egzaminów maturalnych
+                        z języka polskiego. Oczywiście, jak we wszystkich aspektach aktywności
+                        osoby ludzkiej niezbędna jest jedynie dobra wola ucznia i dbałość o własne
+                        korzyści.
+                      </p>
+
+                      <p className="scientific-sessions-summary">
+                        Inne praktyczne skutki aktywnego udziału w Sesjach Naukowych absolwenci
+                        liceum będą doświadczać w przyszłym życiu studenckim i zawodowym, czego
+                        dowodzą kontakty z naszymi wychowankami.
+                      </p>
+
+                    </div>
+                ) : (
+                    articleBlocks.map((paragraph, index) => (
+                        articlePage && paragraph.startsWith('Sancta Jadwiga') ? (
+                            <blockquote className="article-quote" key={index}>
+                              {paragraph}
+                            </blockquote>
+                        ) : articlePage &&
+                        paragraph.includes('prof. dr hab. inż. Jerzy Białkiewicz') ? (
+                            <p className="article-author" key={index}>
+                              {paragraph}
+                            </p>
+                        ) : articlePage &&
+                        page.imageCaption &&
+                        paragraph.startsWith(page.imageCaption) ? (
+                            <figure className="article-figure" key={index}>
+                              <img
+                                  src={jadwigaPaintingSrc}
+                                  alt="Królowa Jadwiga według Marcella Bacciarellego"
+                              />
+                              <figcaption>{paragraph}</figcaption>
+                            </figure>
+                        ) : articlePage && page.firstBlockHeading && index === 0 ? (
+                            <h2 className="article-section-title" key={index}>
+                              {paragraph}
+                            </h2>
+                        ) : (
+                            <p className={articlePage ? 'article-text' : ''} key={index}>
+                              {paragraph}
+                            </p>
+                        )
+                    ))
+                )}
 
                 {page.educationSections?.map((section, sectionIndex) => (
                     <section
