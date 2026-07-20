@@ -3054,6 +3054,25 @@ th {
   text-align: left;
 }
 
+.popup-individual {
+  top: 24%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.popup-passion {
+  top: 51%;
+  left: 2.5%;
+  transform: none;
+}
+
+.popup-quality {
+  top: 51%;
+  right: 2.5%;
+  left: auto;
+  transform: none;
+}
+
 .school-value-popup h3 {
   margin: 0 0 10px;
   color: #1b2f59;
@@ -3098,20 +3117,25 @@ th {
 
 /* Pozycje okienek z opisem */
 
+/* Tabelki pojawiające się pod napisami znajdującymi się na grafice */
+
 .popup-individual {
-  bottom: calc(100% + 14px);
+  top: 24%;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .popup-passion {
-  bottom: calc(100% + 14px);
-  right: calc(100% - 12px);
+  top: 51%;
+  left: 2.5%;
+  transform: none;
 }
 
 .popup-quality {
-  bottom: calc(100% + 14px);
-  left: calc(100% - 12px);
+  top: 51%;
+  right: 2.5%;
+  left: auto;
+  transform: none;
 }
 
 .school-values-building > .hero-contact-grid {
@@ -3138,14 +3162,9 @@ th {
     border-radius: 18px;
   }
 
-  .school-value-hotspot-dot {
-    width: 18px;
-    height: 18px;
-  }
-
   .school-value-popup {
-    width: min(260px, 78vw);
-    padding: 15px 14px;
+    width: min(230px, 76vw);
+    padding: 13px 12px;
     border-radius: 14px;
   }
 
@@ -3159,26 +3178,26 @@ th {
   }
 
   .popup-individual {
-    bottom: calc(100% + 10px);
+    top: 24%;
+    bottom: auto;
     left: 50%;
+    right: auto;
     transform: translateX(-50%);
   }
 
   .popup-passion {
-    bottom: calc(100% + 10px);
-    left: 0;
+    top: 51%;
+    bottom: auto;
+    left: 2%;
     right: auto;
     transform: none;
   }
 
   .popup-quality {
-    bottom: calc(100% + 10px);
-    right: 0;
+    top: 51%;
+    bottom: auto;
     left: auto;
+    right: 2%;
     transform: none;
-  }
-
-  .school-values-building > .hero-contact-grid {
-    margin-top: 14px;
   }
 }
