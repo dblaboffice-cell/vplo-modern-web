@@ -1294,16 +1294,6 @@ th {
     gap: 20px;
   }
 
-  .article-layout-with-timeline {
-    grid-template-columns: 1fr;
-  }
-
-  .article-timeline {
-    position: static;
-    width: min(100%, 440px);
-    margin: 0 auto;
-  }
-
   .hero-building-card {
     margin-top: 10px;
     max-width: none;
@@ -1780,6 +1770,23 @@ th {
 }
 
 @media (max-width: 640px) {
+  .article-layout-with-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .article-layout-with-timeline > .article-timeline {
+    order: 1;
+    position: static;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto 24px;
+  }
+
+  .article-layout-with-timeline > .page-main-card {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
   .brand-badge {
     width: 64px;
     height: 64px;
@@ -3200,4 +3207,24 @@ th {
     right: 2%;
     transform: none;
   }
+}
+.article-layout.article-layout-with-timeline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 400px);
+  gap: 28px;
+  align-items: start;
+}
+
+.article-layout.article-layout-with-timeline > .page-main-card {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.article-layout.article-layout-with-timeline > .article-timeline {
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  margin: 0;
+  align-self: start;
 }

@@ -1638,11 +1638,14 @@ function StandardPage({ page }) {
       </div>
 
       <div
-          className={`${articlePage ? 'article-layout' : 'page-layout'} ${
-              page.textbookCards ? 'textbooks-page-layout' : ''
-          } ${
-              page.galleryCategories ? 'gallery-page-layout' : ''
-          }`}
+          className={[
+            articlePage ? 'article-layout' : 'page-layout',
+            page.timelineImage ? 'article-layout-with-timeline' : '',
+            page.textbookCards ? 'textbooks-page-layout' : '',
+            page.galleryCategories ? 'gallery-page-layout' : '',
+          ]
+              .filter(Boolean)
+              .join(' ')}
       >
 
         <article
