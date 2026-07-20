@@ -2624,6 +2624,15 @@ th {
     text-align: center;
   }
 }
+@media (max-width: 620px) {
+  .home-updates-strip {
+    padding-bottom: 6px;
+  }
+
+  .home-updates-strip + main .hero {
+    padding-top: 10px;
+  }
+}
 
 .home-updates-strip {
   padding: 10px 0 12px;
@@ -2758,11 +2767,6 @@ th {
   position: relative;
   padding: 30px 24px 40px;
   overflow: visible;
-  background: linear-gradient(
-          145deg,
-          rgba(244, 247, 252, 0.98),
-          rgba(255, 252, 239, 0.94)
-  );
 }
 
 .school-values-building .school-values-intro {
@@ -3080,7 +3084,7 @@ th {
 /* Sekcja wartości szkoły - grafika interaktywna */
 
 .school-values-section.school-values-building {
-  padding: 26px 0 20px;
+  padding: 0 0 20px;
 }
 
 .school-values-section > .school-values-eyebrow {
@@ -3256,6 +3260,17 @@ th {
 
   .school-values-section > .school-values-eyebrow {
     margin-bottom: 18px;
+  }
+
+  .school-values-building .school-values-eyebrow {
+    width: 100% !important;
+    margin: 0 auto !important;
+    border-radius: 15px 15px 0 0 !important;
+  }
+
+  .school-values-building .school-values-graphic,
+  .school-values-building .school-values-image {
+    border-radius: 0 0 16px 16px !important;
   }
 
   .school-values-image {
@@ -3499,4 +3514,121 @@ th {
   .scientific-sessions-content .scientific-sessions-summary {
     padding: 20px;
   }
+}
+
+.hero-list-link {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  transition:
+          color 0.2s ease,
+          transform 0.2s ease;
+}
+
+.hero-list-link:hover,
+.hero-list-link:focus-visible {
+  color: #a87500;
+  transform: translateX(4px);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Nagłówek połączony bezpośrednio z górną częścią grafiki */
+
+.school-values-building .school-values-eyebrow {
+  position: relative;
+  z-index: 5;
+  display: block;
+  width: min(100%, 1180px);
+  max-width: none;
+  box-sizing: border-box;
+
+  margin: 0 auto -1px !important;
+  padding: 11px 28px !important;
+
+  color: #a87500 !important;
+  background: #fffdf8 !important;
+  border: 1.5px solid #d6a83d !important;
+  border-bottom: none !important;
+  border-radius: 20px 20px 0 0 !important;
+  box-shadow: none !important;
+
+  text-align: center;
+  line-height: 1.4;
+}
+
+.school-values-building .school-values-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 28px;
+}
+
+/* Połączenie nagłówka bezpośrednio z grafiką wartości */
+
+.school-values-building .school-values-eyebrow {
+  width: min(100%, 1180px) !important;
+  max-width: none !important;
+  margin: 0 auto !important;
+  padding: 11px 28px !important;
+  box-sizing: border-box;
+
+  border: 1.5px solid #d6a83d !important;
+  border-bottom: none !important;
+  border-radius: 20px 20px 0 0 !important;
+}
+
+.school-values-building .school-values-graphic-wrapper {
+  width: min(100%, 1180px);
+  margin: 0 auto !important;
+  overflow: hidden;
+
+  border: 1.5px solid #d6a83d;
+  border-top: none;
+  border-radius: 0 0 28px 28px;
+  box-sizing: border-box;
+}
+
+.school-values-building .school-values-graphic {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0 0 26px 26px;
+}
+
+.school-values-building .school-values-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0 0 26px 26px !important;
+}
+
+/* Zmniejszenie odstępu pod paskiem Aktualności / Instagram / TikTok */
+
+.home-updates-strip {
+  margin-bottom: 0;
+  padding-bottom: 8px;
+}
+
+.home-updates-strip + main {
+  margin-top: 0;
+}
+
+.home-updates-strip + main .hero {
+  padding-top: 14px;
+}
+
+.home-updates-strip + main .hero-grid {
+  margin-top: 0;
+}
+
+/* Wyrównanie portretu królowej i grafiki wartości od góry */
+
+.hero-grid {
+  align-items: start;
+}
+
+.school-values-section.school-values-building {
+  margin-top: 0;
+  padding-top: 0;
 }

@@ -1181,11 +1181,38 @@ function HomePage() {
                 <p>Symbol mądrości, odpowiedzialności i edukacji opartej na wartościach.</p>
               </div>
             </div>
-            <div className="hero-card-top">Sekcje serwisu</div>
+            <div className="hero-card-top">Sekcje strony</div>
             <ul className="hero-list">
-              {menu.map((item) => (
-                <li key={item.label}>{item.label}</li>
-              ))}
+              {menu.map((item) => {
+                const target =
+                    item.path ??
+                    item.to ??
+                    item.href ??
+                    item.children?.[0]?.path ??
+                    item.children?.[0]?.to ??
+                    '/';
+
+                const isExternal = target.startsWith('http');
+
+                return (
+                    <li key={item.label}>
+                      {isExternal ? (
+                          <a
+                              href={target}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="hero-list-link"
+                          >
+                            {item.label}
+                          </a>
+                      ) : (
+                          <Link to={target} className="hero-list-link">
+                            {item.label}
+                          </Link>
+                      )}
+                    </li>
+                );
+              })}
             </ul>
           </div>
         </div>
