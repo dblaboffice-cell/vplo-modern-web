@@ -1041,7 +1041,35 @@ function MobileNavItem({ item, onNavigate }) {
   );
 }
 
+const schoolValuesData = [
+  {
+    id: 'individual',
+    title: 'Indywidualne podejście do ucznia',
+    text:
+        'Znamy mocne strony naszych uczniów i wiemy, z czym mierzą się na co dzień. Dzięki małym grupom i wsparciu tutorów dopasowujemy tempo oraz styl nauki do osobistych potrzeb i celów każdego ucznia.',
+    hotspotClass: 'hotspot-individual',
+    popupClass: 'popup-individual',
+  },
+  {
+    id: 'quality',
+    title: 'Wysoka jakość nauczania',
+    text:
+        'Wyniki matur powyżej średniej to nasza codzienność, ale nie jedyny cel. Uczymy krytycznego myślenia, logicznego wyciągania wniosków oraz praktycznego wykorzystania wiedzy, która otwiera drzwi na najlepsze uczelnie.',
+    hotspotClass: 'hotspot-quality',
+    popupClass: 'popup-quality',
+  },
+  {
+    id: 'passion',
+    title: 'Kadra z pasją',
+    text:
+        'Nasi nauczyciele to mentorzy, którzy zarażają miłością do swoich przedmiotów. To eksperci, którzy nie tylko świetnie tłumaczą trudne zagadnienia, ale też wspierają uczniów po lekcjach, prowadzą koła naukowe i zawsze mają czas na rozmowę.',
+    hotspotClass: 'hotspot-passion',
+    popupClass: 'popup-passion',
+  },
+];
+
 function HomePage() {
+  const [activeValue, setActiveValue] = useState(null);
   return (
     <>
       <section className="hero">
@@ -1052,49 +1080,53 @@ function HomePage() {
               Wysokie cele, ludzkie podejście, nauczyciele z pasją.
               </span>
 
-              <div className="school-values-grid">
-                <div className="school-value-card value-left">
-                  <h3>Indywidualne podejście</h3>
-
-                  <p>
-                    Znamy mocne strony naszych uczniów
-                    i wiemy, z czym mierzą się na co dzień. Dzięki małym grupom
-                    i wsparciu tutorów dopasowujemy tempo oraz styl nauki do
-                    osobistych potrzeb i celów każdego ucznia.
-                  </p>
-                </div>
-
-                <div className="school-value-card value-top">
-                  <h3>Wysoka jakość nauczania</h3>
-
-                  <p>
-                    Wyniki matur powyżej średniej to nasza
-                    codzienność, ale nie jedyny cel. Uczymy krytycznego myślenia,
-                    logicznego wyciągania wniosków i praktycznego wykorzystania wiedzy,
-                    która otwiera drzwi na najlepsze uczelnie.
-                  </p>
-                </div>
-
-                <figure className="school-building-photo">
+              <div className="school-values-graphic-wrapper">
+                <div className="school-values-graphic">
                   <img
-                      src={`${import.meta.env.BASE_URL}siedziba-vplo.jpg`}
-                      alt="Siedziba V Prywatnego Liceum Ogólnokształcącego w Krakowie"
+                      src={`${import.meta.env.BASE_URL}wartosci-szkoly-vplo.png`}
+                      alt="Wartości szkoły na tle siedziby liceum"
+                      className="school-values-image"
                   />
 
-                  <figcaption>Siedziba liceum</figcaption>
-                </figure>
+                  {schoolValuesData.map((value) => {
+                    const isActive = activeValue === value.id;
 
-                <div className="school-value-card value-right">
-                  <h3>Kadra z pasją</h3>
+                    return (
+                        <button
+                            key={value.id}
+                            type="button"
+                            className={`school-value-hotspot ${value.hotspotClass}`}
+                            onMouseEnter={() => setActiveValue(value.id)}
+                            onMouseLeave={() =>
+                                setActiveValue((current) =>
+                                    current === value.id ? null : current
+                                )
+                            }
+                            onClick={() =>
+                                setActiveValue((current) =>
+                                    current === value.id ? null : value.id
+                                )
+                            }
+                            aria-expanded={isActive}
+                            aria-label={`Pokaż opis: ${value.title}`}
+                        />
+                    );
+                  })}
 
-                  <p>
-                    Nasi nauczyciele to mentorzy, którzy zarażają miłością do swoich
-                    przedmiotów. To eksperci, którzy nie tylko świetnie tłumaczą trudne
-                    zagadnienia, ale też wspierają uczniów po lekcjach, prowadzą koła naukowe
-                    i zawsze mają czas na rozmowę.
-                  </p>
+                  {schoolValuesData.map((value) =>
+                      activeValue === value.id ? (
+                          <div
+                              key={`popup-${value.id}`}
+                              className={`school-value-popup ${value.popupClass}`}
+                          >
+                            <h3>{value.title}</h3>
+                            <p>{value.text}</p>
+                          </div>
+                      ) : null
+                  )}
                 </div>
               </div>
+
               <div className="hero-contact-grid">
                 <a
                     href={schoolMapUrl}
