@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import DlaczegoDoNas from './pages/rekrutacja/DlaczegoDoNas';
 import WymaganeDokumenty from './pages/rekrutacja/WymaganeDokumenty';
+import KandydaciSportowcy from './pages/rekrutacja/KandydaciSportowcy';
 
 const school = {
   name: 'V Prywatne Liceum Ogólnokształcące w Krakowie im. Królowej Jadwigi',
@@ -470,24 +471,7 @@ const pageContent = {
     ],
     highlights: ['Widoczność ważnych dokumentów', 'Data aktualizacji', 'Pobieranie plików'],
   },
-  '/rekrutacja/kandydaci-sportowcy': {
-    title: 'Kandydaci sportowcy',
-    lead: 'Dedykowana sekcja dla uczniów łączących naukę z rozwojem sportowym.',
-    body: [
-      'Doświadczenia naszego liceum upoważniają do stwierdzenia, że naukę na najwyższym poziomie potrafimy łączyć z wyczynowym uprawianiem sportu przez uczniów, którzy czynnie uczestniczą w profesjonalnych zajęciach treningowych i zawodach, i to w każdej z dyscyplin sportowych.\n' +
-      '\n',
-      'Nasi uczniowie, a także absolwenci, odnosili bądź nadal odnoszą sukcesy w każdej skali: lokalnej, ogólnopolskiej, międzynarodowej, m. in. w: Formule 1, WRC (Robert Kubica), sportach motorowych,  wyścigach samochodowych i gokartowych, rajdach samochodowych, tenisie, snowboardzie, pływaniu, piłce nożnej.',
-      'Praktycznie, żadna z dyscyplin sportowych nie stoi w sprzeczności z naszą koncepcją kształcenia.  O sukces końcowy dbamy w rzetelnym porozumieniu z uczniami, czynnymi sportowcami.\n' +
-      '\n',
-      'Program nauczania licealnego jest realizowany w korelacji z harmonogramem zajęć sportowych – wyjazdów, zgrupowań, treningów, udziału w zawodach. Funkcję koordynatora pełni wychowawca klasy pozostający w stałym kontakcie telefonicznym, mailowym z uczniem – sportowcem.  W płaszczyźnie tego kontaktu wykorzystywane są wszystkie formy dydaktyczne distance learning, które w przyjaznej, indywidualnej formie wypełniają czas wolny od zajęć sportowych na wyjazdach, poza szkołą.\n' +
-      '\n',
-      'W konkluzji – uczniowie czynnie uprawiający sport mogą liczyć na nasze wsparcie w osiąganiu sukcesu sportowego bez zarzucania dbałości o własny rozwój edukacyjny. Wiemy jak te dwa cele osiągnąć, stąd tutaj nasze oddzielne zaproszenie.\n' +
-      '\n',
-      'Projekt przewiduje miejsce na opis elastycznej organizacji nauki, współpracy z trenerami oraz zasad indywidualizacji procesu edukacyjnego.',
-      'To jedna z ważniejszych zakładek wizerunkowych dla szkoły i warto ją mocno wyróżnić.',
-    ],
-    highlights: ['Elastyczność', 'Wsparcie dla sportowców', 'Czytelna komunikacja'],
-  },
+
   '/rekrutacja/absolwenci-i-uczniowie-o-nas': {
     title: 'Refleksje absolwentów',
     lead: 'W relacjach uczniów i absolwentów liceum przedstawiane jest jako instytucja, która w znaczący sposób wpływa na ich rozwój intelektualny i społeczny.',
@@ -838,6 +822,12 @@ function App() {
               path="/rekrutacja/wymagane-dokumenty"
               element={<WymaganeDokumenty />}
           />
+
+          <Route
+              path="/rekrutacja/kandydaci-sportowcy"
+              element={<KandydaciSportowcy />}
+          />
+
           <Route path="/aktualnosci" element={<NewsPage />} />
 
           <Route
