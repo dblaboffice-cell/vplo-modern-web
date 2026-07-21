@@ -581,13 +581,15 @@ const pageContent = {
   },
   '/edukacja/grupy-klasowe': {
     title: 'Grupy klasowe',
-    lead: 'Sekcja o kameralnych klasach i organizacji pracy w mniejszych zespołach.',
+    lead: 'Organizacja grup w liceum',
     body: [
       'Liczebność klas w naszym liceum jest statutowo ograniczona do 24 uczniów, jednak w praktyce zespoły klasowe mają obecnie charakter kameralny i liczą zaledwie kilkanaście osób. W przypadku lektoratów z języka angielskiego, niemieckiego i hiszpańskiego oraz zajęć warsztatowych grupy są jeszcze mniejsze — często kilkuosobowe — tworzące warunki zbliżone do pracy indywidualnej.\n',
       '\n' +
       'Tak zorganizowane środowisko nauki sprzyja bliskiemu kontaktowi ucznia z profesorem, tworząc przestrzeń do bezpośredniego dialogu, aktywnego udziału w zajęciach oraz szybszego przyswajania treści programowych. Kameralne grupy i indywidualne podejście stanowią jeden z kluczowych wyróżników naszej szkoły, realnie wpływając na jakość i efektywność kształcenia.',
     ],
-    highlights: ['Kameralne klasy', 'Infografiki', 'Mocny argument rekrutacyjny'],
+    timelineImage: `${import.meta.env.BASE_URL}grupy-klasowe-infografika.png`,
+    timelineAlt: 'Infografika przedstawiająca organizację grup klasowych w liceum',
+    highlights: [],
   },
   '/edukacja/sesje-naukowe': {
     title: 'Sesje naukowe',
@@ -1628,6 +1630,8 @@ function StandardPage({ page }) {
       page.title === 'Edukacja kulturalna';
   const scientificSessionsPage =
       page.title === 'Sesje naukowe';
+  const classGroupsPage =
+      page.title?.trim().toLowerCase() === 'grupy klasowe';
 
   const studentsIndex = culturalEducationPage
       ? articleBlocks.findIndex(
@@ -1877,6 +1881,29 @@ function StandardPage({ page }) {
                       </p>
 
                     </div>
+                ) : classGroupsPage ? (
+                    <div className="class-groups-content">
+                      {articleBlocks[0] && (
+                          <p className="class-groups-lead">
+                            {articleBlocks[0]}
+                          </p>
+                      )}
+
+                      {articleBlocks[1] && (
+                          <div className="class-groups-highlight">
+                            <p>{articleBlocks[1]}</p>
+                          </div>
+                      )}
+
+                      {articleBlocks.slice(2).map((paragraph, index) => (
+                          <p
+                              className="class-groups-text"
+                              key={`class-groups-${index}`}
+                          >
+                            {paragraph}
+                          </p>
+                      ))}
+                    </div>
                 ) : (
                     articleBlocks.map((paragraph, index) => (
                         articlePage && paragraph.startsWith('Sancta Jadwiga') ? (
@@ -2103,7 +2130,7 @@ function StandardPage({ page }) {
                 />
 
                 <span className="timeline-zoom-hint">
-        Kliknij, aby powiększyć
+        Powiększenie
       </span>
               </button>
             </aside>
