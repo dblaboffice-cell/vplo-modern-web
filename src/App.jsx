@@ -142,7 +142,19 @@ const menu = [
         items: [
           {
             label: 'Matura',
-            path: '/matura',
+            path: '/uczen/matura',
+          },
+          {
+            label: 'Okręgowa Komisja Egzaminacyjna w Krakowie',
+            href: 'https://www.oke.krakow.pl/inf/',
+            external: true,
+            badge: 'OKE ',
+          },
+          {
+            label: 'Centralna Komisja Egzaminacyjna',
+            href: 'https://cke.gov.pl/',
+            external: true,
+            badge: 'CKE ',
           },
         ],
       },
@@ -987,11 +999,44 @@ function DesktopNavItem({ item }) {
           {item.children.map((group) => (
             <div key={group.group} className="dropdown-group">
               <div className="dropdown-title">{group.group}</div>
-              {group.items.map((sub) => (
-                <NavLink key={sub.path} to={sub.path} className="dropdown-link">
-                  {sub.label}
-                </NavLink>
-              ))}
+              {group.items.map((sub) => {
+                const isExternal =
+                    sub.external || sub.href?.startsWith('http');
+
+                const target = sub.href ?? sub.path;
+
+                return isExternal ? (
+                    <a
+                        key={sub.label}
+                        href={target}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="dropdown-link exam-external-link"
+                    >
+                      {sub.badge && (
+                          <span className="exam-link-badge">
+          {sub.badge}
+        </span>
+                      )}
+
+                      <span className="exam-link-label">
+        {sub.label}
+      </span>
+
+                      <span className="exam-link-arrow" aria-hidden="true">
+        ↗
+      </span>
+                    </a>
+                ) : (
+                    <NavLink
+                        key={sub.path}
+                        to={sub.path}
+                        className="dropdown-link"
+                    >
+                      {sub.label}
+                    </NavLink>
+                );
+              })}
             </div>
           ))}
         </div>
@@ -1027,11 +1072,46 @@ function MobileNavItem({ item, onNavigate }) {
           {item.children.map((group) => (
             <div key={group.group} className="mobile-group">
               <div className="mobile-group-title">{group.group}</div>
-              {group.items.map((sub) => (
-                <NavLink key={sub.path} to={sub.path} className="mobile-sublink" onClick={onNavigate}>
-                  {sub.label}
-                </NavLink>
-              ))}
+              {group.items.map((sub) => {
+                const isExternal =
+                    sub.external || sub.href?.startsWith('http');
+
+                const target = sub.href ?? sub.path;
+
+                return isExternal ? (
+                    <a
+                        key={sub.href ?? sub.label}
+                        href={target}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mobile-sublink exam-external-link exam-external-link-mobile"
+                        onClick={onNavigate}
+                    >
+                      {sub.badge && (
+                          <span className="exam-link-badge">
+          {sub.badge}
+        </span>
+                      )}
+
+                      <span className="exam-link-label">
+        {sub.label}
+      </span>
+
+                      <span className="exam-link-arrow" aria-hidden="true">
+        ↗
+      </span>
+                    </a>
+                ) : (
+                    <NavLink
+                        key={sub.path}
+                        to={sub.path}
+                        className="mobile-sublink"
+                        onClick={onNavigate}
+                    >
+                      {sub.label}
+                    </NavLink>
+                );
+              })}
             </div>
           ))}
         </div>
