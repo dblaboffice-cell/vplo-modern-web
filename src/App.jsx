@@ -17,6 +17,7 @@ import {
   X,
 } from 'lucide-react';
 import DlaczegoDoNas from './pages/rekrutacja/DlaczegoDoNas';
+import WymaganeDokumenty from './pages/rekrutacja/WymaganeDokumenty';
 
 const school = {
   name: 'V Prywatne Liceum Ogólnokształcące w Krakowie im. Królowej Jadwigi',
@@ -469,22 +470,6 @@ const pageContent = {
     ],
     highlights: ['Widoczność ważnych dokumentów', 'Data aktualizacji', 'Pobieranie plików'],
   },
-  '/rekrutacja/wymagane-dokumenty': {
-    title: 'Wymagane dokumenty',
-    lead: 'Przejrzysta lista formalności potrzebnych kandydatom.',
-    body: [
-      'Kandydaci ubiegający się o przyjęcie do klasy pierwszej w V Prywatnym Liceum Ogólnokształcącym dostarczają:',
-      'podanie do Dyrektora liceum,\n',
-      'w oryginale świadectwo ukończenia klasy VII szkoły podstawowej\n',
-      'wyciąg z ocen semestru zimowego klasy VIII szkoły podstawowej,\n',
-      'dwa zdjęcia w formacie legitymacyjnym. ',
-      'a dodatkowo w czerwcu:\n',
-      'świadectwo ukończenia szkoły podstawowej\n',
-      'Przedstawiciel szkoły, po wcześniejszym ustaleniu terminu spotkania (osobiście lub telefonicznie), zaprasza kandydatów na rozmowę kwalifikacyjną. Rekrutacja prowadzona jest do momentu wyczerpania limitu miejsc, a każdy etap naboru odzwierciedla indywidualne podejście naszej szkoły do przyszłych uczniów.',
-
-    ],
-    highlights: ['Lista dokumentów', 'Kroki rekrutacji', 'Przyjazny układ mobilny'],
-  },
   '/rekrutacja/kandydaci-sportowcy': {
     title: 'Kandydaci sportowcy',
     lead: 'Dedykowana sekcja dla uczniów łączących naukę z rozwojem sportowym.',
@@ -849,6 +834,10 @@ function App() {
               element={<DlaczegoDoNas />}
           />
 
+          <Route
+              path="/rekrutacja/wymagane-dokumenty"
+              element={<WymaganeDokumenty />}
+          />
           <Route path="/aktualnosci" element={<NewsPage />} />
 
           <Route

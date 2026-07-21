@@ -3794,3 +3794,173 @@ th {
     font-size: 0.88rem;
   }
 }
+
+/* =====================================================
+   REKRUTACJA – DLACZEGO DO NAS
+   ===================================================== */
+
+.recruitment-page .article-section-title {
+  margin-top: 34px;
+  margin-bottom: 18px;
+
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--accent-strong);
+}
+
+.recruitment-reasons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0 0 38px;
+  padding: 0;
+  list-style: none;
+}
+
+.recruitment-reasons li {
+  position: relative;
+  min-height: 100%;
+  padding: 17px 18px 17px 52px;
+  border: 1px solid rgba(151, 112, 25, 0.3);
+  border-radius: 16px;
+  background:
+          linear-gradient(
+                  135deg,
+                  rgba(81, 108, 157, 0.07),
+                  rgba(212, 167, 51, 0.12)
+          );
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  box-shadow: 0 8px 20px rgba(27, 47, 89, 0.07);
+}
+
+.recruitment-reasons li::before {
+  content: "✓";
+  position: absolute;
+  top: 16px;
+  left: 17px;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent-strong);
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+@media (max-width: 850px) {
+  .recruitment-page .article-header-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .recruitment-reasons {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .recruitment-reasons li {
+    padding: 15px 15px 15px 48px;
+  }
+
+  .recruitment-page .page-header .recruitment-intro-card {
+    padding: 15px 16px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+.recruitment-page .page-header .recruitment-intro-card {
+  margin: 22px 0 0;
+  padding: 17px 20px;
+
+  border: 1px solid rgba(151, 112, 25, 0.3);
+  border-radius: 16px;
+
+  background:
+          linear-gradient(
+                  135deg,
+                  rgba(81, 108, 157, 0.07),
+                  rgba(212, 167, 51, 0.12)
+          );
+
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.65;
+  text-align: left;
+
+  box-shadow: 0 8px 20px rgba(27, 47, 89, 0.07);
+}
+
+/* =====================================================
+   WYMAGANE DOKUMENTY – DODATKOWE RAMKI
+   ===================================================== */
+
+.documents-june-card,
+.documents-note {
+  margin-top: 28px;
+  padding: 22px 24px;
+
+  border: 1px solid rgba(196, 151, 48, 0.38);
+  border-radius: 16px;
+
+  background:
+          linear-gradient(
+                  135deg,
+                  rgba(255, 250, 238, 0.95),
+                  rgba(245, 238, 216, 0.72)
+          );
+
+  box-shadow: 0 8px 22px rgba(26, 52, 99, 0.08);
+}
+
+/* Złote wyróżnienie: Dodatkowo w czerwcu */
+.documents-june-card {
+  border-left: 5px solid #c59a32;
+}
+
+/* Niebieskie wyróżnienie: Rozmowa kwalifikacyjna */
+.documents-note {
+  border-left: 5px solid #234781;
+}
+
+/* Nagłówki w ramkach */
+.documents-june-card h2,
+.documents-note h2 {
+  margin: 0 0 10px;
+  color: #102e63;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+/* Tekst w ramkach */
+.documents-june-card p,
+.documents-note p {
+  margin: 0;
+  color: #334b73;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* Telefon */
+@media (max-width: 600px) {
+  .documents-june-card,
+  .documents-note {
+    margin-top: 22px;
+    padding: 18px 17px;
+  }
+
+  .documents-june-card h2,
+  .documents-note h2 {
+    font-size: 1.1rem;
+  }
+}
