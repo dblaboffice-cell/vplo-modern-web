@@ -1,0 +1,165 @@
+.school-year-page {
+    display: grid;
+    gap: 28px;
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 10px 0 40px;
+}
+
+.school-year-header {
+    padding: 4px;
+}
+
+.school-year-eyebrow {
+    display: inline-block;
+    margin-bottom: 9px;
+    color: #b58a23;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.school-year-header h1 {
+    margin: 0;
+    color: #002b59;
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    line-height: 1.15;
+}
+
+.school-year-header p {
+    max-width: 720px;
+    margin: 12px 0 0;
+    color: #526071;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.school-year-card {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(22px, 4vw, 36px);
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 43, 89, 0.14);
+    border-top: 4px solid #c7a243;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0, 43, 89, 0.08);
+}
+
+.school-year-card h2 {
+    margin: 0 0 24px;
+    padding-bottom: 14px;
+    color: #002b59;
+    font-size: clamp(1.2rem, 2vw, 1.45rem);
+    line-height: 1.3;
+    border-bottom: 1px solid rgba(0, 43, 89, 0.13);
+}
+
+.semester-groups {
+    display: grid;
+    gap: 28px;
+}
+
+.semester-group h3 {
+    display: inline-block;
+    margin: 0 0 12px;
+    padding: 8px 15px;
+    color: #ffffff;
+    background-color: #002b59;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    letter-spacing: 0.03em;
+}
+
+.school-year-list {
+    display: grid;
+}
+
+.school-year-row {
+    display: grid;
+    grid-template-columns: minmax(230px, 1fr) minmax(260px, 1.25fr);
+    gap: 24px;
+    align-items: center;
+    min-height: 60px;
+    padding: 15px 5px;
+    border-bottom: 1px solid rgba(0, 43, 89, 0.1);
+}
+
+.school-year-row:last-child {
+    border-bottom: none;
+}
+
+.school-year-label {
+    color: #002b59;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.school-year-label small {
+    display: block;
+    margin-top: 3px;
+    color: #6a7480;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.school-year-date {
+    position: relative;
+    padding-left: 21px;
+    color: #263747;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.school-year-date::before {
+    position: absolute;
+    top: 0.6em;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background-color: #c7a243;
+    border-radius: 50%;
+    content: "";
+}
+
+@media (max-width: 720px) {
+    .school-year-page {
+        gap: 20px;
+        padding-bottom: 25px;
+    }
+
+    .school-year-card {
+        padding: 21px 17px;
+        border-radius: 14px;
+    }
+
+    .school-year-card h2 {
+        margin-bottom: 17px;
+    }
+
+    .school-year-row {
+        grid-template-columns: 1fr;
+        gap: 7px;
+        min-height: auto;
+        padding: 15px 2px;
+    }
+
+    .school-year-date {
+        padding-left: 18px;
+    }
+}
+
+@media (max-width: 420px) {
+    .school-year-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .school-year-card {
+        padding: 19px 14px;
+    }
+
+    .semester-group h3 {
+        padding: 7px 12px;
+    }
+}

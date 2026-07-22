@@ -4718,3 +4718,68 @@ th {
     text-align: left;
   }
 }
+
+/* Wspólny układ podstron sekcji Uczeń */
+.student-page {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 28px 36px 40px;
+  box-sizing: border-box;
+}
+
+.student-page > header {
+  margin-bottom: 24px;
+}
+
+.student-page > header h1 {
+  margin: 0;
+  color: #002b59;
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  line-height: 1.15;
+}
+
+.student-page > header p {
+  max-width: 760px;
+  margin: 12px 0 0;
+  color: #526071;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.student-page .table-card,
+.student-page .textbooks-layout {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Estetyczna karta na stronie Matura */
+.matura-content {
+  padding: 24px 28px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 43, 89, 0.14);
+  border-top: 4px solid #c7a243;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0, 43, 89, 0.08);
+}
+
+.matura-content p {
+  margin: 0;
+  color: #263747;
+  line-height: 1.7;
+}
+
+.matura-content p + p {
+  margin-top: 14px;
+}
+
+@media (max-width: 720px) {
+  .student-page {
+    padding: 22px 17px 30px;
+  }
+
+  .matura-content {
+    padding: 20px 17px;
+    border-radius: 14px;
+  }
+}

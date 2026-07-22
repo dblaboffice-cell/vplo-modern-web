@@ -21,6 +21,10 @@ import WymaganeDokumenty from './pages/rekrutacja/WymaganeDokumenty';
 import KandydaciSportowcy from './pages/rekrutacja/KandydaciSportowcy';
 import FormularzZgloszeniowy from './pages/rekrutacja/FormularzZgloszeniowy';
 import AbsolwenciONas from './pages/rekrutacja/AbsolwenciONas';
+import LekcjeIPrzerwy from './pages/uczen/LekcjeIPrzerwy';
+import Podreczniki from './pages/uczen/Podreczniki';
+import SchoolYearPage from './pages/uczen/SchoolYearPage';
+import Matura from './pages/uczen/Matura';
 
 const school = {
   name: 'V Prywatne Liceum Ogólnokształcące w Krakowie im. Królowej Jadwigi',
@@ -121,7 +125,7 @@ const menu = [
   },
   {
     label: 'Uczeń',
-    path: '/info/lekcje-i-przerwy',
+    path: '/uczen/lekcje-i-przerwy',
     icon: GraduationCap,
     children: [
       {
@@ -129,15 +133,15 @@ const menu = [
         items: [
           {
             label: 'Lekcje i przerwy',
-            path: '/info/lekcje-i-przerwy',
+            path: '/uczen/lekcje-i-przerwy',
           },
           {
             label: 'Podręczniki',
-            path: '/info/podreczniki',
+            path: '/uczen/podreczniki',
           },
           {
-            label: 'Rok szkolny 2025-2026',
-            path: '/info/rok-szkolny-2025-2026',
+            label: 'Rok szkolny',
+            path: '/uczen/rok-szkolny',
           },
         ],
       },
@@ -152,13 +156,13 @@ const menu = [
             label: 'Okręgowa Komisja Egzaminacyjna w Krakowie',
             href: 'https://www.oke.krakow.pl/inf/',
             external: true,
-            badge: 'OKE ',
+            badge: 'OKE',
           },
           {
             label: 'Centralna Komisja Egzaminacyjna',
             href: 'https://cke.gov.pl/',
             external: true,
-            badge: 'CKE ',
+            badge: 'CKE',
           },
         ],
       },
@@ -602,15 +606,7 @@ const pageContent = {
     ],
     highlights: ['Program rozwojowy', 'Wyróżnik szkoły', 'Sekcja do rozbudowy'],
   },
-  '/matura': {
-    title: 'Matura',
-    lead: 'Centralne miejsce dla uczniów klas maturalnych i rodziców.',
-    body: [
-      'Na tej stronie można zebrać harmonogram, procedury, komunikaty i linki do materiałów przygotowawczych.',
-      'W wersji docelowej warto dodać sekcję FAQ oraz dokumenty do pobrania.',
-    ],
-    highlights: ['Harmonogram', 'FAQ', 'Pliki do pobrania'],
-  },
+
   '/galeria': {
     title: 'Galeria',
     lead: 'Życie liceum utrwalone na zdjęciach',
@@ -633,102 +629,7 @@ const pageContent = {
       }
     ],
   },
-  '/info/lekcje-i-przerwy': {
-    title: 'Lekcje i przerwy',
-    lead: 'Czytelna tabela godzin lekcyjnych i długości przerw.',
-    body: [
-      'Czas nauki i regeneracji',
-      'Można dodać wersję do druku albo szybki zapis do PDF.',
-    ],
-    highlights: [],
-    showHighlights: false,
-  },
-  '/info/podreczniki': {
-    title: 'Podręczniki',
-    lead: 'Informacje dotyczące podręczników obowiązujących w bieżącym roku szkolnym.',
-    body: [
 
-      'Podręczniki do języków obcych i pozostałych przedmiotów zostaną podane na pierwszych zajęciach we wrześniu.Dobrym kierunkiem jest przygotowanie filtrowania według klasy, przedmiotu i roku szkolnego.',
-      'W projekcie przewidziano układ, który można łatwo zasilić danymi z pliku JSON lub arkusza.',
-    ],
-    highlights: [],
-    showHighlights: false,
-
-    textbookCards: [
-      {
-        title: 'Wykaz podręczników',
-        subtitle: 'Klasa 1',
-        subjects: [
-          {
-            name: 'Język polski',
-            books: [
-              'Dąbrowska D., Kapela-Bagińska B., Prylińska E., 2019. Sztuka wyrazu 1.1, 1.2. Podręcznik dla liceum i technikum. Zakresy podstawowy i rozszerzony. Gdańsk: Gdańskie Wydawnictwo Oświatowe.'
-            ]
-          },
-          {
-            name: 'Matematyka',
-            books: [
-              'Kurczab E., Kurczab M., Świda E., 2019. Podręcznik dla liceów i techników. Klasa 1. Zakres podstawowy. Warszawa: Oficyna Edukacyjna Krzysztof Pazdro.',
-              'Zbiór zadań dla klasy 1 wyżej wymienionego wydawnictwa.'
-            ]
-          },
-          {
-            name: 'Chemia — klasa 1/2',
-            levels: [
-              {
-                name: 'Zakres podstawowy',
-                books: [
-                  'Hassa R., Mrzigod A., Mrzigod J., 2019. To jest chemia 1. Chemia ogólna i nieorganiczna. Zakres podstawowy. Warszawa: Nowa Era.'
-                ]
-              },
-              {
-                name: 'Zakres rozszerzony',
-                books: [
-                  'Litwin M., Styka-Wlazło Sz., Szymońska J., 2019. To jest chemia 1. Chemia ogólna i nieorganiczna. Zakres rozszerzony. Warszawa: Nowa Era.',
-                  'Kaznowski K., Pazdro K., 2019. Chemia, część 1. Podręcznik do liceów i techników, zakres rozszerzony. Warszawa: Oficyna Edukacyjna Krzysztof Pazdro.'
-                ]
-              }
-            ]
-          },
-          {
-            name: 'Biologia',
-            levels: [
-              {
-                name: 'Zakres podstawowy',
-                books: [
-                  'Helmin A., Holaczek J., 2019. Biologia na czasie 1. Zakres podstawowy. Warszawa: Nowa Era.'
-                ]
-              },
-              {
-                name: 'Zakres rozszerzony',
-                books: [
-                  'Guzik M., Kozik R., Matuszewska R., 2019. Biologia na czasie 1. Zakres rozszerzony. Warszawa: Nowa Era.'
-                ]
-              }
-            ]
-          },
-          {
-            name: 'Język niemiecki',
-            note: 'Podręcznik i zeszyt ćwiczeń',
-            books: [
-              'Kryczyńska-Pham A., 2022. Effekt neu 1. Warszawa: WSiP.'
-            ]
-          }
-        ]
-      },
-      {
-        title: 'Języki obce',
-        text: 'Podręczniki do języków obcych zostaną wskazane przez nauczycieli po ustaleniu poziomu zaawansowania uczniów.'
-      },
-      {
-        title: 'Pozostałe przedmioty',
-        text: 'Informacje dotyczące podręczników do pozostałych przedmiotów będą aktualizowane zgodnie z zaleceniami nauczycieli.'
-      }
-    ],
-
-    textbookNote:
-        'Przed zakupem podręczników prosimy o sprawdzenie aktualnego wykazu opublikowanego przez szkołę.',
-  },
   '/info/rok-szkolny-2025-2026': {
     title: 'Rok szkolny 2025-2026',
     lead: 'Kalendarz roku szkolnego z podziałem na semestry, ferie i ważne terminy.',
@@ -762,18 +663,6 @@ const pageContent = {
     showHighlights: true,
   },
 };
-
-const lessons = [
-  ['1', '8:00 - 8:45', '5 min'],
-  ['2', '8:50 - 9:35', '10 min'],
-  ['3', '9:45 - 10:30', '10 min'],
-  ['4', '10:40 - 11:25', '10 min'],
-  ['5', '11:35 - 12:20', '25 min'],
-  ['6', '12:45 - 13:30', '10 min'],
-  ['7', '13:40 - 14:25', '10 min'],
-  ['8', '14:35 - 15:20', '5 min'],
-  ['9', '15:25 - 16:10',      '   -' ],
-];
 
 function App() {
   const location = useLocation();
@@ -815,6 +704,26 @@ function App() {
           <Route
               path="/rekrutacja/absolwenci-o-nas"
               element={<AbsolwenciONas />}
+          />
+
+          <Route
+              path="/uczen/lekcje-i-przerwy"
+              element={<LekcjeIPrzerwy />}
+          />
+
+          <Route
+              path="/uczen/podreczniki"
+              element={<Podreczniki />}
+          />
+
+          <Route
+              path="/uczen/rok-szkolny"
+              element={<SchoolYearPage />}
+          />
+
+          <Route
+              path="/uczen/matura"
+              element={<Matura />}
           />
 
           <Route path="/aktualnosci" element={<NewsPage />} />
@@ -2032,28 +1941,7 @@ function StandardPage({ page }) {
 
           {articlePage && page.author && <p className="article-author">{page.author}</p>}
 
-          {page.title === 'Lekcje i przerwy' && (
-            <div className="table-card compact-margin">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Lekcja</th>
-                    <th>Godziny</th>
-                    <th>Przerwa</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {lessons.map((lesson) => (
-                    <tr key={lesson[0]}>
-                      <td>{lesson[0]}</td>
-                      <td>{lesson[1]}</td>
-                      <td>{lesson[2]}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
+                {page.title === 'Lekcje i przerwy' && <LekcjeIPrzerwy />}
 
           {page.title === 'Kontakt' && (
               <div className="contact-page-layout">
