@@ -19,6 +19,7 @@ import {
 import DlaczegoDoNas from './pages/rekrutacja/DlaczegoDoNas';
 import WymaganeDokumenty from './pages/rekrutacja/WymaganeDokumenty';
 import KandydaciSportowcy from './pages/rekrutacja/KandydaciSportowcy';
+import FormularzZgloszeniowy from './pages/rekrutacja/FormularzZgloszeniowy';
 
 const school = {
   name: 'V Prywatne Liceum Ogólnokształcące w Krakowie im. Królowej Jadwigi',
@@ -224,7 +225,7 @@ const menu = [
           { label: 'Wymagane dokumenty', path: '/rekrutacja/wymagane-dokumenty' },
           { label: 'Kandydaci sportowcy', path: '/rekrutacja/kandydaci-sportowcy' },
           { label: 'Absolwenci i uczniowie o nas', path: '/rekrutacja/absolwenci-i-uczniowie-o-nas' },
-          { label: 'Zgłoszenie online', path: '/rekrutacja/zgloszenie-online' },
+          { label: 'Zgłoszenie online', path: '/rekrutacja/formularz-zgloszeniowy' },
         ],
       },
     ],
@@ -493,15 +494,7 @@ const pageContent = {
     ],
     highlights: ['Opinie w formie kart', 'Budowanie zaufania', 'Lepsza czytelność'],
   },
-  '/rekrutacja/zgloszenie-online': {
-    title: 'Zgłoszenie online',
-    lead: 'Sekcja z formularzem kontaktowym lub odnośnikiem do zewnętrznego systemu zgłoszeń.',
-    body: [
-      'W tej wersji strony formularz może zbierać podstawowe dane kandydata i przekazywać je do sekretariatu.',
-      'Można też zastąpić go integracją z Google Forms, Typeform lub własnym backendem.',
-    ],
-    highlights: ['Formularz online', 'Szybki kontakt', 'Możliwość integracji'],
-  },
+
   '/edukacja/edukacja-kulturalna': {
     title: 'Edukacja kulturalna',
     lead: 'Humanistyczny i interdyscyplinarny wymiar nauczania.',
@@ -826,6 +819,11 @@ function App() {
           <Route
               path="/rekrutacja/kandydaci-sportowcy"
               element={<KandydaciSportowcy />}
+          />
+
+          <Route
+              path="/rekrutacja/formularz-zgloszeniowy"
+              element={<FormularzZgloszeniowy />}
           />
 
           <Route path="/aktualnosci" element={<NewsPage />} />

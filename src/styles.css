@@ -4188,3 +4188,377 @@ th {
     height: 240px;
   }
 }
+
+/* =====================================================
+   REKRUTACJA – FORMULARZ ZGŁOSZENIOWY
+   ===================================================== */
+
+.application-form {
+  display: grid;
+  gap: 26px;
+}
+
+.application-required-info {
+  margin: 0;
+  color: #5c6e89;
+  font-size: 0.92rem;
+  text-align: right;
+}
+
+.application-form-section {
+  padding: 25px;
+
+  border: 1px solid rgba(196, 151, 48, 0.34);
+  border-radius: 18px;
+
+  background:
+          linear-gradient(
+                  135deg,
+                  rgba(255, 252, 244, 0.98),
+                  rgba(247, 241, 223, 0.72)
+          );
+
+  box-shadow: 0 8px 22px rgba(26, 52, 99, 0.07);
+}
+
+.application-form-section > h2 {
+  margin: 0 0 22px;
+  color: #102e63;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.application-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 19px 22px;
+}
+
+.application-field {
+  display: grid;
+  gap: 8px;
+}
+
+.application-field-full {
+  grid-column: 1 / -1;
+}
+
+.application-field label,
+.application-subjects legend,
+.application-radio-group legend {
+  color: #173666;
+  font-size: 0.98rem;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.application-field label span,
+.application-subjects legend span,
+.application-radio-group legend span {
+  color: #b53a3a;
+}
+
+.application-field label small {
+  color: #65748d;
+  font-size: 0.88rem;
+  font-weight: 400;
+}
+
+.application-field input,
+.application-field select,
+.application-field textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 14px;
+
+  border: 1px solid rgba(35, 71, 129, 0.33);
+  border-radius: 11px;
+
+  background: rgba(255, 255, 255, 0.96);
+  color: #102e63;
+
+  font: inherit;
+  line-height: 1.45;
+
+  transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+}
+
+.application-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.application-field input:focus,
+.application-field select:focus,
+.application-field textarea:focus {
+  outline: none;
+  border-color: #234781;
+  box-shadow: 0 0 0 3px rgba(35, 71, 129, 0.13);
+}
+
+/* WYBÓR PRZEDMIOTÓW */
+
+.application-subjects,
+.application-radio-group {
+  margin: 24px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.application-selection-counter {
+  margin: 8px 0 14px;
+  color: #65748d;
+  font-size: 0.9rem;
+}
+
+.application-subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.application-option {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  padding: 13px 15px;
+
+  border: 1px solid rgba(35, 71, 129, 0.2);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.78);
+  color: #173666;
+
+  cursor: pointer;
+  transition:
+          border-color 0.2s ease,
+          background 0.2s ease,
+          transform 0.2s ease;
+}
+
+.application-option:hover {
+  border-color: rgba(196, 151, 48, 0.65);
+  transform: translateY(-1px);
+}
+
+.application-option.is-selected {
+  border-color: rgba(196, 151, 48, 0.75);
+  background: rgba(244, 231, 193, 0.72);
+}
+
+.application-option input,
+.application-consent input,
+.application-radio-options input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  accent-color: #234781;
+}
+
+.application-option:has(input:disabled) {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+/* KONKURSY I OLIMPIADY */
+
+.application-radio-options {
+  display: flex;
+  gap: 25px;
+  margin: 14px 0 21px;
+}
+
+.application-radio-options label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #173666;
+  cursor: pointer;
+}
+
+/* KLAUZULA I ZGODY */
+
+.application-consents {
+  display: grid;
+  gap: 15px;
+}
+
+.application-consents > h2 {
+  margin-bottom: 5px;
+}
+
+.application-information-clause {
+  overflow: hidden;
+
+  border: 1px solid rgba(35, 71, 129, 0.2);
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.application-information-clause summary {
+  padding: 15px 18px;
+
+  color: #173666;
+  font-weight: 700;
+  line-height: 1.45;
+
+  cursor: pointer;
+}
+
+.application-information-clause summary:hover {
+  background: rgba(35, 71, 129, 0.05);
+}
+
+.application-information-clause > div {
+  padding: 0 18px 17px;
+  border-top: 1px solid rgba(35, 71, 129, 0.12);
+}
+
+.application-information-clause p {
+  margin: 14px 0 0;
+  color: #405879;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  text-align: justify;
+}
+
+.application-consent {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+
+  padding: 14px 16px;
+
+  border: 1px solid rgba(35, 71, 129, 0.18);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.72);
+  color: #334b73;
+  line-height: 1.55;
+
+  cursor: pointer;
+}
+
+.application-consent input {
+  margin-top: 3px;
+}
+
+/* WERYFIKACJA ANTYSPAMOWA */
+
+.application-verification-field {
+  max-width: 300px;
+}
+
+/* KOMUNIKATY */
+
+.application-message {
+  padding: 15px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.application-message-success {
+  border: 1px solid rgba(54, 126, 78, 0.35);
+  background: rgba(54, 126, 78, 0.1);
+  color: #245c38;
+}
+
+.application-message-error {
+  border: 1px solid rgba(170, 48, 48, 0.34);
+  background: rgba(170, 48, 48, 0.08);
+  color: #972c2c;
+}
+
+/* PRZYCISK */
+
+.application-submit-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.application-submit-button {
+  padding: 14px 28px;
+
+  border: 0;
+  border-radius: 12px;
+
+  background: #173b76;
+  color: #ffffff;
+
+  font: inherit;
+  font-weight: 700;
+
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(23, 59, 118, 0.2);
+
+  transition:
+          background 0.2s ease,
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+}
+
+.application-submit-button:hover {
+  background: #0f2e61;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(23, 59, 118, 0.26);
+}
+
+.application-submit-button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+}
+
+/* UKRYTE POLE ANTYSPAMOWE */
+
+.form-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+/* WERSJA MOBILNA */
+
+@media (max-width: 700px) {
+  .application-form-grid,
+  .application-subjects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .application-form-section {
+    padding: 19px 17px;
+  }
+
+  .application-required-info {
+    text-align: left;
+  }
+
+  .application-radio-options {
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .application-information-clause p {
+    text-align: left;
+  }
+
+  .application-submit-row {
+    justify-content: stretch;
+  }
+
+  .application-submit-button {
+    width: 100%;
+  }
+
+  .application-verification-field {
+    max-width: 100%;
+  }
+}
