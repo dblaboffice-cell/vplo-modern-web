@@ -10,6 +10,7 @@ const PROFILE_SUBJECTS = [
     'Fizyka',
     'Biznes i Zarządzanie',
     'WOS',
+    'Język polski',
 ];
 
 const FOREIGN_LANGUAGES = [
@@ -19,13 +20,13 @@ const FOREIGN_LANGUAGES = [
 ];
 
 const START_SEMESTERS = [
-    '1. semestr',
-    '2. semestr',
-    '3. semestr',
-    '4. semestr',
-    '5. semestr',
-    '6. semestr',
-    '7. semestr',
+    '1 semestr',
+    '2 semestr',
+    '3 semestr',
+    '4 semestr',
+    '5 semestr',
+    '6 semestr',
+    '7 semestr',
 ];
 
 export default function FormularzZgloszeniowy() {

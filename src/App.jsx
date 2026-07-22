@@ -20,6 +20,7 @@ import DlaczegoDoNas from './pages/rekrutacja/DlaczegoDoNas';
 import WymaganeDokumenty from './pages/rekrutacja/WymaganeDokumenty';
 import KandydaciSportowcy from './pages/rekrutacja/KandydaciSportowcy';
 import FormularzZgloszeniowy from './pages/rekrutacja/FormularzZgloszeniowy';
+import AbsolwenciONas from './pages/rekrutacja/AbsolwenciONas';
 
 const school = {
   name: 'V Prywatne Liceum Ogólnokształcące w Krakowie im. Królowej Jadwigi',
@@ -224,8 +225,15 @@ const menu = [
           { label: 'Dlaczego do nas?', path: '/rekrutacja/dlaczego-do-nas' },
           { label: 'Wymagane dokumenty', path: '/rekrutacja/wymagane-dokumenty' },
           { label: 'Kandydaci sportowcy', path: '/rekrutacja/kandydaci-sportowcy' },
-          { label: 'Absolwenci i uczniowie o nas', path: '/rekrutacja/absolwenci-i-uczniowie-o-nas' },
           { label: 'Zgłoszenie online', path: '/rekrutacja/formularz-zgloszeniowy' },
+        ],
+      },
+      {
+        group: 'Opinie',
+        items: [
+          {
+            label: 'Absolwenci o nas', path: '/rekrutacja/absolwenci-o-nas',
+          },
         ],
       },
     ],
@@ -471,28 +479,6 @@ const pageContent = {
       'W wersji produkcyjnej warto dodać datę aktualizacji oraz osobę odpowiedzialną za publikację.',
     ],
     highlights: ['Widoczność ważnych dokumentów', 'Data aktualizacji', 'Pobieranie plików'],
-  },
-
-  '/rekrutacja/absolwenci-i-uczniowie-o-nas': {
-    title: 'Refleksje absolwentów',
-    lead: 'W relacjach uczniów i absolwentów liceum przedstawiane jest jako instytucja, która w znaczący sposób wpływa na ich rozwój intelektualny i społeczny.',
-    body: [
-      'Aleksandra Gubernat, mgr, absolwentka Liceum w 2003 roku, a następnie Wydziału Prawa Uniwersytetu Jagiellońskiego. Szkołę wspominam bardzo pozytywnie, to świetnie liceum dla osób, które chcą się uczyć i są zainteresowane startowaniem na najlepsze kierunki studiów oraz dla tych, którzy chcą brać udział w olimpiadach.',
-      'W szkole trzeba się sporo uczyć, ale jest to liceum, które naprawdę odkryje w Tobie talent do nauki. Jeśli nie chcesz go odkrywać, to ono i tak to zrobi za Ciebie. To szkoła dla ludzi z pasją i wyobraźnią, która wciąż się rozwija, a ludzie mają coraz to lepsze pomysły. Kształcenie w liceum ukierunkowane jest na indywidulane uzdolnienia i osobowość uczniów.',
-      'Wykwalifikowane kadra pedagogiczna jest tam po to żeby wyjaśniać, uczyć, pomagać, rozwijać indywidulane pasje oraz zachęcać do przedmiotu dzięki czemu nauka jest przyjazna, a materiał w przystępny sposób przyswajany. Klasówki były jak najbardziej oczekiwane bo dzięki nim wiadomo co i w jakim zakresie jest przyswojone, a co należy jeszcze dopracować.',
-      'Dodatkowym atutem szkoły jest ogromny nacisk położony na naukę języków obcych. Pamiętam, że miałam 6 godzin tygodniowo języka angielskiego, 2 godziny tygodniowo języka niemieckiego oraz koło języka włoskiego w wymiarze 1 godziny tygodniowo oraz duży nacisk na wychowanie fizyczne, sport i rekreację, co w praktyce oznaczało naukę tańca towarzyskiego i tenisa.',
-      'Jeśli chcecie szkoły, którą będziecie wspominać z sentymentem przez całe życie, to tylko V Prywatne Liceum Ogólnokształcące przy ulicy Smoleńsk w Krakowie.',
-      'Anna Dobrowolska, inż. arch., absolwentka liceum w roku 2009, aktualnie studentka 2. stopnia studiów (magisterskich) na wydziale Architektury PK. Większość z nas z przerażeniem wspomina swój pierwszy dzień w nowej szkole .... w przeciwieństwie do mnie. W VP-LO już od pierwszego dnia wyczuwalna jest miła i rodzinna atmosfera, jaką tworzy wykwalifikowana i sympatyczna kadra nauczycielska. Bardzo pozytywnie wspominam te trzy lata wspólnej nauki, które doprowadziły mnie do zdania matury z wynikami gwarantującymi indeks na studiach dziennych Politechniki Krakowskiej na wydziale Architektury. ',
-      'Ala Moskal, absolwentka liceum w 2013 roku, aktualnie studentka AWF w Krakowie. Nieliczne klasy sprawiały, że lekcje przeprowadzane były sprawnie i produktywnie. Indywidualne podejście nauczycieli do każdego ucznia umożliwiło mi trenowanie snowboardu zawodniczo bez robienia zaległości. Przyjazna atmosfera w szkole jak i bezstresowe nauczanie sprawiły, że mój trzyletni pobyt w V prywatnym LO wspominam bardzo miło.',
-      'Wojciech Paniak, klasa III, rok szkolny 2013/2014. VP-LO mogę polecić każdemu. Cenię sobie tę szkolę przede wszystkim za atmosferę, która jest rodzinna i każdy kto uczęszcza do tej szkoły czuje się wyjątkowo, co zawdzięczamy świetnej kadrze profesorskiej! Jedynym minusem jest to, że czas mija tak szybko, za chwilę będę absolwentem, a wydaje mi się, że wczoraj tu przyszedłem pierwszy raz.',
-      'Angelika Taboła, maturzystka w roku szkolnym 2013/2014. ….warto uczęszczać do tej szkoły ponieważ jest tu wspaniałe grono pedagogiczne, które zawsze pomoże, wytłumaczy i porozmawia z uczniami na każdy temat. Uczniowie uczestniczą w różnych konkursach, wyjściach do teatru, na wystawy, do muzeów. …z tych wyjść wyniosłam bardzo dużo, nauczyłam się ogromnego szacunku do patriotyzmu szczególnie po wizycie w Muzeum Powstania Warszawskiego…..',
-      'Pani Dyrektor jest osobą wspaniałą, zawsze opiekuje się pierwszą klasą i pomaga uczniom odnaleźć się w szkole oraz poświęca każdemu uczniowi dużo czasu. Organizuje zajęcia dodatkowe dla słabszych uczniów, aby mieli szansę podciągnąć swoje wyniki w nauce, a dla wybitnie uzdolnionych organizuje tzw. fakultety, które obejmują ponadprogramowy zakres nauki. Zajęcia dodatkowe to również warsztaty filmowe organizowane przez Panią polonistkę, która staranie dobiera najwybitniejsze dzieła filmowe, a uczniowie bardzo chętnie na te zajęcia uczęszczają.',
-      'Dwa razy w semestrze odbywają się sesje naukowe pomocne w przygotowaniach do matury ustnej. Uczniowie po wystąpieniu w sesji stają się pewnymi siebie, co jest szczególnie ważne przed przystąpieniem do  egzaminu maturalnego....',
-      'Zajęcia wychowania fizycznego są wyjątkowe: gramy w tenisa, jeździmy na łyżwach oraz dziewczęta uczestnicą w dodatkowych zajęciach z gimnastyki. Dzięki tej szkole stałam się pewną siebie, potrafię lepiej przyswajać wiedzę i co najważniejsze nie obawiam się egzaminów maturalnych.',
-      'Zamiast ściany tekstu proponowany układ kart pomaga wyeksponować wypowiedzi absolwentów i uczniów w bardziej atrakcyjnej formie.',
-      'Można dodać zdjęcia, rok ukończenia szkoły lub kierunek studiów.',
-    ],
-    highlights: ['Opinie w formie kart', 'Budowanie zaufania', 'Lepsza czytelność'],
   },
 
   '/edukacja/edukacja-kulturalna': {
@@ -824,6 +810,11 @@ function App() {
           <Route
               path="/rekrutacja/formularz-zgloszeniowy"
               element={<FormularzZgloszeniowy />}
+          />
+
+          <Route
+              path="/rekrutacja/absolwenci-o-nas"
+              element={<AbsolwenciONas />}
           />
 
           <Route path="/aktualnosci" element={<NewsPage />} />

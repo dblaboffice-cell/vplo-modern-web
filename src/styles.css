@@ -4562,3 +4562,159 @@ th {
     max-width: 100%;
   }
 }
+
+/* =====================================================
+   REKRUTACJA – ABSOLWENCI O NAS
+   ===================================================== */
+
+.graduates-introduction {
+  margin-bottom: 30px;
+  padding: 21px 23px;
+
+  border-left: 5px solid #c59a32;
+  border-radius: 0 16px 16px 0;
+
+  background:
+          linear-gradient(
+                  135deg,
+                  rgba(255, 250, 238, 0.96),
+                  rgba(245, 238, 216, 0.72)
+          );
+}
+
+.graduates-introduction h2 {
+  margin: 0 0 10px;
+  color: #102e63;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.graduates-introduction p {
+  margin: 0;
+  color: #405879;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.7;
+}
+
+.graduates-testimonials {
+  display: grid;
+  gap: 24px;
+}
+
+.graduate-testimonial {
+  position: relative;
+  overflow: hidden;
+  padding: 25px 27px;
+
+  border: 1px solid rgba(35, 71, 129, 0.2);
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  box-shadow: 0 9px 24px rgba(26, 52, 99, 0.08);
+}
+
+.graduate-testimonial::before {
+  content: "“";
+  position: absolute;
+  top: 5px;
+  right: 22px;
+
+  color: rgba(197, 154, 50, 0.22);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 5.5rem;
+  line-height: 1;
+}
+
+.graduate-testimonial-header {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  margin-bottom: 19px;
+  padding-right: 55px;
+}
+
+.graduate-testimonial-initial {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  place-items: center;
+
+  border: 2px solid rgba(197, 154, 50, 0.72);
+  border-radius: 50%;
+
+  background: #173b76;
+  color: #ffffff;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.graduate-testimonial-header h2 {
+  margin: 0 0 4px;
+
+  color: #102e63;
+
+  font-size: 1.2rem;
+  line-height: 1.35;
+}
+
+.graduate-testimonial-header p {
+  margin: 0;
+
+  color: #65748d;
+
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.graduate-testimonial blockquote {
+  position: relative;
+  z-index: 1;
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.graduate-testimonial blockquote p {
+  margin: 0;
+
+  color: #334b73;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  text-align: justify;
+}
+
+.graduate-testimonial blockquote p + p {
+  margin-top: 15px;
+}
+
+@media (max-width: 700px) {
+  .graduate-testimonial {
+    padding: 21px 18px;
+  }
+
+  .graduate-testimonial-header {
+    align-items: flex-start;
+    padding-right: 30px;
+  }
+
+  .graduate-testimonial::before {
+    right: 10px;
+    font-size: 4.3rem;
+  }
+
+  .graduate-testimonial blockquote p {
+    text-align: left;
+  }
+}
