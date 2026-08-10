@@ -1,0 +1,361 @@
+/* ==================================================
+   SZKOŁA — IDEA ZAŁOŻYCIELI
+   ================================================== */
+
+.founders-idea-section {
+    width: 100%;
+}
+
+.founders-idea-section .page-layout {
+    display: block;
+    width: 100%;
+}
+
+.founders-main-card {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+}
+
+.founders-idea-header {
+    margin-bottom: 32px;
+}
+
+.founders-idea-eyebrow {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #a27518;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.founders-idea-header h1 {
+    margin: 0 0 16px;
+}
+
+.founders-idea-header > p {
+    max-width: 900px;
+    margin: 0;
+    line-height: 1.75;
+}
+
+/* Zdjęcia założycieli w tekście */
+
+.founder-inline-figure {
+    width: 260px;
+    margin: 4px 0 18px;
+}
+
+.founder-inline-figure-right {
+    float: right;
+    margin-left: 28px;
+}
+
+.founder-inline-figure-left {
+    float: left;
+    margin-right: 28px;
+}
+
+.founder-inline-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(23, 43, 86, 0.12);
+}
+
+.founder-inline-figure figcaption {
+    margin-top: 10px;
+    color: #5e6f94;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.founder-card-content::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* TABLICA ZAŁOŻYCIELI */
+
+/* Nagłówek Idei założycieli - pełna szerokość */
+
+.founders-idea-section .page-header.founders-idea-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 400px;
+    align-items: center;
+    gap: 48px;
+
+    width: 100%;
+    max-width: none;
+    margin: 0 0 32px 0;
+    box-sizing: border-box;
+}
+.founders-idea-copy {
+    min-width: 0;
+}
+
+.founders-idea-copy > p {
+    max-width: 760px;
+    margin: 0;
+    line-height: 1.75;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.2rem;
+}
+
+.founders-plaque-header {
+    width: 400px;
+    max-width: 100%;
+    margin: 0;
+    justify-self: end;
+    align-self: center;
+}
+
+.founders-plaque-header img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+/* KARTY ZAŁOŻYCIELI */
+
+.founders-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.founder-card {
+    padding: 32px;
+
+    background: #ffffff;
+    border: 1px solid rgba(21, 43, 84, 0.12);
+    border-radius: 18px;
+}
+
+.founder-card-header {
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid rgba(21, 43, 84, 0.12);
+}
+
+.founder-card-header h3 {
+    margin: 0 0 6px;
+
+    color: #172b56;
+}
+
+.founder-card-header p {
+    margin: 0;
+
+    color: #a27518;
+    font-weight: 600;
+}
+
+.founder-card-content {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.18rem;
+}
+
+.founder-card-content p {
+    margin: 0 0 18px;
+    line-height: 1.8;
+}
+
+.founder-card-content ul {
+    margin: 20px 0 24px;
+    padding-left: 26px;
+}
+
+.founder-card-content li {
+    margin-bottom: 10px;
+    line-height: 1.7;
+}
+
+
+/* TELEFON */
+
+@media (max-width: 768px) {
+    .founders-plaque {
+        margin-top: 26px;
+        margin-bottom: 34px;
+    }
+
+    .founder-card {
+        padding: 24px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .founder-inline-figure,
+    .founder-inline-figure-right,
+    .founder-inline-figure-left {
+        float: none;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto 20px;
+    }
+
+    .founder-inline-figure figcaption {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .founders-idea-header {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .founders-plaque-header {
+        max-width: 280px;
+        margin: 0 auto;
+    }
+}
+/* Pracownia komputerowa – główne zdjęcie */
+
+.article-figure.article-main-image {
+    width: 100%;
+    max-width: none;
+    margin: 28px auto 34px;
+}
+
+.article-figure.article-main-image img {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: auto;
+}
+
+/* Kawiarenka, atrium i ogród */
+
+.article-image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin: 28px 0 34px;
+}
+
+.article-image-grid .article-gallery-image {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+.article-image-grid .article-gallery-image img {
+    display: block;
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+@media (max-width: 700px) {
+    .article-image-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .article-image-grid .article-gallery-image img {
+        height: auto;
+    }
+}
+
+/* ==================================================
+   DOKUMENTY PDF
+   ================================================== */
+
+.pdf-page {
+    width: 100%;
+    padding-top: 42px;
+    padding-bottom: 60px;
+}
+
+.pdf-page-header {
+    margin-bottom: 30px;
+}
+
+.pdf-page-header span {
+    display: block;
+    margin-bottom: 10px;
+
+    color: #a27518;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.pdf-page-header h1 {
+    margin: 0;
+    color: #172b56;
+}
+
+
+/* OKNO PDF */
+
+.pdf-viewer {
+    width: 100%;
+    height: 82vh;
+    min-height: 700px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+    border: 1px solid rgba(23, 43, 86, 0.15);
+    border-radius: 18px;
+
+    box-shadow: 0 16px 36px rgba(23, 43, 86, 0.08);
+}
+
+.pdf-viewer iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+/* LINK POD DOKUMENTEM */
+
+.pdf-actions {
+    margin-top: 18px;
+    text-align: right;
+}
+
+.pdf-actions a {
+    color: #172b56;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.pdf-actions a:hover {
+    color: #a27518;
+    text-decoration: underline;
+}
+
+
+/* TELEFON */
+
+@media (max-width: 768px) {
+    .pdf-page {
+        padding-top: 30px;
+    }
+
+    .pdf-viewer {
+        height: 72vh;
+        min-height: 520px;
+        border-radius: 12px;
+    }
+
+    .pdf-actions {
+        text-align: left;
+    }
+}
+
