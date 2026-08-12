@@ -358,4 +358,221 @@
         text-align: left;
     }
 }
+/* ==================================================
+   SZKOŁA — MISJA LICEUM
+   ================================================== */
 
+.mission-page-content {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+
+    padding: 32px;
+
+    background: #ffffff;
+    border: 1px solid rgba(23, 43, 86, 0.12);
+    border-radius: 22px;
+
+    box-shadow: 0 14px 32px rgba(27, 47, 89, 0.08);
+}
+
+/* RAMKA MISJI */
+
+.mission-statement-card {
+    width: 100%;
+    max-width: none;
+    margin: 18px 0 54px;
+    box-sizing: border-box;
+}
+
+.mission-statement-card p {
+    font-size: 1.18rem;
+}
+
+
+/* WYPOWIEDŹ DYREKTORA */
+
+.mission-director-section {
+    width: 100%;
+    max-width: none;
+}
+
+.mission-director-heading {
+    margin-bottom: 24px;
+}
+
+.mission-director-heading > span {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #a27518;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.mission-director-heading h2 {
+    margin: 0 0 6px;
+    color: #172b56;
+}
+
+.mission-director-heading p {
+    margin: 0;
+    color: #5e6f94;
+    font-weight: 600;
+}
+
+.mission-director-quote {
+    margin: 0;
+    padding: 8px 0 8px 30px;
+
+    border-left: 3px solid #c38922;
+
+    color: #24365d;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.2rem;
+    line-height: 1.85;
+}
+
+.vision-section {
+    margin-top: 64px;
+}
+
+
+/* TELEFON */
+
+@media (max-width: 768px) {
+    .mission-statement-card {
+        margin-bottom: 40px;
+    }
+
+    .mission-statement-card p {
+        font-size: 1.08rem;
+    }
+
+    .mission-director-quote {
+        padding-left: 20px;
+        font-size: 1.1rem;
+    }
+}
+@media (max-width: 768px) {
+    .vision-section {
+        margin-top: 48px;
+    }
+}
+/* ==================================================
+   SZKOŁA — PRZESŁANIE DYREKTORA
+   ================================================== */
+
+.director-message-page {
+    width: 100%;
+}
+
+.director-message-eyebrow {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #a27518;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.director-message-content {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 42px;
+
+    background: #ffffff;
+    border: 1px solid rgba(23, 43, 86, 0.12);
+    border-radius: 22px;
+
+    box-shadow: 0 14px 32px rgba(27, 47, 89, 0.08);
+}
+
+.director-message-text {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.2rem;
+    line-height: 1.85;
+    color: #24365d;
+}
+
+.director-message-text p {
+    margin: 0 0 22px;
+}
+
+.director-message-photo {
+    float: right;
+
+    width: 280px;
+    margin: 0 0 28px 38px;
+}
+
+.director-message-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    border-radius: 14px;
+
+    box-shadow: 0 12px 28px rgba(23, 43, 86, 0.12);
+}
+
+.director-message-photo figcaption {
+    margin-top: 12px;
+    text-align: center;
+
+    color: #172b56;
+}
+
+.director-message-photo figcaption strong {
+    display: block;
+    font-size: 1rem;
+}
+
+.director-message-photo figcaption span {
+    display: block;
+    margin-top: 4px;
+
+    color: #a27518;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.director-message-values {
+    margin: 18px 0 0;
+    padding-left: 28px;
+
+    font-family: "Times New Roman", Times, serif;
+}
+
+.director-message-values li {
+    margin-bottom: 9px;
+}
+
+.director-message-content::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+@media (max-width: 768px) {
+
+    .director-message-content {
+        padding: 28px 22px;
+    }
+
+    .director-message-photo {
+        float: none;
+        width: 100%;
+        max-width: 260px;
+
+        margin: 0 auto 28px;
+    }
+
+    .director-message-text {
+        font-size: 1.1rem;
+    }
+}

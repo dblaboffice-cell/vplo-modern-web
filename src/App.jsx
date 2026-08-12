@@ -26,9 +26,9 @@ import Podreczniki from './pages/uczen/Podreczniki';
 import SchoolYearPage from './pages/uczen/SchoolYearPage';
 import Matura from './pages/uczen/Matura';
 
-// import PrzeslanieDyrektora from './pages/szkola/PrzeslanieDyrektora';
+import PrzeslanieDyrektoraPage from './pages/szkola/PrzeslanieDyrektora';
 import IdeaZalozycieli from './pages/szkola/IdeaZalozycieli';
-// import MisjaLiceum from './pages/szkola/MisjaLiceum';
+import MisjaLiceumPage from './pages/szkola/MisjaLiceum';
 import patronkaPage from './pages/szkola/Patronka';
 import krolowaJadwigaPage from './pages/szkola/KrolowaJadwiga';
 import siedzibaPage from './pages/szkola/Siedziba';
@@ -289,35 +289,6 @@ const pageContent = {
     ],
     highlights: ['Wizerunek szkoły', 'Profesjonalny układ', 'Łatwa edycja treści'],
   },
-  '/szkola/misja-liceum': {
-    title: 'Misja Liceum',
-    lead: 'Sekcja przedstawiająca wartości szkoły, cele edukacyjne i sposób pracy z uczniami.',
-    body: [
-      'Wykorzystując kompetencje edukacyjne i organizacyjne pomagamy naszym uczniom przygotować się do wyzwań współczesnego świata przez wsparcie ich rozwoju osobistego.', 'W tym projekcie treść została rozpisana w formie bloków, dzięki czemu można ją łatwo rozbudować o dodatkowe sekcje lub multimedia.Nowoczesna prezentacja misji szkoły powinna być konkretna, klarowna i wsparta czytelnym podziałem na priorytety: wiedza, kultura, rozwój osobisty, odpowiedzialność.',
-      'W tym projekcie treść została rozpisana w formie bloków, dzięki czemu można ją łatwo rozbudować o dodatkowe sekcje lub multimedia.',
-    ],
-    highlights: ['Wartości szkoły', 'Priorytety edukacyjne', 'Czytelny układ treści'],
-  },
-
-  '/szkola/dokumenty/statut': {
-    title: 'Statut',
-    lead: 'Sekcja dokumentów z miejscem na pliki PDF i wersje do pobrania.',
-    body: [
-      'W gotowym wdrożeniu najlepiej osadzać aktualny dokument bezpośrednio jako link do pliku lub przeglądarkę PDF.',
-      'Układ wspiera także dodatkowe dokumenty formalne, regulaminy i archiwalne wersje.',
-    ],
-    highlights: ['Link do PDF', 'Archiwum wersji', 'Czytelna organizacja dokumentów'],
-  },
-  '/szkola/dokumenty/standardy-ochrony-maloletnich': {
-    title: 'Standardy Ochrony Małoletnich',
-    lead: 'Wyraźnie wyeksponowana zakładka dla ważnych dokumentów i polityk szkoły.',
-    body: [
-      'Ta podstrona została przewidziana jako prosty i czytelny moduł z krótkim opisem oraz miejscem na pobranie dokumentu.',
-      'W wersji produkcyjnej warto dodać datę aktualizacji oraz osobę odpowiedzialną za publikację.',
-    ],
-    highlights: ['Widoczność ważnych dokumentów', 'Data aktualizacji', 'Pobieranie plików'],
-  },
-
   '/edukacja/edukacja-kulturalna': {
     title: 'Edukacja kulturalna',
     lead: 'Humanistyczny i interdyscyplinarny wymiar nauczania.',
@@ -516,20 +487,20 @@ function App() {
 
           {/* SZKOŁA */}
 
-          {/*<Route*/}
-          {/*    path="/szkola/przeslanie-dyrektora"*/}
-          {/*    element={<PrzeslanieDyrektora />}*/}
-          {/*/>*/}
+          <Route
+              path="/szkola/przeslanie-dyrektora"
+              element={<PrzeslanieDyrektoraPage />}
+          />
 
           <Route
               path="/szkola/idea-zalozycieli"
               element={<IdeaZalozycieli />}
           />
 
-          {/*<Route*/}
-          {/*    path="/szkola/misja-liceum"*/}
-          {/*    element={<MisjaLiceum />}*/}
-          {/*/>*/}
+          <Route
+              path="/szkola/misja-liceum"
+              element={<MisjaLiceumPage />}
+          />
 
           <Route
               path="/szkola/patron/studium-sylwetki-patrona"

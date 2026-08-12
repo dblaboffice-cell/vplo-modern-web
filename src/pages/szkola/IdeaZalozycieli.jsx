@@ -1,5 +1,3 @@
-import "./szkola.css";
-
 const IdeaZalozycieli = () => {
     return (
     <section className="page-wrap container founders-idea-section">
