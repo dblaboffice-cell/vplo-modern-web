@@ -179,21 +179,48 @@
     line-height: 1.7;
 }
 
-
-/* TELEFON */
+/* TELEFON — IDEA ZAŁOŻYCIELI */
 
 @media (max-width: 768px) {
-    .founders-plaque {
-        margin-top: 26px;
-        margin-bottom: 34px;
+
+    .founders-idea-section .page-header.founders-idea-header {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+
+        width: 100%;
+        max-width: none;
+        margin: 0 0 28px;
+    }
+
+    .founders-idea-copy {
+        width: 100%;
+        max-width: none;
+    }
+
+    .founders-idea-copy > p {
+        width: 100%;
+        max-width: none;
+        font-size: 1.08rem;
+        line-height: 1.7;
+    }
+
+    .founders-plaque-header {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        justify-self: center;
+    }
+
+    .founders-plaque-header img {
+        width: 100%;
+        height: auto;
     }
 
     .founder-card {
         padding: 24px 20px;
     }
-}
 
-@media (max-width: 768px) {
     .founder-inline-figure,
     .founder-inline-figure-right,
     .founder-inline-figure-left {
@@ -208,17 +235,6 @@
     }
 }
 
-@media (max-width: 768px) {
-    .founders-idea-header {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .founders-plaque-header {
-        max-width: 280px;
-        margin: 0 auto;
-    }
-}
 /* Pracownia komputerowa – główne zdjęcie */
 
 .article-figure.article-main-image {
