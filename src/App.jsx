@@ -75,24 +75,6 @@ const schoolMapEmbedUrl =
 const schoolDirectionsUrl =
     'https://www.google.com/maps/dir/?api=1&destination=Smole%C5%84sk+14%2C+31-112+Krak%C3%B3w';
 
-const featuredNews = [
-  {
-    title: 'Dzień Języka Angielskiego 2026',
-    excerpt:
-      'Wyróżnione wydarzenie szkolne pokazujące aktywność uczniów oraz nowoczesne podejście do nauki języków.',
-  },
-  {
-    title: 'Studniówka 2026',
-    excerpt:
-      'Galeria i komunikacja wokół jednego z najważniejszych wydarzeń dla klas maturalnych.',
-  },
-  {
-    title: 'Matura 2025/2026',
-    excerpt:
-      'W jednym miejscu terminy, informacje organizacyjne i materiały dla maturzystów.',
-  },
-];
-
 const menu = [
   {
     label: 'Aktualności',
@@ -280,15 +262,7 @@ const pageContent = {
     ],
     highlights: ['Wyróżnione newsy', 'Układ kart', 'Miejsce na zdjęcia i linki do pełnej treści'],
   },
-  '/szkola/przeslanie-dyrektora': {
-    title: 'Przesłanie Dyrektora',
-    lead: 'Strona otwierająca sekcję "O nas" z miejscem na oficjalny list i zdjęcie dyrekcji.',
-    body: [
-      'W nowej wersji warto podkreślić charakter szkoły, atmosferę oraz indywidualne podejście do ucznia. Tekst można przedstawić w bardziej eleganckim układzie z wyróżnionymi cytatami.',
-      'Obecna architektura aplikacji pozwala później wymienić ten tekst na pełną treść bez zmiany układu strony.',
-    ],
-    highlights: ['Wizerunek szkoły', 'Profesjonalny układ', 'Łatwa edycja treści'],
-  },
+
   '/edukacja/edukacja-kulturalna': {
     title: 'Edukacja kulturalna',
     lead: 'Humanistyczny i interdyscyplinarny wymiar nauczania.',
@@ -1064,20 +1038,52 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="section container">
-        <SectionHeading
-          eyebrow="Wyróżnione"
-          title="Przykładowe bloki aktualności i komunikatów"
-          text="Układ kart może później zostać podłączony do CMS-a lub prostego panelu administracyjnego."
-        />
-        <div className="news-grid">
-          {featuredNews.map((news) => (
-            <article className="news-card" key={news.title}>
-              <div className="news-tag">Aktualność</div>
-              <h3>{news.title}</h3>
-              <p>{news.excerpt}</p>
-            </article>
-          ))}
+      <section className="section container home-links-section">
+        <div className="home-links-heading">
+          LINKI
+        </div>
+
+        <div className="home-links-grid">
+
+          <a
+              href="https://www.gov.pl/web/edukacja"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="home-link-item"
+              aria-label="Ministerstwo Edukacji Narodowej"
+          >
+            <img
+                src={`${import.meta.env.BASE_URL}men-logo.png`}
+                alt="Ministerstwo Edukacji Narodowej"
+            />
+          </a>
+
+          <a
+              href="https://www.kuratorium.krakow.pl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="home-link-item"
+              aria-label="Kuratorium Oświaty w Krakowie"
+          >
+            <img
+                src={`${import.meta.env.BASE_URL}kuratorium-logo.jpg`}
+                alt="Kuratorium Oświaty w Krakowie"
+            />
+          </a>
+
+          <a
+              href="TU_WSTAW_ADRES_BIP_LICEUM"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="home-link-item"
+              aria-label="Biuletyn Informacji Publicznej liceum"
+          >
+            <img
+                src={`${import.meta.env.BASE_URL}bip-logo.png`}
+                alt="Biuletyn Informacji Publicznej"
+            />
+          </a>
+
         </div>
       </section>
     </>
