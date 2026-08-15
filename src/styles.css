@@ -1033,6 +1033,7 @@ th {
   justify-content: center;
   gap: 3px;
   padding: 5px 8px;
+  border-radius: 14px;
   color: inherit;
   font-size: 14px;
   font-weight: 600;
@@ -1053,9 +1054,16 @@ th {
 }
 
 .vulcan-nav-link:hover {
-  opacity: 0.85;
-  transform: translateY(-1px);
+  background: linear-gradient(
+          135deg,
+          rgba(81, 108, 157, 0.12),
+          rgba(212, 167, 51, 0.18)
+  );
+  color: var(--text);
+  opacity: 1;
+  transform: none;
 }
+
 .contact-page-layout {
   display: grid;
   grid-template-columns: 1fr;
@@ -4889,4 +4897,30 @@ th {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+.mobile-vulcan-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 14px 10px;
+  margin-top: 8px;
+  border-radius: 14px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.mobile-vulcan-link:hover {
+  background: linear-gradient(
+          135deg,
+          rgba(81, 108, 157, 0.12),
+          rgba(212, 167, 51, 0.18)
+  );
+}
+
+.mobile-vulcan-logo {
+  display: block;
+  width: 110px;
+  height: auto;
+  object-fit: contain;
 }

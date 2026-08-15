@@ -50,7 +50,7 @@ const school = {
 };
 
 const logoSrc = `${import.meta.env.BASE_URL}logo-vplo.png`;
-const vulcanLogoSrc = `${import.meta.env.BASE_URL}vulcan-logo.jpg`;
+const vulcanLogoSrc = `${import.meta.env.BASE_URL}vulcan-logo.png`;
 const instagramQrSrc =`${import.meta.env.BASE_URL}qr-instagram-vplo.png`;
 const tiktokQrSrc =`${import.meta.env.BASE_URL}qr-tiktok-vplo.png`;
 const instagramUrl = 'https://www.instagram.com/vplo.krk/';
@@ -661,8 +661,26 @@ function Header({ mobileOpen, setMobileOpen, showBanner }) {
         <nav className="mobile-panel">
           <div className="container mobile-panel-inner">
             {menu.map((item) => (
-              <MobileNavItem key={item.label} item={item} onNavigate={() => setMobileOpen(false)} />
+                <MobileNavItem
+                    key={item.label}
+                    item={item}
+                    onNavigate={() => setMobileOpen(false)}
+                />
             ))}
+
+            <a
+                href="https://uonetplus.vulcan.net.pl/krakow/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mobile-vulcan-link"
+                aria-label="Zaloguj się do Dziennika VULCAN"
+            >
+              <img
+                  src={vulcanLogoSrc}
+                  alt="Dziennik VULCAN"
+                  className="mobile-vulcan-logo"
+              />
+            </a>
           </div>
         </nav>
       )}
