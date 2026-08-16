@@ -72,10 +72,18 @@ function SchoolYearPage() {
 
                 <h1>Rok szkolny 2026–2027</h1>
 
-                <p>
+                <p className="section-intro-card">
                     Najważniejsze informacje dotyczące organizacji roku szkolnego
                     2026–2027.
                 </p>
+
+                <a
+                    href={`${import.meta.env.BASE_URL}dokumenty/kalendarz-roku-szkolnego-2026-2027.pdf`}
+                    download
+                    className="document-download-button"
+                >
+                    Pobierz kalendarz roku szkolnego (PDF)
+                </a>
             </header>
 
             <section

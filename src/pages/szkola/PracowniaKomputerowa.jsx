@@ -2,20 +2,22 @@ const pracowniaKomputerowaPage = {
     title: 'Pracownia komputerowa',
     lead: 'Środowisko rozwoju kompetencji cyfrowych',
     body: [
-        'Liceum wyposażone jest w optymalnie skonfigurowaną do prowadzenia zajęć dydaktycznych, pracownię komputerową. Wszystkie stanowiska komputerowe mają stały dostęp do Internetu.\n' +
         '\n' +
-        'Systematyczny upgrade stanowisk komputerowych umożliwia korzystanie bez ograniczeń z najnowszych oprogramowań wymagających dużych prędkości obliczeniowych i pojemności dyskowych. Szybkość operacji komunikacyjnych i obliczeniowych zapewnia wysokiej klasy serwer profesjonalnie skonfigurowany z każdym ze stanowisk komputerowych.' ,
-        'W kodowanym dostępie uczniów i profesorów do serwera udostępniane są bieżące informacje związane z funkcjonowaniem liceum: harmonogramy zajęć, zasoby biblioteczne, wyniki sprawdzianów, ogłoszenia administracyjne i inne.',
+        'Nowoczesna pracownia wyposażona w komputery typu All-in-One zapewnia komfortowe warunki do nauki informatyki, programowania oraz rozwijania kompetencji cyfrowych.\n' +
+        '\n' +
+        'To przestrzeń, w której technologia jest nie tylko przedmiotem nauki, ale przede wszystkim narzędziem tworzenia, rozwiązywania problemów i realizowania własnych projektów.' ,
+        'Pracownia służy również przedsięwzięciom realizowanym we współpracy z otoczeniem szkoły. Wypracowane w ten sposób środki mogą być przeznaczane na jej systematyczną modernizację, dzięki czemu wyposażenie nadąża za szybko zmieniającymi się technologiami, a uczniowie mogą pracować na aktualnych rozwiązaniach.',
     ],
-    highlights: ['Technologia', 'Przestrzeń do zdjęć', 'Bloki informacyjne'],
+    highlights: ['Technologia', 'Programowanie', 'Współpraca zewnętrzna'],
 
     layout: 'article',
+    showHighlights: true,
     firstBlockHeading: false,
 
     mainImage: `${import.meta.env.BASE_URL}pracownia-komputerowa.jpg`,
     mainImageAlt: 'Pracownia komputerowa V Prywatnego Liceum Ogólnokształcącego w Krakowie',
     mainImageCaption: 'Pracownia komputerowa Liceum',
-    mainImageAfterFirstParagraph: true,
+    mainImageAfterParagraph: 2,
 };
 
 export default pracowniaKomputerowaPage;

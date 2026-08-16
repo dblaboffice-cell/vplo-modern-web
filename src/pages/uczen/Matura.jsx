@@ -4,7 +4,7 @@ function Matura() {
             <header>
                 <h1>Matura</h1>
 
-                <p className="matura-lead">
+                <p className="matura-lead section-intro-card">
                     Centralne miejsce dla uczniów klas maturalnych i rodziców.
                 </p>
             </header>

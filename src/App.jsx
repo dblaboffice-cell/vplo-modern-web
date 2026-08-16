@@ -4,6 +4,7 @@ import {
   BookOpen,
   CalendarDays,
   ChevronDown,
+  ChevronRight,
   FileText,
   GraduationCap,
   Image as ImageIcon,
@@ -33,7 +34,16 @@ import patronkaPage from './pages/szkola/Patronka';
 import krolowaJadwigaPage from './pages/szkola/KrolowaJadwiga';
 import siedzibaPage from './pages/szkola/Siedziba';
 import pracowniaKomputerowaPage from './pages/szkola/PracowniaKomputerowa';
-import atriumOgrodPage from './pages/szkola/AtriumOgrod';
+import pracowniaBiologicznaPage from './pages/szkola/PracowniaBiologiczna';
+import pracowniaChemicznaPage from './pages/szkola/PracowniaChemiczna';
+import NowoczesnePracownie from './pages/szkola/NowoczesnePracownie';
+import PrzestrzenieUczniowskie from './pages/szkola/PrzestrzenieUczniowskie';
+import {
+  cafeAtriumPage,
+  miejsceCichejPracyPage,
+  odskoczniaPage,
+  ogrodPage,
+} from './pages/szkola/PrzestrzenieUczniowskiePages';
 import Statut from './pages/szkola/dokumenty/Statut';
 import StandardyOM from './pages/szkola/dokumenty/StandardyOM';
 
@@ -106,8 +116,25 @@ const menu = [
         group: 'Infrastruktura',
         items: [
           {label: 'Siedziba liceum', path: '/szkola/infrastruktura/siedziba-liceum'},
-          {label: 'Pracownia komputerowa', path: '/szkola/infrastruktura/pracownia-komputerowa'},
-          {label: 'Kawiarenka, ATRIUM i ogród', path: '/szkola/infrastruktura/kawiarenka-atrium-i-ogrod'},
+          {
+            label: 'Nowoczesne pracownie',
+            path: '/szkola/infrastruktura/nowoczesne-pracownie',
+            children: [
+              { label: 'Pracownia biologiczna', path: '/szkola/infrastruktura/nowoczesne-pracownie/pracownia-biologiczna' },
+              { label: 'Pracownia chemiczna', path: '/szkola/infrastruktura/nowoczesne-pracownie/pracownia-chemiczna' },
+              { label: 'Pracownia komputerowa', path: '/szkola/infrastruktura/nowoczesne-pracownie/pracownia-komputerowa' },
+            ],
+          },
+          {
+            label: 'Przestrzenie uczniowskie',
+            path: '/szkola/infrastruktura/przestrzenie-uczniowskie',
+            children: [
+              { label: 'Ogród', path: '/szkola/infrastruktura/przestrzenie-uczniowskie/ogrod' },
+              { label: 'Cafe Atrium', path: '/szkola/infrastruktura/przestrzenie-uczniowskie/cafe-atrium' },
+              { label: 'Odskocznia', path: '/szkola/infrastruktura/przestrzenie-uczniowskie/odskocznia' },
+              { label: 'Miejsce cichej pracy', path: '/szkola/infrastruktura/przestrzenie-uczniowskie/miejsce-cichej-pracy' },
+            ],
+          },
         ],
       },
       {
@@ -492,13 +519,58 @@ function App() {
           />
 
           <Route
+              path="/szkola/infrastruktura/nowoczesne-pracownie"
+              element={<NowoczesnePracownie />}
+          />
+
+          <Route
+              path="/szkola/infrastruktura/nowoczesne-pracownie/pracownia-biologiczna"
+              element={<StandardPage page={pracowniaBiologicznaPage} />}
+          />
+
+          <Route
+              path="/szkola/infrastruktura/nowoczesne-pracownie/pracownia-chemiczna"
+              element={<StandardPage page={pracowniaChemicznaPage} />}
+          />
+
+          <Route
+              path="/szkola/infrastruktura/nowoczesne-pracownie/pracownia-komputerowa"
+              element={<StandardPage page={pracowniaKomputerowaPage} />}
+          />
+
+          <Route
               path="/szkola/infrastruktura/pracownia-komputerowa"
               element={<StandardPage page={pracowniaKomputerowaPage} />}
           />
 
           <Route
+              path="/szkola/infrastruktura/przestrzenie-uczniowskie"
+              element={<PrzestrzenieUczniowskie />}
+          />
+
+          <Route
+              path="/szkola/infrastruktura/przestrzenie-uczniowskie/ogrod"
+              element={<StandardPage page={ogrodPage} />}
+          />
+
+          <Route
+              path="/szkola/infrastruktura/przestrzenie-uczniowskie/cafe-atrium"
+              element={<StandardPage page={cafeAtriumPage} />}
+          />
+
+          <Route
+              path="/szkola/infrastruktura/przestrzenie-uczniowskie/odskocznia"
+              element={<StandardPage page={odskoczniaPage} />}
+          />
+
+          <Route
+              path="/szkola/infrastruktura/przestrzenie-uczniowskie/miejsce-cichej-pracy"
+              element={<StandardPage page={miejsceCichejPracyPage} />}
+          />
+
+          <Route
               path="/szkola/infrastruktura/kawiarenka-atrium-i-ogrod"
-              element={<StandardPage page={atriumOgrodPage} />}
+              element={<PrzestrzenieUczniowskie />}
           />
 
           <Route
@@ -759,6 +831,24 @@ function DesktopNavItem({ item }) {
         ↗
       </span>
                     </a>
+                ) : sub.children?.length ? (
+                    <div className="dropdown-link-with-submenu" key={sub.path}>
+                      <NavLink to={sub.path} className="dropdown-link dropdown-link-parent">
+                        <span>{sub.label}</span>
+                        <ChevronRight size={16} aria-hidden="true" />
+                      </NavLink>
+                      <div className="nested-dropdown-menu">
+                        {sub.children.map((nestedItem) => (
+                            <NavLink
+                                key={nestedItem.path}
+                                to={nestedItem.path}
+                                className="nested-dropdown-link"
+                            >
+                              {nestedItem.label}
+                            </NavLink>
+                        ))}
+                      </div>
+                    </div>
                 ) : (
                     <NavLink
                         key={sub.path}
@@ -833,6 +923,28 @@ function MobileNavItem({ item, onNavigate }) {
         ↗
       </span>
                     </a>
+                ) : sub.children?.length ? (
+                    <div className="mobile-sublink-with-submenu" key={sub.path}>
+                      <NavLink
+                          to={sub.path}
+                          className="mobile-sublink"
+                          onClick={onNavigate}
+                      >
+                        {sub.label}
+                      </NavLink>
+                      <div className="mobile-nested-submenu">
+                        {sub.children.map((nestedItem) => (
+                            <NavLink
+                                key={nestedItem.path}
+                                to={nestedItem.path}
+                                className="mobile-nested-sublink"
+                                onClick={onNavigate}
+                            >
+                              {nestedItem.label}
+                            </NavLink>
+                        ))}
+                      </div>
+                    </div>
                 ) : (
                     <NavLink
                         key={sub.path}
@@ -857,23 +969,23 @@ const schoolValuesData = [
     id: 'individual',
     title: 'Indywidualne podejście do ucznia',
     text:
-        'Znamy mocne strony naszych uczniów i wiemy, z czym mierzą się na co dzień. Dzięki małym grupom i wsparciu tutorów dopasowujemy tempo oraz styl nauki do osobistych potrzeb i celów każdego ucznia.',
+        'Dostrzegamy mocne strony, potrzeby i aspiracje każdego ucznia. Małe klasy i bliskie relacje z nauczycielami pozwalają nam wspierać młodych ludzi w odkrywaniu własnego potencjału i budowaniu własnej drogi.',
     hotspotClass: 'hotspot-individual',
     popupClass: 'popup-individual',
   },
   {
     id: 'quality',
-    title: 'Wysoka jakość nauczania',
+    title: 'Nowoczesna edukacja',
     text:
-        'Wyniki matur powyżej średniej to nasza codzienność, ale nie jedyny cel. Uczymy krytycznego myślenia, logicznego wyciągania wniosków oraz praktycznego wykorzystania wiedzy, która otwiera drzwi na najlepsze uczelnie.',
+        'Łączymy solidną wiedzę z rozwijaniem samodzielnego i krytycznego myślenia. Przygotowujemy uczniów do matury i dalszej edukacji, ale także do świadomego podejmowania decyzji i wyzwań zmieniającego się świata.',
     hotspotClass: 'hotspot-quality',
     popupClass: 'popup-quality',
   },
   {
     id: 'passion',
-    title: 'Kadra z pasją',
+    title: 'Bezpieczeństwo',
     text:
-        'Nasi nauczyciele to mentorzy, którzy zarażają miłością do swoich przedmiotów. To eksperci, którzy nie tylko świetnie tłumaczą trudne zagadnienia, ale też wspierają uczniów po lekcjach, prowadzą koła naukowe i zawsze mają czas na rozmowę.',
+        'Tworzymy bezpieczną szkołę opartą na szacunku, zaufaniu i dialogu. Jej siłą są nauczyciele z pasją, którzy inspirują, wspierają i budują dobre relacje. Kameralna atmosfera sprzyja nauce, rozwojowi i poczuciu przynależności do szkolnej wspólnoty.',
     hotspotClass: 'hotspot-passion',
     popupClass: 'popup-passion',
   },
@@ -888,7 +1000,12 @@ function HomePage() {
           <div>
             <section className="school-values-section school-values-building">
               <span className="eyebrow school-values-eyebrow">
-              Wysokie cele, ludzkie podejście, nauczyciele z pasją.
+                <span className="school-values-eyebrow-default">
+              Wiedzieć więcej, rozumieć głębiej, wybierać odpowiedzialnie, działać dla innych.
+                </span>
+                <span className="school-values-eyebrow-hover">
+                 Przesłanie patronki
+                </span>
               </span>
 
               <div className="school-values-graphic-wrapper">
@@ -930,7 +1047,6 @@ function HomePage() {
                               key={`popup-${value.id}`}
                               className={`school-value-popup ${value.popupClass}`}
                           >
-                            <h3>{value.title}</h3>
                             <p>{value.text}</p>
                           </div>
                       ) : null
@@ -992,42 +1108,9 @@ function HomePage() {
               <div className="hero-portrait-copy">
                 <span className="eyebrow">Patronka szkoły</span>
                 <h3>Królowa Jadwiga</h3>
-                <p>Symbol mądrości, odpowiedzialności i edukacji opartej na wartościach.</p>
+                <p>Symbol mądrości, odpowiedzialności, odwagi i szacunku</p>
               </div>
             </div>
-            <div className="hero-card-top">Sekcje strony</div>
-            <ul className="hero-list">
-              {menu.map((item) => {
-                const target =
-                    item.path ??
-                    item.to ??
-                    item.href ??
-                    item.children?.[0]?.path ??
-                    item.children?.[0]?.to ??
-                    '/';
-
-                const isExternal = target.startsWith('http');
-
-                return (
-                    <li key={item.label}>
-                      {isExternal ? (
-                          <a
-                              href={target}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="hero-list-link"
-                          >
-                            {item.label}
-                          </a>
-                      ) : (
-                          <Link to={target} className="hero-list-link">
-                            {item.label}
-                          </Link>
-                      )}
-                    </li>
-                );
-              })}
-            </ul>
           </div>
         </div>
       </section>
@@ -1462,7 +1545,11 @@ function EndOfSchoolYearArticle() {
 }
 
 function StandardPage({ page }) {
+  const location = useLocation();
   const articlePage = page.layout === 'article';
+  const showSectionIntroCard = /^(\/szkola|\/uczen|\/edukacja|\/kontakt)/.test(
+      location.pathname
+  );
   const [timelineOpen, setTimelineOpen] = useState(false);
   const articleBlocks = articlePage
     ? page.body
@@ -1493,12 +1580,16 @@ function StandardPage({ page }) {
               page.title === 'Edukacja kulturalna'
                   ? ' cultural-education-page'
                   : ''
-          }`}
+          }${page.title === 'Siedziba liceum' ? ' headquarters-page' : ''}`}
       >
       <div className={articlePage ? 'article-header-grid' : ''}>
         <div className="page-header">
           <h1>{page.title}</h1>
-          {page.lead && <p>{page.lead}</p>}
+          {page.lead && (
+              <p className={showSectionIntroCard ? 'section-intro-card' : undefined}>
+                {page.lead}
+              </p>
+          )}
         </div>
         {articlePage && page.showHighlights && (
           <aside className="article-highlights">
@@ -1780,8 +1871,10 @@ function StandardPage({ page }) {
                               </p>
 
                               {page.mainImage &&
-                                  page.mainImageAfterFirstParagraph &&
-                                  index === 0 && (
+                                  index ===
+                                      ((page.mainImageAfterParagraph ||
+                                          (page.mainImageAfterFirstParagraph && 1)) -
+                                          1) && (
                                       <figure className="article-figure article-main-image">
                                         <img
                                             src={page.mainImage}

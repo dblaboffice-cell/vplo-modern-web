@@ -75,70 +75,81 @@ const textbookNote =
 
 function Podreczniki() {
     return (
-        <article className="student-page textbooks-page-layout">
+        <article className="student-page textbooks-page-layout textbooks-page">
+            <header>
+                <h1>Podręczniki</h1>
+                <p className="section-intro-card">
+                    Informacje dotyczące podręczników obowiązujących
+                    w bieżącym roku szkolnym.
+                </p>
+            </header>
+
             <div className="textbooks-layout">
-                <div className="textbooks-intro">
-                    <span>Informacje dla uczniów</span>
-
-                    <h2>Podręczniki na rok szkolny</h2>
-
-                    <p>
-                        Informacje dotyczące podręczników obowiązujących
-                        w bieżącym roku szkolnym.
-                    </p>
-                </div>
-
                 <div className="textbooks-grid">
                     {textbookCards.map((card) => (
                         <div className="textbook-card" key={card.title}>
-                            <h3>{card.title}</h3>
-
-                            {card.subtitle && (
-                                <div className="textbook-class-label">
-                                    {card.subtitle}
-                                </div>
+                            {card.title !== 'Wykaz podręczników' && (
+                                <h3>{card.title}</h3>
                             )}
 
                             {card.subjects ? (
-                                <div className="textbook-subjects">
-                                    {card.subjects.map((subject) => (
-                                        <section
-                                            className="textbook-subject"
-                                            key={subject.name}
+                                <>
+                                    <div className="textbook-card-topline">
+                                        {card.subtitle && (
+                                            <div className="textbook-class-label">
+                                                {card.subtitle}
+                                            </div>
+                                        )}
+
+                                        <a
+                                            href={`${import.meta.env.BASE_URL}dokumenty/podreczniki-klasa-1.pdf`}
+                                            download
+                                            className="document-download-button textbook-download-button"
                                         >
-                                            <h4>{subject.name}</h4>
+                                            Pobierz listę podręczników dla klasy 1 (PDF)
+                                        </a>
+                                    </div>
 
-                                            {subject.note && (
-                                                <p className="textbook-subject-note">
-                                                    {subject.note}
-                                                </p>
-                                            )}
+                                    <div className="textbook-subjects">
+                                        {card.subjects.map((subject) => (
+                                            <section
+                                                className="textbook-subject"
+                                                key={subject.name}
+                                            >
+                                                <h4>{subject.name}</h4>
 
-                                            {subject.books && (
-                                                <ul>
-                                                    {subject.books.map((book) => (
-                                                        <li key={book}>{book}</li>
-                                                    ))}
-                                                </ul>
-                                            )}
+                                                {subject.note && (
+                                                    <p className="textbook-subject-note">
+                                                        {subject.note}
+                                                    </p>
+                                                )}
 
-                                            {subject.levels?.map((level) => (
-                                                <div
-                                                    className="textbook-level"
-                                                    key={level.name}
-                                                >
-                                                    <h5>{level.name}</h5>
-
+                                                {subject.books && (
                                                     <ul>
-                                                        {level.books.map((book) => (
+                                                        {subject.books.map((book) => (
                                                             <li key={book}>{book}</li>
                                                         ))}
                                                     </ul>
-                                                </div>
-                                            ))}
-                                        </section>
-                                    ))}
-                                </div>
+                                                )}
+
+                                                {subject.levels?.map((level) => (
+                                                    <div
+                                                        className="textbook-level"
+                                                        key={level.name}
+                                                    >
+                                                        <h5>{level.name}</h5>
+
+                                                        <ul>
+                                                            {level.books.map((book) => (
+                                                                <li key={book}>{book}</li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                ))}
+                                            </section>
+                                        ))}
+                                    </div>
+                                </>
                             ) : (
                                 <p>{card.text}</p>
                             )}

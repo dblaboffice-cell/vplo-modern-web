@@ -10,7 +10,7 @@ const IdeaZalozycieli = () => {
 
                 <h1>Idea założycieli</h1>
 
-                <p>
+                <p className="section-intro-card">
                     Fundamentem naszej szkoły są wartości, które od początku kształtują jej
                     kulturę, model nauczania oraz relacje pomiędzy uczniami, profesorami
                     i administracją.

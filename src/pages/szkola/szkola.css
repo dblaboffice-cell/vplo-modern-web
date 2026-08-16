@@ -250,6 +250,111 @@
     height: auto;
 }
 
+/* Siedziba liceum – proporcje nagłówka */
+
+.headquarters-page .article-header-grid {
+    grid-template-columns: minmax(0, 1fr) 400px;
+}
+
+@media (max-width: 850px) {
+    .headquarters-page .article-header-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Nowoczesne pracownie */
+
+.laboratories-page {
+    padding-top: 42px;
+    padding-bottom: 60px;
+}
+
+.laboratories-page .page-header {
+    margin-bottom: 30px;
+}
+
+.laboratories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.student-spaces-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.laboratory-card {
+    display: flex;
+    min-height: 270px;
+    flex-direction: column;
+    padding: 28px;
+    border: 1px solid rgba(23, 43, 86, 0.15);
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(23, 43, 86, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.laboratory-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(162, 117, 24, 0.55);
+    box-shadow: 0 17px 32px rgba(23, 43, 86, 0.14);
+}
+
+.laboratory-card-icon {
+    display: grid;
+    width: 54px;
+    height: 54px;
+    place-items: center;
+    border-radius: 14px;
+    background: rgba(162, 117, 24, 0.13);
+    color: #a27518;
+}
+
+.laboratory-card h2 {
+    margin: 22px 0 12px;
+    color: #172b56;
+    font-size: 1.3rem;
+}
+
+.laboratory-card p {
+    margin: 0;
+    color: #53617c;
+    line-height: 1.65;
+}
+
+.laboratory-card-action {
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 24px;
+    color: #172b56;
+    font-weight: 700;
+}
+
+@media (max-width: 850px) {
+    .laboratories-grid,
+    .student-spaces-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .laboratory-card {
+        min-height: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .laboratories-page {
+        padding-top: 30px;
+        padding-bottom: 42px;
+    }
+
+    .laboratory-card {
+        padding: 23px 20px;
+    }
+}
+
 /* Kawiarenka, atrium i ogród */
 
 .article-image-grid {

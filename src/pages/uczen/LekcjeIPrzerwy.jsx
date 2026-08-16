@@ -16,7 +16,7 @@ function LekcjeIPrzerwy() {
             <header>
                 <h1>Lekcje i przerwy</h1>
 
-                <p>
+                <p className="section-intro-card">
                     Czytelna tabela godzin lekcyjnych i długości przerw.
                 </p>
             </header>
