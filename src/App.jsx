@@ -38,6 +38,12 @@ import pracowniaBiologicznaPage from './pages/szkola/PracowniaBiologiczna';
 import pracowniaChemicznaPage from './pages/szkola/PracowniaChemiczna';
 import NowoczesnePracownie from './pages/szkola/NowoczesnePracownie';
 import PrzestrzenieUczniowskie from './pages/szkola/PrzestrzenieUczniowskie';
+import SaleReprezentacyjne from './pages/szkola/SaleReprezentacyjne';
+import {
+  aulaPage,
+  collegiumMaximumPage,
+  salaSenackaPage,
+} from './pages/szkola/SaleReprezentacyjnePages';
 import {
   cafeAtriumPage,
   miejsceCichejPracyPage,
@@ -129,10 +135,19 @@ const menu = [
             label: 'Przestrzenie uczniowskie',
             path: '/szkola/infrastruktura/przestrzenie-uczniowskie',
             children: [
-              { label: 'Ogród', path: '/szkola/infrastruktura/przestrzenie-uczniowskie/ogrod' },
               { label: 'Cafe Atrium', path: '/szkola/infrastruktura/przestrzenie-uczniowskie/cafe-atrium' },
               { label: 'Odskocznia', path: '/szkola/infrastruktura/przestrzenie-uczniowskie/odskocznia' },
+              { label: 'Ogród', path: '/szkola/infrastruktura/przestrzenie-uczniowskie/ogrod' },
               { label: 'Miejsce cichej pracy', path: '/szkola/infrastruktura/przestrzenie-uczniowskie/miejsce-cichej-pracy' },
+            ],
+          },
+          {
+            label: 'Sale reprezentacyjne',
+            path: '/szkola/infrastruktura/sale-reprezentacyjne',
+            children: [
+              { label: 'Aula', path: '/szkola/infrastruktura/sale-reprezentacyjne/aula' },
+              { label: 'Collegium Maximum', path: '/szkola/infrastruktura/sale-reprezentacyjne/collegium-maximum' },
+              { label: 'Sala Senacka', path: '/szkola/infrastruktura/sale-reprezentacyjne/sala-senacka' },
             ],
           },
         ],
@@ -569,6 +584,26 @@ function App() {
           />
 
           <Route
+              path="/szkola/infrastruktura/sale-reprezentacyjne"
+              element={<SaleReprezentacyjne />}
+          />
+
+          <Route
+              path="/szkola/infrastruktura/sale-reprezentacyjne/aula"
+              element={<StandardPage page={aulaPage} />}
+          />
+
+          <Route
+              path="/szkola/infrastruktura/sale-reprezentacyjne/collegium-maximum"
+              element={<StandardPage page={collegiumMaximumPage} />}
+          />
+
+          <Route
+              path="/szkola/infrastruktura/sale-reprezentacyjne/sala-senacka"
+              element={<StandardPage page={salaSenackaPage} />}
+          />
+
+          <Route
               path="/szkola/infrastruktura/kawiarenka-atrium-i-ogrod"
               element={<PrzestrzenieUczniowskie />}
           />
@@ -991,6 +1026,9 @@ const schoolValuesData = [
   },
 ];
 
+const keepPolishShortWordsTogether = (text) =>
+    text.replace(/(\S)\s+([AaIiOoUuWwZz])\s+/g, '$1\u00a0$2\u00a0');
+
 function HomePage() {
   const [activeValue, setActiveValue] = useState(null);
   return (
@@ -1047,7 +1085,7 @@ function HomePage() {
                               key={`popup-${value.id}`}
                               className={`school-value-popup ${value.popupClass}`}
                           >
-                            <p>{value.text}</p>
+                            <p>{keepPolishShortWordsTogether(value.text)}</p>
                           </div>
                       ) : null
                   )}

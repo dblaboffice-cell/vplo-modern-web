@@ -3232,7 +3232,7 @@ th {
 .school-value-popup {
   position: absolute;
   z-index: 20;
-  width: min(330px, 80vw);
+  width: min(360px, 82vw);
   padding: 18px;
   background: rgba(255, 255, 255, 0.98);
   border: 1px solid rgba(195, 137, 34, 0.6);
@@ -3269,14 +3269,15 @@ th {
   line-height: 1.6;
   text-align: justify;
   hyphens: auto;
+  text-wrap: pretty;
 }
 
 /* Indywidualne podejście – górna tabliczka */
 .hotspot-individual {
   top: 5%;
-  left: 30%;
-  width: 40%;
-  height: 19%;
+  left: 28.5%;
+  width: 43%;
+  height: 20%;
   transform: none;
 }
 

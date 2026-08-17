@@ -283,6 +283,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.representative-rooms-page .page-header {
+    max-width: none;
+}
+
 .laboratory-card {
     display: flex;
     min-height: 270px;
