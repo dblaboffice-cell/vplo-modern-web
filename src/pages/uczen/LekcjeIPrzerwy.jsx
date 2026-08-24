@@ -18,9 +18,19 @@ function LekcjeIPrzerwy() {
             <header>
                 <h1>Lekcje i przerwy</h1>
 
-                <p className="section-intro-card">
-                    Tabela godzin lekcyjnych i długości przerw.
-                </p>
+                <div className="page-intro-with-download">
+                    <p className="section-intro-card">
+                        Tabela godzin lekcyjnych i długości przerw.
+                    </p>
+
+                    <a
+                        href={lessonsPdfSrc}
+                        download
+                        className="document-download-button student-download-button"
+                    >
+                        PDF z tabelą lekcji i przerw
+                    </a>
+                </div>
             </header>
 
             <div className="table-card compact-margin">
@@ -44,14 +54,6 @@ function LekcjeIPrzerwy() {
                     </tbody>
                 </table>
             </div>
-
-            <a
-                href={lessonsPdfSrc}
-                download
-                className="document-download-button student-download-button"
-            >
-                PDF z tabelą lekcji i przerw
-            </a>
         </article>
     );
 }

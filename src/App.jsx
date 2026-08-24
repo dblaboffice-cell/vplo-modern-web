@@ -183,6 +183,12 @@ const menu = [
             label: 'Rok szkolny',
             path: '/uczen/rok-szkolny',
           },
+          {
+            label: 'Zintegrowana Platforma Edukacyjna – ZPE',
+            href: 'https://zpe.gov.pl/',
+            external: true,
+            badge: 'ZPE',
+          },
         ],
       },
       {
@@ -191,6 +197,12 @@ const menu = [
           {
             label: 'Matura',
             path: '/uczen/matura',
+          },
+          {
+            label: 'Zintegrowany Interfejs Użytkownika – ZIU',
+            href: 'https://ziu.gov.pl/login',
+            external: true,
+            badge: 'ZIU',
           },
           {
             label: 'Okręgowa Komisja Egzaminacyjna w Krakowie',
@@ -373,6 +385,10 @@ function App() {
     () => pageContent[location.pathname] || pageContent['/aktualnosci'],
     [location.pathname]
   );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   useEffect(() => {
     const content = document.querySelector('main');

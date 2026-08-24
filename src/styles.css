@@ -3354,6 +3354,10 @@ th {
     border-radius: 0 0 16px 16px !important;
   }
 
+  .school-values-building .school-values-graphic {
+    width: min(86%, 390px);
+  }
+
   .school-values-image {
     border-radius: 18px;
   }
@@ -3412,6 +3416,27 @@ th {
   width: 100%;
   margin: 0;
   align-self: start;
+}
+
+@media (max-width: 640px) {
+  .article-layout.article-layout-with-timeline {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .article-layout.article-layout-with-timeline > .article-timeline {
+    grid-column: 1;
+    grid-row: 1;
+    position: static;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto 24px;
+  }
+
+  .article-layout.article-layout-with-timeline > .page-main-card {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+  }
 }
 
 /* =========================================
@@ -5170,7 +5195,33 @@ th {
   box-sizing: border-box;
 }
 
+.page-intro-with-download {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  gap: 24px;
+  align-items: start;
+}
+
+.page-intro-with-download > :first-child {
+  min-width: 0;
+}
+
+.page-intro-with-download .section-intro-card {
+  max-width: none;
+}
+
+.page-intro-with-download .document-download-button {
+  justify-self: stretch;
+  margin-top: 22px;
+  text-align: center;
+  white-space: nowrap;
+}
+
 .textbooks-page {
+  max-width: 1180px;
+}
+
+.matura-page {
   max-width: 1180px;
 }
 
@@ -5200,6 +5251,18 @@ th {
     align-items: flex-start;
     flex-direction: column;
   }
+
+}
+
+@media (max-width: 620px) {
+  .page-intro-with-download {
+    grid-template-columns: 1fr;
+  }
+
+  .page-intro-with-download .document-download-button {
+    justify-self: start;
+    margin-top: 14px;
+  }
 }
 
 /* FAQ na stronie Matura */
@@ -5216,16 +5279,6 @@ th {
   margin-bottom: 26px;
 }
 
-.matura-content-heading > span {
-  display: block;
-  margin-bottom: 7px;
-  color: #a87500;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
 .matura-content-heading h2,
 .matura-faq-group h3 {
   color: #173b76;
@@ -5237,15 +5290,10 @@ th {
   line-height: 1.25;
 }
 
-.matura-content-heading p,
 .matura-faq-item p {
   margin: 0;
   color: #263747;
   line-height: 1.7;
-}
-
-.matura-content-heading p {
-  margin-top: 8px;
 }
 
 .matura-faq-groups {

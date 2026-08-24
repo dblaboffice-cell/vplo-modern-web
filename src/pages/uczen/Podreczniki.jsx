@@ -73,15 +73,27 @@ const textbookCards = [
 const textbookNote =
     'Przed zakupem podręczników prosimy o sprawdzenie aktualnego wykazu opublikowanego przez szkołę.';
 
+const textbooksPdfSrc = `${import.meta.env.BASE_URL}dokumenty/podreczniki-klasa-1.pdf`;
+
 function Podreczniki() {
     return (
         <article className="student-page textbooks-page-layout textbooks-page">
             <header>
                 <h1>Podręczniki</h1>
-                <p className="section-intro-card">
-                    Informacje dotyczące podręczników obowiązujących
-                    w bieżącym roku szkolnym.
-                </p>
+                <div className="page-intro-with-download">
+                    <p className="section-intro-card">
+                        Informacje dotyczące podręczników obowiązujących
+                        w bieżącym roku szkolnym.
+                    </p>
+
+                    <a
+                        href={textbooksPdfSrc}
+                        download
+                        className="document-download-button textbook-download-button"
+                    >
+                        Lista podręczników dla klasy 1 (PDF)
+                    </a>
+                </div>
             </header>
 
             <div className="textbooks-layout">
@@ -101,13 +113,6 @@ function Podreczniki() {
                                             </div>
                                         )}
 
-                                        <a
-                                            href={`${import.meta.env.BASE_URL}dokumenty/podreczniki-klasa-1.pdf`}
-                                            download
-                                            className="document-download-button textbook-download-button"
-                                        >
-                                            Lista podręczników dla klasy 1 (PDF)
-                                        </a>
                                     </div>
 
                                     <div className="textbook-subjects">

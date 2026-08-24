@@ -88,9 +88,7 @@ function Matura() {
 
             <section className="matura-content" aria-labelledby="matura-faq-title">
                 <div className="matura-content-heading">
-                    <span>FAQ</span>
-                    <h2 id="matura-faq-title">Najczęściej zadawane pytania</h2>
-                    <p>Wybierz pytanie, aby zobaczyć odpowiedź.</p>
+                    <h2 id="matura-faq-title">Kompendium wiedzy o maturze</h2>
                 </div>
 
                 <div className="matura-faq-groups">
