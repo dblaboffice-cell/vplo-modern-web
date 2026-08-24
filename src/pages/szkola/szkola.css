@@ -508,10 +508,33 @@
     max-width: none;
     margin: 18px 0 54px;
     box-sizing: border-box;
+    position: relative;
+    padding: 36px 32px 26px;
+    background: #ffffff;
+    border: 1px solid rgba(223, 165, 52, 0.95);
+    border-radius: 22px;
+    box-shadow: 0 16px 34px rgba(27, 47, 89, 0.08);
+}
+
+.mission-statement-card h2 {
+    width: fit-content;
+    margin: -54px auto 16px;
+    padding: 8px 24px;
+    background: #ffffff;
+    border: 1px solid rgba(223, 165, 52, 0.95);
+    border-radius: 999px;
+    color: #173b76;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-align: center;
 }
 
 .mission-statement-card p {
+    margin: 0;
     font-size: 1.18rem;
+    line-height: 1.7;
+    text-align: center;
 }
 
 
@@ -520,10 +543,11 @@
 .mission-director-section {
     width: 100%;
     max-width: none;
+    margin-bottom: 0;
 }
 
 .mission-director-heading {
-    margin-bottom: 24px;
+    margin-bottom: 18px;
 }
 
 .mission-director-heading > span {
@@ -535,17 +559,6 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-}
-
-.mission-director-heading h2 {
-    margin: 0 0 6px;
-    color: #172b56;
-}
-
-.mission-director-heading p {
-    margin: 0;
-    color: #5e6f94;
-    font-weight: 600;
 }
 
 .mission-director-quote {
@@ -560,6 +573,29 @@
     line-height: 1.85;
 }
 
+.mission-director-signature {
+    margin: 18px 0 0;
+    color: #5e6f94;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.08rem;
+    text-align: right;
+}
+
+.mission-director-signature span {
+    display: block;
+}
+
+.mission-director-name {
+    font-style: italic;
+}
+
+.mission-director-role {
+    margin-top: 2px;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.95rem;
+    font-style: normal;
+}
+
 .vision-section {
     margin-top: 64px;
 }
@@ -569,7 +605,14 @@
 
 @media (max-width: 768px) {
     .mission-statement-card {
+        padding: 30px 18px 22px;
         margin-bottom: 40px;
+    }
+
+    .mission-statement-card h2 {
+        margin-top: -48px;
+        padding: 8px 18px;
+        font-size: 1rem;
     }
 
     .mission-statement-card p {
@@ -579,6 +622,10 @@
     .mission-director-quote {
         padding-left: 20px;
         font-size: 1.1rem;
+    }
+
+    .mission-director-signature {
+        font-size: 1rem;
     }
 }
 @media (max-width: 768px) {

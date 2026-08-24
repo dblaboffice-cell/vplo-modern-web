@@ -38,7 +38,7 @@ export default function SaleReprezentacyjne() {
             <span className="laboratory-card-icon"><Icon size={28} aria-hidden="true" /></span>
             <h2>{title}</h2>
             <p>{description}</p>
-            <span className="laboratory-card-action">Zobacz salę <ChevronRight size={18} aria-hidden="true" /></span>
+            <span className="laboratory-card-action">Sala <ChevronRight size={18} aria-hidden="true" /></span>
           </Link>
         ))}
       </div>

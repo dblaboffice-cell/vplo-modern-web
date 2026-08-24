@@ -622,48 +622,29 @@ button {
   line-height: 1.65;
 }
 
-.hero-mission-vision {
-  display: grid;
-  gap: 24px;
-  margin-bottom: 28px;
+.home-video-section {
+  padding-top: 8px;
 }
 
-.hero-statement-card {
-  position: relative;
-  padding: 28px 26px 22px;
-
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(195, 137, 34, 0.65);
-  border-radius: 22px;
-
+.home-video-card {
+  width: min(100%, 880px);
+  margin: 0 auto;
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(245, 232, 194, 0.94));
+  border: 1px solid rgba(195, 137, 34, 0.22);
+  border-radius: 28px;
   box-shadow:
           0 14px 32px rgba(27, 47, 89, 0.1),
           inset 0 1px 0 rgba(255, 250, 231, 0.8);
 }
 
-.hero-statement-card h2 {
-  width: fit-content;
-  margin: -44px auto 16px;
-  padding: 8px 24px;
-
-  background: #ffffff;
-  border: 1px solid rgba(195, 137, 34, 0.75);
-  border-radius: 30px;
-
-  color: #1b2f59;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 18px;
-  font-weight: 700;
-  text-align: center;
-}
-
-.hero-statement-card p {
-  margin: 0;
-
-  color: #38455a;
-  font-size: 16px;
-  line-height: 1.7;
-  text-align: center;
+.home-video-player {
+  width: 100%;
+  max-height: 520px;
+  display: block;
+  border-radius: 20px;
+  background: #05070d;
+  box-shadow: 0 16px 30px rgba(7, 14, 28, 0.18);
 }
 
 .hero-portrait-wrap {
@@ -1061,6 +1042,26 @@ th {
   gap: 9px;
   width: fit-content;
   text-decoration: none;
+}
+.footer-location-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+}
+
+.footer-location-link svg {
+  flex-shrink: 0;
+  color: #f6d36f;
+}
+
+.footer-location-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .footer-contact-item svg {
@@ -3707,7 +3708,7 @@ th {
 
 .school-values-building .school-values-image {
   width: 100%;
-  height: 480px;
+  height: 440px;
   object-fit: fill;
   display: block;
   border-radius: 0 0 26px 26px !important;
@@ -3825,11 +3826,287 @@ th {
     padding: 22px 20px;
   }
 
-  .class-groups-highlight p,
-  .class-groups-text {
-    font-size: 1rem;
-    line-height: 1.7;
-    text-align: left;
+.class-groups-highlight p,
+.class-groups-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: left;
+}
+}
+
+.education-formatted-content {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.education-formatted-content p {
+  margin: 0;
+  color: #26374d;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.education-formatted-list {
+  margin: 0;
+  padding-left: 26px;
+  color: #26374d;
+}
+
+.education-formatted-list li {
+  margin-bottom: 10px;
+  line-height: 1.75;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.article-page .page-main-card.education-formatted-page {
+  width: 100%;
+  max-width: none;
+  grid-column: 1 / -1;
+}
+
+.education-formatted-page .education-formatted-content > p:first-child {
+  padding: 26px 30px;
+  border-left: 5px solid #c5a253;
+  border-radius: 0 14px 14px 0;
+  background: linear-gradient(
+    135deg,
+    rgba(18, 61, 119, 0.07),
+    rgba(212, 167, 51, 0.09)
+  );
+}
+
+.education-formatted-page .education-formatted-list {
+  padding: 24px 30px 24px 48px;
+  border: 1px solid rgba(197, 162, 83, 0.45);
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 10px 28px rgba(22, 48, 80, 0.09);
+}
+
+@media (max-width: 768px) {
+  .education-formatted-content {
+    gap: 18px;
+  }
+
+  .education-formatted-page .education-formatted-content > p:first-child {
+    padding: 21px 20px;
+  }
+
+.education-formatted-page .education-formatted-list {
+    padding: 20px 18px 20px 36px;
+  }
+}
+
+/* Korekty wysokości sekcji hero na stronie głównej */
+.hero-card.hero-card-patron {
+  padding-top: 16px;
+  padding-bottom: 12px;
+  gap: 12px;
+}
+
+.hero-school-name {
+  margin-bottom: 12px;
+  padding: 10px 14px;
+}
+
+.hero-portrait-wrap {
+  gap: 8px;
+  margin-bottom: 2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.hero-portrait-frame {
+  width: min(100%, 188px);
+  padding: 7px;
+}
+
+.home-media-layout {
+  margin-top: -28px;
+  gap: 14px;
+  grid-template-columns: minmax(0, 0.86fr) minmax(390px, 0.98fr);
+  align-items: start;
+}
+
+.home-video-section-inline {
+  margin-top: -18px;
+}
+
+.home-updates-frame {
+  margin-top: -18px;
+}
+
+@media (max-width: 1040px) {
+  .home-media-layout {
+    margin-top: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .home-video-section-inline,
+  .home-updates-frame {
+    margin-top: 0;
+  }
+}
+
+/* Finalne wyrównanie filmu i ramki aktualności */
+.home-media-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(400px, 0.96fr) !important;
+  gap: 12px !important;
+  align-items: start !important;
+}
+
+.home-video-section-inline,
+.home-updates-frame {
+  margin-top: -18px !important;
+  align-self: start;
+}
+
+.home-video-card-inline {
+  width: min(100%, 620px) !important;
+}
+
+@media (max-width: 1040px) {
+  .home-media-layout {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .home-video-section-inline,
+  .home-updates-frame {
+    margin-top: 0 !important;
+  }
+
+  .home-video-card-inline {
+    width: 100% !important;
+  }
+}
+
+/* Strona główna - układ filmu i aktualności przy portrecie */
+.home-media-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(360px, 0.92fr);
+  align-items: start;
+  gap: 18px;
+}
+
+.home-video-section-inline {
+  margin-top: -8px;
+  padding-top: 0;
+}
+
+.home-video-card-inline {
+  width: min(100%, 520px);
+  margin: 0;
+  padding: 12px;
+  position: relative;
+}
+
+.home-video-label {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 2;
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(11, 21, 44, 0.72);
+  border: 1px solid rgba(255, 224, 139, 0.42);
+  color: #f6d06b;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.hero-card.hero-card-patron {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.home-updates-strip-compact {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.home-updates-frame {
+  padding: 14px;
+  border: 1px solid rgba(177, 194, 221, 0.8);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(238, 242, 248, 0.96), rgba(255, 255, 255, 0.98));
+  box-shadow: 0 14px 30px rgba(27, 47, 89, 0.12);
+}
+
+.home-updates-grid-compact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.home-update-card-compact {
+  min-height: 148px !important;
+  border-radius: 18px !important;
+}
+
+.home-update-card-compact.home-update-card-news {
+  min-height: 220px !important;
+  grid-column: 1 / -1;
+}
+
+.home-update-card-compact .home-update-news-overlay,
+.home-update-card-compact.home-social-card {
+  padding: 18px 20px !important;
+}
+
+.home-update-card-compact .home-update-news-overlay h2,
+.home-update-card-compact .home-social-content h2 {
+  margin-bottom: 5px;
+  font-size: 1.18rem;
+}
+
+.home-update-card-compact .home-update-news-overlay p,
+.home-update-card-compact .home-social-content p {
+  margin-bottom: 7px;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.home-update-card-compact .home-social-content strong,
+.home-update-card-compact .home-update-news-overlay strong {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 1040px) {
+  .home-media-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .home-video-section-inline {
+    margin-top: 0;
+  }
+
+  .home-video-card-inline {
+    width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .home-updates-grid-compact {
+    grid-template-columns: 1fr;
+  }
+
+  .home-update-card-compact.home-update-card-news {
+    grid-column: auto;
   }
 }
 
@@ -4925,9 +5202,9 @@ th {
   }
 }
 
-/* Estetyczna karta na stronie Matura */
+/* FAQ na stronie Matura */
 .matura-content {
-  padding: 24px 28px;
+  padding: 30px 32px;
   background: #ffffff;
   border: 1px solid rgba(0, 43, 89, 0.14);
   border-top: 4px solid #c7a243;
@@ -4935,14 +5212,113 @@ th {
   box-shadow: 0 12px 30px rgba(0, 43, 89, 0.08);
 }
 
-.matura-content p {
+.matura-content-heading {
+  margin-bottom: 26px;
+}
+
+.matura-content-heading > span {
+  display: block;
+  margin-bottom: 7px;
+  color: #a87500;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.matura-content-heading h2,
+.matura-faq-group h3 {
+  color: #173b76;
+}
+
+.matura-content-heading h2 {
+  margin: 0;
+  font-size: clamp(1.45rem, 2.5vw, 1.9rem);
+  line-height: 1.25;
+}
+
+.matura-content-heading p,
+.matura-faq-item p {
   margin: 0;
   color: #263747;
   line-height: 1.7;
 }
 
-.matura-content p + p {
-  margin-top: 14px;
+.matura-content-heading p {
+  margin-top: 8px;
+}
+
+.matura-faq-groups {
+  display: grid;
+  gap: 26px;
+}
+
+.matura-faq-group h3 {
+  margin: 0 0 11px;
+  font-size: 1.12rem;
+  line-height: 1.35;
+}
+
+.matura-faq-item {
+  border-top: 1px solid #d7deea;
+}
+
+.matura-faq-item:last-child {
+  border-bottom: 1px solid #d7deea;
+}
+
+.matura-faq-item summary {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 32px 16px 2px;
+  color: #213b67;
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1.5;
+  list-style: none;
+}
+
+.matura-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.matura-faq-item summary::after {
+  content: '+';
+  position: absolute;
+  top: 13px;
+  right: 4px;
+  color: #a87500;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.matura-faq-item[open] summary::after {
+  content: '−';
+}
+
+.matura-question-number {
+  display: grid;
+  flex: 0 0 27px;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  margin-top: -1px;
+  border-radius: 50%;
+  background: rgba(81, 108, 157, 0.12);
+  color: #173b76;
+  font-size: 0.78rem;
+}
+
+.matura-faq-item p {
+  padding: 0 32px 17px 41px;
+}
+
+.matura-faq-item summary:focus-visible {
+  outline: 3px solid rgba(81, 108, 157, 0.45);
+  outline-offset: -3px;
 }
 
 @media (max-width: 720px) {
@@ -4951,8 +5327,17 @@ th {
   }
 
   .matura-content {
-    padding: 20px 17px;
+    padding: 23px 18px;
     border-radius: 14px;
+  }
+
+  .matura-faq-item summary {
+    gap: 10px;
+    padding-right: 26px;
+  }
+
+  .matura-faq-item p {
+    padding: 0 6px 17px 37px;
   }
 }
 
@@ -5106,5 +5491,89 @@ th {
     padding: 15px 16px;
     font-size: 0.95rem;
     line-height: 1.6;
+  }
+}
+
+/* Czytelny, jednolity skład tekstu na wszystkich podstronach. */
+main :is(p, li, blockquote) {
+  text-align: justify !important;
+  text-align-last: auto;
+  hyphens: auto;
+}
+
+.pdf-page {
+  padding-top: 52px;
+}
+
+.pdf-page-header {
+  margin-bottom: 24px;
+}
+
+.pdf-page-header span {
+  display: inline-flex;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(35, 71, 129, 0.08);
+  border: 1px solid rgba(124, 165, 225, 0.28);
+  color: #7fa7de;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pdf-page-header h1 {
+  margin: 14px 0 0;
+}
+
+.pdf-viewer {
+  padding: 16px;
+  border-radius: 26px;
+  border: 1px solid rgba(125, 165, 221, 0.42);
+  background: linear-gradient(180deg, rgba(228, 238, 252, 0.92), rgba(206, 223, 247, 0.9));
+  box-shadow:
+    0 18px 36px rgba(8, 20, 43, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.pdf-viewer iframe {
+  width: 100%;
+  min-height: 78vh;
+  display: block;
+  border: 1px solid rgba(107, 146, 205, 0.34);
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.pdf-actions {
+  margin-top: 18px;
+}
+
+.pdf-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: #173b76;
+  color: #ffffff;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pdf-actions a:hover {
+  background: #0f2e61;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(23, 59, 118, 0.26);
+}
+
+@media (max-width: 600px) {
+  .pdf-viewer {
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+  .pdf-viewer iframe {
+    min-height: 65vh;
+    border-radius: 14px;
   }
 }

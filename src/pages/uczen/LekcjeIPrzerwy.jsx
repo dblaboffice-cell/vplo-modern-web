@@ -10,6 +10,8 @@ const lessons = [
     ['9', '15:25 – 16:10', '—'],
 ];
 
+const lessonsPdfSrc = `${import.meta.env.BASE_URL}dokumenty/lekcje-i-przerwy.pdf`;
+
 function LekcjeIPrzerwy() {
     return (
         <article className="student-page">
@@ -17,7 +19,7 @@ function LekcjeIPrzerwy() {
                 <h1>Lekcje i przerwy</h1>
 
                 <p className="section-intro-card">
-                    Czytelna tabela godzin lekcyjnych i długości przerw.
+                    Tabela godzin lekcyjnych i długości przerw.
                 </p>
             </header>
 
@@ -42,6 +44,14 @@ function LekcjeIPrzerwy() {
                     </tbody>
                 </table>
             </div>
+
+            <a
+                href={lessonsPdfSrc}
+                download
+                className="document-download-button student-download-button"
+            >
+                PDF z tabelą lekcji i przerw
+            </a>
         </article>
     );
 }

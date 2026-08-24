@@ -106,7 +106,7 @@ function Podreczniki() {
                                             download
                                             className="document-download-button textbook-download-button"
                                         >
-                                            Pobierz listę podręczników dla klasy 1 (PDF)
+                                            Lista podręczników dla klasy 1 (PDF)
                                         </a>
                                     </div>
 

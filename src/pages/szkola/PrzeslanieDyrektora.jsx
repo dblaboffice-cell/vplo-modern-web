@@ -50,7 +50,7 @@ const PrzeslanieDyrektoraPage = () => {
 
                     <p>
                         Z drugiej strony dla szkoły bardzo ważny jest tzw.
-                        <strong> warsztat ucznia</strong>, na który składają się
+                        warsztat ucznia, na który składają się
                         postawy takie jak:
                     </p>
 

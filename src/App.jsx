@@ -52,6 +52,7 @@ import {
 } from './pages/szkola/PrzestrzenieUczniowskiePages';
 import Statut from './pages/szkola/dokumenty/Statut';
 import StandardyOM from './pages/szkola/dokumenty/StandardyOM';
+import educationPages from './pages/edukacja';
 
 import './pages/szkola/szkola.css';
 
@@ -76,6 +77,7 @@ const jadwigaPaintingSrc = `${import.meta.env.BASE_URL}krolowa-jadwiga-bacciarel
 const jadwigaTimelineSrc = `${import.meta.env.BASE_URL}os-czasu-jadwiga.png`;
 const buildingTimelineSrc =`${import.meta.env.BASE_URL}os-czasu-siedziba.png`;
 const buildingSrc = `${import.meta.env.BASE_URL}siedziba-vplo.jpg`;
+const schoolFilmSrc = `${import.meta.env.BASE_URL}vplo-film.mp4`;
 const headerBannerSlides = [
   { src: `${import.meta.env.BASE_URL}smolensk-siedziba.png`, alt: 'Siedziba V Prywatnego Liceum Ogólnokształcącego w Krakowie', position: 'center 40%'},
   { src: `${import.meta.env.BASE_URL}krakow-rynek.jpeg`, alt: 'Rynek Główny w Krakowie', position: 'center 55%' },
@@ -107,8 +109,8 @@ const menu = [
         group: 'Szkoła',
         items: [
           { label: 'Przesłanie Dyrektora', path: '/szkola/przeslanie-dyrektora' },
-          { label: 'Idea założycieli', path: '/szkola/idea-zalozycieli' },
-          { label: 'Misja Liceum', path: '/szkola/misja-liceum' },
+          { label: 'Dziedzictwo założycieli', path: '/szkola/idea-zalozycieli' },
+          { label: 'Misja i Wizja', path: '/szkola/misja-liceum' },
         ],
       },
       {
@@ -304,128 +306,7 @@ const pageContent = {
     ],
     highlights: ['Wyróżnione newsy', 'Układ kart', 'Miejsce na zdjęcia i linki do pełnej treści'],
   },
-
-  '/edukacja/edukacja-kulturalna': {
-    title: 'Edukacja kulturalna',
-    lead: 'Humanistyczny i interdyscyplinarny wymiar nauczania.',
-    body: [
-      'Edukacja kulturalna jest pojęciem niezwykle często mylnie rozumianym bądź określanym, a przecież stanowi istotę kształcenia licealnego.',
-      'Wyjaśnijmy, edukacja ta prowadzona jest w trzech, wzajemnie uzupełniających się obszarach.',
-    ],
-    educationSections: [
-      {
-        title: 'Wiedza',
-        paragraphs: [
-          'Pierwszy, podstawowy obszar związany jest z ubogacaniem wiedzy, poprzez zajęcia dydaktyczne (lekcje) z treści objętych programem kształcenia licealnego. Edukacja kulturalna jest tutaj realizowana w różnych dyscyplinach nauki, inaczej w przedmiotach wskazanych w planach lekcji. W niektórych z przedmiotów obok przekazywanych treści programowych podejmowane są z uczniami rozważania ukierunkowane na różne systemy wartości.',
-
-          'Zwracamy tutaj uwagę na konieczność zachowania wyjątkowej rzetelności i systematyczności w przyswajaniu wiedzy, ponieważ luki i zaniedbania w zwielokrotnionej formie dadzą o sobie znać w czasie późniejszym.',
-
-          'Uświadamiamy naszych uczniów, że edukacja kulturalna w tym obszarze odbywa się w sposób ciągły, również w okresie poza szkolnym, bez udziału nauczycieli. Tradycyjnie edukację tę określa się wówczas mianem kształcenia ustawicznego.',
-        ],
-      },
-
-      {
-        title: 'Umiejętności',
-        paragraphs: [
-          'Drugi z obszarów kształcenia ukierunkowany jest na umiejętności, w tym interpretacji, rozumienia, refleksji, przeżywania nabytej wiedzy; krótko - zastosowań.',
-
-          'Umiejętności kształtowane na poziomie licealnym rzutują na przyszłe losy absolwentów. W najbliższej perspektywie czasu, dobrze posadowione w wiedzy, umiejętności odegrają istotną rolę w wyborze kierunku studiów bądź dziedziny dalszej aktywności, w tym profesjonalnej. Nabyte i rozwijane umiejętności - zawsze oparte na rzetelnej wiedzy - otwierają bowiem szerszy ogląd świata, nieodpartą potrzebę poznawczą, głębsze rozumienie otaczającej nas rzeczywistości, wielopłaszczyznowe postrzeganie zjawisk, które pozornie nie pozostają w związku.',
-
-          'Nie wolno jednak zapominać, że kształcenie licealne jest ogólnokształcącym i tylko niektóre dziedziny wiedzy będą rozwijane w toku studiów bądź podjętej aktywności. Stąd niezmiernie ważne jest kształtowanie umiejętności we wszystkich dyscyplinach objętych planem licealnym, tak by absolwenci mogli czerpać z nich wiedzę praktyczną bądź świadomie podejmować decyzje potrzeby jej uzupełnień.',
-        ],
-      },
-
-      {
-        title: 'Wrażliwość i zainteresowania',
-        paragraphs: [
-          'Trzeci z obszarów koncentruje się na rozwijaniu wrażliwości i zainteresowań. Temu celowi służy wywiązanie kontaktu uczniów ze sztukami pięknymi: malarstwem, rzeźbą, filmem, teatrem, muzyką, literaturą.',
-
-          'Trzeba zauważyć, że dwa pierwsze obszary edukacji kulturalnej mieszczą się w podstawowym kanonie standardów licealnych. A osiągany w nich stan wiedzy i umiejętności uczniów - absolwentów, w dużej mierze zależy od poziomu szkoły. W naszym przypadku obydwa obszary kształcenia kulturalnego stanowią priorytet nauczania.',
-
-          'Trzeci obszar kształcenia kulturalnego (wrażliwość i zainteresowania) jest naszym programem autorskim, którego oryginalność wyprowadzamy z naszych zainteresowań i przekonania, że jesteśmy powołani do kreowania przyszłej inteligencji polskiej, szczególnie tu, w królewskim mieście Krakowie z jego historią, tradycją i zabytkową tkanką architektoniczną.',
-        ],
-      },
-    ],
-    variant: 'cultural-education',
-
-    listTitle: 'Uczniowie:',
-
-    listItems: [
-      'regularnie uczestniczą we wszystkich znaczących wydarzeniach kulturalnych Krakowa. Naturalną sekwencję lekcji historii, czy też literatury polskiej stanowi udział w prezentacjach filmowych, przedstawieniach teatralnych, wystawach i ekspozycjach muzealnych;',
-      'pod kierunkiem profesorów liceum, czasem przy współudziale wyspecjalizowanych przewodników zapoznają się z dorobkiem kulturowym Krakowa i poznają miejsca kultu narodowego. W okresie licealnym stają się pełnoprawnymi znawcami dorobku kulturowego naszego, królewskiego miasta;',
-      'biorą udział w wernisażach i wystawach, szczególnie w Pałacu Sztuki, Dworku Matejki, Willi Estreichera.',
-    ],
-
-    afterList: [
-      'Instytucjonalnie nasze Liceum współpracuje z Towarzystwem Przyjaciół Sztuk Pięknych (TPSP) z siedzibą w Pałacu Sztuki. Uczniowie łącznie z zespołem profesorskim liceum są beneficjentami bezpłatnych wstępów na wszystkie wydarzenia kulturalne organizowane w Pałacu Sztuki.',
-      'Liceum z TPSP było organizatorem małopolskiego konkursu: Wkład kultury polskiej do kultury jednoczącej się Europy, którego finał z wystawą pokonkursową przy współudziale znakomitych reprezentantów nauki w jury konkursowym pod patronatem Rektorów Akademii Sztuk Pięknych i Politechniki Krakowskiej odbył się w Pałacu Sztuki.',
-    ],
-
-    highlights: ['Humanistyka', 'Interdyscyplinarność', 'Wydarzenia kulturalne'],
-  },
-  '/edukacja/grupy-klasowe': {
-    title: 'Grupy klasowe',
-    lead: 'Organizacja grup w liceum',
-    body: [
-      'Liczebność klas w naszym liceum jest statutowo ograniczona do 24 uczniów, jednak w praktyce zespoły klasowe mają obecnie charakter kameralny i liczą zaledwie kilkanaście osób. W przypadku lektoratów z języka angielskiego, niemieckiego i hiszpańskiego oraz zajęć warsztatowych grupy są jeszcze mniejsze — często kilkuosobowe — tworzące warunki zbliżone do pracy indywidualnej.\n',
-      '\n' +
-      'Tak zorganizowane środowisko nauki sprzyja bliskiemu kontaktowi ucznia z profesorem, tworząc przestrzeń do bezpośredniego dialogu, aktywnego udziału w zajęciach oraz szybszego przyswajania treści programowych. Kameralne grupy i indywidualne podejście stanowią jeden z kluczowych wyróżników naszej szkoły, realnie wpływając na jakość i efektywność kształcenia.',
-    ],
-    timelineImage: `${import.meta.env.BASE_URL}grupy-klasowe-infografika.png`,
-    timelineAlt: 'Infografika przedstawiająca organizację grup klasowych w liceum',
-    highlights: [],
-  },
-  '/edukacja/sesje-naukowe': {
-    title: 'Sesje naukowe',
-    lead: 'Szkolna tradycja i aktywność akademicka uczniów.',
-    body: [],
-    highlights: ['Archiwum wydarzeń', 'Prestiż', 'Rozwój naukowy'],
-  },
-  '/edukacja/akademia-filmowa': {
-    title: 'Szkolna Akademia Filmowa',
-    lead: 'Sekcja poświęcona analizie filmu i edukacji audiowizualnej.',
-    body: [
-      'Tutaj warto wyeksponować program, repertuar, komentarze do projekcji oraz wartość edukacyjną tego działania.',
-      'Nowoczesny layout dobrze wspiera sekcje z polecanymi filmami i mini-opisami.',
-    ],
-    highlights: ['Edukacja filmowa', 'Program zajęć', 'Lista projekcji'],
-  },
-  '/edukacja/zajecia-warsztatowe': {
-    title: 'Zajęcia warsztatowe',
-    lead: 'Podstrona o praktycznej pracy z uczniem i rozwijaniu kompetencji miękkich.',
-    body: [
-      'W nowej wersji strony warsztaty można pokazać jako zestaw modułów z przykładami tematów i osiągnięć uczniów.',
-      'Układ kart i ikon ułatwia szybkie skanowanie treści.',
-    ],
-    highlights: ['Kompetencje miękkie', 'Forma warsztatowa', 'Czytelne moduły'],
-  },
-  '/edukacja/zajecia-sportowe-wf': {
-    title: 'Zajęcia sportowe - WF',
-    lead: 'Sekcja opisująca aktywność fizyczną i sposób organizacji zajęć sportowych.',
-    body: [
-      'To dobre miejsce na opis tenisa, siłowni, sezonowych aktywności oraz podejścia szkoły do ruchu i zdrowia.',
-      'W nowoczesnej odsłonie można dodać galerię i krótkie bloki z najważniejszymi formami aktywności.',
-    ],
-    highlights: ['Sport i zdrowie', 'Zdjęcia aktywności', 'Elastyczny układ treści'],
-  },
-  '/edukacja/jezyk-hiszpanski': {
-    title: 'Język hiszpański',
-    lead: 'Prezentacja oferty językowej i nowoczesnych metod nauczania.',
-    body: [
-      'Podstrona została przygotowana pod rozbudowę o poziomy nauczania, projekty językowe i elementy kultury hiszpańskojęzycznej.',
-      'Można tu łatwo dodać materiały, zdjęcia oraz przykłady aktywności uczniów.',
-    ],
-    highlights: ['Oferta językowa', 'Nowoczesne metody', 'Treści kulturowe'],
-  },
-  '/edukacja/kreatywny-uczen': {
-    title: 'Kreatywny uczeń',
-    lead: 'Sekcja dla programu lub inicjatywy wspierającej uczniów o ponadprzeciętnym potencjale.',
-    body: [
-      'Projekt umożliwia pokazanie zasad rekrutacji, korzyści programu i przykładów działań podejmowanych przez uczniów.',
-      'Jest to dobra podstrona do wykorzystania jako wyróżnik szkoły.',
-    ],
-    highlights: ['Program rozwojowy', 'Wyróżnik szkoły', 'Sekcja do rozbudowy'],
-  },
+  ...educationPages,
 
   '/galeria': {
     title: 'Galeria',
@@ -493,11 +374,30 @@ function App() {
     [location.pathname]
   );
 
-  return (
-    <div className="app-shell">
-      <Header mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} showBanner={location.pathname === '/'} />
-      {location.pathname === '/' && <HomeUpdatesStrip />}
-      <main>
+  useEffect(() => {
+    const content = document.querySelector('main');
+
+    if (!content) return;
+
+    const textNodes = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, {
+      acceptNode: (node) =>
+        node.parentElement?.closest('script, style, textarea, pre, code')
+          ? NodeFilter.FILTER_REJECT
+          : NodeFilter.FILTER_ACCEPT,
+    });
+
+    const nodes = [];
+    while (textNodes.nextNode()) nodes.push(textNodes.currentNode);
+
+    nodes.forEach((node) => {
+      node.nodeValue = keepPolishShortWordsTogether(node.nodeValue);
+    });
+  }, [location.pathname]);
+
+    return (
+      <div className="app-shell">
+        <Header mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} showBanner={location.pathname === '/'} />
+        <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
 
@@ -1027,15 +927,15 @@ const schoolValuesData = [
 ];
 
 const keepPolishShortWordsTogether = (text) =>
-    text.replace(/(\S)\s+([AaIiOoUuWwZz])\s+/g, '$1\u00a0$2\u00a0');
+    text.replace(/(^|[\s([{"„])([AaIiOoUuWwZz]) (?=\S)/g, '$1$2\u00a0');
 
 function HomePage() {
-  const [activeValue, setActiveValue] = useState(null);
-  return (
-    <>
-      <section className="hero">
-        <div className="container hero-grid">
-          <div>
+    const [activeValue, setActiveValue] = useState(null);
+    return (
+      <>
+        <section className="hero">
+          <div className="container hero-grid">
+            <div>
             <section className="school-values-section school-values-building">
               <span className="eyebrow school-values-eyebrow">
                 <span className="school-values-eyebrow-default">
@@ -1109,30 +1009,14 @@ function HomePage() {
                   <Phone size={16} />
                   <span>{school.phone}</span>
                 </a>
-                <InfoBadge icon={<Mail size={16} />} text={school.email} />
-              </div>
-            </section>
-            <div className="hero-mission-vision">
-              <div className="hero-statement-card">
-                <h2>Misja szkoły</h2>
-                <p>
-                  Wykorzystując kompetencje edukacyjne i organizacyjne pomagamy naszym uczniom przygotować się do wyzwań współczesnego świata przez wsparcie ich rozwoju osobistego
-                </p>
-              </div>
-
-              <div className="hero-statement-card">
-                <h2>Wizja szkoły</h2>
-                <p>
-                  V Prywatne Liceum Ogólnokształcące im. Królowej Jadwigi wysokiej klasy szkoła ogólnokształcąca położona w Krakowie - mieście królów polski
-                </p>
-              </div>
-
+                  <InfoBadge icon={<Mail size={16} />} text={school.email} />
+                </div>
+              </section>
             </div>
-          </div>
-          <div className="hero-card hero-card-patron">
-            <h2 className="hero-school-name">
-              V Prywatne Liceum Ogólnokształcące
-              <span>w Krakowie im. Królowej Jadwigi</span>
+            <div className="hero-card hero-card-patron">
+              <h2 className="hero-school-name">
+                V Prywatne Liceum Ogólnokształcące
+                <span>w Krakowie im. Królowej Jadwigi</span>
             </h2>
 
             <div className="hero-portrait-wrap">
@@ -1143,17 +1027,36 @@ function HomePage() {
                   className="hero-portrait"
                 />
               </div>
-              <div className="hero-portrait-copy">
-                <span className="eyebrow">Patronka szkoły</span>
-                <h3>Królowa Jadwiga</h3>
-                <p>Symbol mądrości, odpowiedzialności, odwagi i szacunku</p>
+                <div className="hero-portrait-copy">
+                  <span className="eyebrow">Patronka szkoły</span>
+                    <h3>Królowa Jadwiga</h3>
+                    <p>{keepPolishShortWordsTogether('Symbol mądrości, odpowiedzialności, odwagi i szacunku')}</p>
+                  </div>
+                </div>
               </div>
-            </div>
           </div>
-        </div>
-      </section>
+          </section>
 
-      <section className="section container">
+          <section className="section container home-media-layout">
+            <section className="home-video-section home-video-section-inline">
+              <div className="home-video-card home-video-card-inline">
+                <span className="home-video-label">VPLO oczami uczniów</span>
+                <video
+                  className="home-video-player"
+                  controls
+                  preload="metadata"
+                  playsInline
+                >
+                  <source src={schoolFilmSrc} type="video/mp4" />
+                  Twoja przeglądarka nie obsługuje odtwarzania wideo.
+                </video>
+              </div>
+            </section>
+
+            <HomeUpdatesStrip compact />
+          </section>
+  
+          <section className="section container">
         <SectionHeading
           eyebrow="Najważniejsze działy"
           title="Zakładki"
@@ -1383,19 +1286,20 @@ const newsItems = [
   },
 ];
 
-function HomeUpdatesStrip() {
-  const latestNews = newsItems[0];
+function HomeUpdatesStrip({ compact = false }) {
+    const latestNews = newsItems[0];
 
-  return (
-      <section
-          className="home-updates-strip"
-          aria-label="Aktualności i media społecznościowe"
-      >
-        <div className="container home-updates-grid">
-          <Link
-              to="/aktualnosci"
-              className="home-update-card home-update-card-news"
-          >
+    return (
+        <section
+            className={`home-updates-strip${compact ? ' home-updates-strip-compact' : ''}`}
+            aria-label="Aktualności i media społecznościowe"
+        >
+          <div className={`${compact ? 'home-updates-frame' : 'container'}${compact ? '' : ''}`}>
+            <div className={`${compact ? 'home-updates-grid home-updates-grid-compact' : 'home-updates-grid'}`}>
+            <Link
+                to="/aktualnosci"
+                className={`home-update-card home-update-card-news${compact ? ' home-update-card-compact' : ''}`}
+            >
             <img
                 src={latestNews.image}
                 alt=""
@@ -1418,12 +1322,12 @@ function HomeUpdatesStrip() {
           </Link>
 
           <a
-              href={instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="home-update-card home-social-card home-instagram-card"
-              aria-label="Otwórz profil liceum na Instagramie"
-          >
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`home-update-card home-social-card home-instagram-card${compact ? ' home-update-card-compact' : ''}`}
+                aria-label="Otwórz profil liceum na Instagramie"
+            >
 
             <div className="home-social-content">
             <span className="home-update-label">
@@ -1441,12 +1345,12 @@ function HomeUpdatesStrip() {
           </a>
 
           <a
-              href={tiktokUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="home-update-card home-social-card home-tiktok-card"
-              aria-label="Otwórz profil liceum na TikToku"
-          >
+                href={tiktokUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`home-update-card home-social-card home-tiktok-card${compact ? ' home-update-card-compact' : ''}`}
+                aria-label="Otwórz profil liceum na TikToku"
+            >
 
             <div className="home-social-content">
             <span className="home-update-label">
@@ -1459,13 +1363,14 @@ function HomeUpdatesStrip() {
                 Krótkie filmy i najnowsze wiadomości z życia liceum.
               </p>
 
-              <strong>TikTok →</strong>
+                <strong>TikTok →</strong>
+              </div>
+            </a>
             </div>
-          </a>
-        </div>
-      </section>
-  );
-}
+          </div>
+        </section>
+    );
+  }
 
 function NewsPage() {
   return (
@@ -1601,6 +1506,7 @@ function StandardPage({ page }) {
       page.title === 'Sesje naukowe';
   const classGroupsPage =
       page.title?.trim().toLowerCase() === 'grupy klasowe';
+  const formattedEducationPage = Array.isArray(page.formattedSections);
 
   const studentsIndex = culturalEducationPage
       ? articleBlocks.findIndex(
@@ -1656,12 +1562,15 @@ function StandardPage({ page }) {
             className={[
               'page-main-card',
               page.textbookCards ? 'textbooks-main-card' : '',
-              page.galleryCategories ? 'gallery-main-card' : '',
-              page.variant === 'cultural-education'
-                  ? 'cultural-education-content'
-                  : '',
-              scientificSessionsPage ? 'scientific-sessions-page' : '',
-            ]
+                page.galleryCategories ? 'gallery-main-card' : '',
+                page.variant === 'cultural-education'
+                    ? 'cultural-education-content'
+                    : '',
+                page.variant === 'education-formatted'
+                    ? 'education-formatted-page'
+                    : '',
+                scientificSessionsPage ? 'scientific-sessions-page' : '',
+              ]
                 .filter(Boolean)
                 .join(' ')}
         >
@@ -1875,7 +1784,25 @@ function StandardPage({ page }) {
                           >
                             {paragraph}
                           </p>
+                        ))}
+                    </div>
+                ) : formattedEducationPage ? (
+                    <div className="education-formatted-content">
+                      {articleBlocks.map((paragraph, index) => (
+                        <p key={`formatted-intro-${index}`}>{paragraph}</p>
                       ))}
+
+                      {page.formattedSections.map((section, index) =>
+                        section.type === 'list' ? (
+                          <ul className="education-formatted-list" key={`formatted-list-${index}`}>
+                            {section.items.map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p key={`formatted-paragraph-${index}`}>{section.content}</p>
+                        )
+                      )}
                     </div>
                 ) : (
                     articleBlocks.map((paragraph, index) => (
@@ -2204,7 +2131,15 @@ function Footer() {
         <div>
           <div className="footer-title">{school.short}</div>
           <p>{school.name}</p>
-          <p>{school.address}</p>
+          <a
+              href={schoolMapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-location-link"
+          >
+            <MapPin size={18} aria-hidden="true" />
+            <span>{school.address}</span>
+          </a>
         </div>
         <div>
           <div className="footer-title">Kontakt</div>

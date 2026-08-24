@@ -8,7 +8,7 @@ const IdeaZalozycieli = () => {
       Dziedzictwo szkoły
     </span>
 
-                <h1>Idea założycieli</h1>
+                <h1>Dziedzictwo założycieli</h1>
 
                 <p className="section-intro-card">
                     Fundamentem naszej szkoły są wartości, które od początku kształtują jej

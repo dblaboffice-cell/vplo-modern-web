@@ -30,35 +30,156 @@ const semesterGroups = [
     },
 ];
 
-const importantDates = [
+const semesterAssessmentGroups = [
     {
-        name: "Rozpoczęcie roku szkolnego",
-        date: "1 września 2026",
+        title: "Semestr I",
+        assessments: [
+            {
+                name: "Wystawianie ocen za I semestr",
+                description:
+                    "W przypadku ocen z historii dla maturzystów należy wystawić zagrożenia i oceny proponowane najpóźniej do 30 listopada.",
+                date: "14 grudnia 2026",
+            },
+            {
+                name: "Rada Pedagogiczna",
+                date: "17 grudnia 2026",
+            },
+        ],
     },
     {
-        name: "Zimowa przerwa świąteczna",
-        date: "23–31 grudnia 2026",
+        title: "Semestr II",
+        classGroups: [
+            {
+                title: "Klasy I–III",
+                assessments: [
+                    ["Zagrożenia i oceny przewidywane", "31 maja 2027"],
+                    ["Ostateczne", "18 czerwca 2027"],
+                    ["Rada Pedagogiczna", "21 czerwca 2027"],
+                ],
+            },
+            {
+                title: "Klasy IV",
+                assessments: [
+                    ["Zagrożenia i oceny przewidywane", "2 kwietnia 2027"],
+                    ["Ostateczne", "23 kwietnia 2027"],
+                    ["Rada Pedagogiczna", "26 kwietnia 2027"],
+                ],
+            },
+        ],
     },
+];
+
+const importantDateGroups = [
+    {
+        title: "Semestr I",
+        dates: [
+    {
+        name: "Rozpoczęcie Roku Szkolnego",
+        date: "1 września 2026 (wt)",
+    },
+    {
+        name: "Narodowe Czytanie – „Dziady”",
+        date: "4 września 2026 (pt)",
+    },
+    {
+        name: "Dzień Edukacji Narodowej",
+        description: "dzień dyrektorski",
+        date: "14 października 2026 (śr)",
+    },
+    {
+        name: "Dzień Patronki Szkoły",
+        date: "16 października 2026 (pt)",
+    },
+    {
+        name: "Dzień Niepodległości i przerwa jesienna",
+        description: "dwa dni dyrektorskie",
+        date: "11–15 listopada 2026 (śr–nd)",
+    },
+    {
+        name: "65. Sesja Naukowa",
+        date: "20 grudnia 2026",
+    },
+    {
+        name: "Szkolne kolędowanie i wigilia klasowe",
+        date: "18 grudnia 2026 (pt)",
+    },
+    {
+        name: "Przerwa świąteczna",
+        description: "poniedziałek i wtorek – dni dyrektorskie",
+        date: "21 grudnia 2026 – 1 stycznia 2027",
+    },
+    {
+        name: "Trzech Króli",
+        description: "dzień wolny",
+        date: "6 stycznia 2027 (śr)",
+    },
+        ],
+    },
+    {
+        title: "Semestr II",
+        dates: [
     {
         name: "Ferie zimowe",
         description: "województwo małopolskie",
         date: "15–28 lutego 2027",
     },
     {
-        name: "Wiosenna przerwa świąteczna",
+        name: "Dzień Języka Angielskiego",
+        date: "20 marca 2027",
+    },
+    {
+        name: "Przerwa wielkanocna",
         date: "25–30 marca 2027",
     },
     {
-        name: "Zakończenie zajęć w klasie IV",
+        name: "Zakończenie Roku Maturzystów",
         date: "30 kwietnia 2027",
     },
     {
-        name: "Zakończenie zajęć w klasach I–III",
+        name: "Konstytucja 3 maja",
+        date: "3 maja 2027 (pon)",
+    },
+    {
+        name: "Dni dyrektorskie na czas matur",
+        date: "4–7 maja 2027 (wt–pt)",
+    },
+    {
+        name: "Boże Ciało",
+        description: "plus dzień dyrektorski",
+        date: "27–28 maja 2027 (czw–pt)",
+    },
+    {
+        name: "66. Sesja Naukowa",
+        date: "20 czerwca 2027",
+    },
+    {
+        name: "Zakończenie Roku Szkolnego",
         date: "25 czerwca 2027",
     },
     {
         name: "Ferie letnie",
         date: "26 czerwca – 31 sierpnia 2027",
+    },
+        ],
+    },
+];
+
+const parentMeetings = [
+    {
+        name: "Zebranie z rodzicami klas I–IV",
+        date: "7–11 września 2026 (wybrany dzień)",
+    },
+    {
+        name: "Zebranie z rodzicami klas I–IV",
+        date: "11–15 stycznia 2027 (wybrany dzień)",
+    },
+    {
+        name: "Konsultacje z rodzicami maturzystów",
+        date: "1–3 kwietnia 2027 (wybrany dzień)",
+    },
+    {
+        name: "Zebranie z rodzicami uczniów klas I–III",
+        date: "31 maja – 4 czerwca 2027 (wybrany dzień)",
     },
 ];
 
@@ -82,7 +203,7 @@ function SchoolYearPage() {
                     download
                     className="document-download-button"
                 >
-                    Pobierz kalendarz roku szkolnego (PDF)
+                    Kalendarz roku szkolnego (PDF)
                 </a>
             </header>
 
@@ -128,22 +249,109 @@ function SchoolYearPage() {
                     Najważniejsze terminy
                 </h2>
 
+                <div className="semester-groups">
+                    {importantDateGroups.map((group) => (
+                        <section className="semester-group" key={group.title}>
+                            <h3>{group.title}</h3>
+
+                            <div className="school-year-list">
+                                {group.dates.map((item) => (
+                                    <div
+                                        className="school-year-row"
+                                        key={`${item.name}-${item.date}`}
+                                    >
+                                        <div className="school-year-label">
+                                            <span>{item.name}</span>
+
+                                            {item.description && (
+                                                <small>{item.description}</small>
+                                            )}
+                                        </div>
+
+                                        <div className="school-year-date">
+                                            {item.date}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    ))}
+                </div>
+
+                <div className="semester-assessment-groups">
+                    {semesterAssessmentGroups.map((group) => (
+                        <section className="semester-assessment-group" key={group.title}>
+                            <h3>{group.title}</h3>
+
+                            {group.assessments && (
+                                <div className="school-year-list">
+                                    {group.assessments.map((assessment) => (
+                                        <div
+                                            className="school-year-row"
+                                            key={assessment.name}
+                                        >
+                                            <div className="school-year-label">
+                                                <span>{assessment.name}</span>
+                                                {assessment.description && (
+                                                    <small>{assessment.description}</small>
+                                                )}
+                                            </div>
+
+                                            <div className="school-year-date">
+                                                {assessment.date}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+
+                            {group.classGroups && (
+                                <div className="semester-assessment-grid">
+                                    {group.classGroups.map((classGroup) => (
+                                        <section
+                                            className="semester-assessment-class"
+                                            key={classGroup.title}
+                                        >
+                                            <h4>{classGroup.title}</h4>
+                                            <dl>
+                                                {classGroup.assessments.map(
+                                                    ([name, date]) => (
+                                                        <div key={name}>
+                                                            <dt>{name}</dt>
+                                                            <dd>{date}</dd>
+                                                        </div>
+                                                    )
+                                                )}
+                                            </dl>
+                                        </section>
+                                    ))}
+                                </div>
+                            )}
+                        </section>
+                    ))}
+                </div>
+            </section>
+
+            <section
+                className="school-year-card"
+                aria-labelledby="parent-meetings-title"
+            >
+                <h2 id="parent-meetings-title">
+                    Zebrania i konsultacje z rodzicami
+                </h2>
+
                 <div className="school-year-list">
-                    {importantDates.map((item) => (
+                    {parentMeetings.map((meeting) => (
                         <div
                             className="school-year-row"
-                            key={`${item.name}-${item.date}`}
+                            key={`${meeting.name}-${meeting.date}`}
                         >
                             <div className="school-year-label">
-                                <span>{item.name}</span>
-
-                                {item.description && (
-                                    <small>{item.description}</small>
-                                )}
+                                {meeting.name}
                             </div>
 
                             <div className="school-year-date">
-                                {item.date}
+                                {meeting.date}
                             </div>
                         </div>
                     ))}

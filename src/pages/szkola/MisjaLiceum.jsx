@@ -8,36 +8,37 @@ const MisjaLiceumPage = () => {
 
             <div className="mission-page-content">
 
-                    <div className="hero-statement-card mission-statement-card">
-                        <h2>Misja szkoły</h2>
+                <div className="hero-statement-card mission-statement-card">
+                    <h2>Misja szkoły</h2>
 
-                        <p>
-                            Wykorzystując kompetencje edukacyjne i organizacyjne pomagamy
-                            naszym uczniom przygotować się do wyzwań współczesnego świata
-                            przez wsparcie ich rozwoju osobistego.
-                        </p>
+                    <p>
+                        Wykorzystując kompetencje edukacyjne i organizacyjne pomagamy
+                        naszym uczniom przygotować się do wyzwań współczesnego świata
+                        przez wsparcie ich rozwoju osobistego.
+                    </p>
+                </div>
+
+                <section className="mission-director-section">
+                    <div className="mission-director-heading">
+                        <span>O misji szkoły</span>
                     </div>
 
-                    <section className="mission-director-section">
-                        <div className="mission-director-heading">
-                            <span>O misji szkoły</span>
+                    <blockquote className="mission-director-quote">
+                        „Ta misja pokazuje kilka wymiarów. Po pierwsze odwołuje się
+                        do długiej historii szkoły, podczas której zostały zgromadzone
+                        bardzo wysokie kompetencje edukacyjne i organizacyjne.
+                        Po drugie wskazuje te kompetencje jako warunek sine qua non
+                        dobrej edukacji. Po trzecie łączy działalność edukacyjną
+                        z wymogami współczesnego świata. Finalnie traktuje każdego
+                        ucznia jako wyjątkową jednostkę, którą chce wspierać na drodze
+                        jego rozwoju osobistego.”
+                    </blockquote>
 
-                            <h2>Jerzy Andrzej Białkiewicz</h2>
-
-                            <p>Dyrektor Liceum</p>
-                        </div>
-
-                        <blockquote className="mission-director-quote">
-                            „Ta misja pokazuje kilka wymiarów. Po pierwsze odwołuje się
-                            do długiej historii szkoły, podczas której zostały zgromadzone
-                            bardzo wysokie kompetencje edukacyjne i organizacyjne.
-                            Po drugie wskazuje te kompetencje jako warunek sine qua non
-                            dobrej edukacji. Po trzecie łączy działalność edukacyjną
-                            z wymogami współczesnego świata. Finalnie traktuje każdego
-                            ucznia jako wyjątkową jednostkę, którą chce wspierać na drodze
-                            jego rozwoju osobistego.”
-                        </blockquote>
-                    </section>
+                    <p className="mission-director-signature">
+                        <span className="mission-director-name">Jerzy Andrzej Białkiewicz</span>
+                        <span className="mission-director-role">Dyrektor liceum</span>
+                    </p>
+                </section>
                 <section className="vision-section">
 
                     <div className="hero-statement-card mission-statement-card">
@@ -53,10 +54,6 @@ const MisjaLiceumPage = () => {
                     <section className="mission-director-section">
                         <div className="mission-director-heading">
                             <span>O wizji szkoły</span>
-
-                            <h2>Jerzy Andrzej Białkiewicz</h2>
-
-                            <p>Dyrektor Liceum</p>
                         </div>
 
                         <blockquote className="mission-director-quote">
@@ -67,6 +64,11 @@ const MisjaLiceumPage = () => {
                             Mam na myśli zasoby historyczne i kulturowe, którymi można wspierać
                             procesy edukacyjne.”
                         </blockquote>
+
+                        <p className="mission-director-signature">
+                            <span className="mission-director-name">Jerzy Andrzej Białkiewicz</span>
+                            <span className="mission-director-role">Dyrektor liceum</span>
+                        </p>
                     </section>
 
                 </section>

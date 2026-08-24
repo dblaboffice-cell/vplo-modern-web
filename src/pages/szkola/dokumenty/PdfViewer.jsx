@@ -19,7 +19,7 @@ const PdfViewer = ({ title, file }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Otwórz dokument w nowej karcie
+                    Dokument w nowej karcie
                 </a>
             </div>
         </section>
