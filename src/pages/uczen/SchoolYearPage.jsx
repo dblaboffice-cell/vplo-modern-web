@@ -208,7 +208,7 @@ function SchoolYearPage() {
                     </p>
 
                     <a
-                        href={`${import.meta.env.BASE_URL}dokumenty/kalendarz-roku-szkolnego-2026-2027.pdf`}
+                        href={`${import.meta.env.BASE_URL}dokumenty/kalendarz_roku_szkolnego_2026-2027.pdf`}
                         download
                         className="document-download-button"
                     >

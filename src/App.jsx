@@ -4,6 +4,7 @@ import {
   BookOpen,
   CalendarDays,
   ChevronDown,
+  ChevronLeft,
   ChevronRight,
   FileText,
   GraduationCap,
@@ -588,11 +589,21 @@ function App() {
               element={<EndOfSchoolYearArticle />}
           />
 
+          <Route
+              path="/aktualnosci/64-sesja-naukowa-2026"
+              element={<ScientificSessionArticle />}
+          />
+
           <Route path="/galeria" element={<GalleryPage />} />
 
           <Route
               path="/galeria/zakonczenie-roku-szkolnego-2025-2026"
-              element={<GalleryPage initialAlbumOpen />}
+              element={<GalleryPage initialAlbum="zakonczenie-roku-2025-2026" />}
+          />
+
+          <Route
+              path="/galeria/64-sesja-naukowa-2026"
+              element={<GalleryPage initialAlbum="64-sesja-naukowa-2026" />}
           />
 
           <Route
@@ -1184,10 +1195,71 @@ const endOfSchoolYearPhotos = Array.from({ length: 13 }, (_, index) => {
   };
 });
 
-function GalleryPage({ initialAlbumOpen = false }) {
-  const [activeCategory, setActiveCategory] = useState('Życie szkoły');
-  const [albumOpen, setAlbumOpen] = useState(initialAlbumOpen);
+const scientificSessionPhotos = Array.from({ length: 16 }, (_, index) => {
+  const number = String(index + 1).padStart(2, '0');
+
+  return {
+    src: `${import.meta.env.BASE_URL}galeria/64-sesja-naukowa-2026/${number}.jpg`,
+    alt: `64. Sesja Naukowa – zdjęcie ${index + 1}`,
+  };
+});
+
+function GalleryPage({ initialAlbum = null }) {
+  const isScientificAlbum = initialAlbum === '64-sesja-naukowa-2026';
+  const [activeCategory, setActiveCategory] = useState(
+      isScientificAlbum ? 'Projekty edukacyjne' : 'Życie szkoły'
+  );
+  const [albumOpen, setAlbumOpen] = useState(initialAlbum);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const activeAlbumIsScientific = albumOpen === '64-sesja-naukowa-2026';
+  const activeAlbumPhotos = activeAlbumIsScientific
+      ? scientificSessionPhotos
+      : endOfSchoolYearPhotos;
+  const activeAlbumCategory = activeAlbumIsScientific
+      ? 'Projekty edukacyjne'
+      : 'Życie szkoły';
+  const activeAlbumTitle = activeAlbumIsScientific
+      ? '64. Sesja Naukowa'
+      : 'Zakończenie roku szkolnego 2025/2026';
+
+  useEffect(() => {
+    setActiveCategory(
+        initialAlbum === '64-sesja-naukowa-2026'
+            ? 'Projekty edukacyjne'
+            : 'Życie szkoły'
+    );
+    setAlbumOpen(initialAlbum);
+    setSelectedPhoto(null);
+  }, [initialAlbum]);
+
+  const selectedPhotoIndex = selectedPhoto
+      ? activeAlbumPhotos.findIndex((photo) => photo.src === selectedPhoto.src)
+      : -1;
+
+  const changeSelectedPhoto = (direction) => {
+    setSelectedPhoto((currentPhoto) => {
+      const currentIndex = activeAlbumPhotos.findIndex(
+          (photo) => photo.src === currentPhoto?.src
+      );
+      const nextIndex =
+          (currentIndex + direction + activeAlbumPhotos.length) % activeAlbumPhotos.length;
+
+      return activeAlbumPhotos[nextIndex];
+    });
+  };
+
+  useEffect(() => {
+    if (!selectedPhoto) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowLeft') changeSelectedPhoto(-1);
+      if (event.key === 'ArrowRight') changeSelectedPhoto(1);
+      if (event.key === 'Escape') setSelectedPhoto(null);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedPhoto, activeAlbumPhotos]);
 
   return (
       <section className="gallery-page">
@@ -1222,7 +1294,7 @@ function GalleryPage({ initialAlbumOpen = false }) {
                       <button
                           type="button"
                           className="school-album-card"
-                          onClick={() => setAlbumOpen(true)}
+                          onClick={() => setAlbumOpen('zakonczenie-roku-2025-2026')}
                       >
                         <img
                             src={endOfSchoolYearPhotos[0].src}
@@ -1233,6 +1305,27 @@ function GalleryPage({ initialAlbumOpen = false }) {
                           <span>Życie szkoły</span>
                           <h3>Zakończenie roku szkolnego 2025/2026</h3>
                           <p>13 zdjęć</p>
+                        </div>
+                      </button>
+                    </div>
+                ) : activeCategory === 'Projekty edukacyjne' ? (
+                    <div className="gallery-albums-section">
+                      <h2>Albumy</h2>
+
+                      <button
+                          type="button"
+                          className="school-album-card"
+                          onClick={() => setAlbumOpen('64-sesja-naukowa-2026')}
+                      >
+                        <img
+                            src={scientificSessionPhotos[0].src}
+                            alt="Okładka albumu 64. Sesja Naukowa"
+                        />
+
+                        <div className="school-album-copy">
+                          <span>Projekty edukacyjne</span>
+                          <h3>64. Sesja Naukowa</h3>
+                          <p>16 zdjęć</p>
                         </div>
                       </button>
                     </div>
@@ -1247,19 +1340,19 @@ function GalleryPage({ initialAlbumOpen = false }) {
                 <button
                     type="button"
                     className="album-back-button"
-                    onClick={() => setAlbumOpen(false)}
+                    onClick={() => setAlbumOpen(null)}
                 >
                   ← Powrót do albumów
                 </button>
 
                 <div className="school-album-heading">
-                  <span>Życie szkoły</span>
-                  <h2>Zakończenie roku szkolnego 2025/2026</h2>
-                  <p>13 zdjęć</p>
+                  <span>{activeAlbumCategory}</span>
+                  <h2>{activeAlbumTitle}</h2>
+                  <p>{activeAlbumPhotos.length} zdjęć</p>
                 </div>
 
                 <div className="school-photo-grid">
-                  {endOfSchoolYearPhotos.map((photo) => (
+                  {activeAlbumPhotos.map((photo) => (
                       <button
                           key={photo.src}
                           type="button"
@@ -1290,11 +1383,39 @@ function GalleryPage({ initialAlbumOpen = false }) {
                   <X size={28} />
                 </button>
 
+                <button
+                    type="button"
+                    className="gallery-lightbox-nav gallery-lightbox-prev"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      changeSelectedPhoto(-1);
+                    }}
+                    aria-label="Poprzednie zdjęcie"
+                >
+                  <ChevronLeft size={30} />
+                </button>
+
                 <img
                     src={selectedPhoto.src}
                     alt={selectedPhoto.alt}
                     onClick={(event) => event.stopPropagation()}
                 />
+
+                <button
+                    type="button"
+                    className="gallery-lightbox-nav gallery-lightbox-next"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      changeSelectedPhoto(1);
+                    }}
+                    aria-label="Następne zdjęcie"
+                >
+                  <ChevronRight size={30} />
+                </button>
+
+                <span className="gallery-lightbox-counter" aria-live="polite">
+                  {selectedPhotoIndex + 1} / {activeAlbumPhotos.length}
+                </span>
               </div>
           )}
         </div>
@@ -1307,10 +1428,21 @@ const newsItems = [
     slug: 'zakonczenie-roku-2025-2026',
     title: 'Zakończenie roku 2025/2026',
     date: '26 czerwca 2026',
+    dateTime: '2026-06-26',
     place: 'Kraków',
     excerpt:
         '26 czerwca odbyło się uroczyste zakończenie roku szkolnego.',
     image: `${import.meta.env.BASE_URL}galeria/zakonczenie-roku-szkolnego-2025-2026/01.webp`,
+  },
+  {
+    slug: '64-sesja-naukowa-2026',
+    title: 'Sprawozdanie z 64. Sesji Naukowej',
+    date: '10 czerwca 2026',
+    dateTime: '2026-06-10',
+    place: 'Kraków',
+    excerpt:
+        'Kolejna Sesja Naukowa zgromadziła uczniów prezentujących referaty z nauk humanistycznych, przyrodniczych i ścisłych.',
+    image: `${import.meta.env.BASE_URL}aktualnosci/64-sesja-naukowa-2026.jpg`,
   },
 ];
 
@@ -1424,7 +1556,7 @@ function NewsPage() {
                     <div className="news-meta">
                   <span>
                     <CalendarDays size={17} />
-                    <time dateTime="2026-06-26">{news.date}</time>
+                    <time dateTime={news.dateTime}>{news.date}</time>
                   </span>
 
                       <span>
@@ -1445,7 +1577,7 @@ function NewsPage() {
                         to={`/aktualnosci/${news.slug}`}
                         className="news-read-more"
                     >
-                      Czytaj więcej
+                      więcej
                     </Link>
                   </div>
                 </article>
@@ -1508,6 +1640,102 @@ function EndOfSchoolYearArticle() {
                 className="news-gallery-link"
             >
               Galeria zdjęć
+            </Link>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function ScientificSessionArticle() {
+  const articleImage =
+      `${import.meta.env.BASE_URL}aktualnosci/64-sesja-naukowa-2026.jpg`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">
+            ← Powrót do aktualności
+          </Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Sprawozdanie z 64. Sesji Naukowej w V Prywatnym L.O.</h1>
+
+            <div className="news-meta news-article-meta">
+              <span>
+                <CalendarDays size={18} />
+                <time dateTime="2026-06-10">10 czerwca 2026</time>
+              </span>
+
+              <span>
+                <MapPin size={18} />
+                Kraków
+              </span>
+            </div>
+          </header>
+
+          <img
+              className="news-article-cover"
+              src={articleImage}
+              alt="Uczniowie podczas 64. Sesji Naukowej"
+          />
+
+          <div className="news-article-body">
+            <p>
+              W dniu 10 czerwca 2026 roku odbyła się kolejna, już 64. Sesja
+              Naukowa w V Prywatnym L.O. w Krakowie im. Królowej Jadwigi.
+            </p>
+
+            <p>
+              Obrady rozpoczęło słowo wstępne Pana Dyrektora Jerzego Andrzeja
+              Białkiewicza, wyjaśniające i przypominające uczniom doniosłość tego
+              wydarzenia w naszym kalendarzu szkolnym. Następnie dr Patryk
+              Wiśniewski wygłosił wykład wprowadzający pt. „Jak Polacy nazywali
+              kolory? Historia kategoryzacji barw w polszczyźnie od korzeni
+              praindoeuropejskich do współczesności”.
+            </p>
+
+            <p>
+              Tym razem uczniowie przedstawiali swoje referaty ze wszystkich trzech
+              sekcji przedmiotowych: nauk humanistycznych (język polski, języki
+              obce, historia, WOS), nauk przyrodniczych (biologia, chemia,
+              geografia) oraz nauk ścisłych (matematyka, fizyka, informatyka).
+            </p>
+
+            <p>
+              Łącznie uczniowie zaprezentowali 10 referatów wyselekcjonowanych przez
+              nauczycieli prowadzących. Wystąpienia były na najwyższym poziomie.
+              Prelegenci otrzymali od Komisji Konkursowej oceny celujące, bardzo
+              dobre i dobre, zaś wyróżnienia dodatkowo otrzymali Piotr Biela
+              (kl. 2 A) za wystąpienie z historii oraz Julia Wikłacz (kl. 3 D) za
+              referat z biologii.
+            </p>
+
+            <p>
+              Sesję zamknęła prelekcja Marka Winiarskiego (kl. 3 D) „Niebieska
+              szkoła – szkoła pod żaglami”, który podzielił się swoimi refleksjami i
+              materiałem ikonograficzno-filmowym z rejsu po Atlantyku, odbytym
+              wiosną bieżącego roku. Prezentację przyjętą z aplauzem uświetnił pokaz
+              sprzętu ratunkowego żaglowca „Fryderyk Chopin”.
+            </p>
+
+            <p>
+              Nowością sesji były karty pracy wypełniane przez wszystkich obecnych
+              uczniów, co dało wymierny walor naukowy każdemu na widowni. Na
+              szczególną uwagę zasługuje ożywiona dyskusja i liczne pytania zadawane
+              na bieżąco przez uczniów i nauczycieli po każdym wystąpieniu.
+            </p>
+
+            <p>
+              Wszystkim uczestnikom gratulujemy wystąpień na 64. Sesji Naukowej w V
+              Prywatnym L.O. w Krakowie im. Królowej Jadwigi! Jednocześnie
+              rozpoczynamy przygotowania do 65. Sesji Naukowej, która odbędzie się w
+              grudniu 2026 roku.
+            </p>
+
+            <Link to="/galeria/64-sesja-naukowa-2026" className="news-gallery-link">
+              Galeria 64. Sesji Naukowej
             </Link>
           </div>
         </div>
@@ -2013,7 +2241,7 @@ function StandardPage({ page }) {
                 </div>
 
                 <section className="social-qr-section">
-                  <h2>Znajdź nas w mediach społecznościowych</h2>
+                  <h2>Liceum w mediach społecznościowych</h2>
 
                   <div className="social-qr-grid">
                     <a
