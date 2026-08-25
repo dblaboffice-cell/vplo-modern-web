@@ -760,6 +760,38 @@ button {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.home-tabs-grid {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.home-tabs-eyebrow {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.home-tabs-grid .feature-card {
+  display: flex;
+  min-height: 116px;
+  padding: 16px 12px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.home-tabs-grid .feature-card h3 {
+  margin: 9px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.25;
+}
+
+.home-tabs-grid .feature-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+}
+
 .feature-card,
 .news-card,
 .panel,
@@ -3747,6 +3779,13 @@ th {
   object-fit: fill;
   display: block;
   border-radius: 0 0 26px 26px !important;
+}
+
+@media (max-width: 620px) {
+  .school-values-building .school-values-image {
+    height: auto !important;
+    object-fit: initial;
+  }
 }
 
 /* Zmniejszenie odstępu pod paskiem Aktualności / Instagram / TikTok */

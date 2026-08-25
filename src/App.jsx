@@ -1078,16 +1078,11 @@ function HomePage() {
             <HomeUpdatesStrip compact />
           </section>
   
-          <section className="section container">
-        <SectionHeading
-          eyebrow="Najważniejsze działy"
-          title="Zakładki"
-          text="Każda sekcja ma gotowy układ, zachowane adresy i miejsce na dalsze rozwinięcie treści."
-        />
-        <div className="cards-grid">
+          <section className="section container home-tabs-section">
+        <span className="eyebrow home-tabs-eyebrow">Sekcje</span>
+        <div className="cards-grid home-tabs-grid">
           {menu.map((item) => {
             const Icon = item.icon;
-            const count = item.children.reduce((acc, group) => acc + group.items.length, 0);
 
             return (
               <Link to={item.path} key={item.label} className="feature-card">
@@ -1095,7 +1090,6 @@ function HomePage() {
                   <Icon size={18} />
                 </div>
                 <h3>{item.label}</h3>
-                <p>{count > 0 ? `${count} podstron w sekcji` : 'Strona główna sekcji lub landing page'}</p>
               </Link>
             );
           })}
