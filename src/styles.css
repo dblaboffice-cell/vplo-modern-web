@@ -2558,6 +2558,18 @@ th {
   line-height: 1.9;
 }
 
+.open-days-contact-link {
+  color: #1b2f59;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.open-days-contact-link:hover {
+  color: #a87500;
+}
+
 @media (max-width: 760px) {
   .news-card {
     grid-template-columns: 1fr;

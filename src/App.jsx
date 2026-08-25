@@ -19,6 +19,7 @@ import {
   X,
 } from 'lucide-react';
 import DlaczegoDoNas from './pages/rekrutacja/DlaczegoDoNas';
+import DniOtwarte from './pages/rekrutacja/DniOtwarte';
 import WymaganeDokumenty from './pages/rekrutacja/WymaganeDokumenty';
 import KandydaciSportowcy from './pages/rekrutacja/KandydaciSportowcy';
 import FormularzZgloszeniowy from './pages/rekrutacja/FormularzZgloszeniowy';
@@ -280,8 +281,9 @@ const menu = [
         group: 'Dla kandydatów',
         items: [
           { label: 'Dlaczego do nas?', path: '/rekrutacja/dlaczego-do-nas' },
-          { label: 'Wymagane dokumenty', path: '/rekrutacja/wymagane-dokumenty' },
+          { label: 'Dni otwarte', path: '/rekrutacja/dni-otwarte' },
           { label: 'Kandydaci sportowcy', path: '/rekrutacja/kandydaci-sportowcy' },
+          { label: 'Wymagane dokumenty', path: '/rekrutacja/wymagane-dokumenty' },
           { label: 'Zgłoszenie online', path: '/rekrutacja/formularz-zgloszeniowy' },
         ],
       },
@@ -543,6 +545,11 @@ function App() {
           />
 
           <Route
+              path="/rekrutacja/dni-otwarte"
+              element={<DniOtwarte />}
+          />
+
+          <Route
               path="/rekrutacja/wymagane-dokumenty"
               element={<WymaganeDokumenty />}
           />
@@ -594,6 +601,11 @@ function App() {
               element={<ScientificSessionArticle />}
           />
 
+          <Route
+              path="/aktualnosci/pozegnanie-maturzystow-2026"
+              element={<GraduatesFarewellArticle />}
+          />
+
           <Route path="/galeria" element={<GalleryPage />} />
 
           <Route
@@ -604,6 +616,11 @@ function App() {
           <Route
               path="/galeria/64-sesja-naukowa-2026"
               element={<GalleryPage initialAlbum="64-sesja-naukowa-2026" />}
+          />
+
+          <Route
+              path="/galeria/pozegnanie-maturzystow-2026"
+              element={<GalleryPage initialAlbum="pozegnanie-maturzystow-2026" />}
           />
 
           <Route
@@ -1090,7 +1107,7 @@ function HomePage() {
           </section>
   
           <section className="section container home-tabs-section">
-        <span className="eyebrow home-tabs-eyebrow">Najważniejsze działy</span>
+        <span className="eyebrow home-tabs-eyebrow">Sekcje</span>
         <div className="cards-grid home-tabs-grid">
           {menu.map((item) => {
             const Icon = item.icon;
@@ -1204,29 +1221,52 @@ const scientificSessionPhotos = Array.from({ length: 16 }, (_, index) => {
   };
 });
 
+const graduatesFarewellPhotos = Array.from({ length: 9 }, (_, index) => {
+  const number = String(index + 1).padStart(2, '0');
+
+  return {
+    src: `${import.meta.env.BASE_URL}galeria/pozegnanie-maturzystow-2026/${number}.jpg`,
+    alt: `Pożegnanie maturzystów 2026 – zdjęcie ${index + 1}`,
+  };
+});
+
 function GalleryPage({ initialAlbum = null }) {
   const isScientificAlbum = initialAlbum === '64-sesja-naukowa-2026';
+  const isGraduatesFarewellAlbum = initialAlbum === 'pozegnanie-maturzystow-2026';
   const [activeCategory, setActiveCategory] = useState(
-      isScientificAlbum ? 'Projekty edukacyjne' : 'Życie szkoły'
+      isScientificAlbum
+          ? 'Projekty edukacyjne'
+          : isGraduatesFarewellAlbum
+              ? 'Roczniki'
+              : 'Życie szkoły'
   );
   const [albumOpen, setAlbumOpen] = useState(initialAlbum);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const activeAlbumIsScientific = albumOpen === '64-sesja-naukowa-2026';
+  const activeAlbumIsGraduatesFarewell = albumOpen === 'pozegnanie-maturzystow-2026';
   const activeAlbumPhotos = activeAlbumIsScientific
       ? scientificSessionPhotos
-      : endOfSchoolYearPhotos;
+      : activeAlbumIsGraduatesFarewell
+          ? graduatesFarewellPhotos
+          : endOfSchoolYearPhotos;
   const activeAlbumCategory = activeAlbumIsScientific
       ? 'Projekty edukacyjne'
-      : 'Życie szkoły';
+      : activeAlbumIsGraduatesFarewell
+          ? 'Roczniki'
+          : 'Życie szkoły';
   const activeAlbumTitle = activeAlbumIsScientific
       ? '64. Sesja Naukowa'
-      : 'Zakończenie roku szkolnego 2025/2026';
+      : activeAlbumIsGraduatesFarewell
+          ? 'Pożegnanie maturzystów 2026'
+          : 'Zakończenie roku szkolnego 2025/2026';
 
   useEffect(() => {
     setActiveCategory(
         initialAlbum === '64-sesja-naukowa-2026'
             ? 'Projekty edukacyjne'
-            : 'Życie szkoły'
+            : initialAlbum === 'pozegnanie-maturzystow-2026'
+                ? 'Roczniki'
+                : 'Życie szkoły'
     );
     setAlbumOpen(initialAlbum);
     setSelectedPhoto(null);
@@ -1326,6 +1366,27 @@ function GalleryPage({ initialAlbum = null }) {
                           <span>Projekty edukacyjne</span>
                           <h3>64. Sesja Naukowa</h3>
                           <p>16 zdjęć</p>
+                        </div>
+                      </button>
+                    </div>
+                ) : activeCategory === 'Roczniki' ? (
+                    <div className="gallery-albums-section">
+                      <h2>Albumy</h2>
+
+                      <button
+                          type="button"
+                          className="school-album-card"
+                          onClick={() => setAlbumOpen('pozegnanie-maturzystow-2026')}
+                      >
+                        <img
+                            src={graduatesFarewellPhotos[0].src}
+                            alt="Okładka albumu Pożegnanie maturzystów 2026"
+                        />
+
+                        <div className="school-album-copy">
+                          <span>Roczniki</span>
+                          <h3>Pożegnanie maturzystów 2026</h3>
+                          <p>{graduatesFarewellPhotos.length} zdjęć</p>
                         </div>
                       </button>
                     </div>
@@ -1443,6 +1504,16 @@ const newsItems = [
     excerpt:
         'Kolejna Sesja Naukowa zgromadziła uczniów prezentujących referaty z nauk humanistycznych, przyrodniczych i ścisłych.',
     image: `${import.meta.env.BASE_URL}aktualnosci/64-sesja-naukowa-2026.jpg`,
+  },
+  {
+    slug: 'pozegnanie-maturzystow-2026',
+    title: 'Pożegnanie maturzystów 2026',
+    date: '24 kwietnia 2026',
+    dateTime: '2026-04-24',
+    place: 'Kraków',
+    excerpt:
+        'Uroczyste zakończenie roku szkolnego klas maturalnych oraz podsumowanie wspólnych lat nauki i sukcesów tegorocznych absolwentów.',
+    image: `${import.meta.env.BASE_URL}galeria/pozegnanie-maturzystow-2026/01.jpg`,
   },
 ];
 
@@ -1736,6 +1807,63 @@ function ScientificSessionArticle() {
 
             <Link to="/galeria/64-sesja-naukowa-2026" className="news-gallery-link">
               Galeria 64. Sesji Naukowej
+            </Link>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function GraduatesFarewellArticle() {
+  const articleImage =
+      `${import.meta.env.BASE_URL}galeria/pozegnanie-maturzystow-2026/01.jpg`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">
+            ← Powrót do aktualności
+          </Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Pożegnanie maturzystów 2026</h1>
+
+            <div className="news-meta news-article-meta">
+              <span>
+                <CalendarDays size={18} />
+                <time dateTime="2026-04-24">24 kwietnia 2026</time>
+              </span>
+
+              <span>
+                <MapPin size={18} />
+                Kraków
+              </span>
+            </div>
+          </header>
+
+          <img
+              className="news-article-cover"
+              src={articleImage}
+              alt="Pożegnanie maturzystów 2026"
+          />
+
+          <div className="news-article-body">
+            <p>
+              24 kwietnia odbyło się uroczyste zakończenie roku szkolnego klas
+              maturalnych. Był to wyjątkowy moment podsumowania kilku lat nauki,
+              wspólnych doświadczeń oraz sukcesów osiągniętych przez tegorocznych
+              absolwentów. Podczas uroczystości wręczono świadectwa, nagrody i
+              wyróżnienia dla uczniów szczególnie zaangażowanych w życie szkoły oraz
+              osiągających wysokie wyniki w nauce.
+            </p>
+
+            <p>
+              Wszystkim maturzystom życzymy realizacji dalszych planów i marzeń.
+            </p>
+
+            <Link to="/galeria/pozegnanie-maturzystow-2026" className="news-gallery-link">
+              Galeria
             </Link>
           </div>
         </div>
@@ -2222,21 +2350,26 @@ function StandardPage({ page }) {
                   <InfoBadge
                       icon={<MapPin size={18} />}
                       text={school.address}
+                      href={schoolMapUrl}
+                      external
                   />
 
                   <InfoBadge
                       icon={<Phone size={18} />}
                       text={school.phone}
+                      href={`tel:${school.phone.replace(/\s/g, '')}`}
                   />
 
                   <InfoBadge
                       icon={<Phone size={18} />}
                       text={school.extraPhone}
+                      href={`tel:${school.extraPhone.replace(/\s/g, '')}`}
                   />
 
                   <InfoBadge
                       icon={<Mail size={18} />}
                       text={school.email}
+                      href={`mailto:${school.email}`}
                   />
                 </div>
 
@@ -2377,11 +2510,30 @@ function StandardPage({ page }) {
   );
 }
 
-function InfoBadge({ icon, text }) {
+function InfoBadge({ icon, text, href, external = false }) {
+  const content = (
+      <>
+        {icon}
+        <span>{text}</span>
+      </>
+  );
+
+  if (href) {
+    return (
+        <a
+            className="info-badge info-badge-link"
+            href={href}
+            target={external ? '_blank' : undefined}
+            rel={external ? 'noopener noreferrer' : undefined}
+        >
+          {content}
+        </a>
+    );
+  }
+
   return (
     <div className="info-badge">
-      {icon}
-      <span>{text}</span>
+      {content}
     </div>
   );
 }
