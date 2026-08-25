@@ -9,6 +9,12 @@ export default function DniOtwarte() {
 
         <div className="article-layout">
           <article className="page-main-card">
+            <p className="article-text open-days-lead">
+              Nasze Dni Otwarte mają charakter personalizowany – każda edycja jest przygotowywana z myślą o uczniach jednej, konkretnej szkoły podstawowej.
+              Dzięki temu możemy dostosować program spotkania do potrzeb i zainteresowań naszych gości,
+              zapewniając im bardziej bezpośrednie poznanie liceum i jego oferty.
+            </p>
+            
             <p className="article-text">
               Dni Otwarte naszego liceum są doskonałą okazją, aby uczniowie klas
               ósmych mogli poznać szkołę od środka i przekonać się, jak wygląda
@@ -48,7 +54,7 @@ export default function DniOtwarte() {
             </p>
 
             <section className="documents-note">
-              <h2>Terminy spotkań</h2>
+              <h2>Terminy</h2>
               <p>
                 Dni otwarte organizowane są dla zainteresowanych szkół podstawowych.
                 Terminy należy ustalać bezpośrednio z{' '}

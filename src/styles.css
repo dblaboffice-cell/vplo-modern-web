@@ -3598,7 +3598,8 @@ th {
 
 /* Pierwszy wyróżniony akapit */
 
-.scientific-sessions-content .scientific-sessions-lead {
+.scientific-sessions-content .scientific-sessions-lead,
+.open-days-lead {
   margin-bottom: 30px;
   padding: 24px 28px;
   border-left: 5px solid #c5a253;
@@ -3701,7 +3702,8 @@ th {
     text-align: left;
   }
 
-  .scientific-sessions-content .scientific-sessions-lead {
+  .scientific-sessions-content .scientific-sessions-lead,
+  .open-days-lead {
     padding: 20px;
     font-size: 1.03rem;
   }
