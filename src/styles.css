@@ -5743,3 +5743,56 @@ main :is(p, li, blockquote) {
     border-radius: 14px;
   }
 }
+
+/* Mobilne dopasowanie grafiki wartości i skróconych kafelków strony głównej. */
+@media (max-width: 620px) {
+  .school-values-building .school-values-eyebrow {
+    padding: 10px 14px !important;
+    font-size: clamp(0.64rem, 2.6vw, 0.8rem) !important;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .school-values-building .school-values-graphic-wrapper,
+  .school-values-building .school-values-graphic {
+    overflow: visible;
+  }
+
+  .school-values-building .school-values-graphic:has(.school-value-popup) {
+    margin-bottom: 210px;
+  }
+
+  .school-value-popup {
+    z-index: 30;
+  }
+
+  .home-tabs-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 8px;
+  }
+
+  .home-tabs-grid .feature-card {
+    min-height: 0;
+    aspect-ratio: 1;
+    padding: 7px 3px;
+    border-radius: 12px;
+  }
+
+  .home-tabs-grid .feature-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 9px;
+  }
+
+  .home-tabs-grid .feature-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .home-tabs-grid .feature-card h3 {
+    margin: 5px 0 0;
+    font-size: 0.62rem;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+  }
+}

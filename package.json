@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "calendar:pdf": "powershell.exe -ExecutionPolicy Bypass -File scripts/generate-calendar-pdf.ps1"
+    "preview": "vite preview"
   },
   "dependencies": {
     "lucide-react": "^0.511.0",

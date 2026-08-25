@@ -1079,7 +1079,7 @@ function HomePage() {
           </section>
   
           <section className="section container home-tabs-section">
-        <span className="eyebrow home-tabs-eyebrow">Sekcje</span>
+        <span className="eyebrow home-tabs-eyebrow">Najważniejsze działy</span>
         <div className="cards-grid home-tabs-grid">
           {menu.map((item) => {
             const Icon = item.icon;
@@ -1093,6 +1093,18 @@ function HomePage() {
               </Link>
             );
           })}
+          <a
+            href="https://uonetplus.vulcan.net.pl/krakow/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="feature-card"
+            aria-label="Przejdź do Dziennika VULCAN"
+          >
+            <div className="feature-icon">
+              <FileText size={18} />
+            </div>
+            <h3>Dziennik VULCAN</h3>
+          </a>
         </div>
       </section>
 
