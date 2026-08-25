@@ -574,11 +574,14 @@
 }
 
 .mission-director-signature {
+    display: block;
+    width: 100%;
     margin: 18px 0 0;
     color: #5e6f94;
     font-family: "Times New Roman", Times, serif;
     font-size: 1.08rem;
-    text-align: right;
+    text-align: right !important;
+    text-justify: auto;
 }
 
 .mission-director-signature span {

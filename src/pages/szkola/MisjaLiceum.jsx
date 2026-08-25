@@ -3,7 +3,7 @@ const MisjaLiceumPage = () => {
         <section className="page-wrap container mission-page">
 
             <div className="page-header">
-                <h1>Misja Liceum</h1>
+                <h1>Misja i Wizja Liceum</h1>
             </div>
 
             <div className="mission-page-content">

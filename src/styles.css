@@ -731,6 +731,12 @@ button {
 .hero-portrait-copy p {
   margin: 0;
   color: var(--muted);
+  text-align: center;
+}
+
+.hero-portrait-copy .hero-portrait-caption {
+  text-align: center !important;
+  text-justify: auto;
 }
 
 .section,
@@ -3681,18 +3687,22 @@ th {
 }
 
 .school-values-eyebrow-hover {
+  align-self: flex-end;
   display: block;
   max-height: 0;
   margin-top: 0;
+  margin-right: 4px;
 
   opacity: 0;
   overflow: hidden;
 
   color: #243b70;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.02rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
 
   transform: translateY(-3px);
 
@@ -3704,7 +3714,7 @@ th {
 }
 
 .school-values-eyebrow:hover .school-values-eyebrow-hover {
-  max-height: 20px;
+  max-height: 26px;
   margin-top: 5px;
   opacity: 1;
   transform: translateY(0);
@@ -3889,6 +3899,23 @@ th {
   hyphens: auto;
 }
 
+.education-formatted-heading {
+  margin: 8px 0 -6px;
+  color: #002b59;
+  font-size: 1.34rem;
+  line-height: 1.3;
+}
+
+.education-formatted-highlight {
+  margin: 2px 0 -4px !important;
+  padding: 18px 22px;
+  border-left: 4px solid #c5a253;
+  border-radius: 0 12px 12px 0;
+  background: #faf6eb;
+  color: #002b59 !important;
+  font-weight: 700;
+}
+
 .article-page .page-main-card.education-formatted-page {
   width: 100%;
   max-width: none;
@@ -4030,6 +4057,14 @@ th {
   margin: 0;
   padding: 12px;
   position: relative;
+}
+
+@media (min-width: 1041px) {
+  .home-video-card-inline .home-video-player {
+    height: 384px;
+    max-height: none;
+    object-fit: cover;
+  }
 }
 
 .home-video-label {
@@ -5277,6 +5312,10 @@ th {
 
 .matura-content-heading {
   margin-bottom: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
 }
 
 .matura-content-heading h2,
@@ -5290,10 +5329,45 @@ th {
   line-height: 1.25;
 }
 
+.matura-cke-button {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 16px;
+  border-radius: 10px;
+  background: #173b76;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 6px 14px rgba(23, 59, 118, 0.18);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.matura-cke-button:hover {
+  background: #a27518;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
 .matura-faq-item p {
   margin: 0;
   color: #263747;
   line-height: 1.7;
+}
+
+.matura-faq-item p a {
+  color: #173b76;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.matura-faq-item p a:hover {
+  color: #a27518;
 }
 
 .matura-faq-groups {
@@ -5377,6 +5451,11 @@ th {
   .matura-content {
     padding: 23px 18px;
     border-radius: 14px;
+  }
+
+  .matura-content-heading {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .matura-faq-item summary {

@@ -2,8 +2,29 @@ const faqGroups = [
     {
         title: 'Organizacja matury',
         questions: [
-            ['Gdzie, kiedy i w jaki sposób zapisać się na maturę oraz do kiedy można zadeklarować przedmioty?', 'Deklarację maturalną składa się elektronicznie w systemie ZIU-SIOEO. Terminy składania i ewentualnej zmiany deklaracji określa CKE dla danej sesji egzaminacyjnej.'],
-            ['Kiedy odbędą się egzaminy maturalne?', 'Egzaminy pisemne i ustne odbywają się w terminach określonych w oficjalnym harmonogramie CKE.'],
+            [
+                'Gdzie, kiedy i w jaki sposób zapisać się na maturę oraz do kiedy można zadeklarować przedmioty?',
+                <>
+                    Deklarację maturalną składa się elektronicznie w systemie{' '}
+                    <a href="https://ziu.gov.pl/login" target="_blank" rel="noreferrer">ZIU-SIOEO</a>.
+                    {' '}Terminy składania i ewentualnej zmiany deklaracji określa{' '}
+                    <a href="https://cke.gov.pl/" target="_blank" rel="noreferrer">CKE</a>{' '}
+                    dla danej sesji egzaminacyjnej.
+                </>,
+            ],
+            [
+                'Kiedy odbędą się egzaminy maturalne?',
+                <>
+                    Egzaminy pisemne i ustne odbywają się w terminach określonych w oficjalnym harmonogramie{' '}
+                    <a
+                        href="https://cke.gov.pl/egzamin-maturalny/egzamin-maturalny-w-formule-2023/harmonogram-komunikaty-i-informacje/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        CKE
+                    </a>.
+                </>,
+            ],
             ['Jakie egzaminy są obowiązkowe na maturze?', 'Obowiązkowe są egzaminy pisemne z języka polskiego, matematyki i języka obcego nowożytnego, egzaminy ustne z języka polskiego i języka obcego oraz przystąpienie do egzaminu z co najmniej jednego przedmiotu dodatkowego na poziomie rozszerzonym.'],
             ['Jakie i ile przedmiotów można zdawać na poziomie rozszerzonym?', 'Można zdawać przedmioty dodatkowe na poziomie rozszerzonym, wybierając je spośród przedmiotów wskazanych przez CKE. Można przystąpić maksymalnie do sześciu przedmiotów dodatkowych.'],
             ['Czy warto zdawać więcej przedmiotów na poziomie rozszerzonym?', 'Nie zawsze. Większa liczba rozszerzeń ma sens przede wszystkim wtedy, gdy są one przydatne w rekrutacji na wybrane kierunki studiów. Wybór mniejszej liczby przedmiotów pozwala lepiej się do nich przygotować i zwiększyć szansę na wysoki wynik. Zbyt duża liczba rozszerzeń może natomiast oznaczać ryzyko uzyskania przeciętnych wyników.'],
@@ -89,6 +110,14 @@ function Matura() {
             <section className="matura-content" aria-labelledby="matura-faq-title">
                 <div className="matura-content-heading">
                     <h2 id="matura-faq-title">Kompendium wiedzy o maturze</h2>
+                    <a
+                        className="matura-cke-button"
+                        href="https://cke.gov.pl/egzamin-maturalny/egzamin-maturalny-w-formule-2023/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        Egzamin maturalny CKE
+                    </a>
                 </div>
 
                 <div className="matura-faq-groups">

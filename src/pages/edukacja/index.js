@@ -64,12 +64,82 @@ const educationPages = {
   },
   '/edukacja/akademia-filmowa': {
     title: 'Szkolna Akademia Filmowa',
-    lead: 'Sekcja poświęcona analizie filmu i edukacji audiowizualnej.',
+    layout: 'article',
+    showHighlights: false,
+    variant: 'education-formatted',
     body: [
-      'Tutaj warto wyeksponować program, repertuar, komentarze do projekcji oraz wartość edukacyjną tego działania.',
-      'Nowoczesny layout dobrze wspiera sekcje z polecanymi filmami i mini-opisami.',
+      'Obrazy filmowe i graficzne są obecnie najczęściej wykorzystywanymi środkami w komunikacji społecznej. Przyczynowość tego zjawiska lokuje się w możliwościach technicznych – w bezprecedensowym, przekraczającym ludzką wyobraźnię postępie w przekazie elektronicznym. Skutek stanowi masowy, praktycznie nieograniczony w czasie i przestrzeni, przekaz informacji dedykowanych potrzebami wymiany naukowej, kulturowej i stricte informacyjnej.',
     ],
-    highlights: ['Edukacja filmowa', 'Program zajęć', 'Lista projekcji'],
+    formattedSections: [
+      {
+        type: 'paragraph',
+        content:
+          'W rzeczywistości szkolnej skupiamy się na obrazach filmowych. Trzeba zauważyć, że są one zwykle tworzone bez udziału odbiorcy, w intencjach i umysłach twórców, uproszczone, często zdeformowane, źródłowo wyprowadzane z różnych przesłanek i nie zawsze wartościowe. Są jednak również obrazami ambitnymi, sięgającymi do dorobku i tradycji narodu, odwołującymi się do ducha patriotyzmu oraz stymulującymi rozwój i postęp w dobrym tego słowa znaczeniu.',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'I w tym trzeba się odnaleźć. Stąd inicjatywa utworzenia Szkolnej Akademii Filmowej, w celu uporządkowania pojęć, umocowania i podbudowy zajęć dydaktycznych – z wykorzystaniem najnowszych środków komunikacji – ze wszystkich przedmiotów, szczególnie z języka polskiego, języków obcych i historii. Najważniejsze jest przygotowanie uczniów do krytycznego odczytywania przekazywanych treści oraz umiejętnej selekcji obrazów filmowych w przybliżaniu i ubogacaniu przyswajanych treści literaturowych czy werbalnych przekazywanych podczas zajęć lekcyjnych. Nie bez znaczenia pozostaje wyzwalanie w świadomości uczniów własnych wizji parareżyserskich i inscenizacyjnych, pobudzających zdolności twórcze.',
+      },
+      {
+        type: 'paragraphWithLink',
+        before:
+          'Nasza Szkolna Akademia Filmowa stanowi zatem program ukierunkowany na uczenie młodego odbiorcy uczestnictwa w kulturze. Kulturze, którą cechuje różnorodność form przekazu. Celem naszym jest podnoszenie wartości słowa drukowanego i dyskusji, aby będąc źródłowymi, stawały się konkurencyjnymi, a może poprawniej pierwotnymi wobec obrazu. Łatwiej wówczas zwrócić uwagę na związki między literaturą a filmem czy sztukami pięknymi, a także różnymi przejawami dialogu z obyczajowością. By cel ten osiągnąć, została skonstruowana koncepcja strukturalna Akademii, w której wyselekcjonowane zostały: tematyka i program warsztatów oraz ',
+        linkLabel: 'projekcje filmowe',
+        href: 'http://vp-lo.krakow.pl/info/projekcje-filmowe',
+        after: ', ustalane oddzielnie w każdym z semestrów.',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Szkolna Akademia Filmowa – SAF – to autorski projekt edukacyjny kierowany do uczniów naszego liceum, który koresponduje z programem nauczania i jest uzupełnieniem treści podejmowanych podczas lekcji języka i literatury ojczystej. Filmy prezentowane w czasie zajęć dobierane są pod kątem poszerzania horyzontów myślowych uczniów oraz poznania najważniejszych twórców i dzieł w historii kina. Budują także bazę kontekstową, szczególnie przydatną w przygotowaniach do egzaminu maturalnego z języka polskiego. Przystępujący do egzaminu dojrzałości dowodzi znajomością wiedzy z historii literatury, filozofii, polityki, historii, historii sztuki, wiedzy o społeczeństwie i szeroko pojętej kultury, w tym historii kina.',
+      },
+      {
+        type: 'highlight',
+        content:
+          'Każda z klas w ciągu roku szkolnego odbywa w ramach SAF dwa spotkania składające się z trzech części:',
+      },
+      {
+        type: 'list',
+        items: [
+          'wykład przygotowujący do odpowiedniego zrozumienia i interpretacji filmu, podczas którego uczeń jest zapoznawany z zagadnieniami z zakresu historii kina oraz z terminologią ułatwiającą mu swobodną wypowiedź na temat obejrzanego obrazu,',
+          'seans filmowy,',
+          'dyskusja dotycząca zagadnień, które porusza film, np. motywów, postaw prezentowanych przez bohaterów oraz sposobów kreowania przedstawionego świata.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Po seansie uczniowie otrzymują od prowadzącego prezentację oraz kartę pracy dotyczącą obejrzanego filmu. Materiał ten może być wykorzystany przez uczniów do powtórek przed egzaminem maturalnym.',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Wykłady wraz z pokazami filmowymi odbywają się w specjalnie przygotowanej auli. Sala wyposażona jest w sprzęt, który pozwala na przeprowadzenie zajęć w ramach SAF na najwyższym poziomie.',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Program SAF jest dostosowywany do potrzeb oraz zainteresowań uczniów, a także do treści poruszanych na lekcjach języka polskiego, dlatego jest dynamiczny i będzie zmieniał się co roku.',
+      },
+      { type: 'heading', content: 'Tematyka podejmowana w czasie warsztatów' },
+      {
+        type: 'list',
+        items: [
+          'poznanie historii kina oraz gatunków filmowych,',
+          'film jako narzędzie kreacji rzeczywistości,',
+          'podstawowe środki wyrazu języka filmowego,',
+          'przygotowanie do odbioru dzieła filmowego: kompozycja plastyczna obrazu i muzyka,',
+          'przygotowanie do samodzielnej analizy w trakcie odbioru dzieła filmowego, w tym rozpoznawanie środków użytych do wywoływania określonych uczuć.',
+        ],
+      },
+      { type: 'heading', content: 'Program warsztatów opiera się na trzech cyklach tematycznych' },
+      {
+        type: 'list',
+        items: ['Historia kina polskiego', 'Estetyka filmu', 'Filmowe arcydzieła'],
+      },
+    ],
+    highlights: [],
   },
   '/edukacja/zajecia-warsztatowe': {
     title: 'Zajęcia warsztatowe',

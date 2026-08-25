@@ -920,7 +920,7 @@ const schoolValuesData = [
     id: 'individual',
     title: 'Indywidualne podejście do ucznia',
     text:
-        'Dostrzegamy mocne strony, potrzeby i aspiracje każdego ucznia. Małe klasy i bliskie relacje z nauczycielami pozwalają nam wspierać młodych ludzi w odkrywaniu własnego potencjału i budowaniu własnej drogi.',
+        'Dostrzegamy mocne strony, potrzeby i aspiracje każdego ucznia. Organizacja nauki sprzyjająca indywidualnej pracy oraz bliskie relacje z nauczycielami pozwalają nam wspierać młodych ludzi w odkrywaniu własnego potencjału i budowaniu własnej drogi.',
     hotspotClass: 'hotspot-individual',
     popupClass: 'popup-individual',
   },
@@ -936,7 +936,7 @@ const schoolValuesData = [
     id: 'passion',
     title: 'Bezpieczeństwo',
     text:
-        'Tworzymy bezpieczną szkołę opartą na szacunku, zaufaniu i dialogu. Jej siłą są nauczyciele z pasją, którzy inspirują, wspierają i budują dobre relacje. Kameralna atmosfera sprzyja nauce, rozwojowi i poczuciu przynależności do szkolnej wspólnoty.',
+        'Tworzymy bezpieczną szkołę opartą na szacunku, zaufaniu i dialogu. Jej siłą są nauczyciele z pasją, którzy inspirują, wspierają i budują dobre relacje. Przyjazna atmosfera sprzyja nauce, rozwojowi i poczuciu przynależności do szkolnej wspólnoty.',
     hotspotClass: 'hotspot-passion',
     popupClass: 'popup-passion',
   },
@@ -1046,7 +1046,13 @@ function HomePage() {
                 <div className="hero-portrait-copy">
                   <span className="eyebrow">Patronka szkoły</span>
                     <h3>Królowa Jadwiga</h3>
-                    <p>{keepPolishShortWordsTogether('Symbol mądrości, odpowiedzialności, odwagi i szacunku')}</p>
+                    <p className="hero-portrait-caption">
+                      Symbol mądrości,
+                      <br />
+                      odpowiedzialności,
+                      <br />
+                      odwagi i szacunku
+                    </p>
                   </div>
                 </div>
               </div>
@@ -1815,6 +1821,22 @@ function StandardPage({ page }) {
                               <li key={item}>{item}</li>
                             ))}
                           </ul>
+                        ) : section.type === 'heading' ? (
+                          <h2 className="education-formatted-heading" key={`formatted-heading-${index}`}>
+                            {section.content}
+                          </h2>
+                        ) : section.type === 'highlight' ? (
+                          <p className="education-formatted-highlight" key={`formatted-highlight-${index}`}>
+                            {section.content}
+                          </p>
+                        ) : section.type === 'paragraphWithLink' ? (
+                          <p key={`formatted-link-${index}`}>
+                            {section.before}
+                            <a href={section.href} target="_blank" rel="noreferrer">
+                              {section.linkLabel}
+                            </a>
+                            {section.after}
+                          </p>
                         ) : (
                           <p key={`formatted-paragraph-${index}`}>{section.content}</p>
                         )
