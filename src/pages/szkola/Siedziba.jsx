@@ -20,6 +20,7 @@ const siedzibaPage = {
     layout: 'article',
     firstBlockHeading: true,
     showHighlights: true,
+    showHighlightsTitle: false,
     timelineImage: `${import.meta.env.BASE_URL}os-czasu-siedziba.png`,
     timelineAlt: 'Oś czasu historii siedziby liceum przy ul. Smoleńsk 14',
 }

@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import {
-  BookOpen,
   CalendarDays,
   ChevronDown,
   ChevronLeft,
@@ -54,7 +53,8 @@ import {
 } from './pages/szkola/PrzestrzenieUczniowskiePages';
 import Statut from './pages/szkola/dokumenty/Statut';
 import StandardyOM from './pages/szkola/dokumenty/StandardyOM';
-import educationPages from './pages/edukacja';
+import educationPages, { educationMenuItem } from './pages/edukacja';
+import { educationRoutes } from './pages/edukacja/routes';
 
 import './pages/szkola/szkola.css';
 
@@ -222,55 +222,7 @@ const menu = [
       },
     ],
   },
-  {
-    label: 'Edukacja',
-    path: '/edukacja/edukacja-kulturalna',
-    icon: BookOpen,
-    children: [
-      {
-        group: 'Nauka i rozwój',
-        items: [
-          {
-            label: 'Edukacja kulturalna',
-            path: '/edukacja/edukacja-kulturalna',
-          },
-          {
-            label: 'Grupy klasowe',
-            path: '/edukacja/grupy-klasowe',
-          },
-          {
-            label: 'Zajęcia warsztatowe',
-            path: '/edukacja/zajecia-warsztatowe',
-          },
-          {
-            label: 'Zajęcia sportowe – WF',
-            path: '/edukacja/zajecia-sportowe-wf',
-          },
-          {
-            label: 'Język hiszpański',
-            path: '/edukacja/jezyk-hiszpanski',
-          },
-          {
-            label: 'Kreatywny uczeń',
-            path: '/edukacja/kreatywny-uczen',
-          },
-        ],
-      },
-      {
-        group: 'Projekty edukacyjne',
-        items: [
-          {
-            label: 'Sesje Naukowe',
-            path: '/edukacja/sesje-naukowe',
-          },
-          {
-            label: 'Szkolna Akademia Filmowa',
-            path: '/edukacja/akademia-filmowa',
-          },
-        ],
-      },
-    ],
-  },
+  educationMenuItem,
 
   {
     label: 'Rekrutacja',
@@ -608,6 +560,10 @@ function App() {
 
           <Route path="/galeria" element={<GalleryPage />} />
 
+          {educationRoutes.map(({ path, element }) => (
+              <Route key={path} path={path} element={element} />
+          ))}
+
           <Route
               path="/galeria/zakonczenie-roku-szkolnego-2025-2026"
               element={<GalleryPage initialAlbum="zakonczenie-roku-2025-2026" />}
@@ -832,7 +788,7 @@ function DesktopNavItem({ item }) {
                     <NavLink
                         key={sub.path}
                         to={sub.path}
-                        className="dropdown-link"
+                        className={`dropdown-link ${sub.className ?? ''}`}
                     >
                       {sub.label}
                     </NavLink>
@@ -928,7 +884,7 @@ function MobileNavItem({ item, onNavigate }) {
                     <NavLink
                         key={sub.path}
                         to={sub.path}
-                        className="mobile-sublink"
+                        className={`mobile-sublink ${sub.className ?? ''}`}
                         onClick={onNavigate}
                     >
                       {sub.label}
@@ -1921,7 +1877,7 @@ function StandardPage({ page }) {
         </div>
         {articlePage && page.showHighlights && (
           <aside className="article-highlights">
-            <h2>Najważniejsze elementy</h2>
+            {page.showHighlightsTitle !== false && <h2>Najważniejsze elementy</h2>}
             <ul>
               {page.highlights.map((item) => (
                 <li key={item}>{item}</li>

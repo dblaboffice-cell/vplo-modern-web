@@ -1,3 +1,5 @@
+import { BookOpen } from 'lucide-react';
+
 const educationPages = {
   '/edukacja/edukacja-kulturalna': {
     title: 'Edukacja kulturalna',
@@ -191,15 +193,6 @@ const educationPages = {
     ],
     highlights: ['Kompetencje miękkie', 'Forma warsztatowa', 'Czytelne moduły'],
   },
-  '/edukacja/zajecia-sportowe-wf': {
-    title: 'Zajęcia sportowe - WF',
-    lead: 'Sekcja opisująca aktywność fizyczną i sposób organizacji zajęć sportowych.',
-    body: [
-      'To dobre miejsce na opis tenisa, siłowni, sezonowych aktywności oraz podejścia szkoły do ruchu i zdrowia.',
-      'W nowoczesnej odsłonie można dodać galerię i krótkie bloki z najważniejszymi formami aktywności.',
-    ],
-    highlights: ['Sport i zdrowie', 'Zdjęcia aktywności', 'Elastyczny układ treści'],
-  },
   '/edukacja/jezyk-hiszpanski': {
     title: 'Język hiszpański',
     lead: 'Prezentacja oferty językowej i nowoczesnych metod nauczania.',
@@ -281,6 +274,33 @@ const educationPages = {
     ],
     highlights: ['Program rozwojowy', 'Wyróżnik szkoły', 'Sekcja do rozbudowy'],
   },
+};
+
+export const educationMenuItem = {
+  label: 'Edukacja',
+  path: '/edukacja/edukacja-kulturalna',
+  icon: BookOpen,
+  children: [
+    {
+      group: 'Nauka i rozwój',
+      items: [
+        { label: 'Edukacja kulturalna', path: '/edukacja/edukacja-kulturalna' },
+        { label: 'Grupy klasowe', path: '/edukacja/grupy-klasowe' },
+        { label: 'Zajęcia warsztatowe', path: '/edukacja/zajecia-warsztatowe' },
+        { label: 'Indywidualny dobór rozszerzeń', path: '/edukacja/przedmioty-rozszerzone', className: 'extensions-nav-link' },
+        { label: 'Zajęcia sportowe – WF', path: '/edukacja/zajecia-sportowe-wf' },
+        { label: 'Język hiszpański', path: '/edukacja/jezyk-hiszpanski' },
+        { label: 'Kreatywny uczeń', path: '/edukacja/kreatywny-uczen' },
+      ],
+    },
+    {
+      group: 'Projekty edukacyjne',
+      items: [
+        { label: 'Sesje Naukowe', path: '/edukacja/sesje-naukowe' },
+        { label: 'Szkolna Akademia Filmowa', path: '/edukacja/akademia-filmowa' },
+      ],
+    },
+  ],
 };
 
 export default educationPages;

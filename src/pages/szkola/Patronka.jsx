@@ -71,6 +71,7 @@ const patronkaPage = {
     layout: 'article',
     firstBlockHeading: true,
     showHighlights: true,
+    showHighlightsTitle: false,
     author: 'Opracowanie: dr Kamil Świderski',
     timelineImage: `${import.meta.env.BASE_URL}os-czasu-jadwiga.png`,
     timelineAlt: 'Oś czasu kultu i pamięci o królowej Jadwidze',

@@ -7,6 +7,7 @@ export const ogrodPage = {
   highlights: ['Świeże powietrze', 'Różnorodne rośliny', 'Przestrzeń do odpoczynku'],
   layout: 'article',
   showHighlights: true,
+  showHighlightsTitle: false,
   mainImage: `${import.meta.env.BASE_URL}ogrod-szkolny.png`,
   mainImageAlt: 'Ogród V Prywatnego Liceum Ogólnokształcącego w Krakowie',
   mainImageCaption: 'Ogród szkolny',
@@ -22,6 +23,7 @@ export const cafeAtriumPage = {
   highlights: ['Kawiarenka', 'Obiady na długiej przerwie', 'Miejsce spotkań'],
   layout: 'article',
   showHighlights: true,
+  showHighlightsTitle: false,
   mainImage: `${import.meta.env.BASE_URL}atrium.png`,
   mainImageAlt: 'Cafe Atrium V Prywatnego Liceum Ogólnokształcącego w Krakowie',
   mainImageCaption: 'Cafe Atrium',
@@ -37,6 +39,7 @@ export const odskoczniaPage = {
   highlights: ['Kanapy i pufy', 'Gry i szachy', 'Uczniowska kreatywność'],
   layout: 'article',
   showHighlights: true,
+  showHighlightsTitle: false,
 };
 
 export const miejsceCichejPracyPage = {
@@ -48,4 +51,5 @@ export const miejsceCichejPracyPage = {
   highlights: ['Cisza', 'Koncentracja', 'Samodzielna praca'],
   layout: 'article',
   showHighlights: true,
+  showHighlightsTitle: false,
 };
