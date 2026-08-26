@@ -200,12 +200,7 @@ button {
 
 .menu-btn,
 .mobile-toggle {
-  display: block;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-4px);
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.3s;
+  display: none;
   width: 42px;
   height: 42px;
   align-items: center;
@@ -6267,6 +6262,36 @@ main :is(p, li, blockquote) {
 
   .school-value-popup {
     z-index: 30;
+  }
+
+  .school-value-hotspot {
+    gap: 4px;
+    padding: 3px 5px;
+    border-radius: 14px;
+  }
+
+  .school-value-hotspot-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .school-value-hotspot-icon svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  .school-value-hotspot-copy {
+    gap: 1px;
+  }
+
+  .school-value-hotspot-title {
+    font-size: clamp(0.36rem, 1.7vw, 0.5rem);
+    line-height: 1.05;
+  }
+
+  .school-value-hotspot-hint {
+    font-size: clamp(0.28rem, 1.15vw, 0.36rem);
+    letter-spacing: 0.01em;
   }
 
   .home-tabs-grid {

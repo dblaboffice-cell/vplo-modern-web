@@ -563,6 +563,11 @@ function App() {
               element={<LarenExchangeArticle />}
           />
 
+          <Route
+              path="/aktualnosci/dzien-jezyka-angielskiego-2026"
+              element={<EnglishDayArticle />}
+          />
+
           <Route path="/galeria" element={<GalleryPage />} />
 
           {educationRoutes.map(({ path, element }) => (
@@ -582,6 +587,11 @@ function App() {
           <Route
               path="/galeria/pozegnanie-maturzystow-2026"
               element={<GalleryPage initialAlbum="pozegnanie-maturzystow-2026" />}
+          />
+
+          <Route
+              path="/galeria/dzien-jezyka-angielskiego-2026"
+              element={<GalleryPage initialAlbum="dzien-jezyka-angielskiego-2026" />}
           />
 
           <Route
@@ -1203,12 +1213,32 @@ const graduatesFarewellPhotos = Array.from({ length: 9 }, (_, index) => {
   };
 });
 
+const englishDayPhotos = [
+  '10d42439-50c7-41c4-9c0e-0dd32965410d.jpg',
+  '41a352ed-9e7b-4056-a732-7fd813bd5958.jpg',
+  '918aa89a-614a-4f26-9ec0-e3e84dee0739.jpeg',
+  'c5651ec3-d711-450b-96a6-f4b6db17022e.jpeg',
+  'e67e0bd8-68ad-47d5-a07e-339039310361.jpg',
+  'IMG_4488_edited.jpg',
+  'IMG_4494_edited.jpg',
+  'IMG_4508_edited.jpg',
+  'IMG_4511_edited.jpg',
+  'IMG_4518_edited.jpg',
+  'IMG_4521_edited.jpg',
+].map((filename, index) => ({
+  src: `${import.meta.env.BASE_URL}galeria/dzien-jezyka-angielskiego-2026/${filename}`,
+  alt: `Dzień Języka Angielskiego 2026 – zdjęcie ${index + 1}`,
+}));
+
 function GalleryPage({ initialAlbum = null }) {
   const isScientificAlbum = initialAlbum === '64-sesja-naukowa-2026';
   const isGraduatesFarewellAlbum = initialAlbum === 'pozegnanie-maturzystow-2026';
+  const isEnglishDayAlbum = initialAlbum === 'dzien-jezyka-angielskiego-2026';
   const [activeCategory, setActiveCategory] = useState(
       isScientificAlbum
           ? 'Projekty edukacyjne'
+          : isEnglishDayAlbum
+              ? 'Projekty edukacyjne'
           : isGraduatesFarewellAlbum
               ? 'Roczniki'
               : 'Życie szkoły'
@@ -1217,18 +1247,25 @@ function GalleryPage({ initialAlbum = null }) {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const activeAlbumIsScientific = albumOpen === '64-sesja-naukowa-2026';
   const activeAlbumIsGraduatesFarewell = albumOpen === 'pozegnanie-maturzystow-2026';
+  const activeAlbumIsEnglishDay = albumOpen === 'dzien-jezyka-angielskiego-2026';
   const activeAlbumPhotos = activeAlbumIsScientific
       ? scientificSessionPhotos
+      : activeAlbumIsEnglishDay
+          ? englishDayPhotos
       : activeAlbumIsGraduatesFarewell
           ? graduatesFarewellPhotos
           : endOfSchoolYearPhotos;
   const activeAlbumCategory = activeAlbumIsScientific
       ? 'Projekty edukacyjne'
+      : activeAlbumIsEnglishDay
+          ? 'Projekty edukacyjne'
       : activeAlbumIsGraduatesFarewell
           ? 'Roczniki'
           : 'Życie szkoły';
   const activeAlbumTitle = activeAlbumIsScientific
       ? '64. Sesja Naukowa'
+      : activeAlbumIsEnglishDay
+          ? 'Dzień Języka Angielskiego 2026'
       : activeAlbumIsGraduatesFarewell
           ? 'Pożegnanie maturzystów 2026'
           : 'Zakończenie roku szkolnego 2025/2026';
@@ -1237,6 +1274,8 @@ function GalleryPage({ initialAlbum = null }) {
     setActiveCategory(
         initialAlbum === '64-sesja-naukowa-2026'
             ? 'Projekty edukacyjne'
+            : initialAlbum === 'dzien-jezyka-angielskiego-2026'
+                ? 'Projekty edukacyjne'
             : initialAlbum === 'pozegnanie-maturzystow-2026'
                 ? 'Roczniki'
                 : 'Życie szkoły'
@@ -1339,6 +1378,23 @@ function GalleryPage({ initialAlbum = null }) {
                           <span>Projekty edukacyjne</span>
                           <h3>64. Sesja Naukowa</h3>
                           <p>16 zdjęć</p>
+                        </div>
+                      </button>
+
+                      <button
+                          type="button"
+                          className="school-album-card"
+                          onClick={() => setAlbumOpen('dzien-jezyka-angielskiego-2026')}
+                      >
+                        <img
+                            src={englishDayPhotos[0].src}
+                            alt="Okładka albumu Dzień Języka Angielskiego 2026"
+                        />
+
+                        <div className="school-album-copy">
+                          <span>Projekty edukacyjne</span>
+                          <h3>Dzień Języka Angielskiego 2026</h3>
+                          <p>{englishDayPhotos.length} zdjęć</p>
                         </div>
                       </button>
                     </div>
@@ -1496,6 +1552,15 @@ const newsItems = [
     place: 'Laren, Niderlandy',
     excerpt: 'Międzynarodowa wymiana, wspólne lekcje, Bruksela, Amsterdam i nowe przyjaźnie.',
     image: `${import.meta.env.BASE_URL}krakow-rynek.jpeg`,
+  },
+  {
+    slug: 'dzien-jezyka-angielskiego-2026',
+    title: 'Dzień Języka Angielskiego 2026',
+    date: '17–18 marca 2026',
+    dateTime: '2026-03-17',
+    place: 'Kraków',
+    excerpt: 'Konkurs, prezentacje uczniów i debata o nowoczesnej technologii podczas dwóch dni poświęconych językowi angielskiemu.',
+    image: `${import.meta.env.BASE_URL}aktualnosci/dzien-jezyka-angielskiego-2026.jpg`,
   },
 ];
 
@@ -1813,6 +1878,52 @@ function LarenExchangeArticle() {
             <p>W dniach 13–17 kwietnia uczniowie naszej szkoły uczestniczyli w wymianie międzynarodowej z holenderską szkołą w Laren. Podczas pobytu brali udział w lekcjach razem z uczniami holenderskich klas, poznając tamtejszy system edukacji i codzienne życie szkoły.</p>
             <p>Program obejmował również wycieczki do Brukseli, gdzie młodzież odwiedziła Parlament Europejski i zwiedzała miasto, a także do Amsterdamu — uczestnicy odbyli rejs kanałami, odwiedzili Rijksmuseum oraz słynne ogrody tulipanów Keukenhof.</p>
             <p>Wyjazd był doskonałą okazją do rozwijania kompetencji językowych, poznawania nowych kultur i nawiązywania międzynarodowych przyjaźni.</p>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function EnglishDayArticle() {
+  const articleImage =
+      `${import.meta.env.BASE_URL}aktualnosci/dzien-jezyka-angielskiego-2026.jpg`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Dzień Języka Angielskiego 2026</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-03-17">17–18 marca 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <img
+              className="news-article-cover"
+              src={articleImage}
+              alt="Uczestnicy Dnia Języka Angielskiego 2026"
+          />
+
+          <div className="news-article-body">
+            <p>
+              Tegoroczne obchody Dnia Języka Angielskiego w V Prywatnym Liceum rozpoczęliśmy 17 marca. Z okazji Dnia Świętego Patryka Panie Profesor Agnieszka Smoleń oraz Iga Zdanikowska zorganizowały konkurs na temat postaci patrona. Uczestnicy podzieleni na grupy rywalizowali między sobą w formule gry Jeopardy. Zwycięska drużyna, w której skład wchodzili Adam Sydor, Jakub Stadnicki i Filip Staniewski, otrzymała dyplomy oraz oceny celujące.
+            </p>
+
+            <p>
+              W dniu 18 marca młodzież klas 1–3 w pięciu grupach uczestniczyła w prezentacjach poświęconych kluczowym postaciom brytyjskiej i amerykańskiej nauki, sztuki i literatury. Każdy uczeń naszej szkoły przygotował projekt na temat wynalazców, naukowców, artystów i pisarzy, którzy znacząco wzbogacili naukową i duchową spuściznę Wielkiej Brytanii oraz Stanów Zjednoczonych.
+            </p>
+
+            <p>
+              W drugiej części dnia wszyscy uczniowie mieli okazję wziąć udział w gorącej debacie na temat korzyści i zagrożeń płynących z nowoczesnej technologii, ze szczególnym uwzględnieniem smartfonów (<em>The Advantages and Disadvantages of Modern Technology</em>). Debatę przygotował i poprowadził profesor Leszek Korzeniowski. Poprzedziła ją projekcja dwóch krótkich filmów edukacyjnych wprowadzających w omawianą tematykę.
+            </p>
+
+            <Link to="/galeria/dzien-jezyka-angielskiego-2026" className="news-gallery-link">
+              Galeria zdjęć
+            </Link>
           </div>
         </div>
       </article>
