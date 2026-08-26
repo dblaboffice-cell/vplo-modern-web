@@ -274,6 +274,36 @@ const educationPages = {
     ],
     highlights: ['Program rozwojowy', 'Wyróżnik szkoły', 'Sekcja do rozbudowy'],
   },
+  '/edukacja/dzien-jezyka-angielskiego': {
+    title: 'Dzień Języka Angielskiego',
+    lead: 'Projekt dydaktyczno-kulturalny',
+    layout: 'article',
+    variant: 'education-formatted',
+    body: [
+      'W ramach działalności dydaktyczno-kulturalnej szkoły każdego roku organizowany jest Dzień Języka Angielskiego. To wydarzenie ma na celu popularyzację języka angielskiego oraz kultur krajów anglojęzycznych.',
+    ],
+    formattedSections: [
+      {
+        type: 'paragraph',
+        content: 'W programie znajdują się między innymi:',
+      },
+      {
+        type: 'list',
+        items: [
+          'wykłady z zakresu językoznawstwa oraz kultury krajów anglojęzycznych, prowadzone przez nauczycieli i zaproszonych gości,',
+          'quizy wiedzy o kulturze krajów anglojęzycznych oraz sprawności językowych, w tym wewnątrzszkolny konkurs języka angielskiego — etap pisemny i ustny,',
+          'prezentacje multimedialne uczniów,',
+          'filmy edukacyjne oraz dyskusje wokół zagadnień związanych z literaturą i sztuką.',
+        ],
+      },
+      {
+        type: 'highlight',
+        content: 'Uczestnictwo w wydarzeniu sprzyja integracji uczniów, rozwija kreatywność oraz pozwala na praktyczne wykorzystanie języka w nieformalnej atmosferze.',
+      },
+    ],
+    highlights: [],
+    showHighlights: false,
+  },
 };
 
 export const educationMenuItem = {
@@ -286,16 +316,22 @@ export const educationMenuItem = {
       items: [
         { label: 'Edukacja kulturalna', path: '/edukacja/edukacja-kulturalna' },
         { label: 'Grupy klasowe', path: '/edukacja/grupy-klasowe' },
-        { label: 'Zajęcia warsztatowe', path: '/edukacja/zajecia-warsztatowe' },
-        { label: 'Indywidualny dobór rozszerzeń', path: '/edukacja/przedmioty-rozszerzone', className: 'extensions-nav-link' },
-        { label: 'Zajęcia sportowe – WF', path: '/edukacja/zajecia-sportowe-wf' },
-        { label: 'Język hiszpański', path: '/edukacja/jezyk-hiszpanski' },
         { label: 'Kreatywny uczeń', path: '/edukacja/kreatywny-uczen' },
+        { label: 'Zajęcia warsztatowe', path: '/edukacja/zajecia-warsztatowe' },
+      ],
+    },
+    {
+      group: 'Dydaktyka',
+      items: [
+        { label: 'Indywidualny dobór rozszerzeń', path: '/edukacja/przedmioty-rozszerzone', className: 'extensions-nav-link' },
+        { label: 'Język hiszpański', path: '/edukacja/jezyk-hiszpanski' },
+        { label: 'Zajęcia sportowe – WF', path: '/edukacja/zajecia-sportowe-wf' },
       ],
     },
     {
       group: 'Projekty edukacyjne',
       items: [
+        { label: 'Dzień Języka Angielskiego', path: '/edukacja/dzien-jezyka-angielskiego' },
         { label: 'Sesje Naukowe', path: '/edukacja/sesje-naukowe' },
         { label: 'Szkolna Akademia Filmowa', path: '/edukacja/akademia-filmowa' },
       ],
