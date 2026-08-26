@@ -8,6 +8,7 @@ const pracowniaBiologicznaPage = {
   highlights: ['Mikroskopy', 'Eksponaty biologiczne', 'Model szkieletu człowieka'],
   layout: 'article',
   showHighlights: true,
+  showHighlightsTitle: false,
 };
 
 export default pracowniaBiologicznaPage;

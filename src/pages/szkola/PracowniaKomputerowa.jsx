@@ -12,6 +12,7 @@ const pracowniaKomputerowaPage = {
 
     layout: 'article',
     showHighlights: true,
+    showHighlightsTitle: false,
     firstBlockHeading: false,
 
     mainImage: `${import.meta.env.BASE_URL}pracownia-komputerowa.jpg`,

@@ -909,27 +909,30 @@ function MobileNavItem({ item, onNavigate }) {
 const schoolValuesData = [
   {
     id: 'individual',
-    title: 'Indywidualne podejście do ucznia',
+    title: 'Indywidualne podejście do każdego ucznia',
     text:
         'Dostrzegamy mocne strony, potrzeby i aspiracje każdego ucznia. Organizacja nauki sprzyjająca indywidualnej pracy oraz bliskie relacje z nauczycielami pozwalają nam wspierać młodych ludzi w odkrywaniu własnego potencjału i budowaniu własnej drogi.',
     hotspotClass: 'hotspot-individual',
     popupClass: 'popup-individual',
+    icon: Users,
   },
   {
     id: 'quality',
-    title: 'Nowoczesna edukacja',
+    title: 'Nowoczesna edukacja i dobre przygotowanie do przyszłości',
     text:
         'Łączymy solidną wiedzę z rozwijaniem samodzielnego i krytycznego myślenia. Przygotowujemy uczniów do matury i dalszej edukacji, ale także do świadomego podejmowania decyzji i wyzwań zmieniającego się świata.',
     hotspotClass: 'hotspot-quality',
     popupClass: 'popup-quality',
+    icon: Trophy,
   },
   {
     id: 'passion',
-    title: 'Bezpieczeństwo',
+    title: 'Bezpieczeństwo, dobra atmosfera i partnerskie relacje',
     text:
         'Tworzymy bezpieczną szkołę opartą na szacunku, zaufaniu i dialogu. Jej siłą są nauczyciele z pasją, którzy inspirują, wspierają i budują dobre relacje. Przyjazna atmosfera sprzyja nauce, rozwojowi i poczuciu przynależności do szkolnej wspólnoty.',
     hotspotClass: 'hotspot-passion',
     popupClass: 'popup-passion',
+    icon: School,
   },
 ];
 
@@ -963,6 +966,7 @@ function HomePage() {
 
                   {schoolValuesData.map((value) => {
                     const isActive = activeValue === value.id;
+                    const Icon = value.icon;
 
                     return (
                         <button
@@ -982,7 +986,13 @@ function HomePage() {
                             }
                             aria-expanded={isActive}
                             aria-label={`Pokaż opis: ${value.title}`}
-                        />
+                        >
+                          <span className="school-value-hotspot-icon" aria-hidden="true"><Icon size={18} /></span>
+                          <span className="school-value-hotspot-copy">
+                            <span className="school-value-hotspot-title">{value.title}</span>
+                            <span className="school-value-hotspot-hint">Więcej</span>
+                          </span>
+                        </button>
                     );
                   })}
 
@@ -1449,15 +1459,6 @@ function GalleryPage({ initialAlbum = null }) {
 
 const newsItems = [
   {
-    slug: 'wymiana-z-holenderska-szkola-w-laren',
-    title: 'Wymiana z holenderską szkołą w Laren',
-    date: '13–17 kwietnia 2026',
-    dateTime: '2026-04-13',
-    place: 'Laren, Niderlandy',
-    excerpt: 'Międzynarodowa wymiana, wspólne lekcje, Bruksela, Amsterdam i nowe przyjaźnie.',
-    image: `${import.meta.env.BASE_URL}krakow-rynek.jpeg`,
-  },
-  {
     slug: 'zakonczenie-roku-2025-2026',
     title: 'Zakończenie roku 2025/2026',
     date: '26 czerwca 2026',
@@ -1486,6 +1487,15 @@ const newsItems = [
     excerpt:
         'Uroczyste zakończenie roku szkolnego klas maturalnych oraz podsumowanie wspólnych lat nauki i sukcesów tegorocznych absolwentów.',
     image: `${import.meta.env.BASE_URL}galeria/pozegnanie-maturzystow-2026/01.jpg`,
+  },
+  {
+    slug: 'wymiana-z-holenderska-szkola-w-laren',
+    title: 'Wymiana z holenderską szkołą w Laren',
+    date: '13–17 kwietnia 2026',
+    dateTime: '2026-04-13',
+    place: 'Laren, Niderlandy',
+    excerpt: 'Międzynarodowa wymiana, wspólne lekcje, Bruksela, Amsterdam i nowe przyjaźnie.',
+    image: `${import.meta.env.BASE_URL}krakow-rynek.jpeg`,
   },
 ];
 

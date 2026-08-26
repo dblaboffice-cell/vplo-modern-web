@@ -8,6 +8,7 @@ const pracowniaChemicznaPage = {
   highlights: ['Doświadczenia', 'Profesjonalne wyposażenie', 'Współpraca zewnętrzna'],
   layout: 'article',
   showHighlights: true,
+  showHighlightsTitle: false,
 };
 
 export default pracowniaChemicznaPage;
