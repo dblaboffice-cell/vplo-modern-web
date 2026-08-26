@@ -558,6 +558,11 @@ function App() {
               element={<GraduatesFarewellArticle />}
           />
 
+          <Route
+              path="/aktualnosci/wymiana-z-holenderska-szkola-w-laren"
+              element={<LarenExchangeArticle />}
+          />
+
           <Route path="/galeria" element={<GalleryPage />} />
 
           {educationRoutes.map(({ path, element }) => (
@@ -790,7 +795,8 @@ function DesktopNavItem({ item }) {
                         to={sub.path}
                         className={`dropdown-link ${sub.className ?? ''}`}
                     >
-                      {sub.label}
+                      {sub.prefix && <span className="extensions-nav-prefix">{sub.prefix}</span>}
+                      <span className="extensions-nav-label">{sub.label}</span>
                     </NavLink>
                 );
               })}
@@ -887,7 +893,8 @@ function MobileNavItem({ item, onNavigate }) {
                         className={`mobile-sublink ${sub.className ?? ''}`}
                         onClick={onNavigate}
                     >
-                      {sub.label}
+                      {sub.prefix && <span className="extensions-nav-prefix">{sub.prefix}</span>}
+                      <span className="extensions-nav-label">{sub.label}</span>
                     </NavLink>
                 );
               })}
@@ -1442,6 +1449,15 @@ function GalleryPage({ initialAlbum = null }) {
 
 const newsItems = [
   {
+    slug: 'wymiana-z-holenderska-szkola-w-laren',
+    title: 'Wymiana z holenderską szkołą w Laren',
+    date: '13–17 kwietnia 2026',
+    dateTime: '2026-04-13',
+    place: 'Laren, Niderlandy',
+    excerpt: 'Międzynarodowa wymiana, wspólne lekcje, Bruksela, Amsterdam i nowe przyjaźnie.',
+    image: `${import.meta.env.BASE_URL}krakow-rynek.jpeg`,
+  },
+  {
     slug: 'zakonczenie-roku-2025-2026',
     title: 'Zakończenie roku 2025/2026',
     date: '26 czerwca 2026',
@@ -1764,6 +1780,29 @@ function ScientificSessionArticle() {
             <Link to="/galeria/64-sesja-naukowa-2026" className="news-gallery-link">
               Galeria 64. Sesji Naukowej
             </Link>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function LarenExchangeArticle() {
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Wymiana z holenderską szkołą w Laren</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-04-13">13–17 kwietnia 2026</time></span>
+              <span><MapPin size={18} />Laren, Niderlandy</span>
+            </div>
+          </header>
+          <div className="news-article-body">
+            <p>W dniach 13–17 kwietnia uczniowie naszej szkoły uczestniczyli w wymianie międzynarodowej z holenderską szkołą w Laren. Podczas pobytu brali udział w lekcjach razem z uczniami holenderskich klas, poznając tamtejszy system edukacji i codzienne życie szkoły.</p>
+            <p>Program obejmował również wycieczki do Brukseli, gdzie młodzież odwiedziła Parlament Europejski i zwiedzała miasto, a także do Amsterdamu — uczestnicy odbyli rejs kanałami, odwiedzili Rijksmuseum oraz słynne ogrody tulipanów Keukenhof.</p>
+            <p>Wyjazd był doskonałą okazją do rozwijania kompetencji językowych, poznawania nowych kultur i nawiązywania międzynarodowych przyjaźni.</p>
           </div>
         </div>
       </article>

@@ -206,10 +206,11 @@
     margin-left: 9px;
     padding: 3px 8px;
     border-radius: 999px;
-    background: #173b76;
-    color: #ffffff;
+    border: 1px solid rgba(197, 154, 61, 0.45);
+    background: rgba(197, 154, 61, 0.12);
+    color: #9a6b18;
     font-size: 0.68rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 0.04em;
     line-height: 1.2;
     text-transform: uppercase;

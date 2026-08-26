@@ -5628,7 +5628,12 @@ th {
   font-weight: 400;
 }
 
-.extensions-nav-link::before {
+.extensions-nav-prefix {
+  color: var(--navy);
+  margin-right: 7px;
+}
+
+.extensions-nav-link .extensions-nav-label::before {
   content: '✦';
   margin-right: 7px;
   color: #c3912e;
@@ -5858,7 +5863,7 @@ th {
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -5868,7 +5873,7 @@ th {
   margin: 26px 0 16px;
   color: #172f5d;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.35rem, 2.3vw, 1.75rem);
+  font-size: clamp(1.18rem, 2vw, 1.5rem);
   line-height: 1.2;
 }
 
