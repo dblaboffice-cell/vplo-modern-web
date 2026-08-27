@@ -1398,7 +1398,7 @@ function GalleryPage({ initialAlbum = null }) {
                         <div className="school-album-copy">
                           <span>Życie szkoły</span>
                           <h3>Zakończenie roku szkolnego 2025/2026</h3>
-                          <p>13 zdjęć</p>
+                          <p>{endOfSchoolYearPhotos.length} zdjęć</p>
                         </div>
                       </button>
                     </div>
@@ -1442,7 +1442,7 @@ function GalleryPage({ initialAlbum = null }) {
                     </div>
                 ) : activeCategory === 'Roczniki' ? (
                     <div className="gallery-albums-section">
-                      <h2>Albumy</h2>
+                      <h2>Rocznik 2026</h2>
 
                       <button
                           type="button"
@@ -1455,7 +1455,7 @@ function GalleryPage({ initialAlbum = null }) {
                         />
 
                         <div className="school-album-copy">
-                          <span>Roczniki</span>
+                          <span>Rocznik 2026</span>
                           <h3>Pożegnanie maturzystów 2026</h3>
                           <p>{graduatesFarewellPhotos.length} zdjęć</p>
                         </div>
@@ -1469,7 +1469,7 @@ function GalleryPage({ initialAlbum = null }) {
                         <img src={studniowkaPhotos[0].src} alt="Okładka albumu Studniówka 2026" />
 
                         <div className="school-album-copy">
-                          <span>Roczniki</span>
+                          <span>Rocznik 2026</span>
                           <h3>Studniówka 2026</h3>
                           <p>{studniowkaPhotos.length} zdjęć</p>
                         </div>
