@@ -568,6 +568,16 @@ function App() {
               element={<EnglishDayArticle />}
           />
 
+          <Route
+              path="/aktualnosci/studniowka-2026"
+              element={<StudniowkaArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/ferie-naukowe-2026"
+              element={<FerieNaukoweArticle />}
+          />
+
           <Route path="/galeria" element={<GalleryPage />} />
 
           {educationRoutes.map(({ path, element }) => (
@@ -592,6 +602,11 @@ function App() {
           <Route
               path="/galeria/dzien-jezyka-angielskiego-2026"
               element={<GalleryPage initialAlbum="dzien-jezyka-angielskiego-2026" />}
+          />
+
+          <Route
+              path="/galeria/studniowka-2026"
+              element={<GalleryPage initialAlbum="studniowka-2026" />}
           />
 
           <Route
@@ -1230,15 +1245,33 @@ const englishDayPhotos = [
   alt: `Dzień Języka Angielskiego 2026 – zdjęcie ${index + 1}`,
 }));
 
+const studniowkaPhotos = [
+  'Studniowka_2026{Counter}_5.webp',
+  'Studniowka_2026{Counter}.webp',
+  'Studniowka_2026{Counter}_1.webp',
+  'Studniowka_2026{Counter}_2.webp',
+  'Studniowka_2026{Counter}_3.webp',
+  'Studniowka_2026{Counter}_4.webp',
+  'Studniowka_2026{Counter}_6.webp',
+  'Studniowka_2026{Counter}_7.webp',
+  'Studniowka_2026{Counter}_8.webp',
+].map((filename, index) => ({
+  src: `${import.meta.env.BASE_URL}galeria/studniowka-2026/${filename}`,
+  alt: `Studniówka 2026 – zdjęcie ${index + 1}`,
+}));
+
 function GalleryPage({ initialAlbum = null }) {
   const isScientificAlbum = initialAlbum === '64-sesja-naukowa-2026';
   const isGraduatesFarewellAlbum = initialAlbum === 'pozegnanie-maturzystow-2026';
   const isEnglishDayAlbum = initialAlbum === 'dzien-jezyka-angielskiego-2026';
+  const isStudniowkaAlbum = initialAlbum === 'studniowka-2026';
   const [activeCategory, setActiveCategory] = useState(
       isScientificAlbum
           ? 'Projekty edukacyjne'
           : isEnglishDayAlbum
               ? 'Projekty edukacyjne'
+          : isStudniowkaAlbum
+              ? 'Roczniki'
           : isGraduatesFarewellAlbum
               ? 'Roczniki'
               : 'Życie szkoły'
@@ -1248,10 +1281,13 @@ function GalleryPage({ initialAlbum = null }) {
   const activeAlbumIsScientific = albumOpen === '64-sesja-naukowa-2026';
   const activeAlbumIsGraduatesFarewell = albumOpen === 'pozegnanie-maturzystow-2026';
   const activeAlbumIsEnglishDay = albumOpen === 'dzien-jezyka-angielskiego-2026';
+  const activeAlbumIsStudniowka = albumOpen === 'studniowka-2026';
   const activeAlbumPhotos = activeAlbumIsScientific
       ? scientificSessionPhotos
       : activeAlbumIsEnglishDay
           ? englishDayPhotos
+      : activeAlbumIsStudniowka
+          ? studniowkaPhotos
       : activeAlbumIsGraduatesFarewell
           ? graduatesFarewellPhotos
           : endOfSchoolYearPhotos;
@@ -1259,6 +1295,8 @@ function GalleryPage({ initialAlbum = null }) {
       ? 'Projekty edukacyjne'
       : activeAlbumIsEnglishDay
           ? 'Projekty edukacyjne'
+      : activeAlbumIsStudniowka
+          ? 'Roczniki'
       : activeAlbumIsGraduatesFarewell
           ? 'Roczniki'
           : 'Życie szkoły';
@@ -1266,6 +1304,8 @@ function GalleryPage({ initialAlbum = null }) {
       ? '64. Sesja Naukowa'
       : activeAlbumIsEnglishDay
           ? 'Dzień Języka Angielskiego 2026'
+      : activeAlbumIsStudniowka
+          ? 'Studniówka 2026'
       : activeAlbumIsGraduatesFarewell
           ? 'Pożegnanie maturzystów 2026'
           : 'Zakończenie roku szkolnego 2025/2026';
@@ -1276,6 +1316,8 @@ function GalleryPage({ initialAlbum = null }) {
             ? 'Projekty edukacyjne'
             : initialAlbum === 'dzien-jezyka-angielskiego-2026'
                 ? 'Projekty edukacyjne'
+            : initialAlbum === 'studniowka-2026'
+                ? 'Roczniki'
             : initialAlbum === 'pozegnanie-maturzystow-2026'
                 ? 'Roczniki'
                 : 'Życie szkoły'
@@ -1416,6 +1458,20 @@ function GalleryPage({ initialAlbum = null }) {
                           <span>Roczniki</span>
                           <h3>Pożegnanie maturzystów 2026</h3>
                           <p>{graduatesFarewellPhotos.length} zdjęć</p>
+                        </div>
+                      </button>
+
+                      <button
+                          type="button"
+                          className="school-album-card"
+                          onClick={() => setAlbumOpen('studniowka-2026')}
+                      >
+                        <img src={studniowkaPhotos[0].src} alt="Okładka albumu Studniówka 2026" />
+
+                        <div className="school-album-copy">
+                          <span>Roczniki</span>
+                          <h3>Studniówka 2026</h3>
+                          <p>{studniowkaPhotos.length} zdjęć</p>
                         </div>
                       </button>
                     </div>
@@ -1561,6 +1617,24 @@ const newsItems = [
     place: 'Kraków',
     excerpt: 'Konkurs, prezentacje uczniów i debata o nowoczesnej technologii podczas dwóch dni poświęconych językowi angielskiemu.',
     image: `${import.meta.env.BASE_URL}aktualnosci/dzien-jezyka-angielskiego-2026.jpg`,
+  },
+  {
+    slug: 'ferie-naukowe-2026',
+    title: 'Ferie Naukowe',
+    date: '2–4 i 13 lutego 2026',
+    dateTime: '2026-02-02',
+    place: 'Kraków',
+    excerpt: 'Dodatkowe zajęcia dla maturzystów z języka polskiego i matematyki przed zbliżającym się egzaminem maturalnym.',
+    image: `${import.meta.env.BASE_URL}siedziba-vplo.jpg`,
+  },
+  {
+    slug: 'studniowka-2026',
+    title: 'Studniówka 2026',
+    date: '10 stycznia 2026',
+    dateTime: '2026-01-10',
+    place: 'Kraków',
+    excerpt: 'Uroczysty wieczór maturzystów, pełen radości, wzruszeń i wspólnego świętowania zbliżającego się zakończenia nauki.',
+    image: `${import.meta.env.BASE_URL}aktualnosci/studniowka-2026.webp`,
   },
 ];
 
@@ -1924,6 +1998,70 @@ function EnglishDayArticle() {
             <Link to="/galeria/dzien-jezyka-angielskiego-2026" className="news-gallery-link">
               Galeria zdjęć
             </Link>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function StudniowkaArticle() {
+  const articleImage = `${import.meta.env.BASE_URL}aktualnosci/studniowka-2026.webp`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Studniówka 2026</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-01-10">10 stycznia 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <img className="news-article-cover" src={articleImage} alt="Studniówka 2026" />
+
+          <div className="news-article-body">
+            <p>
+              10 stycznia odbyła się uroczysta studniówka — jedno z najważniejszych wydarzeń w życiu naszych maturzystów. Bal, przygotowany z dbałością o każdy szczegół, przebiegał w podniosłej i eleganckiej atmosferze.
+            </p>
+            <p>
+              Był to wieczór pełen wzruszeń, radości oraz wspólnego świętowania zbliżającego się zakończenia nauki w murach naszej szkoły, który na długo pozostanie w pamięci uczniów i nauczycieli.
+            </p>
+
+            <Link to="/galeria/studniowka-2026" className="news-gallery-link">
+              Galeria zdjęć
+            </Link>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function FerieNaukoweArticle() {
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Ferie Naukowe</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-02-02">2–4 i 13 lutego 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <div className="news-article-body">
+            <p>
+              Podczas ferii zimowych w naszej szkole odbyły się dodatkowe zajęcia dla maturzystów. Uczniowie mieli okazję utrwalić i poszerzyć swoją wiedzę z języka polskiego oraz matematyki, zarówno na poziomie podstawowym, jak i rozszerzonym.
+            </p>
+            <p>
+              Spotkania były doskonałą okazją do powtórzenia najważniejszych zagadnień przed zbliżającym się egzaminem maturalnym.
+            </p>
           </div>
         </div>
       </article>
@@ -2712,6 +2850,9 @@ function Footer() {
             ))}
           </div>
         </div>
+      </div>
+      <div className="container footer-credit">
+        {/*© 2026 V Prywatne Liceum Ogólnokształcące w Krakowie · DBLaboffice*/}
       </div>
     </footer>
   );
