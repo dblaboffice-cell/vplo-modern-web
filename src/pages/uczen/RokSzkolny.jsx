@@ -1,5 +1,4 @@
 import React from "react";
-import "./SchoolYearPage.css";
 
 const semesterGroups = [
     {
@@ -192,7 +191,7 @@ const parentMeetings = [
     },
 ];
 
-function SchoolYearPage() {
+function RokSzkolny() {
     return (
         <article className="school-year-page">
             <header className="school-year-header">
@@ -377,4 +376,4 @@ function SchoolYearPage() {
     );
 }
 
-export default SchoolYearPage;
+export default RokSzkolny;

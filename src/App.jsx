@@ -25,7 +25,7 @@ import FormularzZgloszeniowy from './pages/rekrutacja/FormularzZgloszeniowy';
 import AbsolwenciONas from './pages/rekrutacja/AbsolwenciONas';
 import LekcjeIPrzerwy from './pages/uczen/LekcjeIPrzerwy';
 import Podreczniki from './pages/uczen/Podreczniki';
-import SchoolYearPage from './pages/uczen/SchoolYearPage';
+import RokSzkolny from './pages/uczen/RokSzkolny';
 import Matura from './pages/uczen/Matura';
 
 import PrzeslanieDyrektoraPage from './pages/szkola/PrzeslanieDyrektora';
@@ -275,29 +275,6 @@ const pageContent = {
   },
   ...educationPages,
 
-  '/galeria': {
-    title: 'Galeria',
-    lead: 'Życie liceum utrwalone na zdjęciach',
-    body: [ ],
-    highlights: [],
-    showHighlights: false,
-
-    galleryCategories: [
-      {
-        title: 'Życie szkoły',
-        text: 'Uroczystości, wydarzenia, wycieczki i codzienność naszej społeczności szkolnej.'
-      },
-      {
-        title: 'Projekty edukacyjne',
-        text: 'Warsztaty, konkursy, zajęcia projektowe oraz inicjatywy rozwijające zainteresowania uczniów.'
-      },
-      {
-        title: 'Roczniki',
-        text: 'Zdjęcia klasowe oraz wspomnienia uczniów z kolejnych lat szkolnych.'
-      }
-    ],
-  },
-
   '/info/rok-szkolny-2025-2026': {
     title: 'Rok szkolny 2025-2026',
     lead: 'Kalendarz roku szkolnego z podziałem na semestry, ferie i ważne terminy.',
@@ -533,7 +510,7 @@ function App() {
 
           <Route
               path="/uczen/rok-szkolny"
-              element={<SchoolYearPage />}
+              element={<RokSzkolny />}
           />
 
           <Route
@@ -578,6 +555,36 @@ function App() {
               element={<FerieNaukoweArticle />}
           />
 
+          <Route
+              path="/aktualnosci/warsztaty-teatralne-2026"
+              element={<TheatreWorkshopsArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/wyjscie-do-teatru-2025"
+              element={<TheatreVisitArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/dzien-niepodleglosci-2025"
+              element={<IndependenceDayArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/wymiana-miedzynarodowa-2025"
+              element={<InternationalExchangeArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/narodowe-czytanie-2025"
+              element={<NationalReadingArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/rozpoczecie-roku-szkolnego-2025-2026"
+              element={<SchoolYearOpeningArticle />}
+          />
+
           <Route path="/galeria" element={<GalleryPage />} />
 
           {educationRoutes.map(({ path, element }) => (
@@ -607,6 +614,11 @@ function App() {
           <Route
               path="/galeria/studniowka-2026"
               element={<GalleryPage initialAlbum="studniowka-2026" />}
+          />
+
+          <Route
+              path="/galeria/rozpoczecie-roku-szkolnego-2025-2026"
+              element={<GalleryPage initialAlbum="rozpoczecie-roku-szkolnego-2025-2026" />}
           />
 
           <Route
@@ -1189,7 +1201,7 @@ function HomePage() {
 const galleryCategories = [
   {
     title: 'Życie szkoły',
-    text: 'Uroczystości, wydarzenia, wycieczki i codzienność naszej społeczności szkolnej.',
+    text: 'Uroczystości, wydarzenia, wycieczki, czyli codzienność naszej społeczności szkolnej.',
   },
   {
     title: 'Projekty edukacyjne',
@@ -1197,7 +1209,7 @@ const galleryCategories = [
   },
   {
     title: 'Roczniki',
-    text: 'Zdjęcia klasowe oraz wspomnienia uczniów z kolejnych lat szkolnych.',
+    text: 'Zdjęcia klasowe, studniówki oraz wspomnienia uczniów z kolejnych lat szkolnych.',
   },
 ];
 
@@ -1260,11 +1272,19 @@ const studniowkaPhotos = [
   alt: `Studniówka 2026 – zdjęcie ${index + 1}`,
 }));
 
+const schoolYearOpeningPhotos = [
+  {
+    src: `${import.meta.env.BASE_URL}galeria/rozpoczecie-roku-szkolnego-2025-2026/01.jpg`,
+    alt: 'Rozpoczęcie roku szkolnego 2025/2026 – poczet sztandarowy',
+  },
+];
+
 function GalleryPage({ initialAlbum = null }) {
   const isScientificAlbum = initialAlbum === '64-sesja-naukowa-2026';
   const isGraduatesFarewellAlbum = initialAlbum === 'pozegnanie-maturzystow-2026';
   const isEnglishDayAlbum = initialAlbum === 'dzien-jezyka-angielskiego-2026';
   const isStudniowkaAlbum = initialAlbum === 'studniowka-2026';
+  const isSchoolYearOpeningAlbum = initialAlbum === 'rozpoczecie-roku-szkolnego-2025-2026';
   const [activeCategory, setActiveCategory] = useState(
       isScientificAlbum
           ? 'Projekty edukacyjne'
@@ -1282,6 +1302,7 @@ function GalleryPage({ initialAlbum = null }) {
   const activeAlbumIsGraduatesFarewell = albumOpen === 'pozegnanie-maturzystow-2026';
   const activeAlbumIsEnglishDay = albumOpen === 'dzien-jezyka-angielskiego-2026';
   const activeAlbumIsStudniowka = albumOpen === 'studniowka-2026';
+  const activeAlbumIsSchoolYearOpening = albumOpen === 'rozpoczecie-roku-szkolnego-2025-2026';
   const activeAlbumPhotos = activeAlbumIsScientific
       ? scientificSessionPhotos
       : activeAlbumIsEnglishDay
@@ -1290,6 +1311,8 @@ function GalleryPage({ initialAlbum = null }) {
           ? studniowkaPhotos
       : activeAlbumIsGraduatesFarewell
           ? graduatesFarewellPhotos
+          : activeAlbumIsSchoolYearOpening
+              ? schoolYearOpeningPhotos
           : endOfSchoolYearPhotos;
   const activeAlbumCategory = activeAlbumIsScientific
       ? 'Projekty edukacyjne'
@@ -1299,6 +1322,8 @@ function GalleryPage({ initialAlbum = null }) {
           ? 'Roczniki'
       : activeAlbumIsGraduatesFarewell
           ? 'Roczniki'
+          : activeAlbumIsSchoolYearOpening
+              ? 'Życie szkoły'
           : 'Życie szkoły';
   const activeAlbumTitle = activeAlbumIsScientific
       ? '64. Sesja Naukowa'
@@ -1308,6 +1333,8 @@ function GalleryPage({ initialAlbum = null }) {
           ? 'Studniówka 2026'
       : activeAlbumIsGraduatesFarewell
           ? 'Pożegnanie maturzystów 2026'
+          : activeAlbumIsSchoolYearOpening
+              ? 'Rozpoczęcie roku szkolnego 2025/2026'
           : 'Zakończenie roku szkolnego 2025/2026';
 
   useEffect(() => {
@@ -1399,6 +1426,23 @@ function GalleryPage({ initialAlbum = null }) {
                           <span>Życie szkoły</span>
                           <h3>Zakończenie roku szkolnego 2025/2026</h3>
                           <p>{endOfSchoolYearPhotos.length} zdjęć</p>
+                        </div>
+                      </button>
+
+                      <button
+                          type="button"
+                          className="school-album-card"
+                          onClick={() => setAlbumOpen('rozpoczecie-roku-szkolnego-2025-2026')}
+                      >
+                        <img
+                            src={schoolYearOpeningPhotos[0].src}
+                            alt="Okładka albumu Rozpoczęcie roku szkolnego 2025/2026"
+                        />
+
+                        <div className="school-album-copy">
+                          <span>Życie szkoły</span>
+                          <h3>Rozpoczęcie roku szkolnego 2025/2026</h3>
+                          <p>{schoolYearOpeningPhotos.length} zdjęcie</p>
                         </div>
                       </button>
                     </div>
@@ -1628,6 +1672,16 @@ const newsItems = [
     image: `${import.meta.env.BASE_URL}siedziba-vplo.jpg`,
   },
   {
+    slug: 'warsztaty-teatralne-2026',
+    title: 'Warsztaty teatralne',
+    date: '15 stycznia 2026',
+    dateTime: '2026-01-15',
+    place: 'Kraków',
+    excerpt:
+        'Spotkanie wokół „Folwarku zwierzęcego” George’a Orwella, prowadzone przez redaktora Ireneusza Dańko.',
+    image: `${import.meta.env.BASE_URL}aktualnosci/warsztaty-teatralne-2026.jpg`,
+  },
+  {
     slug: 'studniowka-2026',
     title: 'Studniówka 2026',
     date: '10 stycznia 2026',
@@ -1635,6 +1689,56 @@ const newsItems = [
     place: 'Kraków',
     excerpt: 'Uroczysty wieczór maturzystów, pełen radości, wzruszeń i wspólnego świętowania zbliżającego się zakończenia nauki.',
     image: `${import.meta.env.BASE_URL}aktualnosci/studniowka-2026.webp`,
+  },
+  {
+    slug: 'wyjscie-do-teatru-2025',
+    title: 'Wyjście do teatru',
+    date: '19 grudnia 2025',
+    dateTime: '2025-12-19',
+    place: 'Kraków',
+    excerpt:
+        'Uczniowie obejrzeli w Teatrze Ludowym spektakl „Folwark zwierzęcy” — wartościowe doświadczenie kulturalne i okazję do refleksji.',
+    image: `${import.meta.env.BASE_URL}aktualnosci/wyjscie-do-teatru-2025.jpg`,
+  },
+  {
+    slug: 'dzien-niepodleglosci-2025',
+    title: 'Dzień Niepodległości',
+    date: '12 listopada 2025',
+    dateTime: '2025-11-12',
+    place: 'Kraków',
+    excerpt:
+        'Uczniowie liceum uczcili Narodowe Święto Niepodległości pod pomnikiem Józefa Piłsudskiego.',
+    image: `${import.meta.env.BASE_URL}aktualnosci/dzien-niepodleglosci-2025.jpg`,
+  },
+  {
+    slug: 'wymiana-miedzynarodowa-2025',
+    title: 'Wymiana międzynarodowa',
+    date: '13–16 października 2025',
+    dateTime: '2025-10-13',
+    place: 'Kraków',
+    excerpt:
+        'Gościliśmy uczniów z holenderskiej szkoły w Laren podczas wspólnych zajęć, spotkań i wycieczek po Krakowie.',
+    image: `${import.meta.env.BASE_URL}krakow-rynek.jpeg`,
+  },
+  {
+    slug: 'narodowe-czytanie-2025',
+    title: 'Narodowe Czytanie 2025',
+    date: '5 września 2025',
+    dateTime: '2025-09-05',
+    place: 'Kraków',
+    excerpt:
+        'W ramach Narodowego Czytania uczniowie poznawali Pieśni, Fraszki i Treny Jana Kochanowskiego.',
+    image: `${import.meta.env.BASE_URL}aktualnosci/narodowe-czytanie-2025.png`,
+  },
+  {
+    slug: 'rozpoczecie-roku-szkolnego-2025-2026',
+    title: 'Rozpoczęcie roku szkolnego 2025/2026',
+    date: '1 września 2025',
+    dateTime: '2025-09-01',
+    place: 'Kraków',
+    excerpt:
+        'Uroczyste rozpoczęcie roku szkolnego, ślubowanie uczniów klas pierwszych i wykład inauguracyjny.',
+    image: `${import.meta.env.BASE_URL}aktualnosci/rozpoczecie-roku-szkolnego-2025-2026.jpg`,
   },
 ];
 
@@ -2068,6 +2172,278 @@ function FerieNaukoweArticle() {
   );
 }
 
+function TheatreWorkshopsArticle() {
+  const galleryPath = `${import.meta.env.BASE_URL}galeria/warsztaty-teatralne-2026`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Warsztaty teatralne</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-01-15">15 stycznia 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <img
+              className="news-article-cover"
+              src={`${galleryPath}/01.jpg`}
+              alt="Uczennice podczas warsztatów teatralnych"
+          />
+
+          <div className="news-article-body">
+            <p>
+              15 stycznia 2026 roku uczniowie naszej szkoły uczestniczyli w warsztatach
+              zorganizowanych przez Teatr Ludowy w ramach spotkań wokół spektaklu muzycznego
+              <i>„Folwark zwierzęcy”</i> w reżyserii Wojciecha Kościelniaka, który wcześniej
+              mieli okazję obejrzeć.
+            </p>
+            <p>
+              Warsztaty prowadził redaktor Ireneusz Dańko. W bardzo wnikliwy sposób
+              przeanalizował genezę powstania utworu George’a Orwella, a wraz z uczniami
+              porównał fikcyjnych bohaterów z ich historycznymi pierwowzorami.
+            </p>
+            <p>
+              Analiza mechanizmów totalitaryzmu oraz wynikających z niego zagrożeń stała się
+              tematem pogłębionej refleksji. Uczniowie mieli także okazję zobaczyć stare wydania
+              <i>„Folwarku zwierzęcego”</i> oraz <i>„Esejów”</i> autorstwa George’a Orwella.
+            </p>
+
+            <div className="news-inline-gallery" aria-label="Zdjęcia z warsztatów teatralnych">
+              <img src={`${galleryPath}/02.jpg`} alt="Ireneusz Dańko prowadzący warsztaty" />
+              <img src={`${galleryPath}/03.jpg`} alt="Zabytkowe wydanie Folwarku zwierzęcego" />
+            </div>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function TheatreVisitArticle() {
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Wyjście do teatru</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2025-12-19">19 grudnia 2025</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <div className="news-article-body">
+            <p>
+              19 grudnia uczniowie, pod opieką prof. Żądło, prof. Maziarczyk-Suszko
+              oraz prof. Wiśniewskiego, uczestniczyli w wyjściu do Teatru Ludowego na
+              spektakl <i>„Folwark zwierzęcy”</i>.
+            </p>
+            <p>
+              Przedstawienie wyróżniało się wysokim poziomem artystycznym oraz głębią
+              przesłania, skłaniając do refleksji nad uniwersalnymi wartościami. Było to
+              cenne doświadczenie kulturalne, które na długo pozostanie w pamięci uczestników.
+            </p>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function IndependenceDayArticle() {
+  const galleryPath = `${import.meta.env.BASE_URL}galeria/dzien-niepodleglosci-2025`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Dzień Niepodległości</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2025-11-12">12 listopada 2025</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <div className="news-article-body">
+            <p>
+              Uczniowie naszego liceum uczcili Narodowe Święto Niepodległości pod
+              pomnikiem Józefa Piłsudskiego znajdującym się w bliskim sąsiedztwie szkoły.
+              W krótkiej uroczystości przypomnieli znaczenie tego dnia i złożyli kwiaty,
+              oddając hołd tym, którzy walczyli o wolność Polski.
+            </p>
+            <p>
+              Była to chwila refleksji, ale też wspólnego poczucia dumy z bycia częścią
+              historii naszego kraju.
+            </p>
+
+            <div className="news-inline-gallery independence-day-gallery" aria-label="Zdjęcia z obchodów Dnia Niepodległości">
+              <img src={`${galleryPath}/01.jpg`} alt="Uczniowie przy pomniku Józefa Piłsudskiego" />
+              <img src={`${galleryPath}/02.jpg`} alt="Pomnik Józefa Piłsudskiego i złożone kwiaty" />
+            </div>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function InternationalExchangeArticle() {
+  const articleImage = `${import.meta.env.BASE_URL}krakow-rynek.jpeg`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Wymiana międzynarodowa</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2025-10-13">13–16 października 2025</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <img
+              className="news-article-cover"
+              src={articleImage}
+              alt="Sukiennice na Rynku Głównym w Krakowie"
+          />
+
+          <div className="news-article-body">
+            <p>
+              W dniach 13–16 października nasza szkoła miała przyjemność gościć
+              uczniów z holenderskiej szkoły w Laren. W ramach wymiany międzynarodowej
+              nasi uczniowie, wspólnie z kolegami i koleżankami z XVIII Liceum
+              Ogólnokształcącego w Krakowie, przyjęli gości z Holandii w swoich domach,
+              oferując im serdeczne przyjęcie i możliwość poznania polskiej kultury z bliska.
+            </p>
+            <p>
+              Podczas wspólnych zajęć uczestnicy wymiany brali udział w różnorodnych
+              aktywnościach edukacyjnych i integracyjnych — m.in. w grze miejskiej,
+              lekcji muzealnej w Galerii Sztuki Polskiej XIX wieku w Sukiennicach,
+              zwiedzaniu muzeum w Auschwitz oraz w debacie poświęconej roli sztucznej
+              inteligencji w edukacji.
+            </p>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function NationalReadingArticle() {
+  const articleImage = `${import.meta.env.BASE_URL}aktualnosci/narodowe-czytanie-2025.png`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Narodowe Czytanie 2025</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2025-09-05">5 września 2025</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <div className="news-article-body news-article-body-split">
+            <div>
+              <p>
+                Narodowe Czytanie pod Patronatem Pary Prezydenckiej w naszym Liceum
+                rozpoczęło się już w piątek, 5 września, i trwało przez cały następny tydzień.
+                Tym razem czytaliśmy <i>Pieśni</i>, <i>Fraszki</i> i <i>Treny</i> Jana Kochanowskiego.
+              </p>
+              <p>
+                Na lekcjach wychowawczych, języka polskiego oraz podczas spotkań z rodzicami,
+                pięknie czytając utwory poety, ciągle przekonujemy się o ponadczasowej wartości
+                jego twórczości.
+              </p>
+              <p>
+                Już wiemy, że za rok czytać będziemy fragmenty <i>Dziadów</i> Adama Mickiewicza.
+                Z Kancelarii Prezydenta otrzymaliśmy pamiątkową pieczątkę. Będziemy korzystać z niej
+                w wielu momentach, przypieczętowując kolejny rok Narodowego Czytania.
+              </p>
+            </div>
+
+            <img
+                className="news-article-cover news-article-cover-contain national-reading-cover"
+                src={articleImage}
+                alt="Treny, Pieśni, Psalmy i Fraszki Jana Kochanowskiego"
+            />
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function SchoolYearOpeningArticle() {
+  const articleImage =
+      `${import.meta.env.BASE_URL}aktualnosci/rozpoczecie-roku-szkolnego-2025-2026.jpg`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Rozpoczęcie roku szkolnego 2025/2026</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2025-09-01">1 września 2025</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <img
+              className="news-article-cover news-article-cover-contain"
+              src={articleImage}
+              alt="Poczet sztandarowy podczas rozpoczęcia roku szkolnego"
+          />
+
+          <div className="news-article-body">
+            <p>
+              1 września z radością powitaliśmy nowy rok szkolny 2025/2026. Celebracje
+              rozpoczęliśmy Mszą Świętą w kościele pw. Niepokalanego Serca Maryi. Po Mszy
+              Świętej przeszliśmy do budynku przy ul. Smoleńsk 14, siedziby V Prywatnego
+              Liceum Ogólnokształcącego im. Królowej Jadwigi w Krakowie, gdzie w Collegium
+              Maximum uczniowie klas pierwszych złożyli uroczyste ślubowanie.
+            </p>
+            <p>
+              Uczniom rozpoczynającym naukę w naszym Liceum życzymy samych dobrych chwil,
+              sukcesów, radości ze zdobywanej wiedzy i przyjaciół wśród koleżanek i kolegów
+              w szkole.
+            </p>
+            <p>
+              Z wielkim zainteresowaniem spotkał się wykład inauguracyjny pt. <i>„Tysiąclecie
+              podniesienia Korony Królestwa Polskiego”</i> prof. K. Świderskiego, nauczyciela
+              historii. Dyrektor Szkoły, prof. Jerzy A. Białkiewicz, przywitał profesorów,
+              uczniów i rodziców obecnych na uroczystości oraz przedstawił główne kierunki
+              pracy dydaktycznej i wychowawczej obowiązujące w bieżącym roku szkolnym.
+            </p>
+            <p>
+              Uroczystość zakończyło spotkanie z wychowawcami klas, którzy serdecznie
+              przywitali uczniów, planując wspólną pracę, m.in. wycieczki, Narodowe Czytanie,
+              Dzień Patronki szkoły i wiele innych wydarzeń.
+            </p>
+
+            <Link to="/galeria/rozpoczecie-roku-szkolnego-2025-2026" className="news-gallery-link">
+              Galeria zdjęć
+            </Link>
+          </div>
+        </div>
+      </article>
+  );
+}
+
 function GraduatesFarewellArticle() {
   const articleImage =
       `${import.meta.env.BASE_URL}galeria/pozegnanie-maturzystow-2026/01.jpg`;
@@ -2190,7 +2566,6 @@ function StandardPage({ page }) {
             articlePage ? 'article-layout' : 'page-layout',
             page.timelineImage ? 'article-layout-with-timeline' : '',
             page.textbookCards ? 'textbooks-page-layout' : '',
-            page.galleryCategories ? 'gallery-page-layout' : '',
           ]
               .filter(Boolean)
               .join(' ')}
@@ -2200,7 +2575,6 @@ function StandardPage({ page }) {
             className={[
               'page-main-card',
               page.textbookCards ? 'textbooks-main-card' : '',
-                page.galleryCategories ? 'gallery-main-card' : '',
                 page.variant === 'cultural-education'
                     ? 'cultural-education-content'
                     : '',
@@ -2212,29 +2586,6 @@ function StandardPage({ page }) {
                 .filter(Boolean)
                 .join(' ')}
         >
-
-          {page.galleryCategories && (
-              <section className="gallery-categories">
-                <div className="gallery-categories-heading">
-                  <span>Albumy szkolne</span>
-                </div>
-
-                <div className="gallery-categories-grid">
-                  {page.galleryCategories.map((category) => (
-                      <div className="gallery-category-card" key={category.title}>
-                        <div className="gallery-category-decoration" />
-
-                        <h3>{category.title}</h3>
-                        <p>{category.text}</p>
-
-                        <span className="gallery-category-action">
-            Albumy
-          </span>
-                      </div>
-                  ))}
-                </div>
-              </section>
-          )}
 
           {page.textbookCards ? (
               <div className="textbooks-layout">

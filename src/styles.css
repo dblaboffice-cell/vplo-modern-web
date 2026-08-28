@@ -2590,6 +2590,23 @@ th {
   box-shadow: 0 18px 40px rgba(27, 47, 89, 0.16);
 }
 
+.news-article-cover-contain {
+  background: #ffffff;
+  object-fit: contain;
+}
+
+.national-reading-cover {
+  width: 100%;
+  margin: 0;
+}
+
+.news-article-body-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 380px);
+  gap: 42px;
+  align-items: start;
+}
+
 .news-article-body {
   max-width: none;
   margin: 34px 0 0;
@@ -2600,6 +2617,38 @@ th {
   color: #344766;
   font-size: 1.08rem;
   line-height: 1.9;
+}
+
+.news-inline-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.news-inline-gallery img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 14px 32px rgba(27, 47, 89, 0.14);
+}
+
+.news-inline-gallery-single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.independence-day-gallery {
+  max-width: 780px;
+}
+
+.independence-day-gallery img {
+  aspect-ratio: 3 / 4;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
 }
 
 .open-days-contact-link {
@@ -2637,6 +2686,16 @@ th {
 
   .news-article-cover {
     border-radius: 20px;
+  }
+
+  .news-article-body-split {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .news-inline-gallery {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
@@ -6195,6 +6254,55 @@ main :is(p, li, blockquote) {
   text-align: justify !important;
   text-align-last: auto;
   hyphens: auto;
+}
+
+/* Rok szkolny */
+.school-year-page { display: grid; gap: 28px; width: 100%; max-width: 1180px; margin: 0 auto; padding: 28px 36px 40px; box-sizing: border-box; }
+.school-year-header { padding: 4px; }
+.school-year-eyebrow { display: inline-block; margin-bottom: 9px; color: #b58a23; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.school-year-header h1 { margin: 0; color: #002b59; font-size: clamp(1.9rem, 3vw, 2.6rem); line-height: 1.15; }
+.school-year-header p { max-width: 720px; margin: 12px 0 0; color: #526071; font-size: 1rem; line-height: 1.65; }
+.school-year-card { position: relative; overflow: hidden; padding: clamp(22px, 4vw, 36px); background-color: #ffffff; border: 1px solid rgba(0, 43, 89, 0.14); border-top: 4px solid #c7a243; border-radius: 18px; box-shadow: 0 12px 30px rgba(0, 43, 89, 0.08); }
+.school-year-card h2 { margin: 0 0 24px; padding-bottom: 14px; color: #002b59; font-size: clamp(1.2rem, 2vw, 1.45rem); line-height: 1.3; border-bottom: 1px solid rgba(0, 43, 89, 0.13); }
+.semester-groups { display: grid; gap: 28px; }
+.semester-assessment-groups { display: grid; gap: 28px; margin-top: 34px; padding-top: 30px; border-top: 1px solid rgba(0, 43, 89, 0.13); }
+.semester-assessment-group h3, .semester-group h3 { display: inline-block; margin: 0 0 12px; padding: 8px 15px; color: #ffffff; background-color: #002b59; border-radius: 8px; font-size: 0.92rem; letter-spacing: 0.03em; }
+.semester-assessment-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.semester-assessment-grid-single { grid-template-columns: minmax(0, 1fr); }
+.semester-assessment-class { padding: 18px 20px; border: 1px solid rgba(0, 43, 89, 0.13); border-radius: 12px; background: rgba(238, 242, 248, 0.5); }
+.semester-assessment-class h4 { margin: 0 0 13px; color: #002b59; font-size: 1rem; }
+.semester-assessment-class dl { display: grid; gap: 9px; margin: 0; }
+.semester-assessment-class dl div { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 9px; border-bottom: 1px solid rgba(0, 43, 89, 0.1); line-height: 1.45; }
+.semester-assessment-class dl div:last-child { padding-bottom: 0; border-bottom: none; }
+.semester-assessment-class dt { color: #002b59; font-weight: 700; }
+.semester-assessment-class dt small { display: block; margin-top: 4px; color: #6a7480; font-size: 0.8rem; font-weight: 500; }
+.semester-assessment-class dd { margin: 0; color: #263747; font-weight: 600; text-align: right; }
+.school-year-list { display: grid; }
+.school-year-row { display: grid; grid-template-columns: minmax(230px, 1fr) minmax(260px, 1.25fr); gap: 24px; align-items: center; min-height: 60px; padding: 15px 5px; border-bottom: 1px solid rgba(0, 43, 89, 0.1); }
+.school-year-row:last-child { border-bottom: none; }
+.school-year-row-project { margin: 6px -9px; padding: 15px 14px; border: 1px solid rgba(199, 162, 67, 0.36); border-left: 4px solid #c7a243; border-radius: 10px; background: linear-gradient(90deg, rgba(199, 162, 67, 0.13), rgba(81, 108, 157, 0.06)); }
+.school-year-label { color: #002b59; font-weight: 700; line-height: 1.45; }
+.school-year-label small { display: block; margin-top: 3px; color: #6a7480; font-size: 0.8rem; font-weight: 500; }
+.school-year-project-badge { display: inline-flex; align-items: center; margin-left: 9px; padding: 3px 8px; border: 1px solid rgba(197, 154, 61, 0.45); border-radius: 999px; background: rgba(197, 154, 61, 0.12); color: #9a6b18; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; line-height: 1.2; text-transform: uppercase; vertical-align: middle; }
+.school-year-date { position: relative; padding-left: 21px; color: #263747; font-weight: 600; line-height: 1.5; }
+.school-year-date::before { position: absolute; top: 0.6em; left: 0; width: 8px; height: 8px; border-radius: 50%; background-color: #c7a243; content: ""; }
+
+@media (max-width: 720px) {
+  .school-year-page { gap: 20px; padding: 22px 17px 30px; }
+  .school-year-card { padding: 21px 17px; border-radius: 14px; }
+  .school-year-card h2 { margin-bottom: 17px; }
+  .school-year-row { grid-template-columns: 1fr; gap: 7px; min-height: auto; padding: 15px 2px; }
+  .school-year-row-project { margin: 6px -4px; padding: 15px 10px; }
+  .school-year-project-badge { margin: 6px 0 0; }
+  .school-year-date { padding-left: 18px; }
+  .semester-assessment-groups { margin-top: 28px; padding-top: 24px; }
+  .semester-assessment-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 420px) {
+  .school-year-header h1 { font-size: 1.75rem; }
+  .school-year-card { padding: 19px 14px; }
+  .semester-group h3 { padding: 7px 12px; }
 }
 
 .pdf-page {
