@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { ArrowRight, BookOpen, Dna, FlaskConical, Globe2, Landmark, Languages, Scale, Sigma, Sparkles, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -141,6 +141,122 @@ const alphabeticalSubjects = [...subjects].sort((first, second) =>
 );
 const pathBuilderSubjects = alphabeticalSubjects;
 
+const interestFinderSteps = [
+  {
+    id: 'interests',
+    title: 'Co Cię interesuje?',
+    hint: 'Wybierz wszystkie obszary, które są Ci bliskie.',
+    options: [
+      ['zdrowie', '🧬', 'Człowiek i zdrowie', { biologia: 3, chemia: 2 }],
+      ['przyroda', '🌿', 'Przyroda i środowisko', { biologia: 3, geografia: 2 }],
+      ['eksperymenty', '🔬', 'Eksperymenty i nauka', { chemia: 3, fizyka: 3 }],
+      ['logika', '🧮', 'Liczby i logika', { matematyka: 3, fizyka: 2 }],
+      ['technologie', '💻', 'Technologie', { matematyka: 3, fizyka: 3 }],
+      ['swiat', '🌍', 'Świat i podróże', { geografia: 3, wos: 2, angielski: 1 }],
+      ['kultura', '🏛', 'Historia i kultura', { historia: 3, polski: 2, wos: 1 }],
+      ['prawo', '⚖️', 'Prawo i społeczeństwo', { wos: 3, historia: 2 }],
+      ['biznes', '💼', 'Biznes i przedsiębiorczość', { biz: 3, matematyka: 2 }],
+      ['dane', '📊', 'Ekonomia i analiza danych', { matematyka: 3, geografia: 2, biz: 2 }],
+      ['psychologia', '🧠', 'Psychologia i człowiek', { biologia: 2, wos: 3, polski: 1 }],
+      ['polityka', '📰', 'Polityka i sprawy społeczne', { wos: 3, historia: 2 }],
+    ],
+  },
+  {
+    id: 'activities',
+    title: 'Co najbardziej lubisz robić?',
+    hint: 'Ten krok pomaga doprecyzować podpowiedzi.',
+    options: [
+      ['problemy', 'Rozwiązywać problemy', { matematyka: 3, fizyka: 2 }],
+      ['doswiadczenia', 'Prowadzić doświadczenia', { chemia: 3, biologia: 2, fizyka: 2 }],
+      ['dyskusje', 'Dyskutować', { wos: 3, historia: 2, polski: 2 }],
+      ['analiza', 'Analizować dane', { matematyka: 3, geografia: 2, biz: 2 }],
+      ['ludzie', 'Poznawać ludzi', { wos: 3, angielski: 2 }],
+      ['odkrywanie', 'Poznawać świat', { geografia: 3, historia: 2, angielski: 1 }],
+      ['interpretacja', 'Czytać i interpretować', { polski: 3, historia: 2 }],
+      ['projekty', 'Tworzyć projekty', { biz: 3, fizyka: 1, angielski: 1 }],
+      ['tech', 'Pracować z technologią', { fizyka: 3, matematyka: 3 }],
+    ],
+  },
+  {
+    id: 'future',
+    title: 'Czy masz już pomysł na przyszłość?',
+    hint: 'To pytanie jest opcjonalne — możesz zaznaczyć „Jeszcze nie wiem”.',
+    options: [
+      ['medycyna', 'Medycyna i zdrowie', { biologia: 4, chemia: 4 }],
+      ['inzynieria', 'Technologie i inżynieria', { matematyka: 4, fizyka: 4 }],
+      ['prawnik', 'Prawo', { wos: 4, historia: 3, polski: 1 }],
+      ['ekonomia', 'Biznes i ekonomia', { biz: 4, matematyka: 3, geografia: 1 }],
+      ['spoleczne', 'Nauki społeczne', { wos: 4, historia: 2, polski: 2 }],
+      ['przyrodnicze', 'Nauki przyrodnicze', { biologia: 4, chemia: 2, geografia: 2 }],
+      ['nie-wiem', 'Jeszcze nie wiem', {}],
+    ],
+  },
+];
+
+function InterestFinder() {
+  const [selected, setSelected] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+  const selectedOptions = interestFinderSteps.flatMap((step) => step.options).filter(([id]) => selected.includes(id));
+  const recommendations = useMemo(() => {
+    const scores = Object.fromEntries(subjects.map(({ id }) => [id, 0]));
+    selectedOptions.forEach((option) => {
+      const points = option.at(-1);
+      Object.entries(points).forEach(([subjectId, value]) => { scores[subjectId] += value; });
+    });
+    const highest = Math.max(...Object.values(scores), 0);
+    return subjects
+      .map((subject) => ({ ...subject, score: scores[subject.id], match: scores[subject.id] ? Math.round(58 + (scores[subject.id] / highest) * 38) : 0 }))
+      .filter(({ score }) => score > 0)
+      .sort((first, second) => second.score - first.score)
+      .slice(0, 3);
+  }, [selectedOptions]);
+
+  const toggle = (id) => {
+    setSelected((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
+    setShowResults(false);
+  };
+
+  return (
+      <section className="interest-finder" aria-labelledby="interest-finder-title">
+        <span className="interest-finder-label">Zainteresowania</span>
+        <h2 id="interest-finder-title">Znajdź rozszerzenia dla siebie</h2>
+        <p className="interest-finder-lead">Nie musisz już wiedzieć, jaki kierunek studiów wybierzesz. Zaznacz to, co Cię interesuje, a pokażemy rozszerzenia, które mogą do Ciebie pasować.</p>
+
+        <div className="interest-finder-steps">
+          {interestFinderSteps.map((step, index) => (
+              <fieldset className="interest-finder-step" key={step.id}>
+                <legend><span>0{index + 1}</span>{step.title}</legend>
+                <p>{step.hint}</p>
+                <div className="interest-finder-options">
+                  {step.options.map(([id, iconOrLabel, labelOrPoints, maybePoints]) => {
+                    const hasIcon = typeof maybePoints === 'object';
+                    const label = hasIcon ? labelOrPoints : iconOrLabel;
+                    const icon = hasIcon ? iconOrLabel : null;
+                    return <button type="button" key={id} className={selected.includes(id) ? 'is-selected' : ''} onClick={() => toggle(id)} aria-pressed={selected.includes(id)}>{icon && <span>{icon}</span>}{label}</button>;
+                  })}
+                </div>
+              </fieldset>
+          ))}
+        </div>
+
+        <div className="interest-finder-actions">
+          <button type="button" disabled={!selectedOptions.length} onClick={() => setShowResults(true)}>Pokaż pasujące rozszerzenia <ArrowRight size={18} /></button>
+          {selectedOptions.length > 0 && <span>Wybrano: {selectedOptions.length}</span>}
+        </div>
+
+        {showResults && <div className="interest-finder-results" aria-live="polite">
+          <div><span className="extensions-eyebrow">Twój wynik</span><h3>Najbardziej pasują do Ciebie</h3></div>
+          <div className="interest-result-list">
+            {recommendations.map((subject, index) => <Link to={subjectPath(subject.id)} key={subject.id} className={`interest-result extension-${subject.accent}`}>
+              <span className="interest-result-rank">0{index + 1}</span><div><strong>{subject.name}</strong><small>{subject.keywords}</small><i><b style={{ width: `${subject.match}%` }} /></i></div><em>{subject.match}%</em><ArrowRight size={18} />
+            </Link>)}
+          </div>
+          <p>Wynik ma charakter inspiracyjny — szczegóły każdego rozszerzenia znajdziesz po wybraniu przedmiotu.</p>
+        </div>}
+      </section>
+  );
+}
+
 function SubjectIcon({ subject, size = 24 }) {
   const Icon = subject.icon;
   return <Icon size={size} aria-hidden="true" />;
@@ -170,6 +286,8 @@ export function PrzedmiotyRozszerzone() {
           <p>W V Prywatnym Liceum Ogólnokształcącym uczeń może budować własną ścieżkę edukacyjną, wybierając przedmioty rozszerzone zgodnie ze swoimi zainteresowaniami i planami na przyszłość.</p>
         </div>
       </header>
+
+      <InterestFinder />
 
       <section className="extensions-subject-grid" aria-label="Przedmioty rozszerzone">
         {alphabeticalSubjects.map((subject) => (

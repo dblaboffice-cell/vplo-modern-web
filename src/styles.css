@@ -5971,6 +5971,177 @@ th {
   line-height: 1.65;
 }
 
+.interest-finder {
+  margin-top: 34px;
+  padding: clamp(24px, 4vw, 42px);
+  border: 1px solid rgba(197, 154, 61, 0.6);
+  border-top: 5px solid #c59a3d;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #fffdf8 0%, #f4f7fc 100%);
+  box-shadow: 0 18px 38px rgba(27, 47, 89, 0.1);
+}
+
+.interest-finder-label {
+  color: #a87500;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.interest-finder h2 {
+  margin: 9px 0 10px;
+  color: #172f5d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 3vw, 2.55rem);
+}
+
+.interest-finder-lead {
+  max-width: 800px;
+  margin: 0;
+  color: #425573;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.interest-finder-steps {
+  display: grid;
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.interest-finder-step {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.interest-finder-step legend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #172f5d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.22rem;
+  font-weight: 700;
+}
+
+.interest-finder-step legend span {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 50%;
+  background: #173b76;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.76rem;
+}
+
+.interest-finder-step p {
+  margin: 7px 0 13px;
+  color: #60708a;
+  font-size: 0.93rem;
+}
+
+.interest-finder-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.interest-finder-options button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  border: 1px solid rgba(126, 147, 181, 0.4);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #344766;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.18s ease, color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.interest-finder-options button:hover,
+.interest-finder-options button.is-selected {
+  border-color: #a87500;
+  background: #fff7e5;
+  color: #172f5d;
+  transform: translateY(-1px);
+}
+
+.interest-finder-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.interest-finder-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: #173b76;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 0.96rem;
+  font-weight: 800;
+}
+
+.interest-finder-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.interest-finder-actions span {
+  color: #687894;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.interest-finder-results {
+  margin-top: 30px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(197, 154, 61, 0.38);
+}
+
+.interest-finder-results h3 {
+  margin: 4px 0 18px;
+  color: #172f5d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.55rem;
+}
+
+.interest-result-list { display: grid; gap: 10px; }
+
+.interest-result {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 17px;
+  border: 1px solid rgba(177, 194, 221, 0.72);
+  border-radius: 14px;
+  background: #ffffff;
+  color: #172f5d;
+}
+
+.interest-result:hover { border-color: currentColor; }
+.interest-result-rank { color: #a87500; font-weight: 900; }
+.interest-result strong { display: block; font-size: 1.03rem; }
+.interest-result small { display: block; margin-top: 3px; color: #687894; font-size: 0.82rem; }
+.interest-result i { display: block; height: 6px; margin-top: 10px; overflow: hidden; border-radius: 99px; background: #e7edf6; }
+.interest-result i b { display: block; height: 100%; border-radius: inherit; background: currentColor; }
+.interest-result em { color: #172f5d; font-size: 1.05rem; font-style: normal; font-weight: 900; }
+.interest-finder-results > p { margin: 16px 0 0; color: #687894; font-size: 0.88rem; }
+
 .extensions-subject-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -6213,6 +6384,12 @@ th {
   .extension-related-grid { grid-template-columns: 1fr; }
   .extension-related-grid a { min-height: 58px; grid-template-columns: auto 1fr auto; }
   .extension-related-grid a svg:first-child { grid-column: auto; }
+
+  .interest-finder { padding: 24px 18px; }
+  .interest-finder-options { gap: 8px; }
+  .interest-finder-options button { padding: 9px 12px; font-size: 0.9rem; }
+  .interest-result { grid-template-columns: 28px minmax(0, 1fr) auto; gap: 10px; }
+  .interest-result > svg { display: none; }
 }
 
 /* Zachowanie wspólnego wyglądu podtytułu w stronach z własną typografią. */
