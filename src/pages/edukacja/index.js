@@ -323,7 +323,7 @@ export const educationMenuItem = {
     {
       group: 'Dydaktyka',
       items: [
-        { prefix: 'Profile', label: 'Indywidualny dobór rozszerzeń', path: '/edukacja/przedmioty-rozszerzone', className: 'extensions-nav-link' },
+        { prefix: 'Profile', label: 'Planowanie ścieżki edukacyjnej', path: '/edukacja/przedmioty-rozszerzone', className: 'extensions-nav-link' },
         { label: 'Język hiszpański', path: '/edukacja/jezyk-hiszpanski' },
         { label: 'Zajęcia sportowe – WF', path: '/edukacja/zajecia-sportowe-wf' },
       ],

@@ -23,6 +23,7 @@ import WymaganeDokumenty from './pages/rekrutacja/WymaganeDokumenty';
 import KandydaciSportowcy from './pages/rekrutacja/KandydaciSportowcy';
 import FormularzZgloszeniowy from './pages/rekrutacja/FormularzZgloszeniowy';
 import AbsolwenciONas from './pages/rekrutacja/AbsolwenciONas';
+import PlanowanieProfilu from './pages/rekrutacja/PlanowanieProfilu';
 import LekcjeIPrzerwy from './pages/uczen/LekcjeIPrzerwy';
 import Podreczniki from './pages/uczen/Podreczniki';
 import RokSzkolny from './pages/uczen/RokSzkolny';
@@ -235,6 +236,7 @@ const menu = [
           { label: 'Dlaczego do nas?', path: '/rekrutacja/dlaczego-do-nas' },
           { label: 'Dni otwarte', path: '/rekrutacja/dni-otwarte' },
           { label: 'Kandydaci sportowcy', path: '/rekrutacja/kandydaci-sportowcy' },
+          { label: 'Planowanie profilu', path: '/rekrutacja/planowanie-profilu' },
           { label: 'Wymagane dokumenty', path: '/rekrutacja/wymagane-dokumenty' },
           { label: 'Zgłoszenie online', path: '/rekrutacja/formularz-zgloszeniowy' },
         ],
@@ -486,6 +488,11 @@ function App() {
           <Route
               path="/rekrutacja/kandydaci-sportowcy"
               element={<KandydaciSportowcy />}
+          />
+
+          <Route
+              path="/rekrutacja/planowanie-profilu"
+              element={<PlanowanieProfilu />}
           />
 
           <Route

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { ArrowRight, BookOpen, Dna, FlaskConical, Globe2, Landmark, Languages, Scale, Sigma, Sparkles, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -279,15 +279,13 @@ export function PrzedmiotyRozszerzone() {
   return (
     <section className="extensions-page container">
       <header className="extensions-header">
-        <span className="extensions-eyebrow">Indywidualny dobór rozszerzeń</span>
+        <span className="extensions-eyebrow">Indywidualny dobór profilu</span>
         <h1>Przedmioty rozszerzone</h1>
         <div className="extensions-intro">
           <strong>Ukierunkowanie procesu rozwojowego na zagadnienia wynikające z indywidualnych preferencji poznawczych.</strong>
           <p>W V Prywatnym Liceum Ogólnokształcącym uczeń może budować własną ścieżkę edukacyjną, wybierając przedmioty rozszerzone zgodnie ze swoimi zainteresowaniami i planami na przyszłość.</p>
         </div>
       </header>
-
-      <InterestFinder />
 
       <section className="extensions-subject-grid" aria-label="Przedmioty rozszerzone">
         {alphabeticalSubjects.map((subject) => (
