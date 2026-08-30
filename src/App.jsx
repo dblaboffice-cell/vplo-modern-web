@@ -28,6 +28,7 @@ import LekcjeIPrzerwy from './pages/uczen/LekcjeIPrzerwy';
 import Podreczniki from './pages/uczen/Podreczniki';
 import RokSzkolny from './pages/uczen/RokSzkolny';
 import Matura from './pages/uczen/Matura';
+import HarmonogramMatur from './pages/uczen/HarmonogramMatur';
 
 import PrzeslanieDyrektoraPage from './pages/szkola/PrzeslanieDyrektora';
 import IdeaZalozycieli from './pages/szkola/IdeaZalozycieli';
@@ -523,6 +524,11 @@ function App() {
           <Route
               path="/uczen/matura"
               element={<Matura />}
+          />
+
+          <Route
+              path="/uczen/matura/harmonogram-2027"
+              element={<HarmonogramMatur />}
           />
 
           <Route path="/aktualnosci" element={<NewsPage />} />

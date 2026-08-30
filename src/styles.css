@@ -5516,6 +5516,36 @@ th {
   line-height: 1.25;
 }
 
+.matura-content-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.matura-schedule-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 16px;
+  border: 1px solid rgba(162, 117, 24, 0.55);
+  border-radius: 10px;
+  background: #fff9ed;
+  color: #173b76;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.matura-schedule-button:hover {
+  background: #a27518;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
 .matura-cke-button {
   flex: 0 0 auto;
   display: inline-flex;
@@ -5630,6 +5660,98 @@ th {
   outline-offset: -3px;
 }
 
+.matura-schedule-page {
+  max-width: 1040px;
+}
+
+.matura-schedule-back {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: #536585;
+  font-weight: 700;
+}
+
+.matura-schedule-eyebrow {
+  display: block;
+  margin-bottom: 10px;
+  color: #a87500;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.matura-schedule-page > header p {
+  color: #536585;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.12rem;
+  font-style: italic;
+}
+
+.matura-schedule-card {
+  margin-top: 30px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 43, 89, 0.14);
+  border-top: 5px solid #c7a243;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(0, 43, 89, 0.08);
+}
+
+.matura-schedule-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-bottom: 1px solid #dce4f0;
+  background: #f5f8fc;
+}
+
+.matura-schedule-tabs button {
+  padding: 18px 20px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: #536585;
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.matura-schedule-tabs button.is-active {
+  border-bottom-color: #c7a243;
+  background: #ffffff;
+  color: #173b76;
+}
+
+.matura-schedule-table-wrap { overflow-x: auto; }
+
+.matura-schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #263747;
+  text-align: left;
+}
+
+.matura-schedule-table th,
+.matura-schedule-table td { padding: 17px 22px; border-bottom: 1px solid #e1e7f0; }
+.matura-schedule-table th { background: #fbfcfe; color: #667791; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.matura-schedule-table td { font-size: 1rem; font-weight: 600; }
+.matura-schedule-table td strong { display: inline-block; padding: 4px 8px; border-radius: 999px; background: #fff3d9; color: #9a6b18; font-size: 0.78rem; letter-spacing: 0.04em; }
+.matura-schedule-table tbody tr:last-child td { border-bottom: 0; }
+
+.matura-schedule-legend {
+  margin: 0;
+  padding: 18px 22px;
+  border-top: 1px solid #e1e7f0;
+  background: #fbfcfe;
+  color: #60708a;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.matura-schedule-legend strong { color: #173b76; }
+
 @media (max-width: 720px) {
   .student-page {
     padding: 22px 17px 30px;
@@ -5644,6 +5766,11 @@ th {
     align-items: flex-start;
     flex-direction: column;
   }
+
+  .matura-content-actions { justify-content: flex-start; }
+  .matura-schedule-tabs button { padding: 15px 10px; font-size: 0.78rem; }
+  .matura-schedule-table th,
+  .matura-schedule-table td { padding: 14px 16px; }
 
   .matura-faq-item summary {
     gap: 10px;

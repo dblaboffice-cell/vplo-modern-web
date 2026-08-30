@@ -110,14 +110,17 @@ function Matura() {
             <section className="matura-content" aria-labelledby="matura-faq-title">
                 <div className="matura-content-heading">
                     <h2 id="matura-faq-title">Kompendium wiedzy o maturze</h2>
-                    <a
-                        className="matura-cke-button"
-                        href="https://cke.gov.pl/egzamin-maturalny/egzamin-maturalny-w-formule-2023/"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        Egzamin maturalny CKE
-                    </a>
+                    <div className="matura-content-actions">
+                        <Link className="matura-schedule-button" to="/uczen/matura/harmonogram-2027">Harmonogram matur 2027</Link>
+                        <a
+                            className="matura-cke-button"
+                            href="https://cke.gov.pl/egzamin-maturalny/egzamin-maturalny-w-formule-2023/"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Egzamin maturalny CKE
+                        </a>
+                    </div>
                 </div>
 
                 <div className="matura-faq-groups">
@@ -145,3 +148,4 @@ function Matura() {
 }
 
 export default Matura;
+import { Link } from 'react-router-dom';
