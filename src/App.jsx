@@ -22,6 +22,7 @@ import DniOtwarte from './pages/rekrutacja/DniOtwarte';
 import WymaganeDokumenty from './pages/rekrutacja/WymaganeDokumenty';
 import KandydaciSportowcy from './pages/rekrutacja/KandydaciSportowcy';
 import FormularzZgloszeniowy from './pages/rekrutacja/FormularzZgloszeniowy';
+import FormularzPrzyjeciaUcznia from './pages/rekrutacja/FormularzPrzyjeciaUcznia';
 import AbsolwenciONas from './pages/rekrutacja/AbsolwenciONas';
 import PlanowanieProfilu from './pages/rekrutacja/PlanowanieProfilu';
 import LekcjeIPrzerwy from './pages/uczen/LekcjeIPrzerwy';
@@ -29,6 +30,7 @@ import Podreczniki from './pages/uczen/Podreczniki';
 import RokSzkolny from './pages/uczen/RokSzkolny';
 import Matura from './pages/uczen/Matura';
 import HarmonogramMatur from './pages/uczen/HarmonogramMatur';
+import ListaSesjiNaukowych from './pages/edukacja/ListaSesjiNaukowych';
 
 import PrzeslanieDyrektoraPage from './pages/szkola/PrzeslanieDyrektora';
 import IdeaZalozycieli from './pages/szkola/IdeaZalozycieli';
@@ -502,6 +504,11 @@ function App() {
           />
 
           <Route
+              path="/rekrutacja/formularz-przyjecia-ucznia"
+              element={<FormularzPrzyjeciaUcznia />}
+          />
+
+          <Route
               path="/rekrutacja/absolwenci-o-nas"
               element={<AbsolwenciONas />}
           />
@@ -529,6 +536,11 @@ function App() {
           <Route
               path="/uczen/matura/harmonogram-2027"
               element={<HarmonogramMatur />}
+          />
+
+          <Route
+              path="/edukacja/sesje-naukowe/archiwum"
+              element={<ListaSesjiNaukowych />}
           />
 
           <Route path="/aktualnosci" element={<NewsPage />} />
@@ -2556,11 +2568,23 @@ function StandardPage({ page }) {
       <div className={articlePage ? 'article-header-grid' : ''}>
         <div className="page-header">
           <h1>{page.title}</h1>
-          {page.lead && (
+          {page.lead && (scientificSessionsPage ? (
+              <div className="scientific-sessions-header-row">
+                <p className={showSectionIntroCard ? 'section-intro-card' : undefined}>
+                  {page.lead}
+                </p>
+                <Link
+                    className="matura-schedule-button scientific-sessions-archive-button"
+                    to="/edukacja/sesje-naukowe/archiwum"
+                >
+                  Zagadnienia Sesji naukowych
+                </Link>
+              </div>
+          ) : (
               <p className={showSectionIntroCard ? 'section-intro-card' : undefined}>
                 {page.lead}
               </p>
-          )}
+          ))}
         </div>
         {articlePage && page.showHighlights && (
           <aside className="article-highlights">

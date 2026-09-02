@@ -17,6 +17,7 @@ const FOREIGN_LANGUAGES = [
     'Język angielski',
     'Język hiszpański',
     'Język niemiecki',
+    'Język francuski',
 ];
 
 const START_SEMESTERS = [
@@ -141,9 +142,9 @@ export default function FormularzZgloszeniowy() {
                     <h2>Jak to działa?</h2>
 
                     <ul>
-                        <li>Wypełnij formularz</li>
-                        <li>Oczekuj na kontakt szkoły</li>
-                        <li>Ustal termin rozmowy</li>
+                        <li>Wysłanie formularza</li>
+                        <li>Kontakt ze szkoły</li>
+                        <li>Ustalenie terminu rozmowy</li>
                     </ul>
                 </aside>
             </div>
@@ -248,7 +249,7 @@ export default function FormularzZgloszeniowy() {
                                         required
                                     >
                                         <option value="" disabled>
-                                            Wybierz język
+                                            Wybór języka
                                         </option>
 
                                         {FOREIGN_LANGUAGES.map((language) => (
@@ -271,7 +272,7 @@ export default function FormularzZgloszeniowy() {
                                         required
                                     >
                                         <option value="" disabled>
-                                            Wybierz semestr
+                                            Wybór semestru
                                         </option>
 
                                         {START_SEMESTERS.map((semester) => (
