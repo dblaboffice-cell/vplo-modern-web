@@ -57,6 +57,7 @@ import {
 } from './pages/szkola/PrzestrzenieUczniowskiePages';
 import Statut from './pages/szkola/dokumenty/Statut';
 import StandardyOM from './pages/szkola/dokumenty/StandardyOM';
+import MaterialyDlaKadry from './pages/szkola/MaterialyDlaKadry';
 import educationPages, { educationMenuItem } from './pages/edukacja';
 import { educationRoutes } from './pages/edukacja/routes';
 
@@ -354,6 +355,11 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
 
+          <Route
+              path="/materialy-kadra"
+              element={<MaterialyDlaKadry />}
+          />
+
           {/* SZKOŁA */}
 
           <Route
@@ -548,6 +554,11 @@ function App() {
           <Route
               path="/aktualnosci/zakonczenie-roku-2025-2026"
               element={<EndOfSchoolYearArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/zakonczenie-roku-2024-2025"
+              element={<EndOfSchoolYear2025Article />}
           />
 
           <Route
@@ -1765,6 +1776,15 @@ const newsItems = [
         'Uroczyste rozpoczęcie roku szkolnego, ślubowanie uczniów klas pierwszych i wykład inauguracyjny.',
     image: `${import.meta.env.BASE_URL}aktualnosci/rozpoczecie-roku-szkolnego-2025-2026.jpg`,
   },
+  {
+    slug: 'zakonczenie-roku-2024-2025',
+    title: 'Zakończenie roku szkolnego 2024/2025',
+    date: '27 czerwca 2025',
+    dateTime: '2025-06-27',
+    place: 'Kraków',
+    excerpt: 'Uroczyste zakończenie roku szkolnego w zabytkowym budynku Towarzystwa Gimnastycznego „Sokół”, którego motywem przewodnim był Kraków.',
+    image: `${import.meta.env.BASE_URL}aktualnosci/zakonczenie-roku-2024-2025-sokol.png`,
+  },
 ];
 
 function HomeUpdatesStrip({ compact = false }) {
@@ -1962,6 +1982,36 @@ function EndOfSchoolYearArticle() {
             >
               Galeria zdjęć
             </Link>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function EndOfSchoolYear2025Article() {
+  const articleImage = `${import.meta.env.BASE_URL}aktualnosci/zakonczenie-roku-2024-2025-sokol.png`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Zakończenie roku szkolnego 2024/2025</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2025-06-27">27 czerwca 2025</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <img className="news-article-cover" src={articleImage} alt="Uroczystość zakończenia roku szkolnego w Towarzystwie Gimnastycznym Sokół" />
+
+          <div className="news-article-body">
+            <p>Dnia 27 czerwca nasza szkoła gościła w zabytkowym budynku Towarzystwa Gimnastycznego „Sokół”, gdzie miała miejsce uroczystość zakończenia roku szkolnego 2024/2025. Motywem przewodnim wydarzenia był Kraków.</p>
+            <p>Część oficjalną uświetniły wykłady naszego historyka — profesora Kamila Świderskiego o dziejach Towarzystwa „Sokół” oraz ucznia klasy pierwszej — Piotra Bieli, który mówił o twórczości krakowskiego architekta Teodora Talowskiego.</p>
+            <p>W części artystycznej odbyły się między innymi pokazy tradycyjnych tańców ludowych, w tym krakowiaka, występ chóru pierwszoklasistów, który odśpiewał „Dni, których jeszcze nie znamy” Marka Grechuty, oraz prezentacja twórczości wybranych pisarzy i poetów związanych z Krakowem, między innymi Wisławy Szymborskiej, Stanisława Wyspiańskiego i Marii Pawlikowskiej-Jasnorzewskiej.</p>
+            <p>W tej cudownej atmosferze nasi uczniowie mogli odebrać swoje świadectwa oraz nagrody za wysokie wyniki w nauce i wzorowe zachowanie.</p>
           </div>
         </div>
       </article>

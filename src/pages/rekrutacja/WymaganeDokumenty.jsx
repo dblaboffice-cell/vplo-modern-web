@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const requiredDocuments = [
     'podanie do Dyrektora Liceum,',
     'oryginał świadectwa ukończenia klasy VIII szkoły podstawowej,',
@@ -55,6 +57,21 @@ export default function WymaganeDokumenty() {
                             spotkania — osobiście lub telefonicznie — zaprasza kandydatów
                             na rozmowę kwalifikacyjną.
                         </p>
+                    </section>
+
+                    <section className="documents-finalization-card">
+                        <div>
+                            <h2>Finalizacja przyjęcia ucznia</h2>
+                            <p>Dokumenty końcowe</p>
+                        </div>
+
+                        <Link
+                            to="/rekrutacja/formularz-przyjecia-ucznia"
+                            className="documents-finalization-link"
+                            data-tooltip="Formularz jest przeznaczony dla rodziców lub opiekunów kandydatów przyjętych do szkoły."
+                        >
+                            Formularz danych ucznia
+                        </Link>
                     </section>
                 </article>
             </div>

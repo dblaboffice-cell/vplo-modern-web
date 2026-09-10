@@ -193,49 +193,6 @@ const educationPages = {
     ],
     highlights: ['Kompetencje miękkie', 'Forma warsztatowa', 'Czytelne moduły'],
   },
-  '/edukacja/jezyk-hiszpanski': {
-    title: 'Język hiszpański',
-    lead: 'Prezentacja oferty językowej i nowoczesnych metod nauczania.',
-    layout: 'article',
-    showHighlights: false,
-    variant: 'education-formatted',
-    body: [
-      'Język hiszpański w naszym liceum rozwija się w atmosferze indywidualnego podejścia do ucznia i bliskiej współpracy z profesorami.',
-      'Można tu łatwo dodać materiały, zdjęcia oraz przykłady aktywności uczniów.',
-    ],
-    formattedSections: [
-      {
-        type: 'paragraph',
-        content:
-          'Zajęcia prowadzone są w małych, kilkunastoosobowych grupach klasowych, w pomieszczeniach pałacowych i w warunkach odpowiadających najwyższym standardom szkół europejskich. Taki model pracy sprzyja skutecznej nauce języka oraz budowaniu swobody komunikacyjnej.',
-      },
-      {
-        type: 'paragraph',
-        content:
-          'Uwaga profesorów skupiona jest na indywidualnym postrzeganiu każdego z uczniów. W kontaktach osobistych analizowane są między innymi:',
-      },
-      {
-        type: 'list',
-        items: [
-          'indywidualne zainteresowania uczniów językiem i kulturą hiszpańskojęzyczną,',
-          'szczególne uzdolnienia językowe,',
-          'poziom indywidualnej wiedzy uczniów na początku nauki,',
-          'gotowość do systematycznego rozwijania umiejętności komunikacyjnych.',
-        ],
-      },
-      {
-        type: 'paragraph',
-        content:
-          'Na podstawie obserwacji i współpracy z wychowawcami szkoła może organizować dodatkowe zajęcia, które pomagają zarówno w uzupełnianiu materiału, jak i w rozwijaniu kompetencji wykraczających poza program.',
-      },
-      {
-        type: 'paragraph',
-        content:
-          'Uczniowie przygotowują się do egzaminów, konkursów i wystąpień, poznają techniki skutecznej nauki oraz rozwijają praktyczne kompetencje językowe w mowie i piśmie.',
-      },
-    ],
-    highlights: ['Oferta językowa', 'Nowoczesne metody', 'Treści kulturowe'],
-  },
   '/edukacja/kreatywny-uczen': {
     title: 'Kreatywny uczeń',
     lead: 'Sekcja dla programu lub inicjatywy wspierającej uczniów o ponadprzeciętnym potencjale.',
