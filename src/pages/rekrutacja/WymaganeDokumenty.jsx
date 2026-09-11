@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const requiredDocuments = [
-    'podanie do Dyrektora Liceum,',
-    'oryginał świadectwa ukończenia klasy VIII szkoły podstawowej,',
-    'wyciąg z ocen za semestr zimowy klasy VIII szkoły podstawowej,',
+    'podanie do Dyrektora o przyjęcieLiceum,',
     'jedno zdjęcie w formacie legitymacyjnym.',
 ];
 
@@ -14,27 +12,15 @@ export default function WymaganeDokumenty() {
                 <div className="page-header">
                     <h1>Wymagane dokumenty</h1>
 
-                    <p className="recruitment-intro-card">
-                        Rekrutacja prowadzona jest do momentu wyczerpania limitu miejsc, a każdy etap naboru odzwierciedla indywidualne podejście naszej szkoły do przyszłych uczniów.
-                    </p>
                 </div>
 
-                <aside className="article-highlights">
-                    <h2>Proces rekrutacji</h2>
-
-                    <ul>
-                        <li>Złożenie dokumentów</li>
-                        <li>Rozmowa kwalifikacyjna</li>
-                        <li>Uzupełnienie świadectwa</li>
-                    </ul>
-                </aside>
             </div>
 
             <div className="article-layout">
                 <article className="page-main-card">
                     <p className="article-text">
-                        Kandydaci ubiegający się o przyjęcie do klasy pierwszej
-                        w V Prywatnym Liceum Ogólnokształcącym w Krakowie im. Królowej Jadwigi dostarczają:
+                        Kandydaci, którzy pozytywnie przeszli proces rekrutacji do klasy pierwszej
+                        w V Prywatnym Liceum Ogólnokształcącym w Krakowie im.&nbsp;Królowej Jadwigi dostarczają:
                     </p>
 
                     <ul className="recruitment-reasons documents-list">
@@ -47,16 +33,6 @@ export default function WymaganeDokumenty() {
                         <h2>Dodatkowo w czerwcu</h2>
 
                         <p>Świadectwo ukończenia szkoły podstawowej.</p>
-                    </section>
-
-                    <section className="documents-note">
-                        <h2>Rozmowa kwalifikacyjna</h2>
-
-                        <p>
-                            Przedstawiciel szkoły, po wcześniejszym ustaleniu terminu
-                            spotkania — osobiście lub telefonicznie — zaprasza kandydatów
-                            na rozmowę kwalifikacyjną.
-                        </p>
                     </section>
 
                     <section className="documents-finalization-card">

@@ -532,6 +532,7 @@ export default function FormularzZgloszeniowy() {
                                     : 'Wyślij formularz'}
                             </button>
                         </div>
+
                     </form>
                 </article>
             </div>

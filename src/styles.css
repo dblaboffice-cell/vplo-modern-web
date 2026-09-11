@@ -980,6 +980,10 @@ th {
   margin-top: 1.25rem;
 }
 
+.documents-page .page-main-card > .article-text:first-child {
+  margin-top: -8px;
+}
+
 .article-figure {
   width: min(100%, 420px);
   margin: 38px auto;
@@ -4687,6 +4691,10 @@ th {
   transform: translateY(-1px);
 }
 
+.recruitment-process-page { padding-top: 52px; padding-bottom: 48px; }
+.recruitment-process-header { max-width: 800px; }.recruitment-process-header > span { color: #9a6b18; font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }.recruitment-process-header h1 { margin: 8px 0 12px; color: #102e63; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.2rem, 4vw, 3.75rem); }.recruitment-process-header > p:not(.section-intro-card) { margin: 0; color: #405270; font-size: 1.08rem; line-height: 1.7; }
+.recruitment-process-steps { display: grid; gap: 16px; margin: 35px 0 0; padding: 0; list-style: none; counter-reset: none; }.recruitment-process-steps > li { display: grid; grid-template-columns: 62px minmax(0, 1fr); gap: 18px; align-items: stretch; }.recruitment-process-number { display: grid; width: 52px; height: 52px; place-items: center; border-radius: 50%; background: #173b76; color: #fff; font-size: .86rem; font-weight: 900; letter-spacing: .08em; }.recruitment-process-steps article { position: relative; padding: 25px 28px; border: 1px solid rgba(118,148,195,.4); border-left: 5px solid #c59a32; border-radius: 17px; background: #fff; box-shadow: 0 9px 22px rgba(16,46,99,.06); }.recruitment-process-steps article > svg { position: absolute; top: 25px; left: 28px; color: #9a6b18; }.recruitment-process-steps h2 { min-height: 27px; margin: 0 0 8px; padding-left: 42px; color: #102e63; font-size: 1.35rem; }.recruitment-process-steps p { margin: 0; color: #405270; line-height: 1.65; }.recruitment-process-documents { margin-top: 17px; padding: 15px 17px; border-radius: 11px; background: #f4f7fb; color: #30486f; }.recruitment-process-documents strong { color: #173b76; }.recruitment-process-documents ul { margin: 9px 0 0; padding-left: 20px; }.recruitment-process-documents li + li { margin-top: 5px; }.recruitment-process-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }.recruitment-process-link { padding: 10px 14px; border-radius: 9px; background: #173b76; color: #fff; font-size: .92rem; font-weight: 800; text-decoration: none; }.recruitment-process-link:hover { background: #102e63; }.recruitment-process-link.is-secondary { border: 1px solid #bfcbdc; background: #fff; color: #173b76; }
+
 .documents-finalization-link::after {
   position: absolute;
   z-index: 10;
@@ -4756,6 +4764,10 @@ th {
   .documents-finalization-link {
     width: 100%;
   }
+
+  .recruitment-process-page { padding-top: 32px; }
+  .recruitment-process-steps > li { grid-template-columns: 1fr; gap: 9px; }
+  .recruitment-process-steps article { padding: 22px 18px; }
 }
 
 /* =====================================================
@@ -5308,6 +5320,9 @@ th {
   transform: none;
 }
 
+.application-preview-button { min-height: 46px; margin-right: 12px; padding: 11px 16px; border: 1px solid #b8c7da; border-radius: 10px; background: #fff; color: #173b76; font: inherit; font-weight: 800; cursor: pointer; }.application-preview-button:hover { border-color: #173b76; background: #f3f7fc; }
+.application-email-preview { margin-top: 5px; overflow: hidden; border: 1px solid #b9c8da; border-radius: 15px; background: #fff; box-shadow: 0 10px 24px rgba(16,46,99,.08); }.application-email-preview header { padding: 21px 23px; border-bottom: 1px solid #d5deea; background: #f3f7fc; }.application-email-preview header span { color: #9a6b18; font-size: .74rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }.application-email-preview h2 { margin: 5px 0 0; color: #102e63; font-size: 1.25rem; }.application-email-meta { display: grid; gap: 1px; margin: 0; background: #dce4ef; }.application-email-meta div { display: grid; grid-template-columns: 90px 1fr; gap: 15px; padding: 11px 23px; background: #fff; }.application-email-meta dt, .application-email-body dt { color: #677791; font-size: .75rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }.application-email-meta dd, .application-email-body dd { margin: 0; color: #233e69; line-height: 1.5; }.application-email-body { padding: 22px 23px; }.application-email-body > p:first-child { margin: 0 0 15px; color: #233e69; font-weight: 700; }.application-email-body dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; border-top: 1px solid #dce4ef; border-left: 1px solid #dce4ef; }.application-email-body dl > div { min-width: 0; padding: 12px 13px; border-right: 1px solid #dce4ef; border-bottom: 1px solid #dce4ef; }.application-email-body dd { margin-top: 5px; overflow-wrap: anywhere; }.application-email-consents { margin: 17px 0 0; color: #536788; font-size: .88rem; line-height: 1.6; }
+
 /* UKRYTE POLE ANTYSPAMOWE */
 
 .form-honeypot {
@@ -5344,12 +5359,17 @@ th {
   }
 
   .application-submit-row {
+    flex-direction: column-reverse;
     justify-content: stretch;
   }
 
-  .application-submit-button {
+  .application-submit-button,
+  .application-preview-button {
     width: 100%;
   }
+
+  .application-preview-button { margin-right: 0; }
+  .application-email-body dl { grid-template-columns: 1fr; }
 
   .application-verification-field {
     max-width: 100%;
@@ -7086,6 +7106,7 @@ main :is(p, li, blockquote) {
 .admission-field { display: grid; gap: 7px; color: #253c61; font-size: .91rem; font-weight: 700; }
 .admission-field em, .admission-choice-group em, .admission-radio em, .admission-check em { color: #a13333; font-style: normal; }
 .admission-field input, .admission-field select, .admission-field textarea, .admission-access-form input { width: 100%; box-sizing: border-box; border: 1px solid #bdcadb; border-radius: 10px; background: #fff; color: #172d50; font: inherit; font-weight: 500; outline: none; }
+.admission-fixed-language { display: grid; gap: 7px; color: #253c61; font-size: .91rem; font-weight: 700; }.admission-fixed-language strong { display: flex; align-items: center; min-height: 45px; box-sizing: border-box; padding: 10px 12px; border: 1px solid #bdcadb; border-radius: 10px; background: #edf2f8; color: #172d50; font-weight: 600; }
 .admission-field input, .admission-field select, .admission-access-form input { min-height: 45px; padding: 10px 12px; }
 .admission-field textarea { padding: 11px 12px; resize: vertical; }
 .admission-field :is(input, select, textarea):focus, .admission-access-form input:focus { border-color: #b58a23; box-shadow: 0 0 0 3px rgba(181,138,35,.14); }
@@ -7102,6 +7123,8 @@ main :is(p, li, blockquote) {
 .admission-radio { display: grid; gap: 11px; margin-top: 19px; }
 .admission-radio label, .admission-check { display: flex; gap: 9px; align-items: flex-start; color: #354b6d; line-height: 1.5; cursor: pointer; }
 .admission-check { margin-top: 21px; font-size: .92rem; }
+.admission-check:has(input[name="independentTravel"]) { margin-top: 19px; padding: 20px; border: 1px solid rgba(118,148,195,.36); border-radius: 15px; }
+.admission-check:has(input[name="independentTravel"])::after { color: #a13333; content: " *"; font-weight: 800; }
 .admission-check input, .admission-radio input, .admission-options input { margin-top: .22em; accent-color: #173b76; }
 .admission-notice { margin-top: 21px; padding: 16px 18px; border-left: 4px solid #b58a23; border-radius: 0 12px 12px 0; background: rgba(212,167,51,.1); color: #445674; line-height: 1.6; }
 .admission-notice h3 { margin: 0 0 7px; color: #173b76; font-size: 1rem; }.admission-notice p { margin: 0; }

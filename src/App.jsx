@@ -20,6 +20,7 @@ import {
 import DlaczegoDoNas from './pages/rekrutacja/DlaczegoDoNas';
 import DniOtwarte from './pages/rekrutacja/DniOtwarte';
 import WymaganeDokumenty from './pages/rekrutacja/WymaganeDokumenty';
+import ProcesRekrutacji from './pages/rekrutacja/ProcesRekrutacji';
 import KandydaciSportowcy from './pages/rekrutacja/KandydaciSportowcy';
 import FormularzZgloszeniowy from './pages/rekrutacja/FormularzZgloszeniowy';
 import FormularzPrzyjeciaUcznia from './pages/rekrutacja/FormularzPrzyjeciaUcznia';
@@ -241,7 +242,7 @@ const menu = [
           { label: 'Dni otwarte', path: '/rekrutacja/dni-otwarte' },
           { label: 'Kandydaci sportowcy', path: '/rekrutacja/kandydaci-sportowcy' },
           { label: 'Planowanie profilu', path: '/rekrutacja/planowanie-profilu' },
-          { label: 'Wymagane dokumenty', path: '/rekrutacja/wymagane-dokumenty' },
+          { label: 'Proces rekrutacji', path: '/rekrutacja/proces-rekrutacji' },
           { label: 'Zgłoszenie online', path: '/rekrutacja/formularz-zgloszeniowy' },
         ],
       },
@@ -492,6 +493,11 @@ function App() {
           <Route
               path="/rekrutacja/wymagane-dokumenty"
               element={<WymaganeDokumenty />}
+          />
+
+          <Route
+              path="/rekrutacja/proces-rekrutacji"
+              element={<ProcesRekrutacji />}
           />
 
           <Route
@@ -2932,7 +2938,7 @@ function StandardPage({ page }) {
                                       ((page.mainImageAfterParagraph ||
                                           (page.mainImageAfterFirstParagraph && 1)) -
                                           1) && (
-                                      <figure className="article-figure article-main-image">
+                                      <figure className={`article-figure article-main-image ${page.mainImageClass || ''}`}>
                                         <img
                                             src={page.mainImage}
                                             alt={page.mainImageAlt || page.title}

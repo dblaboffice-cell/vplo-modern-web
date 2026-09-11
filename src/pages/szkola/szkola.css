@@ -250,6 +250,16 @@
     height: auto;
 }
 
+/* Mniejsze fotografie w wybranych przestrzeniach reprezentacyjnych i uczniowskich. */
+.article-figure.article-main-image.article-main-image-compact {
+    width: min(100%, 720px);
+    max-width: 720px;
+}
+
+.article-figure.article-main-image.article-main-image-compact img {
+    max-width: 100%;
+}
+
 /* Siedziba liceum – proporcje nagłówka */
 
 .headquarters-page .article-header-grid {
