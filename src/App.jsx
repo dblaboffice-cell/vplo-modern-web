@@ -93,6 +93,54 @@ const headerBannerSlides = [
   { src: `${import.meta.env.BASE_URL}krakow-wawel.jpeg`, alt: 'Wawel nad Wisłą', position: 'center 30%' },
   { src: `${import.meta.env.BASE_URL}krakow-wisla.jpeg`, alt: 'Panorama Wawelu i Wisły', position: 'center 30%' },
 ];
+const subpageBannerSlides = {
+  school: [
+    { src: `${import.meta.env.BASE_URL}banery/szkola.png`, alt: 'Budynek V Prywatnego Liceum Ogólnokształcącego', position: 'center 48%' },
+    { src: `${import.meta.env.BASE_URL}banery/zalozyciel.png`, alt: 'Wydarzenie w liceum', position: 'center 46%' },
+    { src: `${import.meta.env.BASE_URL}banery/ogrod.png`, alt: 'Spotkanie społeczności liceum w ogrodzie', position: 'center 45%' },
+    { src: `${import.meta.env.BASE_URL}banery/collegium2.png`, alt: 'Collegium Maximum w liceum', position: 'center 55%' },
+  ],
+  spaces: [
+    { src: `${import.meta.env.BASE_URL}banery/aula.png`, alt: 'Aula liceum', position: 'center 57%' },
+    { src: `${import.meta.env.BASE_URL}banery/collegium.png`, alt: 'Wejście do Collegium Maximum', position: 'center 54%' },
+    { src: `${import.meta.env.BASE_URL}banery/sala-302.png`, alt: 'Sala lekcyjna w liceum', position: 'center 55%' },
+    { src: `${import.meta.env.BASE_URL}banery/komputerowa.png`, alt: 'Pracownia komputerowa', position: 'center 53%' },
+  ],
+  education: [
+    { src: `${import.meta.env.BASE_URL}banery/sesja.png`, alt: 'Prezentacja uczniowska podczas sesji naukowej', position: 'center 50%' },
+    { src: `${import.meta.env.BASE_URL}banery/uczniowie.png`, alt: 'Uczniowie liceum', position: 'center 50%' },
+    { src: `${import.meta.env.BASE_URL}banery/komputerowa.png`, alt: 'Pracownia komputerowa', position: 'center 53%' },
+    { src: `${import.meta.env.BASE_URL}banery/sala-302.png`, alt: 'Sala lekcyjna w liceum', position: 'center 55%' },
+  ],
+  recruitment: [
+    { src: `${import.meta.env.BASE_URL}banery/slubowanie.png`, alt: 'Ślubowanie uczniowskie', position: 'center 50%' },
+    { src: `${import.meta.env.BASE_URL}banery/studniowka.png`, alt: 'Studniówka liceum', position: 'center 50%' },
+    { src: `${import.meta.env.BASE_URL}banery/zakonczenie-roku.png`, alt: 'Uczniowie podczas zakończenia roku', position: 'center 45%' },
+    { src: `${import.meta.env.BASE_URL}banery/uczniowie.png`, alt: 'Uczniowie liceum', position: 'center 50%' },
+  ],
+  student: [
+    { src: `${import.meta.env.BASE_URL}banery/uczniowie.png`, alt: 'Uczniowie liceum', position: 'center 50%' },
+    { src: `${import.meta.env.BASE_URL}banery/sesja.png`, alt: 'Prezentacja uczniowska podczas sesji naukowej', position: 'center 50%' },
+    { src: `${import.meta.env.BASE_URL}banery/zakonczenie.png`, alt: 'Poczet sztandarowy liceum', position: 'center 48%' },
+    { src: `${import.meta.env.BASE_URL}banery/slubowanie.png`, alt: 'Ślubowanie uczniowskie', position: 'center 50%' },
+  ],
+  events: [
+    { src: `${import.meta.env.BASE_URL}banery/studniowka.png`, alt: 'Studniówka liceum', position: 'center 50%' },
+    { src: `${import.meta.env.BASE_URL}banery/sztandar.png`, alt: 'Uroczystość z pocztem sztandarowym', position: 'center 50%' },
+    { src: `${import.meta.env.BASE_URL}banery/kolendowanie.png`, alt: 'Kolędowanie w liceum', position: 'center 50%' },
+    { src: `${import.meta.env.BASE_URL}banery/zakonczenie-roku.png`, alt: 'Uczniowie podczas zakończenia roku', position: 'center 45%' },
+  ],
+};
+
+function getSubpageBannerSlides(pathname) {
+  if (pathname.startsWith('/szkola/infrastruktura')) return subpageBannerSlides.spaces;
+  if (pathname.startsWith('/szkola')) return subpageBannerSlides.school;
+  if (pathname.startsWith('/edukacja')) return subpageBannerSlides.education;
+  if (pathname.startsWith('/rekrutacja')) return subpageBannerSlides.recruitment;
+  if (pathname.startsWith('/uczen')) return subpageBannerSlides.student;
+  if (pathname.startsWith('/aktualnosci') || pathname.startsWith('/galeria')) return subpageBannerSlides.events;
+  return subpageBannerSlides.school;
+}
 const schoolMapUrl =
   'https://www.google.com/maps/place/V+Prywatne+Liceum+Og%C3%B3lnokszta%C5%82c%C4%85ce/@50.0581904,19.9277046,19.5z/data=!3m1!5s0x47165b0ca90960b1:0x15df860a31a312a3!4m15!1m8!3m7!1s0x47165b0ca9600f99:0x975b3ee8029bc41f!2sSmole%C5%84sk+14,+31-112+Krak%C3%B3w!3b1!8m2!3d50.0583935!4d19.9279931!16s%2Fg%2F11c2fqzxsz!3m5!1s0x47165b0ca9c919b5:0xee22a70dcc45f4fc!8m2!3d50.0583811!4d19.9281055!16s%2Fg%2F1ts1lctz?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D';
 const schoolMapEmbedUrl =
@@ -351,7 +399,7 @@ function App() {
 
     return (
       <div className="app-shell">
-        <Header mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} showBanner={location.pathname === '/'} />
+        <Header mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} pathname={location.pathname} />
         <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -691,7 +739,12 @@ function App() {
   );
 }
 
-function Header({ mobileOpen, setMobileOpen, showBanner }) {
+function Header({ mobileOpen, setMobileOpen, pathname }) {
+  const isHomePage = pathname === '/';
+  const bannerSlides = isHomePage
+    ? headerBannerSlides
+    : getSubpageBannerSlides(pathname);
+
   return (
     <header className="site-header">
       <div className="container topbar">
@@ -718,7 +771,7 @@ function Header({ mobileOpen, setMobileOpen, showBanner }) {
             </div>
           </div>
         </Link>
-        {showBanner && <HeaderBanner />}
+        <HeaderBanner key={isHomePage ? 'home' : pathname.split('/')[1]} slides={bannerSlides} />
         <div className="header-actions">
           <button
             type="button"
@@ -779,18 +832,18 @@ function Header({ mobileOpen, setMobileOpen, showBanner }) {
   );
 }
 
-function HeaderBanner() {
+function HeaderBanner({ slides }) {
   const [slideIndex, setSlideIndex] = useState(0);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
-      setSlideIndex((index) => (index + 1) % headerBannerSlides.length);
+      setSlideIndex((index) => (index + 1) % slides.length);
     }, 5000);
 
     return () => window.clearInterval(interval);
-  }, []);
+  }, [slides]);
 
-  const slide = headerBannerSlides[slideIndex];
+  const slide = slides[slideIndex];
 
   return (
     <figure className="header-banner">
