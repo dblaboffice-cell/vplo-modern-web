@@ -30,9 +30,10 @@ export default function WymaganeDokumenty() {
                     </ul>
 
                     <section className="documents-june-card">
-                        <h2>Dodatkowo w czerwcu</h2>
+                        <h2>W dalszej kolejności</h2>
 
-                        <p>Świadectwo ukończenia szkoły podstawowej.</p>
+                        <p>w czerwcu - Świadectwo ukończenia szkoły podstawowej.</p>
+                        <p>w lipcu - Zaświadczenie o szczegółowych wynikach egzaminu ósmoklasisty.</p>
                     </section>
 
                     <section className="documents-finalization-card">

@@ -61,13 +61,14 @@ button {
   align-items: center;
   justify-content: space-between;
   padding: 12px 0;
-  gap: 16px;
+  gap: 12px;
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 14px;
+  flex: 0 1 385px;
   min-width: 0;
 }
 
@@ -98,7 +99,7 @@ button {
 }
 
 .brand-title {
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 800;
   line-height: 1.25;
   color: #172448;
@@ -106,16 +107,16 @@ button {
 
 .brand-title-school,
 .brand-title-patron {
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .brand-subtitle {
   margin-top: 5px;
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: 0.78rem;
   font-weight: 400;
   line-height: 1.35;
-  max-width: 540px;
+  max-width: 350px;
 }
 
 .brand-meta {
@@ -161,6 +162,69 @@ button {
   inset: 0;
   background: linear-gradient(90deg, rgba(23, 38, 77, 0.2), transparent 55%);
   pointer-events: none;
+}
+
+/* Strona główna zachowuje poprzedni, bardziej zwarty układ nagłówka. */
+.topbar-home {
+  gap: 16px;
+}
+
+.topbar-home .brand {
+  flex: initial;
+}
+
+.topbar-home .brand-title {
+  font-size: 1rem;
+}
+
+.topbar-home .brand-title-school,
+.topbar-home .brand-title-patron {
+  white-space: nowrap;
+}
+
+.topbar-home .brand-subtitle {
+  max-width: 540px;
+  font-size: 0.88rem;
+}
+
+/* Na podstronach zdjęcie mieści się w całości; delikatne, rozmyte tło
+   wypełnia wolną przestrzeń po bokach bez powiększania kadru. */
+.header-banner-subpage {
+  flex-basis: 650px;
+  max-width: none;
+  min-width: 360px;
+  height: 205px;
+  border-color: rgba(151, 112, 25, 0.42);
+  background: #17264d;
+}
+
+.header-banner-subpage::before {
+  position: absolute;
+  inset: -18px;
+  z-index: 0;
+  background-image: var(--banner-image);
+  background-position: center;
+  background-size: cover;
+  filter: blur(16px);
+  opacity: 0.52;
+  content: '';
+}
+
+.header-banner-subpage img {
+  position: relative;
+  z-index: 1;
+  object-fit: contain;
+}
+
+.header-banner-subpage img.banner-image--compact {
+  position: absolute;
+  inset: 8%;
+  width: 84%;
+  height: 84%;
+}
+
+.header-banner-subpage::after {
+  z-index: 2;
 }
 
 @keyframes banner-fade {
@@ -799,6 +863,11 @@ button {
   width: 36px;
   height: 36px;
   border-radius: 12px;
+}
+
+.home-recruitment-toggle,
+.home-recruitment-links {
+  display: none;
 }
 
 .feature-card,
@@ -7241,5 +7310,63 @@ main :is(p, li, blockquote) {
     font-size: 0.62rem;
     line-height: 1.1;
     overflow-wrap: anywhere;
+  }
+
+  .home-recruitment-desktop-link {
+    display: none !important;
+  }
+
+  .home-recruitment-toggle {
+    position: relative;
+    display: flex;
+    width: 100%;
+    border: 0;
+    background: var(--surface, #fff);
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .home-recruitment-chevron {
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    transition: transform .2s ease;
+  }
+
+  .home-recruitment-card.is-open {
+    grid-column: 1 / -1;
+  }
+
+  .home-recruitment-card.is-open .home-recruitment-toggle {
+    width: calc((100% - 24px) / 4);
+  }
+
+  .home-recruitment-card.is-open .home-recruitment-chevron {
+    transform: rotate(180deg);
+  }
+
+  .home-recruitment-card.is-open .home-recruitment-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .home-recruitment-links a {
+    padding: 8px 6px;
+    border: 1px solid rgba(23, 59, 118, .18);
+    border-radius: 8px;
+    background: #fff;
+    color: #173b76;
+    font-size: .68rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .home-recruitment-links a:active {
+    background: #edf2f9;
   }
 }

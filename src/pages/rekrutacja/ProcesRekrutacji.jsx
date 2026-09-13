@@ -31,6 +31,7 @@ const steps = [
       'podanie do Dyrektora o przyjęcie do Liceum,',
       'jedno zdjęcie w formacie legitymacyjnym,',
       'w czerwcu — świadectwo ukończenia szkoły podstawowej,',
+      'w lipcu — zaświadczenie o szczegółowych wynikach egzaminu ósmoklasisty',
       'formularz danych ucznia.',
     ],
     actions: [{ label: 'Wymagane dokumenty', to: '/rekrutacja/wymagane-dokumenty' }],

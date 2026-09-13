@@ -96,7 +96,7 @@ const headerBannerSlides = [
 const subpageBannerSlides = {
   school: [
     { src: `${import.meta.env.BASE_URL}banery/szkola.png`, alt: 'Budynek V Prywatnego Liceum Ogólnokształcącego', position: 'center 48%' },
-    { src: `${import.meta.env.BASE_URL}banery/zalozyciel.png`, alt: 'Wydarzenie w liceum', position: 'center 46%' },
+    { src: `${import.meta.env.BASE_URL}banery/zalozyciel.png`, alt: 'Wydarzenie w liceum', position: 'center 12%' },
     { src: `${import.meta.env.BASE_URL}banery/ogrod.png`, alt: 'Spotkanie społeczności liceum w ogrodzie', position: 'center 45%' },
     { src: `${import.meta.env.BASE_URL}banery/collegium2.png`, alt: 'Collegium Maximum w liceum', position: 'center 55%' },
   ],
@@ -107,28 +107,28 @@ const subpageBannerSlides = {
     { src: `${import.meta.env.BASE_URL}banery/komputerowa.png`, alt: 'Pracownia komputerowa', position: 'center 53%' },
   ],
   education: [
-    { src: `${import.meta.env.BASE_URL}banery/sesja.png`, alt: 'Prezentacja uczniowska podczas sesji naukowej', position: 'center 50%' },
-    { src: `${import.meta.env.BASE_URL}banery/uczniowie.png`, alt: 'Uczniowie liceum', position: 'center 50%' },
+    { src: `${import.meta.env.BASE_URL}banery/sesja.png`, alt: 'Prezentacja uczniowska podczas sesji naukowej', position: 'center 28%' },
+    { src: `${import.meta.env.BASE_URL}banery/uczniowie.png`, alt: 'Uczniowie liceum', position: 'center 25%', compact: true },
     { src: `${import.meta.env.BASE_URL}banery/komputerowa.png`, alt: 'Pracownia komputerowa', position: 'center 53%' },
     { src: `${import.meta.env.BASE_URL}banery/sala-302.png`, alt: 'Sala lekcyjna w liceum', position: 'center 55%' },
   ],
   recruitment: [
     { src: `${import.meta.env.BASE_URL}banery/slubowanie.png`, alt: 'Ślubowanie uczniowskie', position: 'center 50%' },
-    { src: `${import.meta.env.BASE_URL}banery/studniowka.png`, alt: 'Studniówka liceum', position: 'center 50%' },
-    { src: `${import.meta.env.BASE_URL}banery/zakonczenie-roku.png`, alt: 'Uczniowie podczas zakończenia roku', position: 'center 45%' },
-    { src: `${import.meta.env.BASE_URL}banery/uczniowie.png`, alt: 'Uczniowie liceum', position: 'center 50%' },
+    { src: `${import.meta.env.BASE_URL}banery/studniowka.png`, alt: 'Studniówka liceum', position: 'center 25%' },
+    { src: `${import.meta.env.BASE_URL}banery/zakonczenie-roku.png`, alt: 'Uczniowie podczas zakończenia roku', position: 'center 20%' },
+    { src: `${import.meta.env.BASE_URL}banery/uczniowie.png`, alt: 'Uczniowie liceum', position: 'center 25%', compact: true },
   ],
   student: [
-    { src: `${import.meta.env.BASE_URL}banery/uczniowie.png`, alt: 'Uczniowie liceum', position: 'center 50%' },
-    { src: `${import.meta.env.BASE_URL}banery/sesja.png`, alt: 'Prezentacja uczniowska podczas sesji naukowej', position: 'center 50%' },
-    { src: `${import.meta.env.BASE_URL}banery/zakonczenie.png`, alt: 'Poczet sztandarowy liceum', position: 'center 48%' },
+    { src: `${import.meta.env.BASE_URL}banery/uczniowie.png`, alt: 'Uczniowie liceum', position: 'center 25%', compact: true },
+    { src: `${import.meta.env.BASE_URL}banery/sesja.png`, alt: 'Prezentacja uczniowska podczas sesji naukowej', position: 'center 28%' },
+    { src: `${import.meta.env.BASE_URL}banery/zakonczenie.png`, alt: 'Poczet sztandarowy liceum', position: 'center 24%' },
     { src: `${import.meta.env.BASE_URL}banery/slubowanie.png`, alt: 'Ślubowanie uczniowskie', position: 'center 50%' },
   ],
   events: [
-    { src: `${import.meta.env.BASE_URL}banery/studniowka.png`, alt: 'Studniówka liceum', position: 'center 50%' },
-    { src: `${import.meta.env.BASE_URL}banery/sztandar.png`, alt: 'Uroczystość z pocztem sztandarowym', position: 'center 50%' },
-    { src: `${import.meta.env.BASE_URL}banery/kolendowanie.png`, alt: 'Kolędowanie w liceum', position: 'center 50%' },
-    { src: `${import.meta.env.BASE_URL}banery/zakonczenie-roku.png`, alt: 'Uczniowie podczas zakończenia roku', position: 'center 45%' },
+    { src: `${import.meta.env.BASE_URL}banery/studniowka.png`, alt: 'Studniówka liceum', position: 'center 25%' },
+    { src: `${import.meta.env.BASE_URL}banery/sztandar.png`, alt: 'Uroczystość z pocztem sztandarowym', position: 'center 24%' },
+    { src: `${import.meta.env.BASE_URL}banery/kolendowanie.png`, alt: 'Kolędowanie w liceum', position: 'center 25%' },
+    { src: `${import.meta.env.BASE_URL}banery/zakonczenie-roku.png`, alt: 'Uczniowie podczas zakończenia roku', position: 'center 20%' },
   ],
 };
 
@@ -747,7 +747,7 @@ function Header({ mobileOpen, setMobileOpen, pathname }) {
 
   return (
     <header className="site-header">
-      <div className="container topbar">
+      <div className={`container topbar ${isHomePage ? 'topbar-home' : ''}`}>
         <Link to="/" className="brand">
           <div className="brand-badge brand-badge-logo">
             <img src={logoSrc} alt="Logo VP-LO Kraków" className="brand-logo" />
@@ -763,7 +763,7 @@ function Header({ mobileOpen, setMobileOpen, pathname }) {
             </div>
 
             <div className="brand-subtitle">
-              Szkoła z tradycją, kameralną atmosferą i nowoczesnym podejściem do edukacji
+              Szkoła z tradycją, kameralną atmosferą i&nbsp;nowoczesnym podejściem do edukacji
             </div>
 
             <div className="brand-meta">
@@ -771,7 +771,11 @@ function Header({ mobileOpen, setMobileOpen, pathname }) {
             </div>
           </div>
         </Link>
-        <HeaderBanner key={isHomePage ? 'home' : pathname.split('/')[1]} slides={bannerSlides} />
+        <HeaderBanner
+          key={isHomePage ? 'home' : pathname.split('/')[1]}
+          slides={bannerSlides}
+          isSubpage={!isHomePage}
+        />
         <div className="header-actions">
           <button
             type="button"
@@ -832,7 +836,7 @@ function Header({ mobileOpen, setMobileOpen, pathname }) {
   );
 }
 
-function HeaderBanner({ slides }) {
+function HeaderBanner({ slides, isSubpage }) {
   const [slideIndex, setSlideIndex] = useState(0);
 
   useEffect(() => {
@@ -846,11 +850,15 @@ function HeaderBanner({ slides }) {
   const slide = slides[slideIndex];
 
   return (
-    <figure className="header-banner">
+    <figure
+      className={`header-banner ${isSubpage ? 'header-banner-subpage' : ''}`}
+      style={isSubpage ? { '--banner-image': `url("${slide.src}")` } : undefined}
+    >
       <img
           key={slide.src}
           src={slide.src}
           alt={slide.alt}
+          className={slide.compact ? 'banner-image--compact' : undefined}
           style={{
             objectPosition: slide.position || 'center',
             objectFit: slide.fit || 'cover'
@@ -1073,6 +1081,9 @@ const keepPolishShortWordsTogether = (text) =>
 
 function HomePage() {
     const [activeValue, setActiveValue] = useState(null);
+    const [recruitmentOpen, setRecruitmentOpen] = useState(false);
+    const recruitmentItem = menu.find((item) => item.label === 'Rekrutacja');
+    const recruitmentLinks = recruitmentItem?.children.flatMap((group) => group.items) ?? [];
     return (
       <>
         <section className="hero">
@@ -1216,6 +1227,42 @@ function HomePage() {
         <div className="cards-grid home-tabs-grid">
           {menu.map((item) => {
             const Icon = item.icon;
+
+            if (item.label === 'Rekrutacja') {
+              return (
+                <div
+                  key={item.label}
+                  className={`home-recruitment-card${recruitmentOpen ? ' is-open' : ''}`}
+                >
+                  <Link to={item.path} className="feature-card home-recruitment-desktop-link">
+                    <div className="feature-icon">
+                      <Icon size={18} />
+                    </div>
+                    <h3>{item.label}</h3>
+                  </Link>
+                  <button
+                    type="button"
+                    className="feature-card home-recruitment-toggle"
+                    aria-expanded={recruitmentOpen}
+                    aria-controls="home-recruitment-links"
+                    onClick={() => setRecruitmentOpen((isOpen) => !isOpen)}
+                  >
+                    <div className="feature-icon">
+                      <Icon size={18} />
+                    </div>
+                    <h3>{item.label}</h3>
+                    <ChevronDown className="home-recruitment-chevron" size={16} aria-hidden="true" />
+                  </button>
+                  <div id="home-recruitment-links" className="home-recruitment-links">
+                    {recruitmentLinks.map((link) => (
+                      <Link key={link.path} to={link.path} onClick={() => setRecruitmentOpen(false)}>
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
 
             return (
               <Link to={item.path} key={item.label} className="feature-card">
