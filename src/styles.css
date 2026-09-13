@@ -190,12 +190,41 @@ button {
 /* Na podstronach zdjęcie mieści się w całości; delikatne, rozmyte tło
    wypełnia wolną przestrzeń po bokach bez powiększania kadru. */
 .header-banner-subpage {
-  flex-basis: 650px;
-  max-width: none;
-  min-width: 360px;
+  flex: 0 1 600px;
+  max-width: 600px;
+  min-width: 300px;
   height: 205px;
   border-color: rgba(151, 112, 25, 0.42);
   background: #17264d;
+}
+
+@media (min-width: 861px) {
+  .topbar:not(.topbar-home) .brand {
+    flex-basis: 460px;
+    gap: 17px;
+  }
+
+  .topbar:not(.topbar-home) .brand-badge {
+    width: 104px;
+    height: 104px;
+  }
+
+  .topbar:not(.topbar-home) .brand-title {
+    font-size: 1.06rem;
+  }
+
+  .topbar:not(.topbar-home) .brand-subtitle {
+    max-width: 410px;
+    font-size: 0.88rem;
+  }
+
+  .topbar:not(.topbar-home) .brand-meta {
+    font-size: 0.84rem;
+  }
+
+  .header-banner-subpage {
+    margin-left: auto;
+  }
 }
 
 .header-banner-subpage::before {
@@ -216,15 +245,60 @@ button {
   object-fit: contain;
 }
 
-.header-banner-subpage img.banner-image--compact {
-  position: absolute;
-  inset: 8%;
-  width: 84%;
-  height: 84%;
-}
-
 .header-banner-subpage::after {
   z-index: 2;
+}
+
+/* Po przewinięciu podstrony nagłówek pozostaje czytelny, ale zwalnia miejsce
+   na treść: widoczne są wyłącznie informacje o liceum i menu. */
+.site-header.is-subpage-scrolled .topbar {
+  padding: 6px 0;
+}
+
+.site-header.is-subpage-scrolled .brand-badge {
+  width: 54px;
+  height: 54px;
+}
+
+.site-header.is-subpage-scrolled .brand-title {
+  font-size: 0.82rem;
+}
+
+.site-header.is-subpage-scrolled .brand-subtitle {
+  margin-top: 2px;
+  font-size: 0.7rem;
+}
+
+.site-header.is-subpage-scrolled .brand-meta {
+  font-size: 0.64rem;
+}
+
+@media (min-width: 861px) {
+  .site-header.is-subpage-scrolled .brand {
+    flex: 1 1 auto;
+  }
+
+  .site-header.is-subpage-scrolled .brand-title-school,
+  .site-header.is-subpage-scrolled .brand-title-patron,
+  .site-header.is-subpage-scrolled .brand-subtitle {
+    white-space: nowrap;
+  }
+
+  .site-header.is-subpage-scrolled .brand-subtitle {
+    max-width: none;
+  }
+}
+
+.site-header.is-subpage-scrolled .header-banner-subpage {
+  flex: 0 0 0;
+  width: 0;
+  min-width: 0;
+  max-width: 0;
+  height: 0;
+  margin: 0;
+  border-width: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 @keyframes banner-fade {
@@ -865,8 +939,8 @@ button {
   border-radius: 12px;
 }
 
-.home-recruitment-toggle,
-.home-recruitment-links {
+.home-tabs-grid .home-section-toggle,
+.home-tabs-grid .home-section-links {
   display: none;
 }
 
@@ -1967,6 +2041,14 @@ th {
     max-width: calc(100% - 55px);
   }
 
+  /* Strona główna ma własne, szersze style nagłówka na desktopie.
+     Na telefonie marka musi jednak ustąpić miejsca przyciskowi menu. */
+  .topbar-home .brand {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: calc(100% - 55px);
+  }
+
   .brand-copy {
     flex: 1;
     min-width: 0;
@@ -1987,6 +2069,17 @@ th {
     white-space: normal;
     overflow-wrap: break-word;
     word-break: normal;
+  }
+
+  .topbar-home .brand-title-school,
+  .topbar-home .brand-title-patron {
+    white-space: normal;
+  }
+
+  .topbar-home .brand-subtitle {
+    max-width: 100%;
+    font-size: clamp(0.7rem, 2.8vw, 0.88rem);
+    overflow-wrap: anywhere;
   }
 
   .brand-title-school {
@@ -7312,11 +7405,11 @@ main :is(p, li, blockquote) {
     overflow-wrap: anywhere;
   }
 
-  .home-recruitment-desktop-link {
+  .home-section-desktop-link {
     display: none !important;
   }
 
-  .home-recruitment-toggle {
+  .home-tabs-grid .home-section-toggle {
     position: relative;
     display: flex;
     width: 100%;
@@ -7327,33 +7420,33 @@ main :is(p, li, blockquote) {
     cursor: pointer;
   }
 
-  .home-recruitment-chevron {
+  .home-section-chevron {
     position: absolute;
     right: 7px;
     top: 7px;
     transition: transform .2s ease;
   }
 
-  .home-recruitment-card.is-open {
+  .home-section-card.is-open {
     grid-column: 1 / -1;
   }
 
-  .home-recruitment-card.is-open .home-recruitment-toggle {
+  .home-section-card.is-open .home-section-toggle {
     width: calc((100% - 24px) / 4);
   }
 
-  .home-recruitment-card.is-open .home-recruitment-chevron {
+  .home-section-card.is-open .home-section-chevron {
     transform: rotate(180deg);
   }
 
-  .home-recruitment-card.is-open .home-recruitment-links {
+  .home-tabs-grid .home-section-card.is-open .home-section-links {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
     margin-top: 8px;
   }
 
-  .home-recruitment-links a {
+  .home-section-links a {
     padding: 8px 6px;
     border: 1px solid rgba(23, 59, 118, .18);
     border-radius: 8px;
@@ -7366,7 +7459,7 @@ main :is(p, li, blockquote) {
     text-decoration: none;
   }
 
-  .home-recruitment-links a:active {
+  .home-section-links a:active {
     background: #edf2f9;
   }
 }

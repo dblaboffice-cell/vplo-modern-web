@@ -95,40 +95,42 @@ const headerBannerSlides = [
 ];
 const subpageBannerSlides = {
   school: [
-    { src: `${import.meta.env.BASE_URL}banery/szkola.png`, alt: 'Budynek V Prywatnego Liceum Ogólnokształcącego', position: 'center 48%' },
+    { src: `${import.meta.env.BASE_URL}banery/szkola.png`, alt: 'Budynek V Prywatnego Liceum Ogólnokształcącego', position: 'center 48%', fit: 'cover' },
     { src: `${import.meta.env.BASE_URL}banery/zalozyciel.png`, alt: 'Wydarzenie w liceum', position: 'center 12%' },
-    { src: `${import.meta.env.BASE_URL}banery/ogrod.png`, alt: 'Spotkanie społeczności liceum w ogrodzie', position: 'center 45%' },
-    { src: `${import.meta.env.BASE_URL}banery/collegium2.png`, alt: 'Collegium Maximum w liceum', position: 'center 55%' },
+    { src: `${import.meta.env.BASE_URL}banery/ogrod.png`, alt: 'Spotkanie społeczności liceum w ogrodzie', position: 'center 45%', fit: 'cover' },
+    { src: `${import.meta.env.BASE_URL}banery/collegium2.png`, alt: 'Collegium Maximum w liceum', position: 'center 55%', fit: 'cover' },
+    { src: `${import.meta.env.BASE_URL}banery/aula.png`, alt: 'Aula liceum', position: 'center 57%', fit: 'cover' },
+    { src: `${import.meta.env.BASE_URL}banery/collegium.png`, alt: 'Wejście do Collegium Maximum', position: 'center 54%', fit: 'cover' },
   ],
   spaces: [
-    { src: `${import.meta.env.BASE_URL}banery/aula.png`, alt: 'Aula liceum', position: 'center 57%' },
-    { src: `${import.meta.env.BASE_URL}banery/collegium.png`, alt: 'Wejście do Collegium Maximum', position: 'center 54%' },
-    { src: `${import.meta.env.BASE_URL}banery/sala-302.png`, alt: 'Sala lekcyjna w liceum', position: 'center 55%' },
-    { src: `${import.meta.env.BASE_URL}banery/komputerowa.png`, alt: 'Pracownia komputerowa', position: 'center 53%' },
+    { src: `${import.meta.env.BASE_URL}banery/aula.png`, alt: 'Aula liceum', position: 'center 57%', fit: 'cover' },
+    { src: `${import.meta.env.BASE_URL}banery/collegium.png`, alt: 'Wejście do Collegium Maximum', position: 'center 54%', fit: 'cover' },
+    { src: `${import.meta.env.BASE_URL}banery/sala-302.png`, alt: 'Sala lekcyjna w liceum', position: 'center 55%', fit: 'cover' },
+    { src: `${import.meta.env.BASE_URL}banery/komputerowa.png`, alt: 'Pracownia komputerowa', position: 'center 53%', fit: 'cover' },
   ],
   education: [
     { src: `${import.meta.env.BASE_URL}banery/sesja.png`, alt: 'Prezentacja uczniowska podczas sesji naukowej', position: 'center 28%' },
-    { src: `${import.meta.env.BASE_URL}banery/uczniowie.png`, alt: 'Uczniowie liceum', position: 'center 25%', compact: true },
-    { src: `${import.meta.env.BASE_URL}banery/komputerowa.png`, alt: 'Pracownia komputerowa', position: 'center 53%' },
-    { src: `${import.meta.env.BASE_URL}banery/sala-302.png`, alt: 'Sala lekcyjna w liceum', position: 'center 55%' },
+    { src: `${import.meta.env.BASE_URL}banery/uczniowie.png`, alt: 'Uczniowie liceum', position: 'center 25%' },
+    { src: `${import.meta.env.BASE_URL}banery/komputerowa.png`, alt: 'Pracownia komputerowa', position: 'center 53%', fit: 'cover' },
+    { src: `${import.meta.env.BASE_URL}banery/sala-302.png`, alt: 'Sala lekcyjna w liceum', position: 'center 55%', fit: 'cover' },
   ],
   recruitment: [
-    { src: `${import.meta.env.BASE_URL}banery/slubowanie.png`, alt: 'Ślubowanie uczniowskie', position: 'center 50%' },
-    { src: `${import.meta.env.BASE_URL}banery/studniowka.png`, alt: 'Studniówka liceum', position: 'center 25%' },
-    { src: `${import.meta.env.BASE_URL}banery/zakonczenie-roku.png`, alt: 'Uczniowie podczas zakończenia roku', position: 'center 20%' },
-    { src: `${import.meta.env.BASE_URL}banery/uczniowie.png`, alt: 'Uczniowie liceum', position: 'center 25%', compact: true },
+    { src: `${import.meta.env.BASE_URL}banery/slubowanie.png`, alt: 'Ślubowanie uczniowskie', position: 'center 50%', fit: 'cover' },
+    { src: `${import.meta.env.BASE_URL}banery/studniowka.png`, alt: 'Studniówka liceum', position: 'center 25%', fit: 'cover' },
+    { src: `${import.meta.env.BASE_URL}banery/zakonczenie-roku.png`, alt: 'Uczniowie podczas zakończenia roku', position: 'center 20%', fit: 'cover' },
+    { src: `${import.meta.env.BASE_URL}banery/uczniowie.png`, alt: 'Uczniowie liceum', position: 'center 25%' },
   ],
   student: [
-    { src: `${import.meta.env.BASE_URL}banery/uczniowie.png`, alt: 'Uczniowie liceum', position: 'center 25%', compact: true },
+    { src: `${import.meta.env.BASE_URL}banery/uczniowie.png`, alt: 'Uczniowie liceum', position: 'center 25%' },
     { src: `${import.meta.env.BASE_URL}banery/sesja.png`, alt: 'Prezentacja uczniowska podczas sesji naukowej', position: 'center 28%' },
     { src: `${import.meta.env.BASE_URL}banery/zakonczenie.png`, alt: 'Poczet sztandarowy liceum', position: 'center 24%' },
-    { src: `${import.meta.env.BASE_URL}banery/slubowanie.png`, alt: 'Ślubowanie uczniowskie', position: 'center 50%' },
+    { src: `${import.meta.env.BASE_URL}banery/slubowanie.png`, alt: 'Ślubowanie uczniowskie', position: 'center 50%', fit: 'cover' },
   ],
   events: [
-    { src: `${import.meta.env.BASE_URL}banery/studniowka.png`, alt: 'Studniówka liceum', position: 'center 25%' },
-    { src: `${import.meta.env.BASE_URL}banery/sztandar.png`, alt: 'Uroczystość z pocztem sztandarowym', position: 'center 24%' },
-    { src: `${import.meta.env.BASE_URL}banery/kolendowanie.png`, alt: 'Kolędowanie w liceum', position: 'center 25%' },
-    { src: `${import.meta.env.BASE_URL}banery/zakonczenie-roku.png`, alt: 'Uczniowie podczas zakończenia roku', position: 'center 20%' },
+    { src: `${import.meta.env.BASE_URL}banery/studniowka.png`, alt: 'Studniówka liceum', position: 'center 25%', fit: 'cover' },
+    { src: `${import.meta.env.BASE_URL}banery/sztandar.png`, alt: 'Uroczystość z pocztem sztandarowym', position: 'center 24%', fit: 'cover' },
+    { src: `${import.meta.env.BASE_URL}banery/kolendowanie.png`, alt: 'Kolędowanie w liceum', position: 'center 25%', fit: 'cover' },
+    { src: `${import.meta.env.BASE_URL}banery/zakonczenie-roku.png`, alt: 'Uczniowie podczas zakończenia roku', position: 'center 20%', fit: 'cover' },
   ],
 };
 
@@ -741,12 +743,26 @@ function App() {
 
 function Header({ mobileOpen, setMobileOpen, pathname }) {
   const isHomePage = pathname === '/';
+  const [isSubpageScrolled, setIsSubpageScrolled] = useState(false);
   const bannerSlides = isHomePage
     ? headerBannerSlides
     : getSubpageBannerSlides(pathname);
 
+  useEffect(() => {
+    if (isHomePage) {
+      setIsSubpageScrolled(false);
+      return undefined;
+    }
+
+    const updateHeaderState = () => setIsSubpageScrolled(window.scrollY > 72);
+    updateHeaderState();
+    window.addEventListener('scroll', updateHeaderState, { passive: true });
+
+    return () => window.removeEventListener('scroll', updateHeaderState);
+  }, [isHomePage, pathname]);
+
   return (
-    <header className="site-header">
+    <header className={`site-header ${isSubpageScrolled ? 'is-subpage-scrolled' : ''}`}>
       <div className={`container topbar ${isHomePage ? 'topbar-home' : ''}`}>
         <Link to="/" className="brand">
           <div className="brand-badge brand-badge-logo">
@@ -858,10 +874,9 @@ function HeaderBanner({ slides, isSubpage }) {
           key={slide.src}
           src={slide.src}
           alt={slide.alt}
-          className={slide.compact ? 'banner-image--compact' : undefined}
           style={{
             objectPosition: slide.position || 'center',
-            objectFit: slide.fit || 'cover'
+            objectFit: slide.fit || (isSubpage ? 'contain' : 'cover')
           }}
       />
     </figure>
@@ -1081,9 +1096,7 @@ const keepPolishShortWordsTogether = (text) =>
 
 function HomePage() {
     const [activeValue, setActiveValue] = useState(null);
-    const [recruitmentOpen, setRecruitmentOpen] = useState(false);
-    const recruitmentItem = menu.find((item) => item.label === 'Rekrutacja');
-    const recruitmentLinks = recruitmentItem?.children.flatMap((group) => group.items) ?? [];
+    const [expandedSection, setExpandedSection] = useState(null);
     return (
       <>
         <section className="hero">
@@ -1227,14 +1240,19 @@ function HomePage() {
         <div className="cards-grid home-tabs-grid">
           {menu.map((item) => {
             const Icon = item.icon;
+            const hasChildren = item.children?.length > 0;
+            const sectionLinks = item.children?.flatMap(({ items }) =>
+              items.flatMap((link) => link.children ? [link, ...link.children] : link)
+            ) ?? [];
+            const isExpanded = expandedSection === item.label;
 
-            if (item.label === 'Rekrutacja') {
+            if (hasChildren) {
               return (
                 <div
                   key={item.label}
-                  className={`home-recruitment-card${recruitmentOpen ? ' is-open' : ''}`}
+                  className={`home-section-card${isExpanded ? ' is-open' : ''}`}
                 >
-                  <Link to={item.path} className="feature-card home-recruitment-desktop-link">
+                  <Link to={item.path} className="feature-card home-section-desktop-link">
                     <div className="feature-icon">
                       <Icon size={18} />
                     </div>
@@ -1242,22 +1260,28 @@ function HomePage() {
                   </Link>
                   <button
                     type="button"
-                    className="feature-card home-recruitment-toggle"
-                    aria-expanded={recruitmentOpen}
-                    aria-controls="home-recruitment-links"
-                    onClick={() => setRecruitmentOpen((isOpen) => !isOpen)}
+                    className="feature-card home-section-toggle"
+                    aria-expanded={isExpanded}
+                    aria-controls={`home-section-links-${item.label}`}
+                    onClick={() => setExpandedSection((section) => section === item.label ? null : item.label)}
                   >
                     <div className="feature-icon">
                       <Icon size={18} />
                     </div>
                     <h3>{item.label}</h3>
-                    <ChevronDown className="home-recruitment-chevron" size={16} aria-hidden="true" />
+                    <ChevronDown className="home-section-chevron" size={16} aria-hidden="true" />
                   </button>
-                  <div id="home-recruitment-links" className="home-recruitment-links">
-                    {recruitmentLinks.map((link) => (
-                      <Link key={link.path} to={link.path} onClick={() => setRecruitmentOpen(false)}>
-                        {link.label}
-                      </Link>
+                  <div id={`home-section-links-${item.label}`} className="home-section-links">
+                    {sectionLinks.map((link) => (
+                      link.external ? (
+                        <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link key={link.path} to={link.path} onClick={() => setExpandedSection(null)}>
+                          {link.label}
+                        </Link>
+                      )
                     ))}
                   </div>
                 </div>
