@@ -86,6 +86,7 @@ const jadwigaTimelineSrc = `${import.meta.env.BASE_URL}os-czasu-jadwiga.png`;
 const buildingTimelineSrc =`${import.meta.env.BASE_URL}os-czasu-siedziba.png`;
 const buildingSrc = `${import.meta.env.BASE_URL}siedziba-vplo.jpg`;
 const schoolFilmSrc = `${import.meta.env.BASE_URL}vplo-film.mp4`;
+const schoolFilmSecondSrc = `${import.meta.env.BASE_URL}vplo-film-2.mp4`;
 const headerBannerSlides = [
   { src: `${import.meta.env.BASE_URL}smolensk-siedziba.png`, alt: 'Siedziba V Prywatnego Liceum Ogólnokształcącego w Krakowie', position: 'center 40%'},
   { src: `${import.meta.env.BASE_URL}krakow-rynek.jpeg`, alt: 'Rynek Główny w Krakowie', position: 'center 55%' },
@@ -1220,15 +1221,26 @@ function HomePage() {
             <section className="home-video-section home-video-section-inline">
               <div className="home-video-card home-video-card-inline">
                 <span className="home-video-label">VPLO oczami uczniów</span>
-                <video
-                  className="home-video-player"
-                  controls
-                  preload="metadata"
-                  playsInline
-                >
-                  <source src={schoolFilmSrc} type="video/mp4" />
-                  Twoja przeglądarka nie obsługuje odtwarzania wideo.
-                </video>
+                <div className="home-video-players">
+                  <video
+                    className="home-video-player"
+                    controls
+                    preload="metadata"
+                    playsInline
+                  >
+                    <source src={schoolFilmSrc} type="video/mp4" />
+                    Twoja przeglądarka nie obsługuje odtwarzania wideo.
+                  </video>
+                  <video
+                    className="home-video-player"
+                    controls
+                    preload="metadata"
+                    playsInline
+                  >
+                    <source src={schoolFilmSecondSrc} type="video/mp4" />
+                    Twoja przeglądarka nie obsługuje odtwarzania wideo.
+                  </video>
+                </div>
               </div>
             </section>
 

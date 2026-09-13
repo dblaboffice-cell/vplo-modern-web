@@ -1279,6 +1279,7 @@ th {
 
 .vulcan-nav-link {
   display: inline-flex;
+  margin-left: auto;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -4432,11 +4433,23 @@ th {
   position: relative;
 }
 
+.home-video-players {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
 @media (min-width: 1041px) {
   .home-video-card-inline .home-video-player {
     height: 384px;
     max-height: none;
     object-fit: cover;
+  }
+}
+
+@media (max-width: 560px) {
+  .home-video-players {
+    grid-template-columns: 1fr;
   }
 }
 
