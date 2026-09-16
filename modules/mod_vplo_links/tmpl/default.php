@@ -5,8 +5,8 @@ $e = static fn ($value): string => htmlspecialchars((string) $value, ENT_QUOTES,
 $links = array_map(static fn ($link): array => (array) $link, array_values((array) $params->get('links', [])));
 if (!$links) { return; }
 ?>
-<section class="container home-links"><b><?= $e($params->get('heading')) ?></b>
+<section class="section container home-links-section"><div class="home-links-heading"><?= $e($params->get('heading')) ?></div><div class="home-links-grid">
   <?php foreach ($links as $link) : ?>
-    <a href="<?= $e($link['url'] ?? '') ?>" aria-label="<?= $e($link['label'] ?? '') ?>"><?php if (!empty($link['image'])) : ?><img src="<?= $e($link['image']) ?>" alt="<?= $e($link['image_alt'] ?? '') ?>"><?php else : ?><?= $e($link['label'] ?? '') ?><?php endif; ?></a>
+    <a class="home-link-item" href="<?= $e($link['url'] ?? '') ?>" aria-label="<?= $e($link['label'] ?? '') ?>"><?php if (!empty($link['image'])) : ?><img src="<?= $e($link['image']) ?>" alt="<?= $e($link['image_alt'] ?? '') ?>"><?php else : ?><?= $e($link['label'] ?? '') ?><?php endif; ?></a>
   <?php endforeach; ?>
-</section>
+</div></section>

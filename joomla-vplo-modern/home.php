@@ -3,7 +3,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Helper\ModuleHelper;
 
-$homePositions = ['home-updates', 'home-values', 'home-patron', 'home-students', 'home-links'];
+$homePositions = ['home-updates', 'home-values', 'home-patron', 'home-students', 'home-sections', 'home-links'];
 $useHomeModules = true;
 
 foreach ($homePositions as $homePosition) {
@@ -24,6 +24,7 @@ foreach ($homePositions as $homePosition) {
   <jdoc:include type="modules" name="home-students" style="none" />
   <jdoc:include type="modules" name="home-updates" style="none" />
 </section>
+<jdoc:include type="modules" name="home-sections" style="none" />
 <jdoc:include type="modules" name="home-links" style="none" />
 <?php else : ?>
 <section class="home-updates"><div class="container home-updates-grid">

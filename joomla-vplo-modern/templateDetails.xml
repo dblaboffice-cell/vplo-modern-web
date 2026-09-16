@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="template" client="site" method="upgrade">
   <name>tpl_vplo_modern</name>
-  <version>1.5.4</version>
+  <version>1.6.0</version>
   <creationDate>2026-09-16</creationDate>
   <author>DBLaboffice</author>
   <copyright>(C) 2026 V Prywatne Liceum Ogólnokształcące</copyright>
@@ -36,6 +36,7 @@
     <position>home-values</position>
     <position>home-patron</position>
     <position>home-students</position>
+    <position>home-sections</position>
     <position>home-links</position>
   </positions>
   <config>

@@ -71,6 +71,7 @@ const school = {
   phone: '+48 12 422 92 02',
   extraPhone: '+48 881 009 790',
   email: 'dyrektor@vp-lo.krakow.pl',
+  recruitmentEmail: 'rekrutacja@vp-lo.krakow.pl',
   founded: 'Rok założenia 1992',
 };
 
@@ -772,7 +773,7 @@ function Header({ mobileOpen, setMobileOpen, pathname }) {
       if (animationFrameId !== null) return;
 
       animationFrameId = window.requestAnimationFrame(() => {
-        const nextState = window.scrollY > 88;
+        const nextState = window.scrollY > 0;
 
         if (nextState !== subpageScrollState.current) {
           subpageScrollState.current = nextState;
@@ -1217,6 +1218,11 @@ function HomePage() {
                       icon={<Mail size={16} />}
                       text={school.email}
                       href={`mailto:${school.email}`}
+                  />
+                  <InfoBadge
+                      icon={<Mail size={16} />}
+                      text={school.recruitmentEmail}
+                      href={`mailto:${school.recruitmentEmail}`}
                   />
                 </div>
               </section>
@@ -3320,30 +3326,47 @@ function StandardPage({ page }) {
                   </div>
                 </section>
                 <div className="contact-details">
-                  <InfoBadge
-                      icon={<MapPin size={18} />}
-                      text={school.address}
-                      href={schoolMapUrl}
-                      external
-                  />
+                  <section className="contact-details-group contact-details-group-location">
+                    <h2>Adres</h2>
+                    <InfoBadge
+                        icon={<MapPin size={18} />}
+                        text={school.address}
+                        href={schoolMapUrl}
+                        external
+                    />
+                  </section>
 
-                  <InfoBadge
-                      icon={<Phone size={18} />}
-                      text={school.phone}
-                      href={`tel:${school.phone.replace(/\s/g, '')}`}
-                  />
+                  <section className="contact-details-group">
+                    <h2>Telefony</h2>
+                    <div className="contact-details-group-items">
+                      <InfoBadge
+                          icon={<Phone size={18} />}
+                          text={school.phone}
+                          href={`tel:${school.phone.replace(/\s/g, '')}`}
+                      />
+                      <InfoBadge
+                          icon={<Phone size={18} />}
+                          text={school.extraPhone}
+                          href={`tel:${school.extraPhone.replace(/\s/g, '')}`}
+                      />
+                    </div>
+                  </section>
 
-                  <InfoBadge
-                      icon={<Phone size={18} />}
-                      text={school.extraPhone}
-                      href={`tel:${school.extraPhone.replace(/\s/g, '')}`}
-                  />
-
-                  <InfoBadge
-                      icon={<Mail size={18} />}
-                      text={school.email}
-                      href={`mailto:${school.email}`}
-                  />
+                  <section className="contact-details-group">
+                    <h2>E-mail</h2>
+                    <div className="contact-details-group-items">
+                      <InfoBadge
+                          icon={<Mail size={18} />}
+                          text={school.email}
+                          href={`mailto:${school.email}`}
+                      />
+                      <InfoBadge
+                          icon={<Mail size={18} />}
+                          text={school.recruitmentEmail}
+                          href={`mailto:${school.recruitmentEmail}`}
+                      />
+                    </div>
+                  </section>
                 </div>
 
                 <section className="social-qr-section">

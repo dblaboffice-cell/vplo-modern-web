@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" client="site" method="upgrade">
-  <name>mod_vplo_patron</name><version>1.0.0</version><creationDate>2026-09-16</creationDate><author>DBLaboffice</author><license>GNU General Public License version 2 or later</license><description>VPLO — Patronka</description>
+  <name>mod_vplo_patron</name>
+  <version>1.1.0</version>
+  <creationDate>2026-09-16</creationDate><author>DBLaboffice</author><license>GNU General Public License version 2 or later</license><description>VPLO — Patronka</description>
   <files><filename module="mod_vplo_patron">mod_vplo_patron.php</filename><folder>tmpl</folder></files>
   <config><fields name="params"><fieldset name="content" label="Treść">
     <field name="heading" type="text" label="Nagłówek" />

@@ -16,6 +16,7 @@ $wa->registerAndUseScript('tpl.vplo-modern-navigation-mobile-fix', 'media/templa
 $wa->registerAndUseStyle('tpl.vplo-modern-home', 'media/templates/site/tpl_vplo_modern/css/home-1.5.0.css');
 $wa->registerAndUseStyle('tpl.vplo-modern-home-react', 'media/templates/site/tpl_vplo_modern/css/home-react-1.5.3.css');
 $wa->registerAndUseStyle('tpl.vplo-modern-home-layout', 'media/templates/site/tpl_vplo_modern/css/home-layout-1.5.4.css');
+$wa->registerAndUseStyle('tpl.vplo-modern-home-current', 'media/templates/site/tpl_vplo_modern/css/home-current-1.6.0.css');
 $wa->registerAndUseScript('tpl.vplo-modern-home', 'media/templates/site/tpl_vplo_modern/js/home-1.5.0.js', [], ['defer' => true]);
 $templateUri = Uri::root(true) . '/media/templates/site/tpl_vplo_modern';
 $activeItem = $app->getMenu()->getActive();

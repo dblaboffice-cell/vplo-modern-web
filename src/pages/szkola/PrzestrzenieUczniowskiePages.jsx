@@ -25,11 +25,6 @@ export const cafeAtriumPage = {
   layout: 'article',
   showHighlights: true,
   showHighlightsTitle: false,
-  mainImage: `${import.meta.env.BASE_URL}atrium.png`,
-  mainImageClass: 'article-main-image-compact',
-  mainImageAlt: 'Cafe Atrium V Prywatnego Liceum Ogólnokształcącego w Krakowie',
-  mainImageCaption: 'Cafe Atrium',
-  mainImageAfterParagraph: 1,
 };
 
 export const odskoczniaPage = {

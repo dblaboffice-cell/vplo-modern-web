@@ -90,7 +90,7 @@ export default function FormularzZgloszeniowy() {
         const applicationData = Object.fromEntries(formData.entries());
 
         applicationData.preferowane_przedmioty = selectedSubjects;
-        applicationData.adres_odbiorcy = 'dyrektor@vp-lo.krakow.pl';
+        applicationData.adres_odbiorcy = 'rekrutacja@vp-lo.krakow.pl';
 
         setIsSubmitting(true);
         setFormStatus({
