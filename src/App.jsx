@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import {
   CalendarDays,
@@ -609,6 +609,16 @@ function App() {
           <Route path="/aktualnosci" element={<NewsPage />} />
 
           <Route
+              path="/aktualnosci/narodowe-czytanie-2026"
+              element={<NationalReading2026Article />}
+          />
+
+          <Route
+              path="/aktualnosci/inauguracja-roku-szkolnego-2026-2027"
+              element={<SchoolYearInaugurationArticle />}
+          />
+
+          <Route
               path="/aktualnosci/zakonczenie-roku-2025-2026"
               element={<EndOfSchoolYearArticle />}
           />
@@ -745,21 +755,41 @@ function App() {
 function Header({ mobileOpen, setMobileOpen, pathname }) {
   const isHomePage = pathname === '/';
   const [isSubpageScrolled, setIsSubpageScrolled] = useState(false);
+  const subpageScrollState = useRef(false);
   const bannerSlides = isHomePage
     ? headerBannerSlides
     : getSubpageBannerSlides(pathname);
 
   useEffect(() => {
     if (isHomePage) {
+      subpageScrollState.current = false;
       setIsSubpageScrolled(false);
       return undefined;
     }
 
-    const updateHeaderState = () => setIsSubpageScrolled(window.scrollY > 72);
+    let animationFrameId = null;
+    const updateHeaderState = () => {
+      if (animationFrameId !== null) return;
+
+      animationFrameId = window.requestAnimationFrame(() => {
+        const nextState = window.scrollY > 88;
+
+        if (nextState !== subpageScrollState.current) {
+          subpageScrollState.current = nextState;
+          setIsSubpageScrolled(nextState);
+        }
+
+        animationFrameId = null;
+      });
+    };
+
     updateHeaderState();
     window.addEventListener('scroll', updateHeaderState, { passive: true });
 
-    return () => window.removeEventListener('scroll', updateHeaderState);
+    return () => {
+      window.removeEventListener('scroll', updateHeaderState);
+      if (animationFrameId !== null) window.cancelAnimationFrame(animationFrameId);
+    };
   }, [isHomePage, pathname]);
 
   return (
@@ -1183,7 +1213,11 @@ function HomePage() {
                   <Phone size={16} />
                   <span>{school.phone}</span>
                 </a>
-                  <InfoBadge icon={<Mail size={16} />} text={school.email} />
+                  <InfoBadge
+                      icon={<Mail size={16} />}
+                      text={school.email}
+                      href={`mailto:${school.email}`}
+                  />
                 </div>
               </section>
             </div>
@@ -1793,6 +1827,25 @@ function GalleryPage({ initialAlbum = null }) {
 
 const newsItems = [
   {
+    slug: 'narodowe-czytanie-2026',
+    title: 'Narodowe Czytanie',
+    date: '4 września 2026',
+    dateTime: '2026-09-04',
+    place: 'Kraków',
+    excerpt:
+        'Wspólna lektura „Dziadów” Adama Mickiewicza w ramach akcji Narodowe Czytanie.',
+    image: `${import.meta.env.BASE_URL}aktualnosci/narodowe-czytanie-2026.png`,
+  },
+  {
+    slug: 'inauguracja-roku-szkolnego-2026-2027',
+    title: 'Inauguracja roku szkolnego 2026/2027',
+    date: '1 września 2026',
+    dateTime: '2026-09-01',
+    place: 'Kraków',
+    excerpt:
+        'Uroczyste rozpoczęcie nowego roku szkolnego, ślubowanie uczniów klas pierwszych oraz wykład o Królowej Jadwidze.',
+  },
+  {
     slug: 'zakonczenie-roku-2025-2026',
     title: 'Zakończenie roku 2025/2026',
     date: '26 czerwca 2026',
@@ -1943,11 +1996,15 @@ function HomeUpdatesStrip({ compact = false }) {
                 to="/aktualnosci"
                 className={`home-update-card home-update-card-news${compact ? ' home-update-card-compact' : ''}`}
             >
-            <img
-                src={latestNews.image}
-                alt=""
-                className="home-update-news-image"
-            />
+            {latestNews.image ? (
+                <img
+                    src={latestNews.image}
+                    alt=""
+                    className="home-update-news-image"
+                />
+            ) : (
+                <div className="home-update-news-placeholder" aria-hidden="true"><School size={54} /></div>
+            )}
 
             <div className="home-update-news-overlay">
             <span className="home-update-label">
@@ -2032,7 +2089,14 @@ function NewsPage() {
                       className="news-card-image-link"
                       aria-label={`Czytaj artykuł: ${news.title}`}
                   >
-                    <img src={news.image} alt={news.title} />
+                    {news.image ? (
+                        <img src={news.image} alt={news.title} />
+                    ) : (
+                        <div className="news-card-placeholder" aria-hidden="true">
+                          <School size={44} />
+                          <span>Aktualność</span>
+                        </div>
+                    )}
                   </Link>
 
                   <div className="news-card-copy">
@@ -2124,6 +2188,81 @@ function EndOfSchoolYearArticle() {
             >
               Galeria zdjęć
             </Link>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function SchoolYearInaugurationArticle() {
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Inauguracja roku szkolnego 2026/2027</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-09-01">1 września 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <div className="news-article-body">
+            <p>
+              We wtorek, 1 września, odbyła się uroczysta inauguracja nowego roku
+              szkolnego. Podczas wydarzenia szczególnym momentem było ślubowanie uczniów
+              klas pierwszych, którzy oficjalnie dołączyli do społeczności naszej szkoły.
+            </p>
+            <p>
+              Uczestnicy uroczystości wysłuchali również interesującego wykładu poświęconego
+              patronce szkoły — Królowej Jadwidze. Spotkanie było okazją do wspólnego
+              rozpoczęcia kolejnego roku nauki i pracy.
+            </p>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function NationalReading2026Article() {
+  const articleImage = `${import.meta.env.BASE_URL}aktualnosci/narodowe-czytanie-2026.png`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Narodowe Czytanie</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-09-04">4 września 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <div className="news-article-body news-article-body-split">
+            <div>
+              <p>
+                W piątek, 4 września, w naszej szkole odbyła się akcja Narodowe Czytanie.
+                W tym roku para prezydencka wybrała do wspólnej lektury <i>„Dziady”</i>
+                Adama Mickiewicza.
+              </p>
+              <p>
+                Uczniowie klas pierwszych i drugich czytali z podziałem na role <i>„Dziady”</i>
+                cz. II, natomiast starsi uczniowie prezentowali fragmenty części III i IV.
+                Wydarzenie pozwoliło uczestnikom lepiej poznać jedno z najważniejszych dzieł
+                polskiej literatury.
+              </p>
+            </div>
+
+            <img
+                className="news-article-cover news-article-cover-contain book-cover"
+                src={articleImage}
+                alt="Dziady Adama Mickiewicza"
+            />
           </div>
         </div>
       </article>

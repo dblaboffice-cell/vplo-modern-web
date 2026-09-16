@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" method="upgrade">
+  <name>com_vplo_setup</name>
+  <version>1.1.2</version>
+  <creationDate>2026-09-16</creationDate>
+  <author>DBLaboffice</author>
+  <license>GNU General Public License version 2 or later</license>
+  <description>Administracyjna, idempotentna konfiguracja pełnego menu VPLO.</description>
+  <administration>
+    <menu link="index.php?option=com_vplo_setup">Konfiguracja VPLO</menu>
+    <files folder="admin"><filename>vplo_setup.php</filename></files>
+  </administration>
+</extension>

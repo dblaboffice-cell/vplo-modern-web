@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+  <name>mod_vplo_updates</name>
+  <version>1.0.2</version>
+  <creationDate>2026-09-16</creationDate>
+  <author>DBLaboffice</author>
+  <license>GNU General Public License version 2 or later</license>
+  <description>VPLO — Aktualności, Instagram i TikTok</description>
+  <files>
+    <filename module="mod_vplo_updates">mod_vplo_updates.php</filename>
+    <filename>helper.php</filename>
+    <folder>tmpl</folder>
+  </files>
+  <config>
+    <fields name="params">
+      <fieldset name="content" label="Treść">
+        <field name="category_id" type="category" label="Kategoria aktualności" extension="com_content" required="true" />
+        <field name="count" type="number" label="Liczba aktualności" default="1" min="1" max="12" />
+        <field name="news_label" type="text" label="Etykieta karty aktualności" />
+        <field name="news_link_label" type="text" label="Etykieta linku aktualności" />
+        <field name="news_meta_suffix" type="text" label="Dodatkowy tekst metadanych" description="Np. lokalizacja; dodawany po dacie publikacji." />
+      </fieldset>
+      <fieldset name="instagram" label="Instagram">
+        <field name="instagram_label" type="text" label="Etykieta" />
+        <field name="instagram_handle" type="text" label="Nazwa profilu" />
+        <field name="instagram_text" type="textarea" label="Opis" rows="3" />
+        <field name="instagram_link_label" type="text" label="Etykieta linku" />
+        <field name="instagram_url" type="url" label="URL profilu" />
+      </fieldset>
+      <fieldset name="tiktok" label="TikTok">
+        <field name="tiktok_label" type="text" label="Etykieta" />
+        <field name="tiktok_handle" type="text" label="Nazwa profilu" />
+        <field name="tiktok_text" type="textarea" label="Opis" rows="3" />
+        <field name="tiktok_link_label" type="text" label="Etykieta linku" />
+        <field name="tiktok_url" type="url" label="URL profilu" />
+      </fieldset>
+    </fields>
+  </config>
+</extension>

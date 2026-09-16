@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form><fieldset name="link"><field name="label" type="text" label="Etykieta" required="true" /><field name="url" type="url" label="URL" required="true" /><field name="image" type="media" label="Obraz lub logo" /><field name="image_alt" type="text" label="Tekst alternatywny" /></fieldset></form>

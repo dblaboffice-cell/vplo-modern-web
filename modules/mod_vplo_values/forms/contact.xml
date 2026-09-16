@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form><fieldset name="contact"><field name="icon" type="text" label="Symbol" /><field name="label" type="text" label="Tekst" required="true" /><field name="url" type="url" label="URL" required="true" /></fieldset></form>

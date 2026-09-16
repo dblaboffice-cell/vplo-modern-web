@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+  <name>mod_vplo_students</name>
+  <version>1.0.2</version>
+  <creationDate>2026-09-16</creationDate>
+  <author>DBLaboffice</author>
+  <license>GNU General Public License version 2 or later</license>
+  <description>VPLO — Oczami uczniów</description>
+  <files>
+    <filename module="mod_vplo_students">mod_vplo_students.php</filename>
+    <folder>tmpl</folder>
+    <folder>forms</folder>
+  </files>
+  <config><fields name="params"><fieldset name="content" label="Treść">
+    <field name="heading" type="text" label="Nagłówek sekcji" />
+    <field name="intro" type="textarea" label="Tekst wprowadzający" rows="3" />
+    <field name="videos" type="subform" label="Filmy" multiple="true" layout="joomla.form.field.subform.repeatable-table" formsource="modules/mod_vplo_students/forms/video.xml" />
+  </fieldset></fields></config>
+</extension>

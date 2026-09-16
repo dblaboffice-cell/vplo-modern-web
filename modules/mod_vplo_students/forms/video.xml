@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form><fieldset name="video">
+  <field name="title" type="text" label="Tytuł filmu" />
+  <field name="video_file" type="media" label="Plik MP4 z Media Managera" />
+  <field name="video_url" type="url" label="Zewnętrzny URL filmu" description="Używany, gdy nie wybrano pliku MP4." />
+  <field name="poster" type="media" label="Obraz poster / miniatura" />
+  <field name="alt" type="text" label="Opis dostępności / tekst alternatywny" />
+</fieldset></form>

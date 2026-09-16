@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
 const requiredDocuments = [
-    'podanie do Dyrektora o przyjęcieLiceum,',
-    'jedno zdjęcie w formacie legitymacyjnym.',
+    'podanie do Dyrektora o przyjęcieLiceum',
+    'jedno zdjęcie w formacie legitymacyjnym',
 ];
 
 export default function WymaganeDokumenty() {
@@ -32,8 +32,8 @@ export default function WymaganeDokumenty() {
                     <section className="documents-june-card">
                         <h2>W dalszej kolejności</h2>
 
-                        <p>w czerwcu - Świadectwo ukończenia szkoły podstawowej.</p>
-                        <p>w lipcu - Zaświadczenie o szczegółowych wynikach egzaminu ósmoklasisty.</p>
+                        <p>w czerwcu - Świadectwo ukończenia szkoły podstawowej</p>
+                        <p>w lipcu - Zaświadczenie o szczegółowych wynikach egzaminu ósmoklasisty</p>
                     </section>
 
                     <section className="documents-finalization-card">

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+  <name>mod_vplo_values</name><version>1.0.1</version><creationDate>2026-09-16</creationDate><author>DBLaboffice</author><license>GNU General Public License version 2 or later</license><description>VPLO — Wartości szkoły</description>
+  <files><filename module="mod_vplo_values">mod_vplo_values.php</filename><folder>tmpl</folder><folder>forms</folder></files>
+  <config><fields name="params"><fieldset name="content" label="Treść">
+    <field name="heading" type="textarea" label="Nagłówek" rows="3" />
+    <field name="caption" type="text" label="Podpis nagłówka" />
+    <field name="image" type="media" label="Grafika wartości" />
+    <field name="image_alt" type="text" label="Tekst alternatywny grafiki" />
+    <field name="values" type="subform" label="Trzy wartości" multiple="true" min="3" max="3" layout="joomla.form.field.subform.repeatable-table" formsource="modules/mod_vplo_values/forms/value.xml" />
+    <field name="contacts" type="subform" label="Dane kontaktowe" multiple="true" layout="joomla.form.field.subform.repeatable-table" formsource="modules/mod_vplo_values/forms/contact.xml" />
+  </fieldset></fields></config>
+</extension>
