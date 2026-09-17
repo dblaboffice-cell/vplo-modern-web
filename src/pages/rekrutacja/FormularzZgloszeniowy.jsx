@@ -30,6 +30,9 @@ const START_SEMESTERS = [
     '7 semestr',
 ];
 
+// Wysyłka zostanie włączona po podłączeniu chronionego serwera dla danych kandydatów.
+const SUBMISSION_ENABLED = false;
+
 export default function FormularzZgloszeniowy() {
     const [selectedSubjects, setSelectedSubjects] = useState([]);
     const [competitions, setCompetitions] = useState('');
@@ -151,7 +154,7 @@ export default function FormularzZgloszeniowy() {
 
             <div className="article-layout">
                 <article className="page-main-card">
-                    <form className="application-form" onSubmit={handleSubmit}>
+                    <form className="application-form" onSubmit={SUBMISSION_ENABLED ? handleSubmit : (event) => event.preventDefault()}>
                         {/* Ukryte pole – użytkownik go nie widzi */}
                         <div className="form-honeypot" aria-hidden="true">
                             <label htmlFor="company">
@@ -408,7 +411,7 @@ export default function FormularzZgloszeniowy() {
                                 <div>
                                     <p>
                                         Administratorem danych osobowych jest
-                                        [PEŁNA NAZWA ADMINISTRATORA PROWADZĄCEGO SZKOŁĘ],
+                                        V Prywatne Liceum Ogólnokształcące w Krakowie im. Królowej Jadwigi,
                                         z siedzibą przy ul. Smoleńsk 14, 31-112 Kraków.
                                     </p>
 
@@ -455,7 +458,7 @@ export default function FormularzZgloszeniowy() {
                                 />
 
                                 <span>
-                  Wyrażam zgodę na przetwarzanie danych osobowych w celu
+                  Wyrażam zgodę na przetwarzanie danych osobowych przez V Prywatne Liceum Ogólnokształcące w Krakowie im. Królowej Jadwigi w celu
                   obsługi zgłoszenia i przeprowadzenia procesu
                   rekrutacyjnego. *
                 </span>
@@ -525,7 +528,8 @@ export default function FormularzZgloszeniowy() {
                             <button
                                 type="submit"
                                 className="application-submit-button"
-                                disabled={isSubmitting}
+                                disabled={!SUBMISSION_ENABLED || isSubmitting}
+                                title="Wysyłka formularza jest obecnie niedostępna."
                             >
                                 {isSubmitting
                                     ? 'Wysyłanie formularza…'
