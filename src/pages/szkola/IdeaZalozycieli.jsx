@@ -113,9 +113,9 @@ const IdeaZalozycieli = () => {
 
                 <p>
                     Misja V Prywatnego Liceum Ogólnokształcącego w Krakowie jest właściwie
-                    pochodną przesłania Dyrektora, który w kolegialnej współpracy
+                    pochodną przesłania Założycielki Liceum, która w kolegialnej współpracy
                     z zespołem profesorskim, samorządem uczniowskim i administracją
-                    określa najbardziej optymalne formy kształcenia w perspektywie
+                    określiła najbardziej optymalne formy kształcenia w perspektywie
                     sukcesu absolwentów oraz prestiżu szkoły.
                 </p>
 

@@ -1,3 +1,16 @@
+import { useEffect, useState } from 'react';
+// import { Link } from 'react-router-dom';
+
+const getDaysUntilMatura = () => {
+    const today = new Date();
+    const maturaStart = new Date(2027, 4, 4);
+
+    today.setHours(0, 0, 0, 0);
+    maturaStart.setHours(0, 0, 0, 0);
+
+    return Math.max(0, Math.ceil((maturaStart - today) / (1000 * 60 * 60 * 24)));
+};
+
 const faqGroups = [
     {
         title: 'Organizacja matury',
@@ -99,19 +112,43 @@ const faqGroups = [
 
 function Matura() {
     let questionNumber = 0;
+    const [daysUntilMatura, setDaysUntilMatura] = useState(getDaysUntilMatura);
+
+    useEffect(() => {
+        const refreshCountdown = () => setDaysUntilMatura(getDaysUntilMatura());
+        const intervalId = window.setInterval(refreshCountdown, 60 * 60 * 1000);
+
+        return () => window.clearInterval(intervalId);
+    }, []);
 
     return (
         <article className="student-page matura-page">
             <header>
                 <h1>Matura</h1>
-                <p className="section-intro-card">Informacje dla maturzystów</p>
+                <div className="matura-intro-row">
+                    <p className="section-intro-card">Informacje dla maturzystów</p>
+                    <div className="matura-countdown" aria-label={`Do matury pozostało ${daysUntilMatura} dni`}>
+                        <span>W oczekiwaniu na maturę</span>
+                        <strong>{daysUntilMatura}</strong>
+                        <small>{daysUntilMatura === 1 ? 'dzień do 4 maja 2027' : 'dni do 4 maja 2027'}</small>
+                    </div>
+                </div>
             </header>
 
             <section className="matura-content" aria-labelledby="matura-faq-title">
                 <div className="matura-content-heading">
                     <h2 id="matura-faq-title">Kompendium wiedzy o maturze</h2>
                     <div className="matura-content-actions">
-                        <Link className="matura-schedule-button" to="/uczen/matura/harmonogram-2027">Harmonogram matur 2027</Link>
+                        {/*
+                          Harmonogram jest gotowy do ponownego włączenia po ogłoszeniu
+                          oficjalnych terminów przez CKE:
+                          <Link className="matura-schedule-button" to="/uczen/matura/harmonogram-2027">
+                            Harmonogram matur 2027
+                          </Link>
+                        */}
+                        <span className="matura-schedule-pending">
+                            Harmonogram matur 2027 będzie dostępny w tym miejscu po ogłoszeniu terminów przez CKE.
+                        </span>
                         <a
                             className="matura-cke-button"
                             href="https://cke.gov.pl/egzamin-maturalny/egzamin-maturalny-w-formule-2023/"
@@ -148,4 +185,3 @@ function Matura() {
 }
 
 export default Matura;
-import { Link } from 'react-router-dom';

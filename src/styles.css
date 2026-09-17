@@ -5830,11 +5830,57 @@ th {
 }
 
 .textbooks-page {
-  max-width: 1180px;
+  width: min(1180px, calc(100% - 32px));
+  max-width: none;
+  padding: 36px 0 40px;
 }
 
 .matura-page {
-  max-width: 1180px;
+  width: min(1180px, calc(100% - 32px));
+  max-width: none;
+  padding: 36px 0 40px;
+}
+
+.matura-intro-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: stretch;
+  gap: 18px;
+}
+
+.matura-intro-row .section-intro-card {
+  margin: 0;
+}
+
+.matura-countdown {
+  display: grid;
+  min-width: 190px;
+  padding: 13px 18px;
+  border: 1px solid rgba(151, 112, 25, 0.3);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(250, 244, 228, 0.95));
+  box-shadow: 0 8px 20px rgba(27, 47, 89, 0.07);
+  color: #1b2f59;
+  text-align: center;
+}
+
+.matura-countdown span {
+  color: #a87500;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.matura-countdown strong {
+  margin: 2px 0;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.matura-countdown small {
+  color: #536585;
+  font-size: 0.78rem;
 }
 
 .document-download-button {
@@ -6179,6 +6225,19 @@ th {
   transform: translateY(-1px);
 }
 
+.matura-schedule-pending {
+  max-width: 285px;
+  padding: 10px 13px;
+  border: 1px solid rgba(167, 117, 0, 0.26);
+  border-radius: 10px;
+  background: #fff8e8;
+  color: #71531a;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+}
+
 .matura-cke-button {
   flex: 0 0 auto;
   display: inline-flex;
@@ -6386,6 +6445,18 @@ th {
 .matura-schedule-legend strong { color: #173b76; }
 
 @media (max-width: 720px) {
+  .matura-page {
+    width: 100%;
+  }
+
+  .matura-intro-row {
+    grid-template-columns: 1fr;
+  }
+
+  .matura-countdown {
+    min-width: 0;
+  }
+
   .student-page {
     padding: 22px 17px 30px;
   }
@@ -6401,6 +6472,7 @@ th {
   }
 
   .matura-content-actions { justify-content: flex-start; }
+  .matura-schedule-pending { max-width: none; }
   .matura-schedule-tabs button { padding: 15px 10px; font-size: 0.78rem; }
   .matura-schedule-table th,
   .matura-schedule-table td { padding: 14px 16px; }
@@ -6573,7 +6645,7 @@ th {
 .spanish-values a { color: #9c3f2d; font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 3px; }.spanish-day-card { display: flex; align-items: flex-start; gap: 18px; margin-top: 24px; padding: 29px 31px; border: 1px solid rgba(197, 154, 61, .65); border-radius: 19px; background: linear-gradient(135deg, rgba(255,244,221,.9), rgba(255,255,255,.9)); color: #b8503b; }.spanish-day-card h2 { margin: 3px 0 0; color: #172f5d; font-family: Georgia, "Times New Roman", serif; font-size: 1.55rem; }.spanish-day-card p { margin: 10px 0 0; color: #405270; line-height: 1.7; }
 .spanish-closing { display: flex; align-items: center; gap: 17px; margin-top: 24px; padding: 26px 30px; border-radius: 19px; background: #8e342c; color: #f9d98a; }.spanish-closing h2 { color: #fff; font-size: 1.45rem; }.spanish-closing p { margin: 7px 0 0; color: rgba(255,255,255,.85); line-height: 1.6; }
 @media (max-width: 850px) { .spanish-hero, .spanish-intro-grid, .spanish-values, .spanish-global-grid { grid-template-columns: 1fr; }.spanish-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }.spanish-hero-art { justify-self: start; } }
-@media (max-width: 600px) { .spanish-page { padding-top: 32px; }.spanish-hero, .spanish-intro-grid article, .spanish-intro-grid aside, .spanish-values article, .spanish-global-grid article, .spanish-day-card { padding: 24px 19px; }.spanish-hero-art { width: 145px; height: 145px; }.spanish-card-grid { grid-template-columns: 1fr; }.spanish-card-grid article { min-height: 0; }.spanish-closing { align-items: flex-start; padding: 22px 19px; } }
+@media (max-width: 600px) { .spanish-page { padding-top: 32px; }.spanish-hero, .spanish-intro-grid article, .spanish-intro-grid aside, .spanish-values article, .spanish-global-grid article, .spanish-day-card { padding: 24px 19px; }.spanish-hero-art { display: none; }.spanish-card-grid { grid-template-columns: 1fr; }.spanish-card-grid article { min-height: 0; }.spanish-closing { align-items: flex-start; padding: 22px 19px; } }
 
 .sports-wf-eyebrow {
   display: inline-block;
@@ -7212,7 +7284,7 @@ main :is(p, li, blockquote) {
 }
 
 /* Rok szkolny */
-.school-year-page { display: grid; gap: 28px; width: 100%; max-width: 1180px; margin: 0 auto; padding: 28px 36px 40px; box-sizing: border-box; }
+.school-year-page { display: grid; gap: 28px; width: min(1180px, calc(100% - 32px)); max-width: none; margin: 0 auto; padding: 28px 0 40px; box-sizing: border-box; }
 .school-year-header { padding: 4px; }
 .school-year-eyebrow { display: inline-block; margin-bottom: 9px; color: #b58a23; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
 .school-year-header h1 { margin: 0; color: #002b59; font-size: clamp(1.9rem, 3vw, 2.6rem); line-height: 1.15; }
@@ -7243,6 +7315,8 @@ main :is(p, li, blockquote) {
 .school-year-date::before { position: absolute; top: 0.6em; left: 0; width: 8px; height: 8px; border-radius: 50%; background-color: #c7a243; content: ""; }
 
 @media (max-width: 720px) {
+  .textbooks-page,
+  .school-year-page { width: 100%; }
   .school-year-page { gap: 20px; padding: 22px 17px 30px; }
   .school-year-card { padding: 21px 17px; border-radius: 14px; }
   .school-year-card h2 { margin-bottom: 17px; }
