@@ -90,7 +90,6 @@ export default function FormularzZgloszeniowy() {
         const applicationData = Object.fromEntries(formData.entries());
 
         applicationData.preferowane_przedmioty = selectedSubjects;
-        applicationData.adres_odbiorcy = 'rekrutacja@vp-lo.krakow.pl';
 
         setIsSubmitting(true);
         setFormStatus({
@@ -105,7 +104,7 @@ export default function FormularzZgloszeniowy() {
                 type: 'success',
                 message:
                     result.message ||
-                    'Formularz został poprawnie sprawdzony w trybie testowym.',
+                    'Formularz został wysłany do szkoły.',
             });
 
             form.reset();
@@ -118,7 +117,8 @@ export default function FormularzZgloszeniowy() {
             setFormStatus({
                 type: 'error',
                 message:
-                    'Nie udało się przetworzyć formularza. Spróbuj ponownie.',
+                    error.message ||
+                    'Nie udało się wysłać formularza. Spróbuj ponownie.',
             });
         } finally {
             setIsSubmitting(false);
@@ -528,7 +528,7 @@ export default function FormularzZgloszeniowy() {
                                 disabled={isSubmitting}
                             >
                                 {isSubmitting
-                                    ? 'Sprawdzanie formularza…'
+                                    ? 'Wysyłanie formularza…'
                                     : 'Wyślij formularz'}
                             </button>
                         </div>

@@ -755,6 +755,7 @@ function App() {
 
 function Header({ mobileOpen, setMobileOpen, pathname }) {
   const isHomePage = pathname === '/';
+  const isAdmissionForm = pathname.startsWith('/rekrutacja/formularz-przyjecia-ucznia');
   const [isSubpageScrolled, setIsSubpageScrolled] = useState(false);
   const subpageScrollState = useRef(false);
   const bannerSlides = isHomePage
@@ -794,7 +795,7 @@ function Header({ mobileOpen, setMobileOpen, pathname }) {
   }, [isHomePage, pathname]);
 
   return (
-    <header className={`site-header ${isSubpageScrolled ? 'is-subpage-scrolled' : ''}`}>
+    <header className={`site-header ${isSubpageScrolled || isAdmissionForm ? 'is-subpage-scrolled' : ''} ${isAdmissionForm ? 'site-header-admission-form' : ''}`}>
       <div className={`container topbar ${isHomePage ? 'topbar-home' : ''}`}>
         <Link to="/" className="brand">
           <div className="brand-badge brand-badge-logo">
@@ -819,11 +820,11 @@ function Header({ mobileOpen, setMobileOpen, pathname }) {
             </div>
           </div>
         </Link>
-        <HeaderBanner
+        {!isAdmissionForm && <HeaderBanner
           key={isHomePage ? 'home' : pathname.split('/')[1]}
           slides={bannerSlides}
           isSubpage={!isHomePage}
-        />
+        />}
         <div className="header-actions">
           <button
             type="button"

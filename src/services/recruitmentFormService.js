@@ -1,12 +1,28 @@
+const RECRUITMENT_ENDPOINT =
+    'https://stara.vp-lo.krakow.pl/api/rekrutacja.php';
+
 export async function sendRecruitmentForm(formData) {
-    console.log('Dane formularza w trybie testowym:', formData);
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 15_000);
 
-    await new Promise((resolve) => {
-        setTimeout(resolve, 800);
-    });
+    try {
+        const response = await fetch(RECRUITMENT_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+            signal: controller.signal,
+        });
 
-    return {
-        success: true,
-        message: 'Formularz został poprawnie sprawdzony w trybie testowym.',
-    };
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok || !result.success) {
+            throw new Error(result.message || 'Nie udało się przekazać formularza.');
+        }
+
+        return result;
+    } finally {
+        window.clearTimeout(timeoutId);
+    }
 }
