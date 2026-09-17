@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const getDaysUntilMatura = () => {
     const today = new Date();
@@ -128,7 +128,7 @@ function Matura() {
                 <div className="matura-intro-row">
                     <p className="section-intro-card">Informacje dla maturzystów</p>
                     <div className="matura-countdown" aria-label={`Do matury pozostało ${daysUntilMatura} dni`}>
-                        <span>W oczekiwaniu na maturę</span>
+                        <span>Odliczanie do matury</span>
                         <strong>{daysUntilMatura}</strong>
                         <small>{daysUntilMatura === 1 ? 'dzień do 4 maja 2027' : 'dni do 4 maja 2027'}</small>
                     </div>
@@ -139,16 +139,9 @@ function Matura() {
                 <div className="matura-content-heading">
                     <h2 id="matura-faq-title">Kompendium wiedzy o maturze</h2>
                     <div className="matura-content-actions">
-                        {/*
-                          Harmonogram jest gotowy do ponownego włączenia po ogłoszeniu
-                          oficjalnych terminów przez CKE:
-                          <Link className="matura-schedule-button" to="/uczen/matura/harmonogram-2027">
+                        <Link className="matura-schedule-button" to="/uczen/matura/harmonogram-2027">
                             Harmonogram matur 2027
-                          </Link>
-                        */}
-                        <span className="matura-schedule-pending">
-                            Harmonogram matur 2027 będzie dostępny w tym miejscu po ogłoszeniu terminów przez CKE.
-                        </span>
+                        </Link>
                         <a
                             className="matura-cke-button"
                             href="https://cke.gov.pl/egzamin-maturalny/egzamin-maturalny-w-formule-2023/"

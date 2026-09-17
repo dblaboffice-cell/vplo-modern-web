@@ -6,19 +6,28 @@ const writtenExams = [
   ['5 maja', '09:00', 'Matematyka', 'PP'],
   ['6 maja', '09:00', 'Język angielski', 'PP'],
   ['7 maja', '09:00', 'Język angielski', 'PR / DJ'],
-  ['8 maja', '09:00', 'Biologia', 'PR'],
+  ['10 maja', '09:00', 'Biologia', 'PR'],
+  ['11 maja', '09:00', 'Matematyka', 'PR'],
+  ['12 maja', '09:00', 'Wiedza o społeczeństie', 'PR'],
+  ['13 maja', '09:00', 'Chemia', 'PR'],
+  ['14 maja', '09:00', 'Geografia', 'PR'],
+  ['18 maja', '09:00', 'Historia', 'PR'],
+  ['19 maja', '09:00', 'Fizyka', 'PR'],
+  ['20 maja', '09:00', 'Język polski', 'PR'],
+  ['21 maja', '09:00', 'Biznes i Zarządzanie', 'PR'],
 ];
 
+/*
 const oralExams = [
   ['13 maja', '09:15', 'Język polski', '208'],
   ['14 maja', '09:00', 'Język polski', '208'],
   ['20 maja', '13:00', 'Język angielski', '205'],
 ];
+*/
 
 export default function HarmonogramMatur() {
   const [activeTab, setActiveTab] = useState('written');
   const isWritten = activeTab === 'written';
-  const exams = isWritten ? writtenExams : oralExams;
 
   return (
       <article className="student-page matura-schedule-page">
@@ -35,12 +44,19 @@ export default function HarmonogramMatur() {
             <button type="button" role="tab" aria-selected={!isWritten} className={!isWritten ? 'is-active' : ''} onClick={() => setActiveTab('oral')}>Egzaminy ustne</button>
           </div>
 
-          <div className="matura-schedule-table-wrap">
-            <table className="matura-schedule-table">
-              <thead><tr><th>Data</th><th>Godzina</th><th>Przedmiot</th><th>{isWritten ? 'Poziom' : 'Sala'}</th></tr></thead>
-              <tbody>{exams.map(([date, time, subject, detail]) => <tr key={`${date}-${time}-${subject}`}><td>{date}</td><td>{time}</td><td>{subject}</td><td><strong>{detail}</strong></td></tr>)}</tbody>
-            </table>
-          </div>
+          {isWritten ? (
+              <div className="matura-schedule-table-wrap">
+                <table className="matura-schedule-table">
+                  <thead><tr><th>Data</th><th>Godzina</th><th>Przedmiot</th><th>Poziom</th></tr></thead>
+                  <tbody>{writtenExams.map(([date, time, subject, detail]) => <tr key={`${date}-${time}-${subject}`}><td>{date}</td><td>{time}</td><td>{subject}</td><td><strong>{detail}</strong></td></tr>)}</tbody>
+                </table>
+              </div>
+          ) : (
+              <div className="matura-schedule-awaiting" role="status">
+                <strong>W oczekiwaniu</strong>
+                <p>Terminy egzaminów ustnych zostaną uzupełnione tydzień przed maturami.</p>
+              </div>
+          )}
 
           {isWritten && <p className="matura-schedule-legend"><strong>PP</strong> — poziom podstawowy <strong>PR</strong> — poziom rozszerzony <strong>DJ</strong> — poziom dwujęzyczny</p>}
         </section>
