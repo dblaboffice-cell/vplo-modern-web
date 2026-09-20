@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" client="site" method="upgrade">
   <name>mod_vplo_updates</name>
-  <version>1.0.2</version>
+  <version>1.0.4</version>
   <creationDate>2026-09-16</creationDate>
   <author>DBLaboffice</author>
   <license>GNU General Public License version 2 or later</license>
@@ -19,6 +19,10 @@
         <field name="news_label" type="text" label="Etykieta karty aktualności" />
         <field name="news_link_label" type="text" label="Etykieta linku aktualności" />
         <field name="news_meta_suffix" type="text" label="Dodatkowy tekst metadanych" description="Np. lokalizacja; dodawany po dacie publikacji." />
+        <field name="date_locale" type="list" label="Język daty" default="pl-PL" description="Niezależne ustawienie języka pełnej nazwy miesiąca dla tej instancji modułu.">
+          <option value="pl-PL">pl-PL — Polski</option>
+          <option value="en-GB">en-GB — English</option>
+        </field>
       </fieldset>
       <fieldset name="instagram" label="Instagram">
         <field name="instagram_label" type="text" label="Etykieta" />

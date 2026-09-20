@@ -16,12 +16,17 @@ $wa->registerAndUseScript('tpl.vplo-modern-navigation-mobile-fix', 'media/templa
 $wa->registerAndUseStyle('tpl.vplo-modern-home', 'media/templates/site/tpl_vplo_modern/css/home-1.5.0.css');
 $wa->registerAndUseStyle('tpl.vplo-modern-home-react', 'media/templates/site/tpl_vplo_modern/css/home-react-1.5.3.css');
 $wa->registerAndUseStyle('tpl.vplo-modern-home-layout', 'media/templates/site/tpl_vplo_modern/css/home-layout-1.5.4.css');
-$wa->registerAndUseStyle('tpl.vplo-modern-home-current', 'media/templates/site/tpl_vplo_modern/css/home-current-1.6.0.css');
-$wa->registerAndUseScript('tpl.vplo-modern-home', 'media/templates/site/tpl_vplo_modern/js/home-1.5.0.js', [], ['defer' => true]);
+$wa->registerAndUseStyle('tpl.vplo-modern-home-current', 'media/templates/site/tpl_vplo_modern/css/home-current-1.7.0.css');
+$wa->registerAndUseStyle('tpl.vplo-modern-header-footer', 'media/templates/site/tpl_vplo_modern/css/header-footer-1.7.0.css');
+$wa->registerAndUseScript('tpl.vplo-modern-header-banner', 'media/templates/site/tpl_vplo_modern/js/header-banner-1.0.0.js', [], ['defer' => true]);
+$wa->registerAndUseScript('tpl.vplo-modern-home', 'media/templates/site/tpl_vplo_modern/js/home-values-1.1.2.js', [], ['defer' => true]);
+$wa->registerAndUseScript('tpl.vplo-modern-home-sections', 'media/templates/site/tpl_vplo_modern/js/home-sections-1.0.2.js', [], ['defer' => true]);
 $templateUri = Uri::root(true) . '/media/templates/site/tpl_vplo_modern';
 $activeItem = $app->getMenu()->getActive();
 $defaultItem = $app->getMenu()->getDefault();
 $isHome = $activeItem && $defaultItem && (int) $activeItem->id === (int) $defaultItem->id;
+$hasHeaderBanner = $this->countModules('header-banner') > 0;
+$hasFooterContent = $this->countModules('footer-content') > 0;
 $banner = $this->params->get('banner_image', 'images/smolensk-siedziba.png');
 if ($banner && !str_starts_with($banner, 'http') && !str_starts_with($banner, '/')) {
     $banner = $templateUri . '/' . ltrim($banner, '/');
@@ -46,9 +51,13 @@ if ($banner && !str_starts_with($banner, 'http') && !str_starts_with($banner, '/
             <div class="brand-meta">Rok założenia 1992</div>
           </div>
         </a>
-        <figure class="header-banner">
-          <img src="<?= htmlspecialchars($banner, ENT_QUOTES, 'UTF-8') ?>" alt="Siedziba V Prywatnego Liceum Ogólnokształcącego w Krakowie">
-        </figure>
+        <?php if ($hasHeaderBanner) : ?>
+          <jdoc:include type="modules" name="header-banner" style="none" />
+        <?php else : ?>
+          <figure class="header-banner">
+            <img src="<?= htmlspecialchars($banner, ENT_QUOTES, 'UTF-8') ?>" alt="Siedziba V Prywatnego Liceum Ogólnokształcącego w Krakowie">
+          </figure>
+        <?php endif; ?>
         <div class="header-actions">
           <jdoc:include type="modules" name="header-actions" style="none" />
           <button class="menu-btn" type="button" aria-controls="mobile-navigation" aria-expanded="false" aria-label="Otwórz menu"><span></span><span></span><span></span></button>
@@ -62,12 +71,16 @@ if ($banner && !str_starts_with($banner, 'http') && !str_starts_with($banner, '/
     </header>
     <main class="site-main"><?php if ($isHome) { require __DIR__ . '/home.php'; } else { ?><jdoc:include type="message" /><jdoc:include type="component" /><?php } ?></main>
     <footer class="site-footer">
-      <div class="container footer-grid">
-        <div class="footer-school"><jdoc:include type="modules" name="footer-school" style="none" /></div>
-        <div class="footer-contact"><jdoc:include type="modules" name="footer-contact" style="none" /></div>
-        <div class="footer-navigation"><jdoc:include type="modules" name="footer-nav" style="none" /></div>
-      </div>
-      <div class="container footer-credit"><jdoc:include type="modules" name="footer-credit" style="none" /></div>
+      <?php if ($hasFooterContent) : ?>
+        <jdoc:include type="modules" name="footer-content" style="none" />
+      <?php else : ?>
+        <div class="container footer-grid">
+          <div class="footer-school"><jdoc:include type="modules" name="footer-school" style="none" /></div>
+          <div class="footer-contact"><jdoc:include type="modules" name="footer-contact" style="none" /></div>
+          <div class="footer-navigation"><jdoc:include type="modules" name="footer-nav" style="none" /></div>
+        </div>
+        <div class="container footer-credit"><jdoc:include type="modules" name="footer-credit" style="none" /></div>
+      <?php endif; ?>
     </footer>
   </div>
 </body>

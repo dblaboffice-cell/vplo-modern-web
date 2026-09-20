@@ -1,0 +1,10 @@
+{
+  "interval": 5000,
+  "slides": [
+    { "image": "media/mod_vplo_header_banner/images/smolensk-siedziba.png", "alt": "Siedziba V Prywatnego Liceum Ogólnokształcącego w Krakowie", "position": "center 40%" },
+    { "image": "media/mod_vplo_header_banner/images/krakow-rynek.jpeg", "alt": "Rynek Główny w Krakowie", "position": "center 55%" },
+    { "image": "media/mod_vplo_header_banner/images/krakow-rynek-noc.jpeg", "alt": "Rynek Główny w Krakowie nocą", "position": "center 45%" },
+    { "image": "media/mod_vplo_header_banner/images/krakow-wawel.jpeg", "alt": "Wawel nad Wisłą", "position": "center 30%" },
+    { "image": "media/mod_vplo_header_banner/images/krakow-wisla.jpeg", "alt": "Panorama Wawelu i Wisły", "position": "center 30%" }
+  ]
+}

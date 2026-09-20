@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+  <fieldset name="slide">
+    <field name="image" type="media" label="Obraz" required="true" />
+    <field name="alt" type="text" label="Tekst alternatywny" required="true" />
+    <field name="position" type="text" label="Object-position" default="center" description="Np. center 40%." />
+  </fieldset>
+</form>

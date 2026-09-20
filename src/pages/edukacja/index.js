@@ -88,7 +88,7 @@ const educationPages = {
         before:
           'Nasza Szkolna Akademia Filmowa stanowi zatem program ukierunkowany na uczenie młodego odbiorcy uczestnictwa w kulturze. Kulturze, którą cechuje różnorodność form przekazu. Celem naszym jest podnoszenie wartości słowa drukowanego i dyskusji, aby będąc źródłowymi, stawały się konkurencyjnymi, a może poprawniej pierwotnymi wobec obrazu. Łatwiej wówczas zwrócić uwagę na związki między literaturą a filmem czy sztukami pięknymi, a także różnymi przejawami dialogu z obyczajowością. By cel ten osiągnąć, została skonstruowana koncepcja strukturalna Akademii, w której wyselekcjonowane zostały: tematyka i program warsztatów oraz ',
         linkLabel: 'projekcje filmowe',
-        href: 'http://vp-lo.krakow.pl/info/projekcje-filmowe',
+        href: '/info/projekcje-filmowe',
         after: ', ustalane oddzielnie w każdym z semestrów.',
       },
       {

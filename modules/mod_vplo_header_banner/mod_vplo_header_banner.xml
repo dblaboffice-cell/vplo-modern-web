@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+  <name>mod_vplo_header_banner</name>
+  <version>1.0.0</version>
+  <creationDate>2026-09-20</creationDate>
+  <author>DBLaboffice</author>
+  <license>GNU General Public License version 2 or later</license>
+  <description>VPLO — rotujący baner nagłówka</description>
+  <files>
+    <filename module="mod_vplo_header_banner">mod_vplo_header_banner.php</filename>
+    <filename>starter-data.json</filename>
+    <folder>forms</folder>
+    <folder>tmpl</folder>
+  </files>
+  <media destination="mod_vplo_header_banner" folder="media">
+    <folder>images</folder>
+  </media>
+  <config>
+    <fields name="params">
+      <fieldset name="content" label="Slajdy banera">
+        <field name="slides" type="subform" label="Slajdy" description="Kolejność wierszy określa kolejność wyświetlania." multiple="true" layout="joomla.form.field.subform.repeatable-table" formsource="modules/mod_vplo_header_banner/forms/slide.xml" />
+        <field name="interval" type="number" label="Czas slajdu (ms)" default="5000" min="1000" step="100" />
+      </fieldset>
+    </fields>
+  </config>
+</extension>

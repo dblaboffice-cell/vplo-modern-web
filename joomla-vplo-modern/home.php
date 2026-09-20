@@ -15,7 +15,7 @@ foreach ($homePositions as $homePosition) {
 ?>
 <?php if ($useHomeModules) : ?>
 <section class="hero">
-  <div class="container home-hero">
+  <div class="container hero-grid home-hero">
     <jdoc:include type="modules" name="home-values" style="none" />
     <jdoc:include type="modules" name="home-patron" style="none" />
   </div>

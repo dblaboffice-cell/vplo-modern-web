@@ -17,6 +17,7 @@ const sections = [
     files: [
       { name: 'Szablon papieru firmowego VPLO (OpenOffice Writer)', file: 'szablon-papieru-firmowego-vplo.odt', preview: 'podglady/papier-firmowy.png' },
       { name: 'Szablon Word VPLO — tło i znak wodny', file: 'szablon-word-vplo-tlo-znak-wodny.dotx', preview: 'podglady/papier-firmowy.png' },
+      { name: 'Papier firmowy VPLO — nagłówek i stopka (Word)', file: 'papier-firmowy-vplo-naglowek-stopka.docx', preview: 'podglady/papier-firmowy-naglowek-stopka.svg' },
       { name: 'Papier firmowy VP-LO — biały (PDF)', file: 'papier-firmowy-vplo-bialy.pdf', preview: 'podglady/papier-firmowy-bialy-1.png' },
       { name: 'Papier firmowy VPLO z piórem w tle (PDF)', file: 'papier-firmowy-vplo-z-piorem.pdf', preview: 'podglady/papier-firmowy-z-piorem-1.png' },
       { name: 'Wzór papieru firmowego w Canvie', externalUrl: 'https://canva.link/yt5g1xzeqkgf6ai', note: copyNote },
@@ -63,12 +64,11 @@ export default function MaterialyDlaKadry() {
   </div></section>;
 
   return <section className="teacher-resources-page container">
-    <header className="teacher-resources-header"><p className="teacher-eyebrow">Strefa dla kadry nauczycielskiej</p><h1>Materiały dla kadry nauczycielskiej</h1></header>
+    <header className="teacher-resources-header"><p className="teacher-eyebrow">Strefa dla kadry nauczycielskiej</p><h1>Materiały dla kadry profesorskiej</h1></header>
     <article className="teacher-welcome-card">
-      <p><strong>Szanowni Państwo Profesorowie,</strong></p>
-      <p>Zakładka zawiera komplet materiałów wizerunkowych oraz dokumentów firmowych V Prywatnego Liceum Ogólnokształcącego w Krakowie im. Królowej Jadwigi. Zgromadzone tam zasoby mają ułatwić codzienną pracę, zapewnić spójność komunikacji oraz wspierać Państwa w działaniach dydaktycznych, wychowawczych i reprezentacyjnych.</p>
+      <p>Zakładka zawiera komplet materiałów wizerunkowych oraz dokumentów firmowych V Prywatnego Liceum Ogólnokształcącego w Krakowie im. Królowej Jadwigi.</p>
       <p>W sekcji znajdują się m.in. aktualne identyfikacje graficzne, wzory dokumentów, prezentacji, formularze oraz pliki przeznaczone do wykorzystania podczas wydarzeń szkolnych. Materiały są uporządkowane tematycznie, tak aby szybkie odnalezienie potrzebnych treści było jak najbardziej intuicyjne.</p>
-      <p>Ewentualne potrzeby aktualizacyjne należy zgłaszać do sekretariatu, aby zakładka pozostawała praktycznym i nowoczesnym narzędziem wspierającym Państwa pracę.</p>
+      <p>Ewentualne potrzeby aktualizacyjne proszę zgłaszać do sekretariatu.</p>
     </article>
     <div className="teacher-resources-grid" aria-label="Kategorie materiałów">
       {sections.map(({ title, files }) => <article key={title} className="teacher-resource-card">

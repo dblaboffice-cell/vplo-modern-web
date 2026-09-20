@@ -2660,6 +2660,64 @@ th {
   gap: 24px;
 }
 
+.news-archive-section {
+  margin-top: 54px;
+  padding-top: 42px;
+  border-top: 1px solid rgba(177, 194, 221, 0.8);
+}
+
+.news-archive-header {
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.news-archive-header > span {
+  color: #a87500;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.news-archive-header h2 {
+  margin: 8px 0;
+  color: #1b2f59;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+}
+
+.news-archive-header p,
+.news-archive-empty {
+  margin: 0;
+  color: #536585;
+  line-height: 1.7;
+}
+
+.news-archive-years {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.news-archive-year {
+  display: grid;
+  gap: 5px;
+  min-height: 132px;
+  padding: 22px;
+  border: 1px solid rgba(177, 194, 221, 0.8);
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 12px 26px rgba(27, 47, 89, 0.09);
+  color: #1b2f59;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-archive-year svg { color: #a87500; }
+.news-archive-year span { color: #647391; font-size: 0.85rem; font-weight: 700; }
+.news-archive-year strong { font-family: Georgia, "Times New Roman", serif; font-size: 1.28rem; }
+.news-archive-year:hover { transform: translateY(-3px); border-color: #a87500; box-shadow: 0 16px 30px rgba(27, 47, 89, 0.14); }
+
 .news-card {
   display: grid;
   grid-template-columns: minmax(280px, 42%) 1fr;
@@ -2848,6 +2906,93 @@ th {
   line-height: 1.9;
 }
 
+.legacy-news-content-compact img {
+  display: block;
+  width: min(100%, 460px);
+  height: auto;
+  margin: 0 auto 20px;
+  border-radius: 12px;
+}
+
+.legacy-news-float-right {
+  float: right;
+  width: min(42%, 300px);
+  height: auto;
+  margin: 0 0 18px 22px;
+  border-radius: 12px;
+}
+
+.legacy-news-inline-image {
+  display: block;
+  width: min(100%, 760px);
+  height: auto;
+  margin: 20px auto;
+  border-radius: 12px;
+}
+
+.legacy-news-image-pair {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin: 20px auto;
+}
+
+.legacy-news-image-pair .legacy-news-inline-image {
+  width: min(100%, 330px);
+  margin: 0;
+}
+
+.legacy-news-valentine-image {
+  width: min(26%, 180px);
+  height: auto;
+  border-radius: 10px;
+}
+
+.legacy-news-valentine-left {
+  float: left;
+  margin: 0 20px 12px 0;
+}
+
+.legacy-news-valentine-right {
+  float: right;
+  margin: 0 0 12px 20px;
+}
+
+.legacy-news-valentine-poem {
+  text-align: center;
+}
+
+.legacy-news-valentine-poem > p {
+  margin: 0 0 4px;
+  text-align: center !important;
+}
+
+.legacy-news-valentine-title {
+  margin: 12px 0 6px;
+  text-align: center;
+}
+
+.legacy-news-valentine-title > p {
+  margin: 0;
+}
+
+.legacy-news-quote-image {
+  width: min(29%, 230px);
+  height: auto;
+  border-radius: 10px;
+}
+
+.legacy-news-quote-left {
+  float: left;
+  margin: 0 20px 16px 0;
+}
+
+.legacy-news-quote-right {
+  float: right;
+  margin: 0 0 16px 20px;
+}
+
 .news-inline-gallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2893,6 +3038,10 @@ th {
 }
 
 @media (max-width: 760px) {
+  .news-archive-section { margin-top: 38px; padding-top: 30px; }
+  .news-archive-years { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .news-archive-year { min-height: 116px; padding: 17px; border-radius: 16px; }
+
   .news-card {
     grid-template-columns: 1fr;
     height: auto;
@@ -3806,6 +3955,8 @@ th {
     flex-wrap: nowrap;
     gap: 10px;
   }
+
+  .legacy-news-content img { max-width: 100%; height: auto; }
 
   .school-values-building > .hero-contact-grid .info-badge {
     gap: 6px;

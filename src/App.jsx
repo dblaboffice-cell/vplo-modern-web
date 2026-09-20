@@ -61,6 +61,9 @@ import StandardyOM from './pages/szkola/dokumenty/StandardyOM';
 import MaterialyDlaKadry from './pages/szkola/MaterialyDlaKadry';
 import educationPages, { educationMenuItem } from './pages/edukacja';
 import { educationRoutes } from './pages/edukacja/routes';
+import Aktualnosci from './Aktualnosci/Aktualnosci';
+import { aktualnosci as newsItems } from './Aktualnosci/aktualnosciData';
+import { ArchiwalnaAktualnosc, ArchiwumRokuSzkolnego } from './Aktualnosci/ArchiwumAktualnosci';
 
 import './pages/szkola/szkola.css';
 
@@ -607,7 +610,11 @@ function App() {
               element={<ListaSesjiNaukowych />}
           />
 
-          <Route path="/aktualnosci" element={<NewsPage />} />
+          <Route path="/aktualnosci" element={<Aktualnosci />} />
+
+          <Route path="/aktualnosci/archiwum/:schoolYearPath" element={<ArchiwumRokuSzkolnego />} />
+
+          <Route path="/aktualnosci/archiwalna/:slug" element={<ArchiwalnaAktualnosc />} />
 
           <Route
               path="/aktualnosci/narodowe-czytanie-2026"
@@ -1832,162 +1839,6 @@ function GalleryPage({ initialAlbum = null }) {
   );
 }
 
-const newsItems = [
-  {
-    slug: 'narodowe-czytanie-2026',
-    title: 'Narodowe Czytanie',
-    date: '4 września 2026',
-    dateTime: '2026-09-04',
-    place: 'Kraków',
-    excerpt:
-        'Wspólna lektura „Dziadów” Adama Mickiewicza w ramach akcji Narodowe Czytanie.',
-    image: `${import.meta.env.BASE_URL}aktualnosci/narodowe-czytanie-2026.png`,
-  },
-  {
-    slug: 'inauguracja-roku-szkolnego-2026-2027',
-    title: 'Inauguracja roku szkolnego 2026/2027',
-    date: '1 września 2026',
-    dateTime: '2026-09-01',
-    place: 'Kraków',
-    excerpt:
-        'Uroczyste rozpoczęcie nowego roku szkolnego, ślubowanie uczniów klas pierwszych oraz wykład o Królowej Jadwidze.',
-  },
-  {
-    slug: 'zakonczenie-roku-2025-2026',
-    title: 'Zakończenie roku 2025/2026',
-    date: '26 czerwca 2026',
-    dateTime: '2026-06-26',
-    place: 'Kraków',
-    excerpt:
-        '26 czerwca odbyło się uroczyste zakończenie roku szkolnego.',
-    image: `${import.meta.env.BASE_URL}galeria/zakonczenie-roku-szkolnego-2025-2026/01.webp`,
-  },
-  {
-    slug: '64-sesja-naukowa-2026',
-    title: 'Sprawozdanie z 64. Sesji Naukowej',
-    date: '10 czerwca 2026',
-    dateTime: '2026-06-10',
-    place: 'Kraków',
-    excerpt:
-        'Kolejna Sesja Naukowa zgromadziła uczniów prezentujących referaty z nauk humanistycznych, przyrodniczych i ścisłych.',
-    image: `${import.meta.env.BASE_URL}aktualnosci/64-sesja-naukowa-2026.jpg`,
-  },
-  {
-    slug: 'pozegnanie-maturzystow-2026',
-    title: 'Pożegnanie maturzystów 2026',
-    date: '24 kwietnia 2026',
-    dateTime: '2026-04-24',
-    place: 'Kraków',
-    excerpt:
-        'Uroczyste zakończenie roku szkolnego klas maturalnych oraz podsumowanie wspólnych lat nauki i sukcesów tegorocznych absolwentów.',
-    image: `${import.meta.env.BASE_URL}galeria/pozegnanie-maturzystow-2026/01.jpg`,
-  },
-  {
-    slug: 'wymiana-z-holenderska-szkola-w-laren',
-    title: 'Wymiana z holenderską szkołą w Laren',
-    date: '13–17 kwietnia 2026',
-    dateTime: '2026-04-13',
-    place: 'Laren, Niderlandy',
-    excerpt: 'Międzynarodowa wymiana, wspólne lekcje, Bruksela, Amsterdam i nowe przyjaźnie.',
-    image: `${import.meta.env.BASE_URL}krakow-rynek.jpeg`,
-  },
-  {
-    slug: 'dzien-jezyka-angielskiego-2026',
-    title: 'Dzień Języka Angielskiego 2026',
-    date: '17–18 marca 2026',
-    dateTime: '2026-03-17',
-    place: 'Kraków',
-    excerpt: 'Konkurs, prezentacje uczniów i debata o nowoczesnej technologii podczas dwóch dni poświęconych językowi angielskiemu.',
-    image: `${import.meta.env.BASE_URL}aktualnosci/dzien-jezyka-angielskiego-2026.jpg`,
-  },
-  {
-    slug: 'ferie-naukowe-2026',
-    title: 'Ferie Naukowe',
-    date: '2–4 i 13 lutego 2026',
-    dateTime: '2026-02-02',
-    place: 'Kraków',
-    excerpt: 'Dodatkowe zajęcia dla maturzystów z języka polskiego i matematyki przed zbliżającym się egzaminem maturalnym.',
-    image: `${import.meta.env.BASE_URL}siedziba-vplo.jpg`,
-  },
-  {
-    slug: 'warsztaty-teatralne-2026',
-    title: 'Warsztaty teatralne',
-    date: '15 stycznia 2026',
-    dateTime: '2026-01-15',
-    place: 'Kraków',
-    excerpt:
-        'Spotkanie wokół „Folwarku zwierzęcego” George’a Orwella, prowadzone przez redaktora Ireneusza Dańko.',
-    image: `${import.meta.env.BASE_URL}aktualnosci/warsztaty-teatralne-2026.jpg`,
-  },
-  {
-    slug: 'studniowka-2026',
-    title: 'Studniówka 2026',
-    date: '10 stycznia 2026',
-    dateTime: '2026-01-10',
-    place: 'Kraków',
-    excerpt: 'Uroczysty wieczór maturzystów, pełen radości, wzruszeń i wspólnego świętowania zbliżającego się zakończenia nauki.',
-    image: `${import.meta.env.BASE_URL}aktualnosci/studniowka-2026.webp`,
-  },
-  {
-    slug: 'wyjscie-do-teatru-2025',
-    title: 'Wyjście do teatru',
-    date: '19 grudnia 2025',
-    dateTime: '2025-12-19',
-    place: 'Kraków',
-    excerpt:
-        'Uczniowie obejrzeli w Teatrze Ludowym spektakl „Folwark zwierzęcy” — wartościowe doświadczenie kulturalne i okazję do refleksji.',
-    image: `${import.meta.env.BASE_URL}aktualnosci/wyjscie-do-teatru-2025.jpg`,
-  },
-  {
-    slug: 'dzien-niepodleglosci-2025',
-    title: 'Dzień Niepodległości',
-    date: '12 listopada 2025',
-    dateTime: '2025-11-12',
-    place: 'Kraków',
-    excerpt:
-        'Uczniowie liceum uczcili Narodowe Święto Niepodległości pod pomnikiem Józefa Piłsudskiego.',
-    image: `${import.meta.env.BASE_URL}aktualnosci/dzien-niepodleglosci-2025.jpg`,
-  },
-  {
-    slug: 'wymiana-miedzynarodowa-2025',
-    title: 'Wymiana międzynarodowa',
-    date: '13–16 października 2025',
-    dateTime: '2025-10-13',
-    place: 'Kraków',
-    excerpt:
-        'Gościliśmy uczniów z holenderskiej szkoły w Laren podczas wspólnych zajęć, spotkań i wycieczek po Krakowie.',
-    image: `${import.meta.env.BASE_URL}krakow-rynek.jpeg`,
-  },
-  {
-    slug: 'narodowe-czytanie-2025',
-    title: 'Narodowe Czytanie 2025',
-    date: '5 września 2025',
-    dateTime: '2025-09-05',
-    place: 'Kraków',
-    excerpt:
-        'W ramach Narodowego Czytania uczniowie poznawali Pieśni, Fraszki i Treny Jana Kochanowskiego.',
-    image: `${import.meta.env.BASE_URL}aktualnosci/narodowe-czytanie-2025.png`,
-  },
-  {
-    slug: 'rozpoczecie-roku-szkolnego-2025-2026',
-    title: 'Rozpoczęcie roku szkolnego 2025/2026',
-    date: '1 września 2025',
-    dateTime: '2025-09-01',
-    place: 'Kraków',
-    excerpt:
-        'Uroczyste rozpoczęcie roku szkolnego, ślubowanie uczniów klas pierwszych i wykład inauguracyjny.',
-    image: `${import.meta.env.BASE_URL}aktualnosci/rozpoczecie-roku-szkolnego-2025-2026.jpg`,
-  },
-  {
-    slug: 'zakonczenie-roku-2024-2025',
-    title: 'Zakończenie roku szkolnego 2024/2025',
-    date: '27 czerwca 2025',
-    dateTime: '2025-06-27',
-    place: 'Kraków',
-    excerpt: 'Uroczyste zakończenie roku szkolnego w zabytkowym budynku Towarzystwa Gimnastycznego „Sokół”, którego motywem przewodnim był Kraków.',
-    image: `${import.meta.env.BASE_URL}aktualnosci/zakonczenie-roku-2024-2025-sokol.png`,
-  },
-];
 
 function HomeUpdatesStrip({ compact = false }) {
     const latestNews = newsItems[0];
@@ -2021,7 +1872,7 @@ function HomeUpdatesStrip({ compact = false }) {
               <h2>{latestNews.title}</h2>
 
               <p>
-                {latestNews.date} · {latestNews.place}
+                {latestNews.displayDate} · {latestNews.place}
               </p>
 
               <strong>Aktualności →</strong>
@@ -2078,69 +1929,6 @@ function HomeUpdatesStrip({ compact = false }) {
         </section>
     );
   }
-
-function NewsPage() {
-  return (
-      <section className="news-page">
-        <div className="container">
-          <header className="news-page-header">
-            <span>Aktualności</span>
-            <h1>Najnowsze wydarzenia z życia szkoły</h1>
-          </header>
-
-          <div className="news-list">
-            {newsItems.map((news) => (
-                <article className="news-card" key={news.slug}>
-                  <Link
-                      to={`/aktualnosci/${news.slug}`}
-                      className="news-card-image-link"
-                      aria-label={`Czytaj artykuł: ${news.title}`}
-                  >
-                    {news.image ? (
-                        <img src={news.image} alt={news.title} />
-                    ) : (
-                        <div className="news-card-placeholder" aria-hidden="true">
-                          <School size={44} />
-                          <span>Aktualność</span>
-                        </div>
-                    )}
-                  </Link>
-
-                  <div className="news-card-copy">
-                    <div className="news-meta">
-                  <span>
-                    <CalendarDays size={17} />
-                    <time dateTime={news.dateTime}>{news.date}</time>
-                  </span>
-
-                      <span>
-                    <MapPin size={17} />
-                        {news.place}
-                  </span>
-                    </div>
-
-                    <h2>
-                      <Link to={`/aktualnosci/${news.slug}`}>
-                        {news.title}
-                      </Link>
-                    </h2>
-
-                    <p>{news.excerpt}</p>
-
-                    <Link
-                        to={`/aktualnosci/${news.slug}`}
-                        className="news-read-more"
-                    >
-                      więcej
-                    </Link>
-                  </div>
-                </article>
-            ))}
-          </div>
-        </div>
-      </section>
-  );
-}
 
 function EndOfSchoolYearArticle() {
   const articleImage =
@@ -3576,10 +3364,26 @@ function Footer() {
 
             <a
                 className="footer-contact-item"
+                href={`tel:${school.extraPhone.replace(/\s+/g, '')}`}
+            >
+              <Phone size={18} aria-hidden="true" />
+              <span>{school.extraPhone}</span>
+            </a>
+
+            <a
+                className="footer-contact-item"
                 href={`mailto:${school.email}`}
             >
               <Mail size={18} aria-hidden="true" />
               <span>{school.email}</span>
+            </a>
+
+            <a
+                className="footer-contact-item"
+                href={`mailto:${school.recruitmentEmail}`}
+            >
+              <Mail size={18} aria-hidden="true" />
+              <span>{school.recruitmentEmail}</span>
             </a>
           </div>
         </div>

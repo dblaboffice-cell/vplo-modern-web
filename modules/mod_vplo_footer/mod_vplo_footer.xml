@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+  <name>mod_vplo_footer</name>
+  <version>1.0.0</version>
+  <creationDate>2026-09-20</creationDate>
+  <author>DBLaboffice</author>
+  <license>GNU General Public License version 2 or later</license>
+  <description>VPLO — stopka</description>
+  <files>
+    <filename module="mod_vplo_footer">mod_vplo_footer.php</filename>
+    <filename>starter-data.json</filename>
+    <folder>forms</folder>
+    <folder>tmpl</folder>
+  </files>
+  <config>
+    <fields name="params">
+      <fieldset name="school" label="Szkoła">
+        <field name="school_short" type="text" label="Krótka nazwa" default="Liceum" required="true" />
+        <field name="school_name" type="text" label="Pełna nazwa" required="true" />
+        <field name="address" type="text" label="Adres" required="true" />
+        <field name="map_url" type="url" label="URL Google Maps" required="true" />
+      </fieldset>
+      <fieldset name="contacts" label="Kontakt">
+        <field name="contacts" type="subform" label="Kontakty" description="Kolejność wierszy określa kolejność w stopce." multiple="true" layout="joomla.form.field.subform.repeatable-table" formsource="modules/mod_vplo_footer/forms/contact.xml" />
+      </fieldset>
+      <fieldset name="navigation" label="Nawigacja">
+        <field name="menutype" type="menu" label="Menu Joomla" clientid="0" required="true" />
+        <field name="menu_limit" type="number" label="Liczba głównych pozycji" default="5" min="1" max="20" />
+      </fieldset>
+      <fieldset name="credit" label="Tekst końcowy">
+        <field name="credit" type="text" label="Opcjonalny tekst końcowy" />
+      </fieldset>
+    </fields>
+  </config>
+</extension>
