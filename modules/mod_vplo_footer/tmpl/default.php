@@ -10,7 +10,10 @@ $contacts = array_values(array_filter(array_map(static fn ($contact): array => (
 $menuType = (string) $params->get('menutype', 'mainmenu');
 $limit = max(1, (int) $params->get('menu_limit', 5));
 $menu = Factory::getApplication()->getMenu();
-$items = array_values(array_filter($menu->getItems('menutype', $menuType) ?: [], static fn ($item): bool => (int) $item->parent_id === 1 && (int) $item->published === 1));
+// Joomla's site menu object contains only published items. Filter by the configured
+// menu type and level instead of relying on a root-node ID or a non-existent
+// `published` property on MenuItem.
+$items = $menu->getItems(['menutype', 'level'], [$menuType, '1']) ?: [];
 usort($items, static fn ($left, $right): int => ((int) $left->lft) <=> ((int) $right->lft));
 $items = array_slice($items, 0, $limit);
 $icons = [

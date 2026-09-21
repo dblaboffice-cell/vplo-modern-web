@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" client="site" method="upgrade">
   <name>mod_vplo_footer</name>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <creationDate>2026-09-20</creationDate>
   <author>DBLaboffice</author>
   <license>GNU General Public License version 2 or later</license>
