@@ -1,10 +1,5 @@
 import { Link } from 'react-router-dom';
 
-const requiredDocuments = [
-    'podanie do Dyrektora o przyjęcieLiceum',
-    'jedno zdjęcie w formacie legitymacyjnym',
-];
-
 export default function WymaganeDokumenty() {
     return (
         <section className="page-wrap container article-page recruitment-page documents-page">
@@ -24,9 +19,13 @@ export default function WymaganeDokumenty() {
                     </p>
 
                     <ul className="recruitment-reasons documents-list">
-                        {requiredDocuments.map((document) => (
-                            <li key={document}>{document}</li>
-                        ))}
+                        <li
+                            className="documents-tooltip"
+                            data-tooltip="Wzór dostępny w sekretariacie"
+                        >
+                            Podanie do Dyrektora o przyjęcie do Liceum
+                        </li>
+                        <li>Jedno zdjęcie w formacie legitymacyjnym</li>
                     </ul>
 
                     <section className="documents-june-card">

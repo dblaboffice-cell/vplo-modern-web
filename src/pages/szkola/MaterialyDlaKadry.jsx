@@ -64,7 +64,7 @@ export default function MaterialyDlaKadry() {
   </div></section>;
 
   return <section className="teacher-resources-page container">
-    <header className="teacher-resources-header"><p className="teacher-eyebrow">Strefa dla kadry nauczycielskiej</p><h1>Materiały dla kadry profesorskiej</h1></header>
+    <header className="teacher-resources-header"><h1 className="teacher-resources-title">Materiały dla kadry profesorskiej</h1></header>
     <article className="teacher-welcome-card">
       <p>Zakładka zawiera komplet materiałów wizerunkowych oraz dokumentów firmowych V Prywatnego Liceum Ogólnokształcącego w Krakowie im. Królowej Jadwigi.</p>
       <p>W sekcji znajdują się m.in. aktualne identyfikacje graficzne, wzory dokumentów, prezentacji, formularze oraz pliki przeznaczone do wykorzystania podczas wydarzeń szkolnych. Materiały są uporządkowane tematycznie, tak aby szybkie odnalezienie potrzebnych treści było jak najbardziej intuicyjne.</p>

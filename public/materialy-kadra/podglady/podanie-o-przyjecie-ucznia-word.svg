@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1130" viewBox="0 0 800 1130" role="img" aria-label="Podgląd podania o przyjęcie ucznia do VPLO">
+  <rect width="800" height="1130" fill="#ffffff"/>
+  <text x="570" y="78" fill="#222222" font-family="Arial, sans-serif" font-size="16">Kraków, dnia .................................</text>
+  <text x="65" y="138" fill="#222222" font-family="Arial, sans-serif" font-size="16">Imię i nazwisko rodzica/opiekuna:</text>
+  <text x="65" y="165" fill="#222222" font-family="Arial, sans-serif" font-size="16">.................................................................</text>
+  <text x="445" y="250" fill="#222222" font-family="Arial, sans-serif" font-size="16">Dyrektor</text>
+  <text x="445" y="278" fill="#222222" font-family="Arial, sans-serif" font-size="16">V Prywatnego Liceum Ogólnokształcącego</text>
+  <text x="445" y="306" fill="#222222" font-family="Arial, sans-serif" font-size="16">w Krakowie im. Królowej Jadwigi</text>
+  <text x="445" y="334" fill="#222222" font-family="Arial, sans-serif" font-size="16">Pan Jerzy Andrzej Białkiewicz</text>
+  <text x="400" y="432" fill="#000000" font-family="Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle">PODANIE</text>
+  <text x="65" y="495" fill="#222222" font-family="Arial, sans-serif" font-size="16">Zwracam się z prośbą o przyjęcie mojego dziecka</text>
+  <line x1="100" y1="528" x2="700" y2="528" stroke="#333333" stroke-width="1"/>
+  <text x="400" y="552" fill="#555555" font-family="Arial, sans-serif" font-size="13" text-anchor="middle">imię i nazwisko kandydata / kandydatki</text>
+  <text x="65" y="617" fill="#222222" font-family="Arial, sans-serif" font-size="16">do V Prywatnego Liceum Ogólnokształcącego w Krakowie im. Królowej Jadwigi,</text>
+  <text x="65" y="645" fill="#222222" font-family="Arial, sans-serif" font-size="16">do klasy .......... w roku szkolnym ........../.......... .</text>
+  <text x="65" y="702" fill="#222222" font-family="Arial, sans-serif" font-size="16">Proszę o pozytywne rozpatrzenie mojego podania i umożliwienie rozpoczęcia</text>
+  <text x="65" y="730" fill="#222222" font-family="Arial, sans-serif" font-size="16">lub kontynuowania nauki w Państwa Liceum.</text>
+  <text x="65" y="802" fill="#222222" font-family="Arial, sans-serif" font-size="16">Dodatkowe informacje (opcjonalnie):</text>
+  <line x1="65" y1="832" x2="735" y2="832" stroke="#777777" stroke-width="1"/>
+  <line x1="65" y1="865" x2="735" y2="865" stroke="#777777" stroke-width="1"/>
+  <line x1="65" y1="898" x2="735" y2="898" stroke="#777777" stroke-width="1"/>
+  <text x="65" y="970" fill="#222222" font-family="Arial, sans-serif" font-size="16">Z wyrazami poważania</text>
+  <line x1="500" y1="1022" x2="735" y2="1022" stroke="#333333" stroke-width="1"/>
+  <text x="618" y="1047" fill="#555555" font-family="Arial, sans-serif" font-size="13" text-anchor="middle">podpis rodzica lub opiekuna prawnego</text>
+</svg>

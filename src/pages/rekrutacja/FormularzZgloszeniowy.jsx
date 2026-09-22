@@ -525,16 +525,20 @@ export default function FormularzZgloszeniowy() {
                         )}
 
                         <div className="application-submit-row">
-                            <button
-                                type="submit"
-                                className="application-submit-button"
-                                disabled={!SUBMISSION_ENABLED || isSubmitting}
-                                title="Wysyłka formularza jest obecnie niedostępna."
+                            <span
+                                className="application-submit-tooltip"
+                                data-tooltip={'Formularz online został tymczasowo wyłączony. W\u00A0sprawie rekrutacji należy kontaktować się bezpośrednio z sekretariatem liceum.'}
                             >
-                                {isSubmitting
-                                    ? 'Wysyłanie formularza…'
-                                    : 'Wyślij formularz'}
-                            </button>
+                                <button
+                                    type="submit"
+                                    className="application-submit-button"
+                                    disabled={!SUBMISSION_ENABLED || isSubmitting}
+                                >
+                                    {isSubmitting
+                                        ? 'Wysyłanie formularza…'
+                                        : 'Wyślij formularz'}
+                                </button>
+                            </span>
                         </div>
 
                     </form>

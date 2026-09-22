@@ -9,15 +9,16 @@ $app = Factory::getApplication();
 $wa = $this->getWebAssetManager();
 $wa->registerAndUseStyle('tpl.vplo-modern', 'media/templates/site/tpl_vplo_modern/css/template.css');
 $wa->registerAndUseScript('tpl.vplo-modern', 'media/templates/site/tpl_vplo_modern/js/template.js', [], ['defer' => true]);
-$wa->registerAndUseStyle('tpl.vplo-modern-navigation', 'media/templates/site/tpl_vplo_modern/css/navigation-1.4.0.css');
+$wa->registerAndUseStyle('tpl.vplo-modern-navigation', 'media/templates/site/tpl_vplo_modern/css/navigation-1.4.3.css');
 $wa->registerAndUseScript('tpl.vplo-modern-navigation', 'media/templates/site/tpl_vplo_modern/js/navigation-1.4.0.js', [], ['defer' => true]);
 $wa->registerAndUseScript('tpl.vplo-modern-navigation-fix', 'media/templates/site/tpl_vplo_modern/js/navigation-fix-1.4.1.js', [], ['defer' => true]);
 $wa->registerAndUseScript('tpl.vplo-modern-navigation-mobile-fix', 'media/templates/site/tpl_vplo_modern/js/navigation-mobile-fix-1.4.2.js', [], ['defer' => true]);
+$wa->registerAndUseScript('tpl.vplo-modern-navigation-icons', 'media/templates/site/tpl_vplo_modern/js/navigation-icons-1.4.3.js', [], ['defer' => true]);
 $wa->registerAndUseStyle('tpl.vplo-modern-home', 'media/templates/site/tpl_vplo_modern/css/home-1.5.0.css');
 $wa->registerAndUseStyle('tpl.vplo-modern-home-react', 'media/templates/site/tpl_vplo_modern/css/home-react-1.5.3.css');
 $wa->registerAndUseStyle('tpl.vplo-modern-home-layout', 'media/templates/site/tpl_vplo_modern/css/home-layout-1.5.4.css');
 $wa->registerAndUseStyle('tpl.vplo-modern-home-current', 'media/templates/site/tpl_vplo_modern/css/home-current-1.7.0.css');
-$wa->registerAndUseStyle('tpl.vplo-modern-header-footer', 'media/templates/site/tpl_vplo_modern/css/header-footer-1.7.0.css');
+$wa->registerAndUseStyle('tpl.vplo-modern-header-footer', 'media/templates/site/tpl_vplo_modern/css/header-footer-1.7.1.css');
 $wa->registerAndUseScript('tpl.vplo-modern-header-banner', 'media/templates/site/tpl_vplo_modern/js/header-banner-1.0.0.js', [], ['defer' => true]);
 $wa->registerAndUseScript('tpl.vplo-modern-home', 'media/templates/site/tpl_vplo_modern/js/home-values-1.1.2.js', [], ['defer' => true]);
 $wa->registerAndUseScript('tpl.vplo-modern-home-sections', 'media/templates/site/tpl_vplo_modern/js/home-sections-1.0.2.js', [], ['defer' => true]);
@@ -27,6 +28,8 @@ $defaultItem = $app->getMenu()->getDefault();
 $isHome = $activeItem && $defaultItem && (int) $activeItem->id === (int) $defaultItem->id;
 $hasHeaderBanner = $this->countModules('header-banner') > 0;
 $hasFooterContent = $this->countModules('footer-content') > 0;
+$hasContactContent = $this->countModules('contact-content') > 0;
+$isContact = $activeItem && $activeItem->alias === 'kontakt';
 $banner = $this->params->get('banner_image', 'images/smolensk-siedziba.png');
 if ($banner && !str_starts_with($banner, 'http') && !str_starts_with($banner, '/')) {
     $banner = $templateUri . '/' . ltrim($banner, '/');
@@ -69,7 +72,7 @@ if ($banner && !str_starts_with($banner, 'http') && !str_starts_with($banner, '/
       </nav>
       <nav id="mobile-navigation" class="mobile-panel" aria-label="Menu mobilne" hidden><div class="container mobile-panel-inner"></div></nav>
     </header>
-    <main class="site-main"><?php if ($isHome) { require __DIR__ . '/home.php'; } else { ?><jdoc:include type="message" /><jdoc:include type="component" /><?php } ?></main>
+    <main class="site-main"><?php if ($isHome) { require __DIR__ . '/home.php'; } elseif ($isContact && $hasContactContent) { ?><jdoc:include type="message" /><jdoc:include type="modules" name="contact-content" style="none" /><?php } else { ?><jdoc:include type="message" /><jdoc:include type="component" /><?php } ?></main>
     <footer class="site-footer">
       <?php if ($hasFooterContent) : ?>
         <jdoc:include type="modules" name="footer-content" style="none" />

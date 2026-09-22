@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+  <name>mod_vplo_contact</name>
+  <version>1.0.0</version>
+  <creationDate>2026-09-22</creationDate>
+  <author>DBLaboffice</author>
+  <license>GNU General Public License version 2 or later</license>
+  <description>VPLO — strona Kontakt</description>
+  <files>
+    <filename module="mod_vplo_contact">mod_vplo_contact.php</filename>
+    <filename>starter-data.json</filename>
+    <folder>tmpl</folder>
+  </files>
+  <media destination="mod_vplo_contact" folder="media">
+    <folder>css</folder>
+    <folder>images</folder>
+  </media>
+  <config>
+    <fields name="params">
+      <fieldset name="page" label="Nagłówek strony">
+        <field name="page_title" type="text" label="Tytuł" default="Kontakt" required="true" />
+        <field name="lead" type="text" label="Wprowadzenie" default="Lokalizacja, godziny pracy sekretariatu, mapa" required="true" />
+      </fieldset>
+      <fieldset name="office" label="Sekretariat">
+        <field name="office_label" type="text" label="Etykieta" default="Sekretariat" required="true" />
+        <field name="hours_title" type="text" label="Nagłówek godzin" default="Godziny przyjęć" required="true" />
+        <field name="hours" type="textarea" label="Godziny" rows="3" default="od poniedziałku do piątku&#10;w godzinach od 9.00 do 14.00." required="true" />
+        <field name="notice_title" type="text" label="Nagłówek informacji" default="Ważna informacja" required="true" />
+        <field name="notice" type="textarea" label="Treść informacji" rows="4" default="W szczególnych przypadkach termin przyjęcia może zostać ustalony indywidualnie po wcześniejszym kontakcie telefonicznym." required="true" />
+      </fieldset>
+      <fieldset name="contact" label="Dane kontaktowe">
+        <field name="address" type="text" label="Adres" default="ul. Smoleńsk 14, 31-112 Kraków" required="true" />
+        <field name="map_url" type="url" label="Kanoniczny URL Google Maps" required="true" />
+        <field name="phone_one" type="text" label="Telefon 1" default="+48 12 422 92 02" required="true" />
+        <field name="phone_two" type="text" label="Telefon 2" default="+48 881 009 790" required="true" />
+        <field name="email_one" type="email" label="E-mail 1" default="dyrektor@vp-lo.krakow.pl" required="true" />
+        <field name="email_two" type="email" label="E-mail 2" default="rekrutacja@vp-lo.krakow.pl" required="true" />
+      </fieldset>
+      <fieldset name="social" label="Media społecznościowe">
+        <field name="instagram_url" type="url" label="URL Instagram" default="https://www.instagram.com/vplo.krk/" required="true" />
+        <field name="instagram_qr" type="text" label="Plik QR Instagram" default="qr-instagram-vplo.png" required="true" />
+        <field name="instagram_alt" type="text" label="ALT QR Instagram" default="Kod QR do Instagrama szkoły" required="true" />
+        <field name="tiktok_url" type="url" label="URL TikTok" default="https://www.tiktok.com/@vplo.krakow" required="true" />
+        <field name="tiktok_qr" type="text" label="Plik QR TikTok" default="qr-tiktok-vplo.png" required="true" />
+        <field name="tiktok_alt" type="text" label="ALT QR TikTok" default="Kod QR do TikToka szkoły" required="true" />
+      </fieldset>
+      <fieldset name="map" label="Lokalizacja i mapa">
+        <field name="location_description" type="textarea" label="Opis lokalizacji" rows="6" required="true" />
+        <field name="map_embed_url" type="textarea" label="URL osadzonej mapy Google" description="Pełny adres https://www.google.com/maps/embed?..." filter="raw" rows="5" required="true" />
+        <field name="map_title" type="text" label="Tytuł osadzonej mapy" default="Mapa lokalizacji V Prywatnego Liceum Ogólnokształcącego" required="true" />
+        <field name="directions_url" type="url" label="URL trasy do szkoły" default="https://www.google.com/maps/dir/?api=1&amp;destination=Smole%C5%84sk+14%2C+31-112+Krak%C3%B3w" required="true" />
+      </fieldset>
+    </fields>
+  </config>
+</extension>

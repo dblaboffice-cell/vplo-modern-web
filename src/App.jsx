@@ -59,6 +59,7 @@ import {
 import Statut from './pages/szkola/dokumenty/Statut';
 import StandardyOM from './pages/szkola/dokumenty/StandardyOM';
 import MaterialyDlaKadry from './pages/szkola/MaterialyDlaKadry';
+import Sekretariat from './pages/szkola/Sekretariat';
 import educationPages, { educationMenuItem } from './pages/edukacja';
 import { educationRoutes } from './pages/edukacja/routes';
 import Aktualnosci from './Aktualnosci/Aktualnosci';
@@ -368,6 +369,7 @@ const pageContent = {
     ],
     layout: 'article',
     showHighlights: true,
+    showHighlightsTitle: false,
   },
 };
 
@@ -415,6 +417,8 @@ function App() {
               path="/materialy-kadra"
               element={<MaterialyDlaKadry />}
           />
+
+          <Route path="/szkola/sekretariat" element={<Sekretariat />} />
 
           {/* SZKOŁA */}
 
@@ -3399,7 +3403,7 @@ function Footer() {
         </div>
       </div>
       <div className="container footer-credit">
-        {/*© 2026 V Prywatne Liceum Ogólnokształcące w Krakowie · DBLaboffice*/}
+        {/*© 2026 V Prywatne Liceum Ogólnokształcące w Krakowie · DBLab*/}
       </div>
     </footer>
   );
