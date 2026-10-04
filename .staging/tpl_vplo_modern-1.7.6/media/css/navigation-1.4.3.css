@@ -1,0 +1,6 @@
+/* Dopasowanie ikon rozwijanej nawigacji do komponentów React DesktopNavItem/MobileNavItem. */
+.desktop-nav .vplo-top-item > .mod-menu__sub > li > .mod-menu__sub > li.parent > .mod-menu__heading::after { content: none; }
+.desktop-nav .vplo-top-item > .mod-menu__sub > li > .mod-menu__sub > li.parent > .mod-menu__heading:hover,
+.desktop-nav .vplo-top-item > .mod-menu__sub > li > .mod-menu__sub > li.parent:focus-within > .mod-menu__heading { background: linear-gradient(135deg, rgba(81, 108, 157, .12), rgba(212, 167, 51, .18)); color: var(--text); outline: none; }
+.desktop-nav .vplo-top-item > .mod-menu__sub > li > .mod-menu__sub > li.parent > .mod-menu__heading { cursor: pointer; }
+.vplo-submenu-chevron { width: 16px; height: 16px; flex: 0 0 16px; stroke: currentColor; }

@@ -13,7 +13,9 @@ $wa->registerAndUseStyle('tpl.vplo-modern-navigation', 'media/templates/site/tpl
 $wa->registerAndUseScript('tpl.vplo-modern-navigation', 'media/templates/site/tpl_vplo_modern/js/navigation-1.4.0.js', [], ['defer' => true]);
 $wa->registerAndUseScript('tpl.vplo-modern-navigation-fix', 'media/templates/site/tpl_vplo_modern/js/navigation-fix-1.4.1.js', [], ['defer' => true]);
 $wa->registerAndUseScript('tpl.vplo-modern-navigation-mobile-fix', 'media/templates/site/tpl_vplo_modern/js/navigation-mobile-fix-1.4.2.js', [], ['defer' => true]);
+$wa->registerAndUseScript('tpl.vplo-modern-navigation-school-group', 'media/templates/site/tpl_vplo_modern/js/navigation-school-group-1.0.1.js', [], ['defer' => true]);
 $wa->registerAndUseScript('tpl.vplo-modern-navigation-icons', 'media/templates/site/tpl_vplo_modern/js/navigation-icons-1.4.3.js', [], ['defer' => true]);
+$wa->registerAndUseStyle('tpl.vplo-modern-content-pages', 'media/templates/site/tpl_vplo_modern/css/content-pages-1.0.1.css');
 $wa->registerAndUseStyle('tpl.vplo-modern-home', 'media/templates/site/tpl_vplo_modern/css/home-1.5.0.css');
 $wa->registerAndUseStyle('tpl.vplo-modern-home-react', 'media/templates/site/tpl_vplo_modern/css/home-react-1.5.3.css');
 $wa->registerAndUseStyle('tpl.vplo-modern-home-layout', 'media/templates/site/tpl_vplo_modern/css/home-layout-1.5.4.css');

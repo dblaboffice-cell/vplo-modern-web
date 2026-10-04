@@ -418,7 +418,7 @@ function App() {
               element={<MaterialyDlaKadry />}
           />
 
-          <Route path="/szkola/sekretariat" element={<Sekretariat />} />
+          <Route path="/sekretariat" element={<Sekretariat />} />
 
           {/* SZKOŁA */}
 
@@ -621,6 +621,11 @@ function App() {
           <Route path="/aktualnosci/archiwalna/:slug" element={<ArchiwalnaAktualnosc />} />
 
           <Route
+              path="/aktualnosci/spacer-edukacyjny-szlakiem-krakowskiej-secesji"
+              element={<KrakowArtNouveauWalkArticle />}
+          />
+
+          <Route
               path="/aktualnosci/narodowe-czytanie-2026"
               element={<NationalReading2026Article />}
           />
@@ -737,8 +742,8 @@ function App() {
           />
 
           <Route
-              path="/szkola/idea-zalozycieli"
-              element={<IdeaZalozycieli />}
+              path="/galeria/spacer-krakowska-secesja-2026"
+              element={<GalleryPage initialAlbum="spacer-krakowska-secesja-2026" />}
           />
 
           {Object.keys(pageContent)
@@ -1509,6 +1514,13 @@ const schoolYearOpeningPhotos = [
   },
 ];
 
+const krakowArtNouveauWalkPhotos = [
+  {
+    src: `${import.meta.env.BASE_URL}galeria/spacer-krakowska-secesja-2026/01.jpg`,
+    alt: 'Spacer edukacyjny szlakiem krakowskiej secesji – zdjęcie 1',
+  },
+];
+
 function GalleryPage({ initialAlbum = null }) {
   const isScientificAlbum = initialAlbum === '64-sesja-naukowa-2026';
   const isGraduatesFarewellAlbum = initialAlbum === 'pozegnanie-maturzystow-2026';
@@ -1533,6 +1545,7 @@ function GalleryPage({ initialAlbum = null }) {
   const activeAlbumIsEnglishDay = albumOpen === 'dzien-jezyka-angielskiego-2026';
   const activeAlbumIsStudniowka = albumOpen === 'studniowka-2026';
   const activeAlbumIsSchoolYearOpening = albumOpen === 'rozpoczecie-roku-szkolnego-2025-2026';
+  const activeAlbumIsKrakowArtNouveauWalk = albumOpen === 'spacer-krakowska-secesja-2026';
   const activeAlbumPhotos = activeAlbumIsScientific
       ? scientificSessionPhotos
       : activeAlbumIsEnglishDay
@@ -1543,6 +1556,8 @@ function GalleryPage({ initialAlbum = null }) {
           ? graduatesFarewellPhotos
           : activeAlbumIsSchoolYearOpening
               ? schoolYearOpeningPhotos
+              : activeAlbumIsKrakowArtNouveauWalk
+                  ? krakowArtNouveauWalkPhotos
           : endOfSchoolYearPhotos;
   const activeAlbumCategory = activeAlbumIsScientific
       ? 'Projekty edukacyjne'
@@ -1565,6 +1580,8 @@ function GalleryPage({ initialAlbum = null }) {
           ? 'Pożegnanie maturzystów 2026'
           : activeAlbumIsSchoolYearOpening
               ? 'Rozpoczęcie roku szkolnego 2025/2026'
+              : activeAlbumIsKrakowArtNouveauWalk
+                  ? 'Spacer edukacyjny szlakiem krakowskiej secesji'
           : 'Zakończenie roku szkolnego 2025/2026';
 
   useEffect(() => {
@@ -1673,6 +1690,23 @@ function GalleryPage({ initialAlbum = null }) {
                           <span>Życie szkoły</span>
                           <h3>Rozpoczęcie roku szkolnego 2025/2026</h3>
                           <p>{schoolYearOpeningPhotos.length} zdjęcie</p>
+                        </div>
+                      </button>
+
+                      <button
+                          type="button"
+                          className="school-album-card"
+                          onClick={() => setAlbumOpen('spacer-krakowska-secesja-2026')}
+                      >
+                        <img
+                            src={krakowArtNouveauWalkPhotos[0].src}
+                            alt="Okładka albumu Spacer edukacyjny szlakiem krakowskiej secesji"
+                        />
+
+                        <div className="school-album-copy">
+                          <span>Życie szkoły</span>
+                          <h3>Spacer edukacyjny szlakiem krakowskiej secesji</h3>
+                          <p>{krakowArtNouveauWalkPhotos.length} zdjęcie</p>
                         </div>
                       </button>
                     </div>
@@ -2019,6 +2053,47 @@ function SchoolYearInaugurationArticle() {
               patronce szkoły — Królowej Jadwidze. Spotkanie było okazją do wspólnego
               rozpoczęcia kolejnego roku nauki i pracy.
             </p>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function KrakowArtNouveauWalkArticle() {
+  const articleImage = `${import.meta.env.BASE_URL}galeria/spacer-krakowska-secesja-2026/01.jpg`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Spacer edukacyjny szlakiem krakowskiej secesji</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-09-09">9 września 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <img
+              className="news-article-cover"
+              src={articleImage}
+              alt="Uczniowie podczas spaceru edukacyjnego szlakiem krakowskiej secesji"
+          />
+
+          <div className="news-article-body">
+            <p>
+              Uczniowie klas trzecich wzięli udział w spacerze edukacyjnym szlakiem
+              krakowskiej secesji. Podczas lekcji plenerowej mogli podziwiać dzieła Teodora
+              Talowskiego, Stanisława Wyspiańskiego i Franciszka Mączyńskiego — na ich podstawie
+              poznali cechy głównego nurtu architektury końca XIX w. Zwieńczeniem ich nauki była
+              karta pracy.
+            </p>
+
+            <Link to="/galeria/spacer-krakowska-secesja-2026" className="news-gallery-link">
+              Galeria zdjęć
+            </Link>
           </div>
         </div>
       </article>

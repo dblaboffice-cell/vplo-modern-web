@@ -1,0 +1,1 @@
+.home-media-layout{margin-top:-28px;display:grid;grid-template-columns:minmax(0,1fr) minmax(400px,.96fr);gap:12px;align-items:start}.home-media-layout>.home-video-section,.home-media-layout>.home-updates-strip{align-self:start}.home-media-layout>.home-updates-strip{width:100%}@media(max-width:1040px){.home-media-layout{margin-top:0;grid-template-columns:1fr;gap:18px}}

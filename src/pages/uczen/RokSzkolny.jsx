@@ -101,7 +101,7 @@ const importantDateGroups = [
     },
     {
         name: "65. Sesja Naukowa",
-        date: "20 grudnia 2026",
+        date: "grudzień 2026",
         educationalProject: true,
     },
     {
@@ -130,7 +130,7 @@ const importantDateGroups = [
     },
     {
         name: "Dzień Języka Angielskiego",
-        date: "20 marca 2027",
+        date: "marzec 2027",
         educationalProject: true,
     },
     {
@@ -157,7 +157,7 @@ const importantDateGroups = [
     },
     {
         name: "66. Sesja Naukowa",
-        date: "20 czerwca 2027",
+        date: "czerwiec 2027",
         educationalProject: true,
     },
     {

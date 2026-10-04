@@ -1,0 +1,331 @@
+/* Shared Joomla article primitives from the active React content-page styles.
+   Existing director-message classes remain as aliases for article ID 3. */
+
+/* Page header and optional eyebrow. */
+:is(.vplo-content-page, .director-message-page) {
+  width: 100%;
+}
+
+:is(.vplo-content-header, .director-message-header) {
+  max-width: 760px;
+  margin-bottom: 28px;
+}
+
+:is(.vplo-content-header, .director-message-header) h1 {
+  margin-top: 0;
+  font-size: clamp(2rem, 3.5vw, 3.6rem);
+  line-height: 1.02;
+}
+
+:is(.vplo-content-eyebrow, .director-message-eyebrow, .founders-idea-eyebrow) {
+  display: block;
+  margin-bottom: 8px;
+  color: #a27518;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Optional introduction card, used by other React content pages. */
+.vplo-content-page :is(.vplo-content-intro, .section-intro-card) {
+  margin: 22px 0 0;
+  padding: 17px 20px;
+  border: 1px solid rgba(151, 112, 25, 0.3);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(81, 108, 157, 0.07), rgba(212, 167, 51, 0.12));
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.65;
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(27, 47, 89, 0.07);
+}
+
+/* White content card and long-form text. */
+:is(.vplo-content-card, .director-message-content) {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 42px;
+  border: 1px solid rgba(23, 43, 86, 0.12);
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 14px 32px rgba(27, 47, 89, 0.08);
+}
+
+:is(.vplo-content-card, .director-message-content)::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+:is(.vplo-content-copy, .director-message-text),
+:is(.vplo-content-list, .director-message-values) {
+  color: #24365d;
+  font-family: "Times New Roman", Times, serif;
+}
+
+:is(.vplo-content-copy, .director-message-text) {
+  font-size: 1.2rem;
+  line-height: 1.85;
+}
+
+:is(.vplo-content-copy, .director-message-text) p {
+  margin: 0 0 22px;
+}
+
+:is(.vplo-content-list, .director-message-values) {
+  margin: 18px 0 0;
+  padding-left: 28px;
+}
+
+:is(.vplo-content-list, .director-message-values) li {
+  margin-bottom: 9px;
+}
+
+/* Reusable right-floated figure, image, and two-line caption. */
+:is(.vplo-content-figure--right, .director-message-photo) {
+  float: right;
+  width: 280px;
+  margin: 0 0 28px 38px;
+}
+
+:is(.vplo-content-figure, .director-message-photo, .founder-inline-figure) img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(23, 43, 86, 0.12);
+}
+
+:is(.vplo-content-figure, .director-message-photo) figcaption {
+  margin-top: 12px;
+  color: #172b56;
+  text-align: center;
+}
+
+:is(.vplo-content-figure, .director-message-photo) figcaption strong {
+  display: block;
+  font-size: 1rem;
+}
+
+:is(.vplo-content-figure, .director-message-photo) figcaption span {
+  display: block;
+  margin-top: 4px;
+  color: #a27518;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Article-specific fallback: Joomla stripped the role's span from this caption. */
+.director-message-photo figcaption:not(:has(span)) {
+  color: #a27518;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.director-message-photo figcaption:not(:has(span)) strong {
+  margin-bottom: 4px;
+  color: #172b56;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* Founders' article: the React two-column plaque and stacked founder cards. */
+.founders-idea-section .page-layout {
+  display: block;
+  width: 100%;
+}
+
+.founders-idea-section .page-header.founders-idea-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+  max-width: none;
+  margin: 0 0 32px;
+  box-sizing: border-box;
+}
+
+.founders-idea-copy {
+  min-width: 0;
+}
+
+.founders-idea-header h1 {
+  margin: 0 0 16px;
+  font-size: clamp(2rem, 3.5vw, 3.6rem);
+  line-height: 1.02;
+}
+
+.founders-idea-copy > .section-intro-card {
+  max-width: 760px;
+}
+
+.founders-plaque-header {
+  width: 400px;
+  max-width: 100%;
+  margin: 0;
+  justify-self: end;
+  align-self: center;
+}
+
+.founders-plaque-header img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.founders-main-card {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 18px 48px rgba(27, 47, 89, 0.1);
+}
+
+.founders-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.founder-card {
+  padding: 32px;
+  border: 1px solid rgba(21, 43, 84, 0.12);
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.founder-card-header {
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(21, 43, 84, 0.12);
+}
+
+.founder-card-header h3 {
+  margin: 0 0 6px;
+  color: #172b56;
+}
+
+.founder-card-header p {
+  margin: 0;
+  color: #a27518;
+  font-weight: 600;
+}
+
+.founder-card-content {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.18rem;
+}
+
+.founder-card-content::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.founder-card-content p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.founder-card-content ul {
+  margin: 20px 0 24px;
+  padding-left: 26px;
+}
+
+.founder-card-content li {
+  margin-bottom: 10px;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+.founder-inline-figure {
+  width: 260px;
+  margin: 4px 0 18px;
+}
+
+.founder-inline-figure-right {
+  float: right;
+  margin-left: 28px;
+}
+
+.founder-inline-figure-left {
+  float: left;
+  margin-right: 28px;
+}
+
+.founder-inline-figure figcaption {
+  margin-top: 10px;
+  color: #5e6f94;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  :is(.vplo-content-card, .director-message-content) {
+    padding: 28px 22px;
+  }
+
+  :is(.vplo-content-figure--right, .director-message-photo) {
+    float: none;
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto 28px;
+  }
+
+  :is(.vplo-content-copy, .director-message-text) {
+    font-size: 1.1rem;
+  }
+
+  .founders-idea-section .page-header.founders-idea-header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .founders-idea-copy {
+    width: 100%;
+    max-width: none;
+  }
+
+  .founders-plaque-header {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    justify-self: center;
+  }
+
+  .founder-card {
+    padding: 24px 20px;
+  }
+
+  :is(.founder-inline-figure, .founder-inline-figure-right, .founder-inline-figure-left) {
+    float: none;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .founders-main-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .vplo-content-page :is(.vplo-content-intro, .section-intro-card) {
+    padding: 15px 16px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}

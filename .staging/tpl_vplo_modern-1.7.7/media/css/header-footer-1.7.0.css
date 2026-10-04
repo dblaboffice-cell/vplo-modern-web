@@ -1,0 +1,19 @@
+/* Dosłowne reguły HeaderBanner i Footer z aktualnego src/styles.css. */
+.header-banner [hidden] { display: none; }
+.header-banner .header-banner-slide.is-active { animation: banner-fade .7s ease; }
+@keyframes banner-fade { from { opacity: .25; transform: scale(1.02); } to { opacity: 1; transform: scale(1); } }
+
+.footer-grid { display: grid; gap: 24px; grid-template-columns: 1.2fr .8fr; }
+.footer-title { margin-bottom: 10px; }
+.site-footer .footer-title { color: #f6d36f; }
+.site-footer p, .site-footer a { color: rgba(255, 255, 255, .78); }
+.footer-links { display: grid; gap: 8px; }
+.footer-credit { margin-top: 32px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, .18); color: rgba(255, 255, 255, .68); font-size: .82rem; text-align: center; }
+.footer-contact { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.footer-contact-item, .footer-location-link { display: inline-flex; align-items: center; gap: 9px; width: fit-content; text-decoration: none; }
+.footer-location-link { color: rgba(255, 255, 255, .78); }
+.footer-location-link svg { flex-shrink: 0; color: #f6d36f; }
+.footer-location-link:hover { color: #ffffff; text-decoration: underline; }
+
+/* Aktualny React zmienia układ stopki na jednokolumnowy już przy 1040 px. */
+@media (max-width: 1040px) { .footer-grid { grid-template-columns: 1fr; } }

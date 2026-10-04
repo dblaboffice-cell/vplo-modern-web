@@ -1,0 +1,128 @@
+/* React parity: pages/szkola/PrzeslanieDyrektora.jsx + szkola.css. */
+.director-message-page {
+  width: 100%;
+}
+
+.director-message-header {
+  max-width: 760px;
+  margin-bottom: 28px;
+}
+
+.director-message-eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: #a27518;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.director-message-header h1 {
+  margin-top: 0;
+  font-size: clamp(2rem, 3.5vw, 3.6rem);
+  line-height: 1.02;
+}
+
+.director-message-content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 42px;
+  border: 1px solid rgba(23, 43, 86, 0.12);
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 14px 32px rgba(27, 47, 89, 0.08);
+}
+
+.director-message-text,
+.director-message-values {
+  color: #24365d;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.director-message-text {
+  font-size: 1.2rem;
+  line-height: 1.85;
+}
+
+.director-message-text p {
+  margin: 0 0 22px;
+}
+
+.director-message-photo {
+  float: right;
+  width: 280px;
+  margin: 0 0 28px 38px;
+}
+
+.director-message-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(23, 43, 86, 0.12);
+}
+
+.director-message-photo figcaption {
+  margin-top: 12px;
+  color: #172b56;
+  text-align: center;
+}
+
+.director-message-photo figcaption strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.director-message-photo figcaption span {
+  display: block;
+  margin-top: 4px;
+  color: #a27518;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.director-message-photo figcaption:not(:has(span)) {
+  color: #a27518;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.director-message-photo figcaption:not(:has(span)) strong {
+  margin-bottom: 4px;
+  color: #172b56;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.director-message-values {
+  margin: 18px 0 0;
+  padding-left: 28px;
+}
+
+.director-message-values li {
+  margin-bottom: 9px;
+}
+
+.director-message-content::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+@media (max-width: 768px) {
+  .director-message-content {
+    padding: 28px 22px;
+  }
+
+  .director-message-photo {
+    float: none;
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto 28px;
+  }
+
+  .director-message-text {
+    font-size: 1.1rem;
+  }
+}

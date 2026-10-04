@@ -1531,6 +1531,7 @@ export const aktualnosciArchiwum = [
 const asset = (path) => `${import.meta.env.BASE_URL}${path}`;
 
 export const aktualnosciBiezace = [
+  { slug: 'spacer-edukacyjny-szlakiem-krakowskiej-secesji', title: 'Spacer edukacyjny szlakiem krakowskiej secesji', date: '2026-09-09', displayDate: '9 września 2026', place: 'Kraków', excerpt: 'Uczniowie klas trzecich poznawali krakowską secesję podczas lekcji plenerowej.', image: asset('galeria/spacer-krakowska-secesja-2026/01.jpg'), content: null },
   { slug: 'narodowe-czytanie-2026', title: 'Narodowe Czytanie', date: '2026-09-04', displayDate: '4 września 2026', place: 'Kraków', excerpt: 'Wspólna lektura „Dziadów” Adama Mickiewicza w ramach akcji Narodowe Czytanie.', image: asset('aktualnosci/narodowe-czytanie-2026.png'), content: null },
   { slug: 'inauguracja-roku-szkolnego-2026-2027', title: 'Inauguracja roku szkolnego 2026/2027', date: '2026-09-01', displayDate: '1 września 2026', place: 'Kraków', excerpt: 'Uroczyste rozpoczęcie nowego roku szkolnego, ślubowanie uczniów klas pierwszych oraz wykład o Królowej Jadwidze.', image: null, content: null },
   { slug: 'zakonczenie-roku-2025-2026', title: 'Zakończenie roku 2025/2026', date: '2026-06-26', displayDate: '26 czerwca 2026', place: 'Kraków', excerpt: '26 czerwca odbyło się uroczyste zakończenie roku szkolnego.', image: asset('galeria/zakonczenie-roku-szkolnego-2025-2026/01.webp'), content: null },
