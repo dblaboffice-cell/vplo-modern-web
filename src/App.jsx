@@ -2949,7 +2949,7 @@ function SchoolAnthemArticle() {
             <span>Aktualności</span>
             <h1>Szkoła do Hymnu 2026</h1>
             <div className="news-meta news-article-meta">
-              <span><CalendarDays size={18} /><time dateTime="2026-11-16">16 listopada 2026</time></span>
+              <span><CalendarDays size={18} /><time dateTime="2026-11-10">10 listopada 2026</time></span>
               <span><MapPin size={18} />Kraków</span>
             </div>
           </header>
@@ -3022,7 +3022,7 @@ function IndependenceDay2026Article() {
             <span>Aktualności</span>
             <h1>Relacja z obchodów Dnia Niepodległości</h1>
             <div className="news-meta news-article-meta">
-              <span><CalendarDays size={18} /><time dateTime="2026-11-10">10 listopada 2026</time></span>
+              <span><CalendarDays size={18} /><time dateTime="2026-11-16">16 listopada 2026</time></span>
               <span><MapPin size={18} />Kraków</span>
             </div>
           </header>
