@@ -18,8 +18,10 @@ export default function ArchiwumAktualnosci({ currentSchoolYear: currentSchoolYe
       <div className="news-archive-years">
         {archiveYears.map((year) => (
           <Link key={year} to={`/aktualnosci/archiwum/${year.replace('/', '-')}`} className="news-archive-year">
-            <CalendarDays size={24} aria-hidden="true" />
-            <span>Rok szkolny</span>
+            <span className="news-archive-year-heading">
+              <CalendarDays size={24} aria-hidden="true" />
+              <span>Rok szkolny</span>
+            </span>
             <strong>{year}</strong>
           </Link>
         ))}

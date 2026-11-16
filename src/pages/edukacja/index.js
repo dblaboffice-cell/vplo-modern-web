@@ -289,6 +289,7 @@ export const educationMenuItem = {
       group: 'Projekty edukacyjne',
       items: [
         { label: 'Dzień Języka Angielskiego', path: '/edukacja/dzien-jezyka-angielskiego' },
+        { label: 'English Corner', path: '/edukacja/english-corner' },
         { label: 'Sesje Naukowe', path: '/edukacja/sesje-naukowe' },
         { label: 'Szkolna Akademia Filmowa', path: '/edukacja/akademia-filmowa' },
       ],

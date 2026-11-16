@@ -1,4 +1,29 @@
 (() => {
+  const header = document.querySelector('.site-header-subpage');
+
+  if (header) {
+    let animationFrameId = null;
+    let previousState = null;
+
+    const updateHeaderState = () => {
+      if (animationFrameId !== null) return;
+
+      animationFrameId = window.requestAnimationFrame(() => {
+        const isScrolled = window.scrollY > 0;
+
+        if (isScrolled !== previousState) {
+          previousState = isScrolled;
+          header.classList.toggle('is-subpage-scrolled', isScrolled);
+        }
+
+        animationFrameId = null;
+      });
+    };
+
+    updateHeaderState();
+    window.addEventListener('scroll', updateHeaderState, { passive: true });
+  }
+
   document.querySelectorAll('[data-vplo-header-banner]').forEach((banner) => {
     const slides = [...banner.querySelectorAll('.header-banner-slide')];
     if (slides.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

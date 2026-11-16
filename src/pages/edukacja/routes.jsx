@@ -3,6 +3,7 @@ import { PrzedmiotyRozszerzone, PrzedmiotRozszerzony } from './PrzedmiotyRozszer
 import ZajeciaSportoweWf from './ZajeciaSportoweWf';
 import JezykHiszpanski from './JezykHiszpanski';
 import GrupyKlasowe from './GrupyKlasowe';
+import EnglishCorner from './EnglishCorner';
 
 function ExtendedSubjectRoute() {
   const { subjectId } = useParams();
@@ -10,6 +11,7 @@ function ExtendedSubjectRoute() {
 }
 
 export const educationRoutes = [
+  { path: '/edukacja/english-corner', element: <EnglishCorner /> },
   { path: '/edukacja/grupy-klasowe', element: <GrupyKlasowe /> },
   { path: '/edukacja/zajecia-sportowe-wf', element: <ZajeciaSportoweWf /> },
   { path: '/edukacja/jezyk-hiszpanski', element: <JezykHiszpanski /> },

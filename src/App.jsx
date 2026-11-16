@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
+import { Link, NavLink, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import {
   CalendarDays,
+  CircleCheckBig,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
@@ -13,6 +14,7 @@ import {
   Menu,
   Phone,
   School,
+  ShieldCheck,
   Trophy,
   Users,
   X,
@@ -373,9 +375,31 @@ const pageContent = {
   },
 };
 
+// Zmień na false, aby natychmiast wyłączyć tryb żałoby po ponownym opublikowaniu strony.
+const NATIONAL_MOURNING_ENABLED = true;
+// Tryb jest aktywny od razu, do końca 11 listopada 2026 według czasu polskiego.
+const NATIONAL_MOURNING_END = new Date('2026-11-12T00:00:00+01:00').getTime();
+const isNationalMourningTime = () => Date.now() < NATIONAL_MOURNING_END;
+
 function App() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isMourningTime, setIsMourningTime] = useState(isNationalMourningTime);
+  const showMourningOverlay = NATIONAL_MOURNING_ENABLED && location.pathname === '/' && isMourningTime;
+
+  useEffect(() => {
+    if (!NATIONAL_MOURNING_ENABLED) return;
+
+    const updateMourningTime = () => setIsMourningTime(isNationalMourningTime());
+    updateMourningTime();
+    const endTimeoutId = window.setTimeout(updateMourningTime, Math.max(0, NATIONAL_MOURNING_END - Date.now()));
+    document.addEventListener('visibilitychange', updateMourningTime);
+
+    return () => {
+      window.clearTimeout(endTimeoutId);
+      document.removeEventListener('visibilitychange', updateMourningTime);
+    };
+  }, []);
 
   const currentPage = useMemo(
     () => pageContent[location.pathname] || pageContent['/aktualnosci'],
@@ -626,6 +650,81 @@ function App() {
           />
 
           <Route
+              path="/aktualnosci/wyjscie-na-wystawe-andy-warhola"
+              element={<AndyWarholExhibitionArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/wymiana-miedzynarodowa-z-holenderska-szkola-z-laren"
+              element={<NetherlandsExchangeArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/english-corner-nowa-zakladka"
+              element={<EnglishCornerNewsArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/nowy-artykul-w-english-corner"
+              element={<EnglishCornerMulticulturalismArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/zaloba-narodowa-po-tragicznych-wydarzeniach-w-krakowie"
+              element={<NationalMourningKrakowArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/konferencja-dyrektorow-2026"
+              element={<PrincipalsConferenceArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/szkola-do-hymnu-2026"
+              element={<SchoolAnthemArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/relacja-z-obchodow-dnia-niepodleglosci-2026"
+              element={<IndependenceDay2026Article />}
+          />
+
+          <Route
+              path="/aktualnosci/lekcja-z-krolowa-jadwiga-i-ai"
+              element={<QueenJadwigaAiLessonArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/wycieczka-integracyjna-nad-jezioro-czorsztynskie"
+              element={<CzorsztynIntegrationTripArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/olimpiady-przedmiotowe-2026"
+              element={<SubjectOlympiadsArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/probna-ewakuacja-szkoly-2026"
+              element={<SchoolEvacuationArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/auschwitz-birkenau-lekcja-historii-i-czlowieczenstwa"
+              element={<AuschwitzBirkenauArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/praga-pelna-odkryc-2026"
+              element={<PragueMaturaTripArticle />}
+          />
+
+          <Route
+              path="/aktualnosci/wspomnienie-roku-2025-2026"
+              element={<SchoolYearMemoriesArticle />}
+          />
+
+          <Route
               path="/aktualnosci/narodowe-czytanie-2026"
               element={<NationalReading2026Article />}
           />
@@ -746,6 +845,26 @@ function App() {
               element={<GalleryPage initialAlbum="spacer-krakowska-secesja-2026" />}
           />
 
+          <Route
+              path="/galeria/inauguracja-roku-szkolnego-2026-2027"
+              element={<GalleryPage initialAlbum="inauguracja-roku-szkolnego-2026-2027" />}
+          />
+
+          <Route
+              path="/galeria/wymiana-holandia-2026"
+              element={<GalleryPage initialAlbum="wymiana-holandia-2026" />}
+          />
+
+          <Route
+              path="/galeria/wycieczka-integracyjna-czorsztyn-2026"
+              element={<GalleryPage initialAlbum="wycieczka-integracyjna-czorsztyn-2026" />}
+          />
+
+          <Route
+              path="/galeria/wycieczka-praga-2026"
+              element={<GalleryPage initialAlbum="wycieczka-praga-2026" />}
+          />
+
           {Object.keys(pageContent)
               .filter(
                   (path) => !['/aktualnosci', '/galeria'].includes(path)
@@ -765,6 +884,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      {showMourningOverlay && <div className="national-mourning-overlay" aria-hidden="true" />}
     </div>
   );
 }
@@ -1515,22 +1635,73 @@ const schoolYearOpeningPhotos = [
 ];
 
 const krakowArtNouveauWalkPhotos = [
-  {
-    src: `${import.meta.env.BASE_URL}galeria/spacer-krakowska-secesja-2026/01.jpg`,
-    alt: 'Spacer edukacyjny szlakiem krakowskiej secesji – zdjęcie 1',
-  },
-];
+  '01.jpg',
+  'spacer-sesja-2026-001.jpg',
+  'spacer-sesja-2026-002.jpg',
+  'spacer-sesja-2026-004.jpg',
+  'spacer-sesja-2026-005.jpg',
+  'spacer-sesja-2026-006.jpg',
+  'spacer-sesja-2026-007.jpg',
+].map((filename, index) => ({
+  src: `${import.meta.env.BASE_URL}galeria/spacer-krakowska-secesja-2026/${filename}`,
+  alt: `Spacer edukacyjny szlakiem krakowskiej secesji – zdjęcie ${index + 1}`,
+}));
+
+const schoolYearInauguration2026Photos = Array.from({ length: 11 }, (_, index) => {
+  const number = String(index + 1).padStart(2, '0');
+
+  return {
+    src: `${import.meta.env.BASE_URL}galeria/inauguracja-roku-szkolnego-2026-2027/Image${number}.jpg`,
+    alt: `Inauguracja roku szkolnego 2026/2027 – zdjęcie ${index + 1}`,
+  };
+});
+
+const netherlandsExchangePhotos = [
+  ...Array.from(
+      { length: 38 },
+      (_, index) => `Wymiana X 2026 ${String(index + 1).padStart(2, '0')}.jpg`
+  ),
+].map((filename, index) => ({
+  src: `${import.meta.env.BASE_URL}galeria/wymiana-holandia-2026/${filename}`,
+  alt: `Wymiana międzynarodowa z holenderską szkołą z Laren – zdjęcie ${index + 1}`,
+}));
+
+const czorsztynIntegrationTripPhotos = Array.from({ length: 51 }, (_, index) => index + 1)
+  .filter((number) => ![33, 38].includes(number))
+  .map((photoNumber) => {
+  const number = String(photoNumber).padStart(2, '0');
+
+  return {
+    src: `${import.meta.env.BASE_URL}galeria/wycieczka-integracyjna-czorsztyn-2026/Wycieczka_integracyjna_19-20_października_2026_${number}.jpg`,
+    alt: `Wycieczka integracyjna nad Jezioro Czorsztyńskie – zdjęcie ${photoNumber}`,
+  };
+});
+
+const pragueMaturaTripPhotos = Array.from({ length: 39 }, (_, index) => index + 1)
+  .filter((number) => number !== 25)
+  .map((photoNumber) => {
+  const number = String(photoNumber).padStart(2, '0');
+
+  return {
+    src: `${import.meta.env.BASE_URL}galeria/wycieczka-praga-2026/Praga_wycieczka_21-22X2026_${number}.jpg`,
+    alt: `Praga pełna odkryć – zdjęcie ${photoNumber}`,
+  };
+});
 
 function GalleryPage({ initialAlbum = null }) {
+  const navigate = useNavigate();
   const isScientificAlbum = initialAlbum === '64-sesja-naukowa-2026';
   const isGraduatesFarewellAlbum = initialAlbum === 'pozegnanie-maturzystow-2026';
   const isEnglishDayAlbum = initialAlbum === 'dzien-jezyka-angielskiego-2026';
+  const isNetherlandsExchangeAlbum = initialAlbum === 'wymiana-holandia-2026';
   const isStudniowkaAlbum = initialAlbum === 'studniowka-2026';
   const isSchoolYearOpeningAlbum = initialAlbum === 'rozpoczecie-roku-szkolnego-2025-2026';
   const [activeCategory, setActiveCategory] = useState(
       isScientificAlbum
           ? 'Projekty edukacyjne'
           : isEnglishDayAlbum
+              ? 'Projekty edukacyjne'
+          : isNetherlandsExchangeAlbum
               ? 'Projekty edukacyjne'
           : isStudniowkaAlbum
               ? 'Roczniki'
@@ -1546,6 +1717,10 @@ function GalleryPage({ initialAlbum = null }) {
   const activeAlbumIsStudniowka = albumOpen === 'studniowka-2026';
   const activeAlbumIsSchoolYearOpening = albumOpen === 'rozpoczecie-roku-szkolnego-2025-2026';
   const activeAlbumIsKrakowArtNouveauWalk = albumOpen === 'spacer-krakowska-secesja-2026';
+  const activeAlbumIsSchoolYearInauguration2026 = albumOpen === 'inauguracja-roku-szkolnego-2026-2027';
+  const activeAlbumIsNetherlandsExchange = albumOpen === 'wymiana-holandia-2026';
+  const activeAlbumIsCzorsztynIntegrationTrip = albumOpen === 'wycieczka-integracyjna-czorsztyn-2026';
+  const activeAlbumIsPragueMaturaTrip = albumOpen === 'wycieczka-praga-2026';
   const activeAlbumPhotos = activeAlbumIsScientific
       ? scientificSessionPhotos
       : activeAlbumIsEnglishDay
@@ -1558,10 +1733,20 @@ function GalleryPage({ initialAlbum = null }) {
               ? schoolYearOpeningPhotos
               : activeAlbumIsKrakowArtNouveauWalk
                   ? krakowArtNouveauWalkPhotos
+                  : activeAlbumIsSchoolYearInauguration2026
+                      ? schoolYearInauguration2026Photos
+                      : activeAlbumIsNetherlandsExchange
+                          ? netherlandsExchangePhotos
+                          : activeAlbumIsCzorsztynIntegrationTrip
+                              ? czorsztynIntegrationTripPhotos
+                              : activeAlbumIsPragueMaturaTrip
+                                  ? pragueMaturaTripPhotos
           : endOfSchoolYearPhotos;
   const activeAlbumCategory = activeAlbumIsScientific
       ? 'Projekty edukacyjne'
       : activeAlbumIsEnglishDay
+          ? 'Projekty edukacyjne'
+      : activeAlbumIsNetherlandsExchange
           ? 'Projekty edukacyjne'
       : activeAlbumIsStudniowka
           ? 'Roczniki'
@@ -1582,13 +1767,30 @@ function GalleryPage({ initialAlbum = null }) {
               ? 'Rozpoczęcie roku szkolnego 2025/2026'
               : activeAlbumIsKrakowArtNouveauWalk
                   ? 'Spacer edukacyjny szlakiem krakowskiej secesji'
+                  : activeAlbumIsSchoolYearInauguration2026
+                      ? 'Inauguracja roku szkolnego 2026/2027'
+                      : activeAlbumIsNetherlandsExchange
+                          ? 'Wymiana międzynarodowa z holenderską szkołą z Laren'
+                          : activeAlbumIsCzorsztynIntegrationTrip
+                              ? 'Wycieczka integracyjna nad Jezioro Czorsztyńskie'
+                              : activeAlbumIsPragueMaturaTrip
+                                  ? 'Praga pełna odkryć – trzy dni maturzystów w Czechach'
           : 'Zakończenie roku szkolnego 2025/2026';
+  const activeAlbumNewsPath = activeAlbumIsSchoolYearInauguration2026
+      ? '/aktualnosci/inauguracja-roku-szkolnego-2026-2027'
+      : activeAlbumIsCzorsztynIntegrationTrip
+          ? '/aktualnosci/wycieczka-integracyjna-nad-jezioro-czorsztynskie'
+          : activeAlbumIsPragueMaturaTrip
+              ? '/aktualnosci/praga-pelna-odkryc-2026'
+              : null;
 
   useEffect(() => {
     setActiveCategory(
         initialAlbum === '64-sesja-naukowa-2026'
             ? 'Projekty edukacyjne'
             : initialAlbum === 'dzien-jezyka-angielskiego-2026'
+                ? 'Projekty edukacyjne'
+            : initialAlbum === 'wymiana-holandia-2026'
                 ? 'Projekty edukacyjne'
             : initialAlbum === 'studniowka-2026'
                 ? 'Roczniki'
@@ -1662,7 +1864,75 @@ function GalleryPage({ initialAlbum = null }) {
                       <button
                           type="button"
                           className="school-album-card"
-                          onClick={() => setAlbumOpen('zakonczenie-roku-2025-2026')}
+                          onClick={() => navigate('/galeria/wycieczka-praga-2026')}
+                      >
+                        <img
+                            src={pragueMaturaTripPhotos[2].src}
+                            alt="Okładka albumu Praga pełna odkryć"
+                        />
+
+                        <div className="school-album-copy">
+                          <span>Życie szkoły</span>
+                          <h3>Praga pełna odkryć – trzy dni maturzystów w Czechach</h3>
+                          <p>{pragueMaturaTripPhotos.length} zdjęć</p>
+                        </div>
+                      </button>
+
+                      <button
+                          type="button"
+                          className="school-album-card"
+                          onClick={() => navigate('/galeria/wycieczka-integracyjna-czorsztyn-2026')}
+                      >
+                        <img
+                            src={`${import.meta.env.BASE_URL}galeria/wycieczka-integracyjna-czorsztyn-2026/Wycieczka_integracyjna_19-20_października_2026_04.jpg`}
+                            alt="Okładka albumu Wycieczka integracyjna nad Jezioro Czorsztyńskie"
+                        />
+
+                        <div className="school-album-copy">
+                          <span>Życie szkoły</span>
+                          <h3>Wycieczka integracyjna nad Jezioro Czorsztyńskie</h3>
+                          <p>{czorsztynIntegrationTripPhotos.length} zdjęć</p>
+                        </div>
+                      </button>
+
+                      <button
+                          type="button"
+                          className="school-album-card"
+                          onClick={() => navigate('/galeria/spacer-krakowska-secesja-2026')}
+                      >
+                        <img
+                            src={krakowArtNouveauWalkPhotos[0].src}
+                            alt="Okładka albumu Spacer edukacyjny szlakiem krakowskiej secesji"
+                        />
+
+                        <div className="school-album-copy">
+                          <span>Życie szkoły</span>
+                          <h3>Spacer edukacyjny szlakiem krakowskiej secesji</h3>
+                          <p>{krakowArtNouveauWalkPhotos.length} zdjęć</p>
+                        </div>
+                      </button>
+
+                      <button
+                          type="button"
+                          className="school-album-card"
+                          onClick={() => navigate('/galeria/inauguracja-roku-szkolnego-2026-2027')}
+                      >
+                        <img
+                            src={schoolYearInauguration2026Photos[0].src}
+                            alt="Okładka albumu Inauguracja roku szkolnego 2026/2027"
+                        />
+
+                        <div className="school-album-copy">
+                          <span>Życie szkoły</span>
+                          <h3>Inauguracja roku szkolnego 2026/2027</h3>
+                          <p>{schoolYearInauguration2026Photos.length} zdjęć</p>
+                        </div>
+                      </button>
+
+                      <button
+                          type="button"
+                          className="school-album-card"
+                          onClick={() => navigate('/galeria/zakonczenie-roku-szkolnego-2025-2026')}
                       >
                         <img
                             src={endOfSchoolYearPhotos[0].src}
@@ -1679,7 +1949,7 @@ function GalleryPage({ initialAlbum = null }) {
                       <button
                           type="button"
                           className="school-album-card"
-                          onClick={() => setAlbumOpen('rozpoczecie-roku-szkolnego-2025-2026')}
+                          onClick={() => navigate('/galeria/rozpoczecie-roku-szkolnego-2025-2026')}
                       >
                         <img
                             src={schoolYearOpeningPhotos[0].src}
@@ -1693,22 +1963,6 @@ function GalleryPage({ initialAlbum = null }) {
                         </div>
                       </button>
 
-                      <button
-                          type="button"
-                          className="school-album-card"
-                          onClick={() => setAlbumOpen('spacer-krakowska-secesja-2026')}
-                      >
-                        <img
-                            src={krakowArtNouveauWalkPhotos[0].src}
-                            alt="Okładka albumu Spacer edukacyjny szlakiem krakowskiej secesji"
-                        />
-
-                        <div className="school-album-copy">
-                          <span>Życie szkoły</span>
-                          <h3>Spacer edukacyjny szlakiem krakowskiej secesji</h3>
-                          <p>{krakowArtNouveauWalkPhotos.length} zdjęcie</p>
-                        </div>
-                      </button>
                     </div>
                 ) : activeCategory === 'Projekty edukacyjne' ? (
                     <div className="gallery-albums-section">
@@ -1717,7 +1971,24 @@ function GalleryPage({ initialAlbum = null }) {
                       <button
                           type="button"
                           className="school-album-card"
-                          onClick={() => setAlbumOpen('64-sesja-naukowa-2026')}
+                          onClick={() => navigate('/galeria/wymiana-holandia-2026')}
+                      >
+                        <img
+                            src={`${import.meta.env.BASE_URL}galeria/wymiana-holandia-2026/Wymiana X 2026 17.jpg`}
+                            alt="Okładka albumu Wymiana międzynarodowa z holenderską szkołą z Laren"
+                        />
+
+                        <div className="school-album-copy">
+                          <span>Projekty edukacyjne</span>
+                          <h3>Wymiana międzynarodowa z holenderską szkołą z Laren</h3>
+                          <p>{netherlandsExchangePhotos.length} zdjęć</p>
+                        </div>
+                      </button>
+
+                      <button
+                          type="button"
+                          className="school-album-card"
+                          onClick={() => navigate('/galeria/64-sesja-naukowa-2026')}
                       >
                         <img
                             src={scientificSessionPhotos[0].src}
@@ -1734,7 +2005,7 @@ function GalleryPage({ initialAlbum = null }) {
                       <button
                           type="button"
                           className="school-album-card"
-                          onClick={() => setAlbumOpen('dzien-jezyka-angielskiego-2026')}
+                          onClick={() => navigate('/galeria/dzien-jezyka-angielskiego-2026')}
                       >
                         <img
                             src={englishDayPhotos[0].src}
@@ -1755,7 +2026,7 @@ function GalleryPage({ initialAlbum = null }) {
                       <button
                           type="button"
                           className="school-album-card"
-                          onClick={() => setAlbumOpen('pozegnanie-maturzystow-2026')}
+                          onClick={() => navigate('/galeria/pozegnanie-maturzystow-2026')}
                       >
                         <img
                             src={graduatesFarewellPhotos[0].src}
@@ -1772,7 +2043,7 @@ function GalleryPage({ initialAlbum = null }) {
                       <button
                           type="button"
                           className="school-album-card"
-                          onClick={() => setAlbumOpen('studniowka-2026')}
+                          onClick={() => navigate('/galeria/studniowka-2026')}
                       >
                         <img src={studniowkaPhotos[0].src} alt="Okładka albumu Studniówka 2026" />
 
@@ -1794,7 +2065,7 @@ function GalleryPage({ initialAlbum = null }) {
                 <button
                     type="button"
                     className="album-back-button"
-                    onClick={() => setAlbumOpen(null)}
+                    onClick={() => navigate('/galeria')}
                 >
                   ← Powrót do albumów
                 </button>
@@ -1803,6 +2074,11 @@ function GalleryPage({ initialAlbum = null }) {
                   <span>{activeAlbumCategory}</span>
                   <h2>{activeAlbumTitle}</h2>
                   <p>{activeAlbumPhotos.length} zdjęć</p>
+                  {activeAlbumNewsPath && (
+                      <Link to={activeAlbumNewsPath} className="album-news-link">
+                        ← Powrót do aktualności
+                      </Link>
+                  )}
                 </div>
 
                 <div className="school-photo-grid">
@@ -2028,6 +2304,8 @@ function EndOfSchoolYearArticle() {
 }
 
 function SchoolYearInaugurationArticle() {
+  const galleryPath = `${import.meta.env.BASE_URL}galeria/inauguracja-roku-szkolnego-2026-2027`;
+
   return (
       <article className="news-article-page">
         <div className="container news-article-container">
@@ -2052,6 +2330,928 @@ function SchoolYearInaugurationArticle() {
               Uczestnicy uroczystości wysłuchali również interesującego wykładu poświęconego
               patronce szkoły — Królowej Jadwidze. Spotkanie było okazją do wspólnego
               rozpoczęcia kolejnego roku nauki i pracy.
+            </p>
+
+            <div className="news-article-image-pair">
+              <img
+                  src={`${galleryPath}/Image11.jpg`}
+                  alt="Inauguracja roku szkolnego 2026/2027 – wystąpienie w auli"
+              />
+              <img
+                  src={`${galleryPath}/Image02.jpg`}
+                  alt="Inauguracja roku szkolnego 2026/2027 – uroczystość w kościele"
+              />
+            </div>
+
+            <Link to="/galeria/inauguracja-roku-szkolnego-2026-2027" className="news-gallery-link">
+              Galeria zdjęć
+            </Link>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function SchoolYearMemoriesArticle() {
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Wspomnienie roku 2025/2026</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-09-03">3 września 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <div className="news-article-body">
+            <p>
+              <strong>Nowy rok szkolny startuje, ale zanim zanurzymy się w świeże plany i pomysły,
+              wracamy na chwilę do tego, co działo się wcześniej.</strong>
+            </p>
+            <p>
+              A działo się sporo: projekty, wyjazdy, konkursy, małe i duże sukcesy, codzienne
+              szkolne historie, które tworzyły wyjątkową atmosferę naszej szkoły.
+            </p>
+            <div className="news-film-frame">
+              <span className="news-film-frame-label">Wspomnienie roku 2025/2026</span>
+              <video controls preload="metadata" className="news-film-frame-video">
+                <source
+                    src={`${import.meta.env.BASE_URL}wideo/wspomnienie-roku-2025-2026.mp4`}
+                    type="video/mp4"
+                />
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+              </video>
+            </div>
+            <p>
+              Dziś przypominamy sobie te momenty — bo to one pokazują, jaką drogę już
+              przeszliśmy i jak wiele możemy osiągnąć w kolejnych miesiącach.
+              <strong> Zaczynamy nowy rok z energią, doświadczeniem i dobrymi wspomnieniami
+              w kieszeni.</strong>
+            </p>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function CzorsztynIntegrationTripArticle() {
+  const galleryPath = `${import.meta.env.BASE_URL}galeria/wycieczka-integracyjna-czorsztyn-2026`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Wycieczka integracyjna nad Jezioro Czorsztyńskie</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-10-21">19–21 października 2026</time></span>
+              <span><MapPin size={18} />Jezioro Czorsztyńskie</span>
+            </div>
+          </header>
+
+          <p className="czorsztyn-article-subtitle">Jesienna integracja nad Jeziorem Czorsztyńskim</p>
+
+          <img
+              className="news-article-cover"
+              src={`${galleryPath}/Wycieczka_integracyjna_19-20_października_2026_04.jpg`}
+              alt="Wycieczka integracyjna nad Jezioro Czorsztyńskie"
+          />
+
+          <div className="news-article-body">
+            <p>
+              W dniach 19–21 października uczniowie klas pierwszych i drugich uczestniczyli
+              w wycieczce integracyjnej nad Jezioro Czorsztyńskie. Wspólne zabawy i ognisko
+              sprzyjały budowaniu relacji i lepszemu poznawaniu się. Uczniowie mieli również
+              okazję podziwiać piękno jesiennej przyrody podczas spacerów nad jeziorem oraz
+              wędrówki szlakiem na Kudowski Wierch.
+            </p>
+
+            <div className="czorsztyn-article-photo-strip">
+              <img
+                  src={`${galleryPath}/Wycieczka_integracyjna_19-20_października_2026_47.jpg`}
+                  alt="Uczniowie podczas wycieczki integracyjnej – zdjęcie 47"
+              />
+              <img
+                  src={`${galleryPath}/Wycieczka_integracyjna_19-20_października_2026_51.jpg`}
+                  alt="Uczniowie podczas wycieczki integracyjnej – zdjęcie 51"
+              />
+              <img
+                  src={`${galleryPath}/Wycieczka_integracyjna_19-20_października_2026_02.jpg`}
+                  alt="Uczniowie podczas wycieczki integracyjnej – zdjęcie 2"
+              />
+            </div>
+
+            <div className="news-film-frame czorsztyn-article-video">
+              <span className="news-film-frame-label">Jak było nad Jeziorem Czorsztyńskim?</span>
+              <video controls preload="metadata" className="news-film-frame-video">
+                <source src={`${galleryPath}/wycieczka-integracyjna-czorsztyn-2026.mp4`} type="video/mp4" />
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+              </video>
+            </div>
+
+            <Link to="/galeria/wycieczka-integracyjna-czorsztyn-2026" className="news-gallery-link">
+              Galeria zdjęć
+            </Link>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function PragueMaturaTripArticle() {
+  const galleryPath = `${import.meta.env.BASE_URL}galeria/wycieczka-praga-2026`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Praga pełna odkryć – trzy dni maturzystów w Czechach</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-10-23">21–23 października 2026</time></span>
+              <span><MapPin size={18} />Praga, Czechy</span>
+            </div>
+          </header>
+
+          <div className="prague-article-hero-pair">
+            <img
+                src={`${galleryPath}/Praga_wycieczka_21-22X2026_03.jpg`}
+                alt="Maturzyści podczas wycieczki do Pragi – zdjęcie 3"
+            />
+            <img
+                src={`${galleryPath}/Praga_wycieczka_21-22X2026_17.jpg`}
+                alt="Maturzyści podczas wycieczki do Pragi – zdjęcie 17"
+            />
+          </div>
+
+          <div className="news-article-body">
+            <p>
+              W dniach 21-23.10 odbyła się wycieczka klas maturalnych do Pragi. Program obfitował
+              w elementy rekreacyjne i edukacyjne. Pierwszego dnia po drodze do stolicy Czech
+              uczniowie spacerowali po krainie Morawski Kras, gdzie zobaczyli przepaść Macochę oraz
+              jaskinię Punkevni. Popołudnie to spacer po praskiej starówce i podziwianie zegara Orloj.
+            </p>
+            <p>
+              W kolejnych intensywnych dniach zwiedzono Hradczany wraz z Katedrą św. Wita, Złotą
+              uliczką, szeregiem kościołów i wnętrz wystawowych. Nie zabrakło spotkań ze sztuką
+              nowoczesną czy klasyczną. Przypomniano postaci takie jak Franz Kafka czy Alfons Mucha.
+              Wieczory uprzyjemniała gra na gitarze i wspólne śpiewanie.
+            </p>
+
+            <div className="prague-article-photo-strip">
+              {[20, 19, 34].map((number) => (
+                  <img
+                      key={number}
+                      src={`${galleryPath}/Praga_wycieczka_21-22X2026_${String(number).padStart(2, '0')}.jpg`}
+                      alt={`Maturzyści podczas wycieczki do Pragi – zdjęcie ${number}`}
+                  />
+              ))}
+            </div>
+
+            <div className="news-film-frame prague-article-video">
+              <span className="news-film-frame-label">Jak było w Pradze</span>
+              <video controls preload="metadata" className="news-film-frame-video">
+                <source src={`${galleryPath}/wycieczka-praga-2026.mp4`} type="video/mp4" />
+                Twoja przeglądarka nie obsługuje odtwarzania filmu.
+              </video>
+            </div>
+
+            <Link to="/galeria/wycieczka-praga-2026" className="news-gallery-link">
+              Galeria zdjęć
+            </Link>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function SubjectOlympiadsArticle() {
+  const articleImage = `${import.meta.env.BASE_URL}aktualnosci/olimpiady-przedmiotowe-2026.png`;
+  const olympiadLink = 'https://kuratorium.krakow.pl/vi-edycja-ogolnopolskiej-olimpiady-wiedzy-o-procesie-inwestycyjno-budowlanym/';
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Olimpiady przedmiotowe</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-10-27">27 października 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <img
+              className="news-article-cover"
+              src={articleImage}
+              alt="VI Ogólnopolska Olimpiada Wiedzy o Procesie Inwestycyjno-Budowlanym"
+          />
+
+          <div className="news-article-body">
+            <p>
+              W ostatnich dniach nasi uczniowie sprawdzali swoją wiedzę i umiejętności, biorąc
+              udział w różnych olimpiadach przedmiotowych. Podejmowali wyzwania m.in. z języka
+              polskiego, angielskiego i hiszpańskiego, a także 26 października uczestniczyli w VI
+              Ogólnopolskiej Olimpiadzie Wiedzy o Procesie Inwestycyjno-Budowlanym.
+            </p>
+            <p>
+              Wszystkim uczestnikom życzymy powodzenia i z całych sił trzymamy za nich kciuki!
+            </p>
+            <a className="news-gallery-link" href={olympiadLink} target="_blank" rel="noreferrer">
+              Szczegóły VI Ogólnopolskiej Olimpiady Wiedzy o Procesie Inwestycyjno-Budowlanym
+            </a>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function SchoolEvacuationArticle() {
+  const exitImage = `${import.meta.env.BASE_URL}aktualnosci/probna-ewakuacja-szkoly-wyjscie.png`;
+  const meetingPointImage = `${import.meta.env.BASE_URL}aktualnosci/probna-ewakuacja-szkoly-zbiorka.png`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Próbna ewakuacja szkoły</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-10-26">26 października 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <div className="evacuation-signs">
+            <img className="evacuation-article-cover" src={exitImage} alt="Znak wyjścia ewakuacyjnego" />
+            <img className="evacuation-meeting-point" src={meetingPointImage} alt="Znak miejsca zbiórki do ewakuacji" />
+          </div>
+
+          <div className="news-article-body evacuation-article-body">
+            <p>
+              26 października w naszej szkole odbyła się próbna ewakuacja, której celem było
+              sprawdzenie znajomości procedur bezpieczeństwa oraz przygotowania do sytuacji
+              zagrożenia. Bezpieczeństwo uczniów i pracowników jest dla nas priorytetem, dlatego
+              regularnie podejmujemy działania, które pomagają nam odpowiednio reagować w
+              sytuacjach kryzysowych.
+            </p>
+            <p>
+              Ewakuacja przebiegła sprawnie i pomyślnie, a cała społeczność szkolna wykazała się
+              odpowiedzialnością i zdyscyplinowaniem.
+            </p>
+
+            <div className="evacuation-values" aria-label="Najważniejsze wartości podczas ewakuacji">
+              <div className="evacuation-value"><ShieldCheck size={25} /><span>Bezpieczeństwo</span></div>
+              <div className="evacuation-value"><Users size={25} /><span>Współpraca</span></div>
+              <div className="evacuation-value"><CircleCheckBig size={25} /><span>Odpowiedzialność</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function AuschwitzBirkenauArticle() {
+  const imagePath = `${import.meta.env.BASE_URL}aktualnosci`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Auschwitz-Birkenau – lekcja historii i człowieczeństwa</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-10-30">30 października 2026</time></span>
+              <span><MapPin size={18} />Oświęcim</span>
+            </div>
+          </header>
+
+          <blockquote className="article-quote auschwitz-article-quote">
+            „Kto nie pamięta historii, skazany jest na jej ponowne przeżycie”
+            <small>George Santayana</small>
+          </blockquote>
+
+          <img
+              className="news-article-cover"
+              src={`${imagePath}/auschwitz-birkenau-2026-04.jpg`}
+              alt="Uczniowie podczas wizyty w Miejscu Pamięci Auschwitz-Birkenau"
+          />
+
+          <div className="news-article-body auschwitz-article-body">
+            <p>
+              Tegoroczni abiturienci w ramach podsumowania bloku literatury wojennej udali się do miejsca pamięci Auschwitz - Birkenau. To ważna wizyta, nie tylko w kontekście przygotowań do matury, ale przede wszystkim w kwestii moralnej.
+            </p>
+            <p>
+              Dyskomfort, smutek, przerażenie to nieprzyjemne, acz konieczne uczucia, z którymi
+              należy się zmierzyć, by zawsze pamiętać słowa Mariana Turskiego o tym, że
+              <strong>„Auschwitz nie spadło z nieba”</strong>, i że nic poza rzetelną nauką historii i
+              człowieczeństwa nie uchroni nas przed innymi klęskami humanizmu.
+            </p>
+
+            <div className="auschwitz-photo-grid" aria-label="Zdjęcia z wizyty w Auschwitz-Birkenau">
+              {[1, 2, 3, 5].map((number) => (
+                  <img
+                      key={number}
+                      src={`${imagePath}/auschwitz-birkenau-2026-0${number}.jpg`}
+                      alt={`Wizyta uczniów w Auschwitz-Birkenau – zdjęcie ${number}`}
+                  />
+              ))}
+            </div>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function QueenJadwigaAiLessonArticle() {
+  const articleImage = `${import.meta.env.BASE_URL}aktualnosci/lekcja-z-krolowa-jadwiga-i-ai.png`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Święto Patronki Szkoły – lekcja z Królową Jadwigą i AI</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-10-16">16 października 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <img
+              className="news-article-cover"
+              src={articleImage}
+              alt="Lekcja o Królowej Jadwidze i sztucznej inteligencji"
+          />
+
+          <div className="news-article-body jadwiga-ai-article-body">
+            <p className="jadwiga-ai-introduction">
+              W dniu 16 X obchodzimy święto Patronki naszej szkoły świętej królowej Jadwigi
+              Andegaweńskiej, na pamiątkę jej koronacji na króla Polski w 1384 roku.
+            </p>
+
+            <div className="jadwiga-ai-learning-grid">
+              <section>
+                <span>Klasy 1–3</span>
+                <p>
+                  Z tej okazji uczniowie kl. 1-3 na lekcjach historii obejrzą film p.t. Jak żyła
+                  Jadwiga Andegaweńska? Rok 1399. Przed projekcją filmu uczniowie otrzymają karty
+                  pracy do wypełnienia zawierające pytania i zadania.
+                </p>
+              </section>
+
+              <section>
+                <span>AI i krytyczne myślenie</span>
+                <p>
+                  Ponieważ film został wygenerowany przy udziale sztucznej inteligencji (AI), to
+                  ćwiczenie będzie miało szczególny walor. Nie tylko zapoznania się z informacjami
+                  i szczegółami z życia Patronki Szkoły, ale także zrozumienia i uzmysłowienia
+                  sobie jak treści stworzone przez AI mogą odbiegać od faktów i pokazywać
+                  rzeczywistość zupełnie nieprawdziwą.
+                </p>
+              </section>
+
+              <section>
+                <span>Klasy 4</span>
+                <p>
+                  Uczniowie kl. 4, ze względu na minimalną liczbę lekcji historii otrzymają karty
+                  pracy i link do filmu do domu.
+                </p>
+              </section>
+            </div>
+
+            <p className="jadwiga-ai-closing">
+              Życzymy udanej podróży w czternastowieczny świat królowej Jadwigi i krytycznej
+              oceny skutków korzystania ze sztucznej inteligencji.
+            </p>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function EnglishCornerNewsArticle() {
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>English Corner – nowa zakładka</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-10-04">4 października 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <div className="news-article-body english-corner-news-body">
+            <p>
+              Na naszej stronie internetowej pojawiła się nowa zakładka{' '}
+              <Link to="/edukacja/english-corner" className="english-corner-news-inline-link">
+                <strong>English Corner</strong>
+              </Link>, przygotowana w ramach realizowanych w szkole projektów edukacyjnych.
+              To przestrzeń, w której prezentujemy uczniowskie artykuły powstające podczas zajęć
+              i działań projektowych. Publikowane treści odzwierciedlają rozwój kompetencji
+              językowych uczniów, ich zaangażowanie oraz twórcze podejście do pracy z językiem.
+            </p>
+            <p>
+              Zachęcamy do odwiedzenia English Corner i zapoznania się z najnowszymi
+              publikacjami, które będą pojawiały się co miesiąc.
+            </p>
+
+            <img
+                className="english-corner-news-image"
+                src={`${import.meta.env.BASE_URL}aktualnosci/english-corner.png`}
+                alt="English Corner by VPLO students"
+            />
+
+            <Link to="/edukacja/english-corner" className="news-gallery-link">
+              English Corner
+            </Link>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function EnglishCornerMulticulturalismArticle() {
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Nowy artykuł w English Corner</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-11-04">4 listopada 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <div className="news-article-body english-corner-news-body">
+            <div className="english-corner-multiculturalism-layout">
+              <div className="english-corner-multiculturalism-copy">
+                <p>
+                  W zakładce{' '}
+                  <Link to="/edukacja/english-corner" className="english-corner-news-inline-link">
+                    <strong>English Corner</strong>
+                  </Link>{' '}
+                  pojawił się nowy artykuł pt.{' '}
+                  <strong>„MULTICULTURALISM OF BRITISH LITERATURE AND ART”</strong>, przygotowany
+                  przez uczniów klas czwartych w ramach projektu edukacyjnego rozwijającego kompetencje językowe
+                  i kulturowe.
+                </p>
+                <p>
+                  Autorzy: <strong>Borys Borysiewicz (4A), Patrycja Renke (4C), Edward Oczko (4C),
+                  Lena Regulska (4D) oraz Jeremi Kowalski (4D)</strong> podejmują temat
+                  wielokulturowości współczesnej Wielkiej Brytanii, analizując, w jaki sposób kultura,
+                  migracje oraz różnorodne doświadczenia społeczne znajdują odzwierciedlenie w
+                  literaturze, sztuce i architekturze.
+                </p>
+                <p>
+                  Zachęcamy do lektury najnowszej publikacji oraz regularnego odwiedzania zakładki{' '}
+                  <Link to="/edukacja/english-corner" className="english-corner-news-inline-link">
+                    <strong>English Corner</strong>
+                  </Link>, gdzie co miesiąc pojawiają się nowe artykuły przygotowywane przez naszych
+                  uczniów.
+                </p>
+              </div>
+
+              <img
+                  className="english-corner-news-image english-corner-multiculturalism-image"
+                  src={`${import.meta.env.BASE_URL}aktualnosci/english-corner-multiculturalism.png`}
+                  alt="Multiculturalism in British Art — grafika English Corner"
+              />
+            </div>
+
+            <Link to="/edukacja/english-corner" className="news-gallery-link">
+              English Corner
+            </Link>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function NationalMourningKrakowArticle() {
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Żałoba narodowa po tragicznych wydarzeniach w Krakowie</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-11-08">8 listopada 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <div className="news-article-body national-mourning-body">
+            <div className="national-mourning-copy">
+              <p>
+                W związku z tragicznymi wydarzeniami, do których doszło 7 listopada 2026 roku
+                w centrum Krakowa, społeczność naszego Liceum łączy się w żałobie narodowej,
+                oddając hołd ofiarom tragedii.
+              </p>
+              <p>
+                Składamy wyrazy najgłębszego współczucia rodzinom i bliskim osób, które straciły
+                życie, a także wszystkim dotkniętym tym dramatycznym wydarzeniem.
+              </p>
+              <p>
+                W tych bolesnych chwilach pozostajemy solidarni z rodzinami ofiar, osobami
+                poszkodowanymi oraz całą społecznością Krakowa.
+              </p>
+            </div>
+
+            <img
+                className="national-mourning-image"
+                src={`${import.meta.env.BASE_URL}aktualnosci/zaloba-narodowa-krakow-2026.png`}
+                alt="Pamięć przy świecy pod Wawelem"
+            />
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function PrincipalsConferenceArticle() {
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>V Prywatne Liceum Ogólnokształcące gospodarzem konferencji dyrektorów</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-11-06">6 listopada 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <img
+              className="news-article-cover news-article-cover-contain principals-conference-image"
+              src={`${import.meta.env.BASE_URL}aktualnosci/konferencja-dyrektorow-2026.png`}
+              alt="Konferencja Dyrektorów w V Prywatnym Liceum Ogólnokształcącym w Krakowie"
+          />
+
+          <div className="news-article-body">
+            <p>
+              W dniu <strong>6 listopada 2026 roku</strong> w{' '}
+              <strong>V Prywatnym Liceum Ogólnokształcącym w Krakowie im. Królowej Jadwigi</strong>{' '}
+              odbyła się <strong>Konferencja Dyrektorów</strong> zorganizowana pod patronatem{' '}
+              <strong>Kuratorium Oświaty w Krakowie</strong>.
+            </p>
+            <p>
+              Spotkanie zgromadziło dyrektorów szkół, stwarzając przestrzeń do wymiany doświadczeń,
+              dyskusji na temat aktualnych wyzwań stojących przed edukacją oraz prezentacji dobrych
+              praktyk w zakresie zarządzania placówkami oświatowymi.
+            </p>
+            <p>
+              Jesteśmy zaszczyceni, że nasza szkoła mogła pełnić rolę gospodarza tego wydarzenia.
+              Dziękujemy wszystkim uczestnikom za obecność, aktywny udział w spotkaniu oraz
+              inspirujące rozmowy, które przyczyniają się do rozwoju i podnoszenia jakości polskiej
+              edukacji.
+            </p>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function SchoolAnthemArticle() {
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Szkoła do Hymnu 2026</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-11-16">16 listopada 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <img
+              className="news-article-cover news-article-cover-contain school-anthem-image"
+              src={`${import.meta.env.BASE_URL}aktualnosci/szkola-do-hymnu-2026.png`}
+              alt="Szkoła do Hymnu 2026 — grafika z polskimi flagami"
+          />
+
+          <div className="news-article-body">
+            <p>
+              Społeczność <strong>V Prywatnego Liceum Ogólnokształcącego w Krakowie im. Królowej Jadwigi
+              </strong> po raz kolejny włączy się w ogólnopolską akcję{' '}
+              <strong>„Szkoła do Hymnu”</strong>, organizowaną przez Ministerstwo Edukacji
+              Narodowej w związku z obchodami Narodowego Święta Niepodległości.
+            </p>
+            <p>
+              We wtorek, <strong>10 listopada o godz. 11:11</strong>, uczniowie, nauczyciele
+              i pracownicy szkoły wspólnie odśpiewają <strong>„Mazurka Dąbrowskiego”</strong>,
+              oddając hołd wszystkim, którzy przyczynili się do odzyskania i utrzymania
+              niepodległości Polski.
+            </p>
+            <p>
+              Udział w akcji jest dla naszej społeczności nie tylko wyrazem szacunku dla historii
+              i tradycji narodowych, ale także okazją do budowania poczucia wspólnoty oraz
+              kształtowania postaw obywatelskich wśród młodzieży.
+            </p>
+            <p>
+              Z dumą dołączamy do tysięcy szkół w Polsce i za granicą, które wspólnym śpiewem
+              hymnu narodowego uczczą zbliżające się <strong>Narodowe Święto Niepodległości</strong>{' '}
+              <span role="img" aria-label="Flaga Polski"></span>
+            </p>
+            <p className="school-anthem-quote"><em>„Jeszcze Polska nie zginęła” zabrzmi w naszej
+              szkole punktualnie o godzinie 11:11</em></p>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function IndependenceDay2026Article() {
+  const imagePath = `${import.meta.env.BASE_URL}aktualnosci/dzien-niepodleglosci-2026`;
+  const speechAudioPath = `${imagePath}/przemowienie-11-listopada-2026.m4a`;
+  const [isSpeechGraphicOpen, setIsSpeechGraphicOpen] = useState(false);
+  const [isAudioLoaded, setIsAudioLoaded] = useState(false);
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (isAudioLoaded) {
+      audioRef.current?.play().catch(() => {});
+    }
+  }, [isAudioLoaded]);
+
+  const startSpeechAudio = () => {
+    if (isAudioLoaded) {
+      audioRef.current?.play().catch(() => {});
+      return;
+    }
+
+    setIsAudioLoaded(true);
+  };
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Relacja z obchodów Dnia Niepodległości</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-11-10">10 listopada 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <div className="independence-top-gallery">
+            <img
+                src={`${imagePath}/Dzien_niepodleglosci_02.jpg`}
+                alt="Obchody Dnia Niepodległości w V Prywatnym Liceum Ogólnokształcącym w Krakowie"
+            />
+            <img
+                src={`${imagePath}/Dzien_niepodleglosci_06.jpg`}
+                alt="Uczniowie i goście podczas obchodów Dnia Niepodległości"
+            />
+          </div>
+
+          <div className="news-article-body independence-day-body">
+            <p>
+              V Prywatne Liceum Ogólnokształcące w Krakowie im. Królowej Jadwigi przystąpiło do
+              ministerialnego projektu Szkoła do hymnu. 10 listopada o 11:11 cała społeczność
+              szkolna zaśpiewała hymn państwowy.
+            </p>
+            <p>
+              Ten uroczysty moment poprzedziło przemówienie Pana Dyrektora Jerzego Białkiewicza,
+              w którym zaprosił uczniów do refleksji nad znaczeniem wolności i niepodległości oraz
+              nad tym, czy potrafimy docenić ich wartość. Podkreślił, że prawdziwe zrozumienie
+              wolności wymaga dojrzałości, szacunku do innych i odpowiedzialności za dobro wspólne.
+            </p>
+
+            <figure className="independence-speech-figure">
+              <button
+                  type="button"
+                  className="independence-speech-zoom-trigger"
+                  onClick={() => setIsSpeechGraphicOpen(true)}
+                  aria-label="Powiększ grafikę z przemówieniem"
+              >
+                <img
+                    src={`${imagePath}/przemowienie-11-listopada-2026.png`}
+                    alt="Tekst przemówienia Dyrektora Jerzego Białkiewicza"
+                />
+              </button>
+            </figure>
+
+            <div className="independence-audio-panel">
+              <button type="button" className="independence-audio-play" onClick={startSpeechAudio}>
+                <span aria-hidden="true">▶</span> Przemówienie
+              </button>
+              {isAudioLoaded && (
+                  <audio ref={audioRef} controls preload="none">
+                    <source src={speechAudioPath} />
+                    Twoja przeglądarka nie obsługuje odtwarzacza audio.
+                  </audio>
+              )}
+            </div>
+
+            <p>
+              Podczas apelu zrezygnowano z pieśni patriotycznych (te wybrzmią za tydzień) na rzecz
+              wybranych wierszy i fragmentów prozy pomagających wyrazić zadumę nad minionymi
+              wydarzeniami.
+            </p>
+
+            <p>
+              Na spotkaniu minutą ciszy uczczono pamięć wszystkich, którzy w czasie II wojny
+              światowej oraz w innych tragicznych momentach historii Polski oddali życie w walce
+              o wolność, godność i niepodległość Ojczyzny, a także pamięć ofiar tragicznych
+              wydarzeń z 7 listopada na krakowskim Rynku Głównym.
+            </p>
+
+            <section className="independence-poetry-section" aria-label="Wiersze interpretowane przez uczniów">
+              <h2>Wiersze interpretowane przez uczniów klas czwartych</h2>
+              <div className="independence-poetry-gallery">
+                <img src={`${imagePath}/Dzien_niepodleglosci_05.jpg`} alt="Adam Zagajewski — Spróbuj opiewać okaleczony świat" />
+                <img src={`${imagePath}/Dzien_niepodleglosci_08.jpg`} alt="Albert Camus — Dżuma, fragmenty" />
+                <img src={`${imagePath}/Dzien_niepodleglosci_09.jpg`} alt="Stanisław Barańczak — Jeżeli porcelana to wyłącznie taka" />
+              </div>
+            </section>
+
+          </div>
+        </div>
+        {isSpeechGraphicOpen && (
+            <div
+                className="independence-lightbox"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Powiększona grafika z przemówieniem"
+                onClick={() => setIsSpeechGraphicOpen(false)}
+            >
+              <button
+                  type="button"
+                  className="independence-lightbox-close"
+                  aria-label="Zamknij powiększenie"
+                  onClick={() => setIsSpeechGraphicOpen(false)}
+              >
+                <X size={24} />
+              </button>
+              <img
+                  src={`${imagePath}/przemowienie-11-listopada-2026.png`}
+                  alt="Tekst przemówienia Dyrektora Jerzego Białkiewicza"
+                  onClick={(event) => event.stopPropagation()}
+              />
+            </div>
+        )}
+      </article>
+  );
+}
+
+function NetherlandsExchangeArticle() {
+  const imagePath = `${import.meta.env.BASE_URL}galeria/wymiana-holandia-2026`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Wymiana międzynarodowa z holenderską szkołą z Laren</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-10-05">5–8 października 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <img
+              className="news-article-cover"
+              src={`${imagePath}/Wymiana X 2026 17.jpg`}
+              alt="Uczniowie podczas międzynarodowej wymiany z holenderską szkołą z Laren"
+          />
+
+          <div className="news-article-body exchange-article-body">
+            <div className="exchange-flag" role="img" aria-label="Flaga Polski">
+              <span className="country-flag country-flag-pl" />
+            </div>
+
+            <div className="exchange-article-copy">
+              <p className="exchange-article-lead">
+                Za nami niesamowity czas! Właśnie zakończyliśmy krakowską część naszej
+                międzynarodowej wymiany, goszcząc uczniów ze szkoły Laar &amp; Berg z Laren!
+              </p>
+              <p>Nasz wspólny tydzień był wypełniony po brzegi fantastycznymi aktywnościami:</p>
+
+              <div className="exchange-activity-list">
+                <p><span aria-hidden="true">💃</span> Zaczęliśmy od gier i zabaw integracyjnych, dzięki którym szybko staliśmy się zgraną grupą. Co więcej, nauczyliśmy Holendrów naszych polskich tańców narodowych - Poloneza i Krakowiaka</p>
+                <p><span aria-hidden="true">📚</span> Uczniowie stworzyli świetne miniprojekty! Wspólnie analizowali i porównywali polskie oraz holenderskie realia edukacyjne, codzienne życie, a nawet królujące u nas style muzyczne.</p>
+                <p><span aria-hidden="true">👨‍🏫</span> Nasi goście z Holandii dołączyli do nas na zajęciach, by na własne oczy przekonać się, jak wyglądają lekcje w polskiej szkole i jak pracujemy na co dzień.</p>
+                <p><span aria-hidden="true">🏰</span> Zorganizowaliśmy emocjonującą grę miejską po Rynku Głównym i okolicach. Wybraliśmy się również na długi spacer obejmujący Wawel, Bulwary Wiślane, Kazimierz i Podgórze. Co najważniejsze, podczas zwiedzania to polscy uczniowie wcielili się w rolę przewodników, z pasją opowiadając o najważniejszych miejscach na mapie naszego miasta!</p>
+              </div>
+
+              <div className="exchange-article-photo-strip">
+                <img src={`${imagePath}/Wymiana X 2026 09.jpg`} alt="Uczniowie podczas zajęć laboratoryjnych" />
+                <img src={`${imagePath}/Wymiana X 2026 02.jpg`} alt="Uczniowie podczas zwiedzania Krakowa" />
+                <img src={`${imagePath}/Wymiana X 2026 32.jpg`} alt="Prezentacja uczniowska podczas wymiany" />
+              </div>
+
+              <p>
+                To był tydzień pełen nauki, świetnej zabawy i budowania relacji, które zostaną
+                z nami na długo. Dziękujemy wszystkim za ogromne zaangażowanie w organizację
+                tego czasu.
+              </p>
+              <p className="exchange-article-closing">
+                Do zobaczenia w kwietniu, kiedy to my odwiedzimy Was w Holandii! ✈️🌷
+              </p>
+
+              <Link to="/galeria/wymiana-holandia-2026" className="news-gallery-link">
+                Galeria zdjęć
+              </Link>
+            </div>
+
+            <div className="exchange-flag" role="img" aria-label="Flaga Holandii">
+              <span className="country-flag country-flag-nl" />
+            </div>
+          </div>
+        </div>
+      </article>
+  );
+}
+
+function AndyWarholExhibitionArticle() {
+  const imagePath = `${import.meta.env.BASE_URL}aktualnosci`;
+
+  return (
+      <article className="news-article-page">
+        <div className="container news-article-container">
+          <Link to="/aktualnosci" className="news-back-link">← Powrót do aktualności</Link>
+
+          <header className="news-article-header">
+            <span>Aktualności</span>
+            <h1>Wyjście na wystawę Andy Warhola</h1>
+            <div className="news-meta news-article-meta">
+              <span><CalendarDays size={18} /><time dateTime="2026-09-11">11 września 2026</time></span>
+              <span><MapPin size={18} />Kraków</span>
+            </div>
+          </header>
+
+          <img
+              className="news-article-cover"
+              src={`${imagePath}/wystawa-andy-warhola-01.jpeg`}
+              alt="Uczniowie klasy 3a na wystawie Andy Warhola"
+          />
+
+          <div className="news-article-body">
+            <p>
+              W dniu 11.09 klasa 3a pod opieką Pań Profesor Igi Zdanikowskiej i Ewy Żądło
+              miała okazję odwiedzić wystawę w Pałacu Sztuki zatytułowaną
+              <i> „Andy Warhol. Od linii do legendy”.</i> Ekspozycja obejmowała zarówno
+              najwcześniejsze prace ilustratorskie i rysunkowe tego wybitnego artysty XX wieku,
+              jak i jego późniejsze osiągnięcia podnoszące go do rangi ikony popkultury.
+            </p>
+            <p>
+              Wśród licznych obiektów związanych z twórczością artysty uczniowie mogli zobaczyć
+              oryginalne rysunki, sitodruki, fotografie typu Polaroid, projekty okładek płyt
+              winylowych i książek, a także stroje i tkaniny z lat 60. XX wieku. Wystawa,
+              będąca ważnym głosem w kontekście roli wizerunku w przekazie medialnym, spotkała
+              się z żywym odbiorem uczniów.
+            </p>
+
+            <div className="news-article-image-pair">
+              <img
+                  src={`${imagePath}/wystawa-andy-warhola-02.jpeg`}
+                  alt="Uczennice klasy 3a przy pracach Andy Warhola"
+              />
+              <img
+                  src={`${imagePath}/wystawa-andy-warhola-03.jpeg`}
+                  alt="Interaktywna rozmowa telefoniczna z Andy Warholem symulowana przez AI"
+              />
+            </div>
+
+            <p>
+              Jedną z interaktywnych atrakcji była także możliwość przeprowadzenia rozmowy
+              telefonicznej z postacią samego Andy Warhola, symulowaną przez AI.
             </p>
           </div>
         </div>

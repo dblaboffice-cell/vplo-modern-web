@@ -8,7 +8,7 @@ const writtenExams = [
   ['7 maja', '09:00', 'Język angielski', 'PR / DJ'],
   ['10 maja', '09:00', 'Biologia', 'PR'],
   ['11 maja', '09:00', 'Matematyka', 'PR'],
-  ['12 maja', '09:00', 'Wiedza o społeczeństie', 'PR'],
+  ['12 maja', '09:00', 'Wiedza o społeczeństwie', 'PR'],
   ['13 maja', '09:00', 'Chemia', 'PR'],
   ['14 maja', '09:00', 'Geografia', 'PR'],
   ['18 maja', '09:00', 'Historia', 'PR'],

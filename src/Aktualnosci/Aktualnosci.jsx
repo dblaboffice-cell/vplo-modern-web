@@ -10,7 +10,7 @@ export function NewsList({ items }) {
       {items.map((news) => (
         <article className="news-card" key={news.slug}>
           <Link to={news.content ? `/aktualnosci/archiwalna/${news.slug}` : `/aktualnosci/${news.slug}`} className="news-card-image-link" aria-label={`Czytaj artykuł: ${news.title}`}>
-            {news.image ? <img src={news.image} alt={news.title} /> : (
+            {news.image ? <img className={news.slug === 'konferencja-dyrektorow-2026' ? 'news-card-image-contain' : undefined} src={news.image} alt={news.title} /> : (
               <div className="news-card-placeholder" aria-hidden="true"><School size={44} /><span>Aktualność</span></div>
             )}
           </Link>
